@@ -3,6 +3,8 @@
 namespace SwagMigrationApi\Repository;
 
 use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\Query\QueryBuilder;
+use Doctrine\DBAL\Schema\Column;
 
 class AbstractRepository
 {
@@ -25,5 +27,26 @@ class AbstractRepository
     public function getConnection()
     {
         return $this->connection;
+    }
+
+    /**
+     * @param QueryBuilder  $query
+     * @param string        $table
+     * @param string        $tableAlias
+     */
+    protected function addTableSelection(QueryBuilder $query, $table, $tableAlias)
+    {
+        $columns = $this->connection->getSchemaManager()->listTableColumns($table);
+
+        /** @var Column $column */
+        foreach ($columns as $column) {
+            $selection = str_replace(
+                ['#tableAlias#', '#column#'],
+                [$tableAlias, $column->getName()],
+                '`#tableAlias#`.`#column#` as `#tableAlias#.#column#`'
+            );
+
+            $query->addSelect($selection);
+        }
     }
 }
