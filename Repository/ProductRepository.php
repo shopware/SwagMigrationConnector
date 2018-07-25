@@ -73,14 +73,14 @@ class ProductRepository extends AbstractRepository
     {
         $query = $this->getConnection()->createQueryBuilder();
 
-        $query->from('s_articles_img', 'product_asset');
-        $query->addSelect('product_asset.articleID');
-        $this->addTableSelection($query, 's_articles_img', 'product_asset');
+        $query->from('s_articles_img', 'asset');
+        $query->addSelect('asset.articleID');
+        $this->addTableSelection($query, 's_articles_img', 'asset');
 
-        $query->leftJoin('product_asset', 's_media', 'product_asset_media', 'product_asset.media_id = product_asset_media.id');
-        $this->addTableSelection($query, 's_media', 'product_asset_media');
+        $query->leftJoin('asset', 's_media', 'asset_media', 'asset.media_id = asset_media.id');
+        $this->addTableSelection($query, 's_media', 'asset_media');
 
-        $query->where('product_asset.articleID IN (:ids)');
+        $query->where('asset.articleID IN (:ids)');
         $query->setParameter('ids', $ids, Connection::PARAM_INT_ARRAY);
 
         return $query->execute()->fetchAll(\PDO::FETCH_GROUP);
