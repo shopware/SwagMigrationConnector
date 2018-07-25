@@ -31,7 +31,7 @@ class ProductService extends AbstractApiService
         $ids = array_column($fetchedProducts, 'product_detail.id');
         $productIds = array_column($fetchedProducts, 'product_detail.articleID');
 
-        $products = $this->mapData($fetchedProducts);
+        $products = $this->mapData($fetchedProducts, [], ['product']);
 
         return $this->assignAssociatedData($products, $ids, $productIds);
     }
@@ -48,8 +48,8 @@ class ProductService extends AbstractApiService
         $prices = $this->mapData($productPrices, [], ['price']);
 
         foreach ($products as $key => &$product) {
-            if (isset($prices[$product['product']['detail']['id']])) {
-                $product['product']['prices'] = $prices[$product['product']['detail']['id']];
+            if (isset($prices[$product['detail']['id']])) {
+                $product['prices'] = $prices[$product['detail']['id']];
             }
         }
         unset($product);
