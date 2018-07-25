@@ -37,7 +37,7 @@ class ProductService extends AbstractApiService
      */
     public function getProducts($offset = 0, $limit = 250)
     {
-        $fetchedProducts = $this->productRepository->getProducts($offset, $limit);
+        $fetchedProducts = $this->productRepository->fetchProducts($offset, $limit);
         $ids = array_column($fetchedProducts, 'product_detail.id');
         $productIds = array_column($fetchedProducts, 'product_detail.articleID');
 

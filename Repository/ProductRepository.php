@@ -12,7 +12,7 @@ class ProductRepository extends AbstractRepository
      *
      * @return array
      */
-    public function getProducts($offset = 0, $limit = 250)
+    public function fetchProducts($offset = 0, $limit = 250)
     {
         $query = $this->getConnection()->createQueryBuilder();
 
@@ -77,8 +77,17 @@ class ProductRepository extends AbstractRepository
         $query->addSelect('asset.articleID');
         $this->addTableSelection($query, 's_articles_img', 'asset');
 
+        $query->leftJoin('asset', 's_articles_img_attributes', 'asset_attributes', 'asset_attributes.imageID = asset.id');
+        $this->addTableSelection($query, 's_articles_img_attributes', 'asset_attributes');
+
         $query->leftJoin('asset', 's_media', 'asset_media', 'asset.media_id = asset_media.id');
         $this->addTableSelection($query, 's_media', 'asset_media');
+
+        $query->leftJoin('asset_media', 's_media_album', 'asset_media_album', 'asset_media.albumID = asset_media_album.id');
+        $this->addTableSelection($query, 's_media_album', 'asset_media_album');
+
+        $query->leftJoin('asset_media_album', 's_media_album_settings', 'asset_media_album_settings', 'asset_media_album.id = asset_media_album_settings.albumID');
+        $this->addTableSelection($query, 's_media_album_settings', 'asset_media_album_settings');
 
         $query->where('asset.articleID IN (:ids)');
         $query->setParameter('ids', $ids, Connection::PARAM_INT_ARRAY);
