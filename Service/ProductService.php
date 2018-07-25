@@ -27,18 +27,33 @@ class ProductService extends AbstractApiService
      */
     public function getProducts($offset = 0, $limit = 250)
     {
-        $products = $this->productRepository->getProducts($offset, $limit);
+        $fetchedProducts = $this->productRepository->getProducts($offset, $limit);
+        $ids = array_column($fetchedProducts, 'product_detail.id');
+        $productIds = array_column($fetchedProducts, 'product_detail.articleID');
 
-        $ids = array_column($products, 'product_detail.id');
-        $productPrices = $this->productRepository->fetchProductPrices($ids);
+        $products = $this->mapData($fetchedProducts);
+
+        return $this->assignAssociatedData($products, $ids, $productIds);
+    }
+
+    /**
+     * @param array $products
+     * @param array $detailIds
+     * @param array $productIds
+     * @return array
+     */
+    protected function assignAssociatedData(array $products, array $detailIds, array $productIds)
+    {
+        $productPrices = $this->productRepository->fetchProductPrices($detailIds);
+        $prices = $this->mapData($productPrices, [], ['price']);
 
         foreach ($products as $key => &$product) {
-            if (array_key_exists($product['product_detail.id'], $productPrices)) {
-                $product['prices'] = $productPrices[$product['product_detail.id']];
+            if (isset($prices[$product['product']['detail']['id']])) {
+                $product['product']['prices'] = $prices[$product['product']['detail']['id']];
             }
         }
         unset($product);
 
-        return $this->mapData($products);
+        return $products;
     }
 }
