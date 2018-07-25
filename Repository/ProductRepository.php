@@ -55,7 +55,7 @@ class ProductRepository extends AbstractRepository
         $query->leftJoin('price', 's_core_customergroups', 'price_customergroup', 'price.pricegroup = price_customergroup.groupkey');
         $this->addTableSelection($query, 's_core_customergroups', 'price_customergroup');
 
-        $query->leftJoin('price', 's_articles_prices_attributes', 'price_attributes', 'price.id = price_attributes.id');
+        $query->leftJoin('price', 's_articles_prices_attributes', 'price_attributes', 'price.id = price_attributes.priceID');
         $this->addTableSelection($query, 's_articles_prices_attributes', 'price_attributes');
 
         $query->where('price.articledetailsID IN (:ids)');
