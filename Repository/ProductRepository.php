@@ -22,6 +22,9 @@ class ProductRepository extends AbstractRepository
         $query->leftJoin('product_detail', 's_articles', 'product', 'product.id = product_detail.articleID');
         $this->addTableSelection($query, 's_articles', 'product');
 
+        $query->leftJoin('product_detail', 's_core_units', 'unit', 'product_detail.unitID = unit.id');
+        $this->addTableSelection($query, 's_core_units', 'unit');
+
         $query->leftJoin('product', 's_core_tax', 'product_tax', 'product.taxID = product_tax.id');
         $this->addTableSelection($query, 's_core_tax', 'product_tax');
 
@@ -40,11 +43,32 @@ class ProductRepository extends AbstractRepository
     }
 
     /**
-     * @param array $ids
+     * @param array $productIds
      *
      * @return array
      */
-    public function fetchProductPrices(array $ids)
+    public function fetchProductCategories(array $productIds)
+    {
+        $query = $this->getConnection()->createQueryBuilder();
+
+        $query->from('s_categories', 'category');
+        $query->addSelect('product_category.articleID');
+        $query->addSelect('category.id');
+
+        $query->leftJoin('category', 's_articles_categories', 'product_category', 'category.id = product_category.categoryID');
+
+        $query->where('product_category.articleID IN (:ids)');
+        $query->setParameter('ids', $productIds, Connection::PARAM_INT_ARRAY);
+
+        return $query->execute()->fetchAll(\PDO::FETCH_GROUP);
+    }
+
+    /**
+     * @param array $variantIds
+     *
+     * @return array
+     */
+    public function fetchProductPrices(array $variantIds)
     {
         $query = $this->getConnection()->createQueryBuilder();
 
@@ -59,17 +83,86 @@ class ProductRepository extends AbstractRepository
         $this->addTableSelection($query, 's_articles_prices_attributes', 'price_attributes');
 
         $query->where('price.articledetailsID IN (:ids)');
-        $query->setParameter('ids', $ids, Connection::PARAM_INT_ARRAY);
+        $query->setParameter('ids', $variantIds, Connection::PARAM_INT_ARRAY);
 
         return $query->execute()->fetchAll(\PDO::FETCH_GROUP);
     }
 
     /**
-     * @param array $ids
+     * @param array $productIds
      *
      * @return array
      */
-    public function fetchProductAssets(array $ids)
+    public function fetchProductTranslations(array $productIds)
+    {
+        $query = $this->getConnection()->createQueryBuilder();
+
+        $query->from('s_core_translations', 'translation');
+        $query->addSelect('translation.objectkey');
+        $this->addTableSelection($query, 's_core_translations', 'translation');
+
+        $query->leftJoin('translation', 's_core_shops', 'shop', 'shop.id = translation.objectlanguage');
+        $query->leftJoin('shop', 's_core_locales', 'locale', 'locale.id = shop.locale_id');
+        $query->addSelect('locale.locale');
+
+        $query->where('translation.objecttype = "article" AND translation.objectkey IN (:productIds)');
+
+        $query->setParameter('productIds', $productIds, Connection::PARAM_INT_ARRAY);
+
+        return $query->execute()->fetchAll(\PDO::FETCH_GROUP);
+    }
+
+    /**
+     * @param array $variantIds
+     *
+     * @return array
+     */
+    public function fetchVariantTranslations(array $variantIds)
+    {
+        $query = $this->getConnection()->createQueryBuilder();
+
+        $query->from('s_core_translations', 'translation');
+        $query->addSelect('translation.objectkey');
+        $this->addTableSelection($query, 's_core_translations', 'translation');
+
+        $query->leftJoin('translation', 's_core_shops', 'shop', 'shop.id = translation.objectlanguage');
+        $query->leftJoin('shop', 's_core_locales', 'locale', 'locale.id = shop.locale_id');
+        $query->addSelect('locale.locale');
+
+        $query->orWhere('translation.objecttype = "variant" AND translation.objectkey IN (:variantIds)');
+        $query->setParameter('variantIds', $variantIds, Connection::PARAM_INT_ARRAY);
+
+        return $query->execute()->fetchAll(\PDO::FETCH_GROUP);
+    }
+
+    /**
+     * @param array $variantIds
+     *
+     * @return array
+     */
+    public function fetchProductConfiguratorOptions(array $variantIds)
+    {
+        $query = $this->getConnection()->createQueryBuilder();
+
+        $query->from('s_article_configurator_options', 'configurator_option');
+        $query->addSelect('option_relation.article_id');
+        $this->addTableSelection($query, 's_article_configurator_options', 'configurator_option');
+
+        $query->leftJoin('configurator_option', 's_article_configurator_option_relations', 'option_relation', 'option_relation.option_id = configurator_option.id');
+
+        $query->where('option_relation.article_id IN (:ids)');
+
+        $query->setParameter('ids', $variantIds, Connection::PARAM_INT_ARRAY);
+
+        return $query->execute()->fetchAll(\PDO::FETCH_GROUP);
+    }
+
+    /**
+     * @param array $productIds
+     *
+     * @return array
+     */
+    public function fetchProductAssets(array $productIds)
     {
         $query = $this->getConnection()->createQueryBuilder();
 
@@ -90,7 +183,7 @@ class ProductRepository extends AbstractRepository
         $this->addTableSelection($query, 's_media_album_settings', 'asset_media_album_settings');
 
         $query->where('asset.articleID IN (:ids)');
-        $query->setParameter('ids', $ids, Connection::PARAM_INT_ARRAY);
+        $query->setParameter('ids', $productIds, Connection::PARAM_INT_ARRAY);
 
         return $query->execute()->fetchAll(\PDO::FETCH_GROUP);
     }

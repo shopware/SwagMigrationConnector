@@ -53,26 +53,115 @@ class ProductService extends AbstractApiService
      *
      * @return array
      */
-    protected function assignAssociatedData(array $products, array $detailIds, array $productIds)
+    protected function assignAssociatedData(array $products, array $variantIds, array $productIds)
     {
-        $productPrices = $this->productRepository->fetchProductPrices($detailIds);
-        $prices = $this->mapData($productPrices, [], ['price']);
+        $categories = $this->getCategories($productIds);
 
-        $productAssets = $this->productRepository->fetchProductAssets($productIds);
-        $assets = $this->mapData($productAssets, [], ['asset']);
+        $prices = $this->getPrices($variantIds);
+        $productTranslations = $this->getProductTranslations($productIds);
+        $variantTranslations = $this->getVariantTranslations($variantIds);
+        $assets = $this->getAssets($productIds);
+        $options = $this->getConfiguratorOptions($variantIds);
 
         foreach ($products as $key => &$product) {
+            if (isset($categories[$product['id']])) {
+                $product['categories'] = $categories[$product['id']];
+            }
             if (isset($prices[$product['detail']['id']])) {
                 $product['prices'] = $prices[$product['detail']['id']];
             }
+            if (isset($productTranslations[$product['id']])) {
+                $product['translations'] = $productTranslations[$product['id']];
+            }
+            if (isset($variantTranslations[$product['detail']['id']])) {
+                $product['detail']['translations'] = $variantTranslations[$product['detail']['id']];
+            }
             if (isset($assets[$product['id']])) {
-                $assets = $assets[$product['id']];
-                $product['assets'] = $this->prepareAssets($assets);
+                $productAssets = $assets[$product['id']];
+                $product['assets'] = $this->prepareAssets($productAssets);
+            }
+            if (isset($options[$product['detail']['id']])) {
+                $product['configuratorOptions'] = $options[$product['detail']['id']];
             }
         }
-        unset($product);
+        unset(
+            $product, $categories,
+            $prices, $assets, $options
+        );
 
         return $products;
+    }
+
+    /**
+     * @param array $productIds
+     *
+     * @return array
+     */
+    private function getCategories(array $productIds)
+    {
+        $fetchedCategories = $this->productRepository->fetchProductCategories($productIds);
+
+        return $this->mapData($fetchedCategories, [], ['category', 'id']);
+    }
+
+    /**
+     * @param array $variantIds
+     *
+     * @return array
+     */
+    private function getPrices(array $variantIds)
+    {
+        $fetchedPrices = $this->productRepository->fetchProductPrices($variantIds);
+
+        return $this->mapData($fetchedPrices, [], ['price']);
+    }
+
+    /**
+     * @param $productIds
+     *
+     * @return array
+     */
+    private function getProductTranslations(array $productIds)
+    {
+        $fetchedProductTranslations = $this->productRepository->fetchProductTranslations($productIds);
+
+        return $this->mapData($fetchedProductTranslations, [], ['translation', 'locale']);
+    }
+
+    /**
+     * @param array $variantIds
+     *
+     * @return array
+     */
+    private function getVariantTranslations(array $variantIds)
+    {
+        $fetchedVariantTranslations = $this->productRepository->fetchVariantTranslations($variantIds);
+
+        return $this->mapData($fetchedVariantTranslations, [], ['translation', 'locale']);
+    }
+
+    /**
+     * @param array $productIds
+     *
+     * @return array
+     */
+    private function getAssets(array $productIds)
+    {
+        $fetchedAssets = $this->productRepository->fetchProductAssets($productIds);
+
+        return $this->mapData($fetchedAssets, [], ['asset']);
+    }
+
+    /**
+     * @param array $variantIds
+     *
+     * @return array
+     */
+    private function getConfiguratorOptions(array $variantIds)
+    {
+        $fetchedConfiguratorOptions = $this->productRepository->fetchProductConfiguratorOptions($variantIds);
+
+        return $this->mapData($fetchedConfiguratorOptions, [], ['configurator', 'option']);
     }
 
     /**
