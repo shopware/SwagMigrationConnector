@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * (c) shopware AG <info@shopware.com>
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 use Shopware\Models\Shop\Shop;
 
 class Shopware_Controllers_Api_SwagMigrationProducts extends Shopware_Controllers_Api_Rest
@@ -17,7 +21,7 @@ class Shopware_Controllers_Api_SwagMigrationProducts extends Shopware_Controller
         $this->view->assign([
             'success' => true,
             'data' => $products,
-            'default_locale' => $defaultShop->getLocale()->getLocale()
+            'default_locale' => $defaultShop->getLocale()->getLocale(),
         ]);
     }
 }

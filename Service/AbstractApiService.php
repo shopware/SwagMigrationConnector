@@ -1,4 +1,9 @@
 <?php
+/**
+ * (c) shopware AG <info@shopware.com>
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace SwagMigrationApi\Service;
 
@@ -26,21 +31,22 @@ class AbstractApiService
                 $this->buildArrayFromChunks($result, $chunks, $fieldKey, $value);
             }
         }
+
         return $result;
     }
 
     /**
-     * @param array     $array
-     * @param array     $path
-     * @param string    $fieldKey
-     * @param string    $value
+     * @param array  $array
+     * @param array  $path
+     * @param string $fieldKey
+     * @param string $value
      */
     protected function buildArrayFromChunks(array &$array, array $path, $fieldKey, $value)
     {
         $key = array_shift($path);
         if (empty($key)) {
             $array[$fieldKey] = $value;
-        } else if (empty($path)) {
+        } elseif (empty($path)) {
             $array[$key][$fieldKey] = $value;
         } else {
             if (!isset($array[$key]) || !is_array($array[$key])) {

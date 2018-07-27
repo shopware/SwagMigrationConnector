@@ -2,6 +2,12 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
+        <!--Services-->
+
+        <service id="swag_migration_api.service.category_service" class="SwagMigrationApi\Service\CategoryService">
+            <argument type="service" id="swag_migration_api.repository.category_repository" />
+        </service>
+
         <service id="swag_migration_api.service.product_service" class="SwagMigrationApi\Service\ProductService">
             <argument type="service" id="swag_migration_api.repository.product_repository" />
             <argument type="service" id="shopware_media.media_service" />
@@ -9,6 +15,12 @@
 
         <service id="swag_migration_api.service.customer_service" class="SwagMigrationApi\Service\CustomerService">
             <argument type="service" id="swag_migration_api.repository.customer_repository" />
+        </service>
+
+        <!--Repositories-->
+
+        <service id="swag_migration_api.repository.category_repository" class="SwagMigrationApi\Repository\CategoryRepository">
+            <argument type="service" id="dbal_connection" />
         </service>
 
         <service id="swag_migration_api.repository.product_repository" class="SwagMigrationApi\Repository\ProductRepository">
