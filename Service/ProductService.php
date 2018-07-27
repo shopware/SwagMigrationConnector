@@ -8,6 +8,8 @@
 namespace SwagMigrationApi\Service;
 
 use Shopware\Bundle\MediaBundle\MediaService;
+use Shopware\Components\Model\ModelManager;
+use Shopware\Models\Shop\Shop;
 use SwagMigrationApi\Repository\ProductRepository;
 
 class ProductService extends AbstractApiService
@@ -23,15 +25,22 @@ class ProductService extends AbstractApiService
     private $mediaService;
 
     /**
+     * @var ModelManager
+     */
+    private $modelManager;
+
+    /**
      * @param ProductRepository $productRepository
      * @param MediaService      $mediaService
      */
     public function __construct(
         ProductRepository $productRepository,
-        MediaService $mediaService
+        MediaService $mediaService,
+        ModelManager $modelManager
     ) {
         $this->productRepository = $productRepository;
         $this->mediaService = $mediaService;
+        $this->modelManager = $modelManager;
     }
 
     /**
@@ -67,8 +76,15 @@ class ProductService extends AbstractApiService
         $variantTranslations = $this->getVariantTranslations($variantIds);
         $assets = $this->getAssets($productIds);
         $options = $this->getConfiguratorOptions($variantIds);
+        /** @var Shop $defaultShop */
+        $defaultShop = $this->modelManager->getRepository(Shop::class)->getDefault();
+
+        // represents the main language of the migrated shop
+        $locale = $defaultShop->getLocale()->getLocale();
 
         foreach ($products as $key => &$product) {
+            $product['locale'] = $locale;
+
             if (isset($categories[$product['id']])) {
                 $product['categories'] = $categories[$product['id']];
             }
