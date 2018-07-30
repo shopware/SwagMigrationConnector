@@ -53,7 +53,7 @@ class ProductService extends AbstractApiService
         $this->mediaService = $mediaService;
         $this->modelManager = $modelManager;
 
-        /** @var ParameterBag */
+        /* @var ParameterBag */
         $this->productMapping = new ParameterBag();
         $this->reverseMapping = new ParameterBag();
     }
