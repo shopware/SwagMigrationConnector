@@ -11,6 +11,7 @@ use Shopware\Bundle\MediaBundle\MediaService;
 use Shopware\Components\Model\ModelManager;
 use Shopware\Models\Shop\Shop;
 use SwagMigrationApi\Repository\ProductRepository;
+use Symfony\Component\HttpFoundation\ParameterBag;
 
 class ProductService extends AbstractApiService
 {
@@ -30,6 +31,16 @@ class ProductService extends AbstractApiService
     private $modelManager;
 
     /**
+     * @var ParameterBag
+     */
+    private $productMapping;
+
+    /**
+     * @var ParameterBag
+     */
+    private $reverseMapping;
+
+    /**
      * @param ProductRepository $productRepository
      * @param MediaService      $mediaService
      */
@@ -41,6 +52,10 @@ class ProductService extends AbstractApiService
         $this->productRepository = $productRepository;
         $this->mediaService = $mediaService;
         $this->modelManager = $modelManager;
+
+        /** @var ParameterBag */
+        $this->productMapping = new ParameterBag();
+        $this->reverseMapping = new ParameterBag();
     }
 
     /**
@@ -52,12 +67,12 @@ class ProductService extends AbstractApiService
     public function getProducts($offset = 0, $limit = 250)
     {
         $fetchedProducts = $this->productRepository->fetchProducts($offset, $limit);
-        $ids = array_column($fetchedProducts, 'product_detail.id');
-        $productIds = array_column($fetchedProducts, 'product_detail.articleID');
+
+        $this->buildProductMapping($fetchedProducts);
 
         $products = $this->mapData($fetchedProducts, [], ['product']);
 
-        return $this->assignAssociatedData($products, $ids, $productIds);
+        return $this->assignAssociatedData($products);
     }
 
     /**
@@ -67,15 +82,19 @@ class ProductService extends AbstractApiService
      *
      * @return array
      */
-    protected function assignAssociatedData(array $products, array $variantIds, array $productIds)
+    protected function assignAssociatedData(array $products)
     {
-        $categories = $this->getCategories($productIds);
+        $categories = $this->getCategories();
 
-        $prices = $this->getPrices($variantIds);
-        $productTranslations = $this->getProductTranslations($productIds);
-        $variantTranslations = $this->getVariantTranslations($variantIds);
-        $assets = $this->getAssets($productIds);
-        $options = $this->getConfiguratorOptions($variantIds);
+        $prices = $this->getPrices();
+
+        $productTranslations = $this->getProductTranslations();
+        $variantTranslations = $this->getVariantTranslations();
+
+        $assets = $this->getAssets();
+
+        $options = $this->getConfiguratorOptions();
+
         /** @var Shop $defaultShop */
         $defaultShop = $this->modelManager->getRepository(Shop::class)->getDefault();
 
@@ -110,76 +129,109 @@ class ProductService extends AbstractApiService
             $prices, $assets, $options
         );
 
+        $this->productMapping->replace([]);
+        $this->reverseMapping->replace([]);
+
         return $products;
     }
 
     /**
-     * @param array $productIds
-     *
+     * @param array $fetchedProducts
+     */
+    private function buildProductMapping(array $fetchedProducts)
+    {
+        $reverseMapping = [];
+
+        foreach ($fetchedProducts as $product) {
+            $this->productMapping->set($product['product_detail.id'], $product['product.id']);
+            if (!$reverseMapping[$product['product_detail.articleID']]) {
+                $reverseMapping[$product['product_detail.articleID']] = [];
+            }
+            $reverseMapping[$product['product.id']][] = $product['product_detail.id'];
+        }
+
+        $this->reverseMapping->add($reverseMapping);
+    }
+
+    /**
      * @return array
      */
-    private function getCategories(array $productIds)
+    private function getCategories()
     {
+        $productIds = array_values(
+            $this->productMapping->getIterator()->getArrayCopy()
+        );
         $fetchedCategories = $this->productRepository->fetchProductCategories($productIds);
 
         return $this->mapData($fetchedCategories, [], ['category', 'id']);
     }
 
     /**
-     * @param array $variantIds
-     *
      * @return array
      */
-    private function getPrices(array $variantIds)
+    private function getPrices()
     {
+        $variantIds = $this->productMapping->keys();
         $fetchedPrices = $this->productRepository->fetchProductPrices($variantIds);
 
         return $this->mapData($fetchedPrices, [], ['price']);
     }
 
     /**
-     * @param $productIds
-     *
      * @return array
      */
-    private function getProductTranslations(array $productIds)
+    private function getProductTranslations()
     {
+        $productIds = array_values(
+            $this->productMapping->getIterator()->getArrayCopy()
+        );
         $fetchedProductTranslations = $this->productRepository->fetchProductTranslations($productIds);
 
         return $this->mapData($fetchedProductTranslations, [], ['translation', 'locale']);
     }
 
     /**
-     * @param array $variantIds
-     *
      * @return array
      */
-    private function getVariantTranslations(array $variantIds)
+    private function getVariantTranslations()
     {
+        $variantIds = $this->productMapping->keys();
         $fetchedVariantTranslations = $this->productRepository->fetchVariantTranslations($variantIds);
 
         return $this->mapData($fetchedVariantTranslations, [], ['translation', 'locale']);
     }
 
     /**
-     * @param array $productIds
-     *
      * @return array
      */
-    private function getAssets(array $productIds)
+    private function getAssets()
     {
+        $productIds = array_values(
+            $this->productMapping->getIterator()->getArrayCopy()
+        );
         $fetchedAssets = $this->productRepository->fetchProductAssets($productIds);
 
-        return $this->mapData($fetchedAssets, [], ['asset']);
+        $variantIds = $this->productMapping->keys();
+        $fetchedVariantAssets = $this->productRepository->fetchVariantAssets($variantIds);
+
+        foreach ($fetchedAssets as $productId => &$assets) {
+            foreach ($assets as &$asset) {
+                if ($fetchedVariantAssets[$asset['asset.id']]) {
+                    $asset['children'] = $this->mapData($fetchedVariantAssets[$asset['asset.id']], [], ['asset']);
+                }
+            }
+        }
+        unset($assets, $asset);
+
+        return $this->mapData($fetchedAssets, [], ['asset', 'children']);
     }
 
     /**
-     * @param array $variantIds
-     *
      * @return array
      */
-    private function getConfiguratorOptions(array $variantIds)
+    private function getConfiguratorOptions()
     {
+        $variantIds = $this->productMapping->keys();
         $fetchedConfiguratorOptions = $this->productRepository->fetchProductConfiguratorOptions($variantIds);
 
         return $this->mapData($fetchedConfiguratorOptions, [], ['configurator', 'option']);

@@ -8,7 +8,7 @@ class Shopware_Controllers_Api_SwagMigrationCategories extends Shopware_Controll
 {
     public function indexAction()
     {
-        $offset = (int) $this->Request()->getParam('start', 0);
+        $offset = (int) $this->Request()->getParam('offset', 0);
         $limit = (int) $this->Request()->getParam('limit', 250);
         $categoryService = $this->container->get('swag_migration_api.service.category_service');
 

@@ -192,4 +192,26 @@ class ProductRepository extends AbstractRepository
 
         return $query->execute()->fetchAll(\PDO::FETCH_GROUP);
     }
+
+    /**
+     * @param array $variantIds
+     *
+     * @return array
+     */
+    public function fetchVariantAssets(array $variantIds)
+    {
+        $query = $this->getConnection()->createQueryBuilder();
+
+        $query->from('s_articles_img', 'asset');
+        $query->addSelect('asset.parent_id');
+        $this->addTableSelection($query, 's_articles_img', 'asset');
+
+        $query->leftJoin('asset', 's_articles_img_attributes', 'asset_attributes', 'asset_attributes.imageID = asset.id');
+        $this->addTableSelection($query, 's_articles_img_attributes', 'asset_attributes');
+
+        $query->where('asset.article_detail_id IN (:ids)');
+        $query->setParameter('ids', $variantIds, Connection::PARAM_INT_ARRAY);
+
+        return $query->execute()->fetchAll(\PDO::FETCH_GROUP);
+    }
 }
