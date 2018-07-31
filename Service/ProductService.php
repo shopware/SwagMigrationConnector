@@ -41,6 +41,11 @@ class ProductService extends AbstractApiService
     private $reverseMapping;
 
     /**
+     * @var ParameterBag
+     */
+    private $identifiers;
+
+    /**
      * @param ProductRepository $productRepository
      * @param MediaService      $mediaService
      */
@@ -56,6 +61,7 @@ class ProductService extends AbstractApiService
         /* @var ParameterBag */
         $this->productMapping = new ParameterBag();
         $this->reverseMapping = new ParameterBag();
+        $this->identifiers = new ParameterBag();
     }
 
     /**
@@ -68,11 +74,37 @@ class ProductService extends AbstractApiService
     {
         $fetchedProducts = $this->productRepository->fetchProducts($offset, $limit);
 
-        $this->buildProductMapping($fetchedProducts);
+        $this->buildMappings($fetchedProducts);
 
-        $products = $this->mapData($fetchedProducts, [], ['product']);
+        return $this->appendAssociatedData(
+            $this->mapData(
+                $fetchedProducts, [], ['product']
+            )
+        );
+    }
 
-        return $this->assignAssociatedData($products);
+    /**
+     * @param array $fetchedProducts
+     */
+    protected function buildMappings(array $fetchedProducts)
+    {
+        $reverseMapping = [];
+        $unitIds = [];
+        $manufacturerIds = [];
+
+        foreach ($fetchedProducts as $product) {
+            $this->productMapping->set($product['product_detail.id'], $product['product.id']);
+            $unitIds[] = (int) $product['unit.id'];
+            $manufacturerIds[] = $product['product_manufacturer.id'];
+
+            if (!$reverseMapping[$product['product_detail.articleID']]) {
+                $reverseMapping[$product['product_detail.articleID']] = [];
+            }
+            $reverseMapping[$product['product.id']][] = $product['product_detail.id'];
+        }
+        $this->reverseMapping->add($reverseMapping);
+        $this->identifiers->set('units', array_values(array_unique(array_filter($unitIds))));
+        $this->identifiers->set('manufacturers', array_values(array_unique(array_filter($manufacturerIds))));
     }
 
     /**
@@ -82,10 +114,9 @@ class ProductService extends AbstractApiService
      *
      * @return array
      */
-    protected function assignAssociatedData(array $products)
+    protected function appendAssociatedData(array $products)
     {
         $categories = $this->getCategories();
-
         $prices = $this->getPrices();
 
         $productTranslations = $this->getProductTranslations();
@@ -131,26 +162,9 @@ class ProductService extends AbstractApiService
 
         $this->productMapping->replace([]);
         $this->reverseMapping->replace([]);
+        $this->identifiers->replace([]);
 
         return $products;
-    }
-
-    /**
-     * @param array $fetchedProducts
-     */
-    private function buildProductMapping(array $fetchedProducts)
-    {
-        $reverseMapping = [];
-
-        foreach ($fetchedProducts as $product) {
-            $this->productMapping->set($product['product_detail.id'], $product['product.id']);
-            if (!$reverseMapping[$product['product_detail.articleID']]) {
-                $reverseMapping[$product['product_detail.articleID']] = [];
-            }
-            $reverseMapping[$product['product.id']][] = $product['product_detail.id'];
-        }
-
-        $this->reverseMapping->add($reverseMapping);
     }
 
     /**
