@@ -36,11 +36,6 @@ class ProductService extends AbstractApiService
     private $productMapping;
 
     /**
-     * @var ParameterBag
-     */
-    private $reverseMapping;
-
-    /**
      * @param ProductRepository $productRepository
      * @param MediaService      $mediaService
      */
@@ -55,7 +50,6 @@ class ProductService extends AbstractApiService
 
         /* @var ParameterBag */
         $this->productMapping = new ParameterBag();
-        $this->reverseMapping = new ParameterBag();
     }
 
     /**
@@ -68,11 +62,23 @@ class ProductService extends AbstractApiService
     {
         $fetchedProducts = $this->productRepository->fetchProducts($offset, $limit);
 
-        $this->buildProductMapping($fetchedProducts);
+        $this->buildIdentifierMappings($fetchedProducts);
 
-        $products = $this->mapData($fetchedProducts, [], ['product']);
+        return $this->appendAssociatedData(
+            $this->mapData(
+                $fetchedProducts, [], ['product']
+            )
+        );
+    }
 
-        return $this->assignAssociatedData($products);
+    /**
+     * @param array $fetchedProducts
+     */
+    protected function buildIdentifierMappings(array $fetchedProducts)
+    {
+        foreach ($fetchedProducts as $product) {
+            $this->productMapping->set($product['product_detail.id'], $product['product.id']);
+        }
     }
 
     /**
@@ -82,17 +88,11 @@ class ProductService extends AbstractApiService
      *
      * @return array
      */
-    protected function assignAssociatedData(array $products)
+    protected function appendAssociatedData(array $products)
     {
         $categories = $this->getCategories();
-
         $prices = $this->getPrices();
-
-        $productTranslations = $this->getProductTranslations();
-        $variantTranslations = $this->getVariantTranslations();
-
         $assets = $this->getAssets();
-
         $options = $this->getConfiguratorOptions();
 
         /** @var Shop $defaultShop */
@@ -110,12 +110,6 @@ class ProductService extends AbstractApiService
             if (isset($prices[$product['detail']['id']])) {
                 $product['prices'] = $prices[$product['detail']['id']];
             }
-            if (isset($productTranslations[$product['id']])) {
-                $product['translations'] = $productTranslations[$product['id']];
-            }
-            if (isset($variantTranslations[$product['detail']['id']])) {
-                $product['detail']['translations'] = $variantTranslations[$product['detail']['id']];
-            }
             if (isset($assets[$product['id']])) {
                 $productAssets = $assets[$product['id']];
                 $product['assets'] = $this->prepareAssets($productAssets);
@@ -130,27 +124,8 @@ class ProductService extends AbstractApiService
         );
 
         $this->productMapping->replace([]);
-        $this->reverseMapping->replace([]);
 
         return $products;
-    }
-
-    /**
-     * @param array $fetchedProducts
-     */
-    private function buildProductMapping(array $fetchedProducts)
-    {
-        $reverseMapping = [];
-
-        foreach ($fetchedProducts as $product) {
-            $this->productMapping->set($product['product_detail.id'], $product['product.id']);
-            if (!$reverseMapping[$product['product_detail.articleID']]) {
-                $reverseMapping[$product['product_detail.articleID']] = [];
-            }
-            $reverseMapping[$product['product.id']][] = $product['product_detail.id'];
-        }
-
-        $this->reverseMapping->add($reverseMapping);
     }
 
     /**
@@ -175,30 +150,6 @@ class ProductService extends AbstractApiService
         $fetchedPrices = $this->productRepository->fetchProductPrices($variantIds);
 
         return $this->mapData($fetchedPrices, [], ['price']);
-    }
-
-    /**
-     * @return array
-     */
-    private function getProductTranslations()
-    {
-        $productIds = array_values(
-            $this->productMapping->getIterator()->getArrayCopy()
-        );
-        $fetchedProductTranslations = $this->productRepository->fetchProductTranslations($productIds);
-
-        return $this->mapData($fetchedProductTranslations, [], ['translation', 'locale']);
-    }
-
-    /**
-     * @return array
-     */
-    private function getVariantTranslations()
-    {
-        $variantIds = $this->productMapping->keys();
-        $fetchedVariantTranslations = $this->productRepository->fetchVariantTranslations($variantIds);
-
-        return $this->mapData($fetchedVariantTranslations, [], ['translation', 'locale']);
     }
 
     /**

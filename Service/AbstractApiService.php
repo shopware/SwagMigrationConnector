@@ -44,6 +44,7 @@ class AbstractApiService
     protected function buildArrayFromChunks(array &$array, array $path, $fieldKey, $value)
     {
         $key = array_shift($path);
+
         if (empty($key)) {
             $array[$fieldKey] = $value;
         } elseif (empty($path)) {
