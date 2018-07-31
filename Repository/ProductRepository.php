@@ -94,53 +94,6 @@ class ProductRepository extends AbstractRepository
     }
 
     /**
-     * @param array $productIds
-     *
-     * @return array
-     */
-    public function fetchProductTranslations(array $productIds)
-    {
-        $query = $this->getConnection()->createQueryBuilder();
-
-        $query->from('s_core_translations', 'translation');
-        $query->addSelect('translation.objectkey');
-        $this->addTableSelection($query, 's_core_translations', 'translation');
-
-        $query->leftJoin('translation', 's_core_shops', 'shop', 'shop.id = translation.objectlanguage');
-        $query->leftJoin('shop', 's_core_locales', 'locale', 'locale.id = shop.locale_id');
-        $query->addSelect('locale.locale');
-
-        $query->where('translation.objecttype = "article" AND translation.objectkey IN (:productIds)');
-
-        $query->setParameter('productIds', $productIds, Connection::PARAM_INT_ARRAY);
-
-        return $query->execute()->fetchAll(\PDO::FETCH_GROUP);
-    }
-
-    /**
-     * @param array $variantIds
-     *
-     * @return array
-     */
-    public function fetchVariantTranslations(array $variantIds)
-    {
-        $query = $this->getConnection()->createQueryBuilder();
-
-        $query->from('s_core_translations', 'translation');
-        $query->addSelect('translation.objectkey');
-        $this->addTableSelection($query, 's_core_translations', 'translation');
-
-        $query->leftJoin('translation', 's_core_shops', 'shop', 'shop.id = translation.objectlanguage');
-        $query->leftJoin('shop', 's_core_locales', 'locale', 'locale.id = shop.locale_id');
-        $query->addSelect('locale.locale');
-
-        $query->orWhere('translation.objecttype = "variant" AND translation.objectkey IN (:variantIds)');
-        $query->setParameter('variantIds', $variantIds, Connection::PARAM_INT_ARRAY);
-
-        return $query->execute()->fetchAll(\PDO::FETCH_GROUP);
-    }
-
-    /**
      * @param array $variantIds
      *
      * @return array
