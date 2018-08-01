@@ -18,6 +18,10 @@
             <argument type="service" id="swag_migration_api.repository.customer_repository" />
         </service>
 
+        <service id="swag_migration_api.service.order_service" class="SwagMigrationApi\Service\OrderService">
+            <argument type="service" id="swag_migration_api.repository.order_repository" />
+        </service>
+
         <service id="swag_migration_api.service.translation_service" class="SwagMigrationApi\Service\TranslationService">
             <argument type="service" id="swag_migration_api.repository.translation_repository" />
         </service>
@@ -33,6 +37,10 @@
         </service>
 
         <service id="swag_migration_api.repository.customer_repository" class="SwagMigrationApi\Repository\CustomerRepository">
+            <argument type="service" id="dbal_connection" />
+        </service>
+
+        <service id="swag_migration_api.repository.order_repository" class="SwagMigrationApi\Repository\OrderRepository">
             <argument type="service" id="dbal_connection" />
         </service>
 
