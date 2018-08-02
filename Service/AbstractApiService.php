@@ -56,4 +56,25 @@ class AbstractApiService
             $this->buildArrayFromChunks($array[$key], $path, $fieldKey, $value);
         }
     }
+
+    /**
+     * @param array $data
+     *
+     * @return array
+     */
+    protected function cleanupResultSet(array &$data)
+    {
+        foreach ($data as $key => &$value) {
+            if (is_array($value)) {
+                if (empty(array_filter($value))) {
+                    unset($data[$key]);
+
+                    continue;
+                }
+                $this->cleanupResultSet($value);
+            }
+        }
+
+        return $data;
+    }
 }

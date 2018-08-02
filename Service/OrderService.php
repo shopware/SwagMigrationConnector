@@ -41,11 +41,13 @@ class OrderService extends AbstractApiService
 
         $this->orderIds = array_column($fetchedOrders, 'ordering.id');
 
-        return $this->appendAssociatedData(
+        $resultSet = $this->appendAssociatedData(
             $this->mapData(
                 $fetchedOrders, [], ['ordering']
             )
         );
+
+        return $this->cleanupResultSet($resultSet);
     }
 
     /**

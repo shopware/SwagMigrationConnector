@@ -64,11 +64,13 @@ class ProductService extends AbstractApiService
 
         $this->buildIdentifierMappings($fetchedProducts);
 
-        return $this->appendAssociatedData(
+        $resultSet = $this->appendAssociatedData(
             $this->mapData(
                 $fetchedProducts, [], ['product']
             )
         );
+
+        return $this->cleanupResultSet($resultSet);
     }
 
     /**

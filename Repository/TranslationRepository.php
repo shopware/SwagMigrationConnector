@@ -24,6 +24,9 @@ class TranslationRepository extends AbstractRepository
         $query->leftJoin('shop', 's_core_locales', 'locale', 'locale.id = shop.locale_id');
         $query->addSelect('locale.locale');
 
+        $query->leftJoin('translation', 's_articles_supplier', 'manufacturer', 'translation.objecttype = "supplier" AND translation.objectkey = manufacturer.id');
+        $query->addSelect('manufacturer.name');
+
         $query->setFirstResult($offset);
         $query->setMaxResults($limit);
 

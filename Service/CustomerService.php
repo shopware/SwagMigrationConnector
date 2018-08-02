@@ -37,7 +37,9 @@ class CustomerService extends AbstractApiService
 
         $customers = $this->mapData($fetchedCustomers, [], ['customer']);
 
-        return $this->assignAssociatedData($customers, $ids);
+        $resultSet = $this->assignAssociatedData($customers, $ids);
+
+        return $this->cleanupResultSet($resultSet);
     }
 
     private function assignAssociatedData(array $customers, array $ids)

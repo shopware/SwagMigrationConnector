@@ -29,8 +29,12 @@ class CategoryRepository extends AbstractRepository
         $query->leftJoin('category', 's_categories_attributes', 'attributes', 'category.id = attributes.categoryID');
         $this->addTableSelection($query, 's_categories_attributes', 'attributes');
 
+        $query->leftJoin('category', 's_media', 'asset', 'category.mediaID = asset.id');
+        $this->addTableSelection($query, 's_media', 'asset');
+
         $query->andWhere('category.parent IS NOT NULL OR category.path IS NOT NULL');
 
+        $query->orderBy('category.parent');
         $query->setFirstResult($offset);
         $query->setMaxResults($limit);
 

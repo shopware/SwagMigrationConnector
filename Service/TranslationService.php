@@ -34,6 +34,10 @@ class TranslationService extends AbstractApiService
     {
         $fetchedTranslations = $this->translationRepository->fetchTranslations($offset, $limit);
 
-        return $this->mapData($fetchedTranslations, [], ['translation', 'locale']);
+        $resultSet = $this->mapData(
+            $fetchedTranslations, [], ['translation', 'locale', 'name']
+        );
+
+        return $this->cleanupResultSet($resultSet);
     }
 }

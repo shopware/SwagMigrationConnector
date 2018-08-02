@@ -35,7 +35,9 @@ class CategoryService extends AbstractApiService
         $fetchedCategories = $this->categoryRepository->fetchCategories($offset, $limit);
         $categories = $this->mapData($fetchedCategories, [], ['category', 'locale']);
 
-        return $this->setAllLocales($categories);
+        $resultSet = $this->setAllLocales($categories);
+
+        return $this->cleanupResultSet($resultSet);
     }
 
     /**
@@ -44,7 +46,7 @@ class CategoryService extends AbstractApiService
      *
      * @return array
      */
-    private function setAllLocales(array &$categories, array &$locales = [])
+    private function setAllLocales(array &$categories, array &$locales = [], array &$removedNodes = [])
     {
         foreach ($categories as $key => &$category) {
             if (empty($category['path'])
@@ -52,9 +54,14 @@ class CategoryService extends AbstractApiService
                 && !isset($locales[$category['id']])
             ) {
                 $locales[$category['id']] = $category['locale'];
+                $removedNodes[] = $category['id'];
                 unset($categories[$key]);
-                $this->setAllLocales($categories, $locales);
+
+                $this->setAllLocales($categories, $locales, $removedNodes);
             } elseif (empty($category['locale'])) {
+                if (in_array($category['parent'], $removedNodes)) {
+                    $category['parent'] = null;
+                }
                 $parentCategoryIds = array_values(
                     array_filter(explode('|', $category['path']))
                 );
@@ -64,7 +71,8 @@ class CategoryService extends AbstractApiService
                         $category['locale'] = $locales[$parentCategoryId];
                     }
                 }
-                $this->setAllLocales($categories, $locales);
+
+                $this->setAllLocales($categories, $locales, $removedNodes);
             }
         }
 
