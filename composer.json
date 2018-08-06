@@ -1,0 +1,18 @@
+{
+  "name": "shopwareLabs/swag-migration-api",
+  "type": "shopware-plugin",
+  "description": "Offers API endpoints for fast data reads.",
+  "license": "MIT",
+  "extra": {
+    "installer-name": "SwagMigrationApi"
+  },
+  "require-dev": {
+    "shopware/plugin-dev-tools": "master-dev"
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/shopwareLabs/plugin-dev-tools"
+    }
+  ]
+}
