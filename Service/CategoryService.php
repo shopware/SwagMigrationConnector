@@ -33,49 +33,64 @@ class CategoryService extends AbstractApiService
     public function getCategories($offset = 0, $limit = 250)
     {
         $fetchedCategories = $this->categoryRepository->fetchCategories($offset, $limit);
+
+        $topMostParentIds = $this->getTopMostParentIds($fetchedCategories);
+        $topMostCategories = $this->categoryRepository->fetchCategoriesById($topMostParentIds);
+
         $categories = $this->mapData($fetchedCategories, [], ['category', 'locale']);
 
-        $resultSet = $this->setAllLocales($categories);
+        $resultSet = $this->setAllLocales($categories, $topMostCategories);
 
         return $this->cleanupResultSet($resultSet);
     }
 
     /**
      * @param array $categories
-     * @param array $locales
+     * @param array $topMostCategories
      *
      * @return array
      */
-    private function setAllLocales(array &$categories, array &$locales = [], array &$removedNodes = [])
+    private function setAllLocales(array $categories, array $topMostCategories)
     {
-        foreach ($categories as $key => &$category) {
-            if (empty($category['path'])
-                && !empty($category['locale'])
-                && !isset($locales[$category['id']])
-            ) {
-                $locales[$category['id']] = $category['locale'];
-                $removedNodes[] = $category['id'];
-                unset($categories[$key]);
-
-                $this->setAllLocales($categories, $locales, $removedNodes);
-            } elseif (empty($category['locale'])) {
-                if (in_array($category['parent'], $removedNodes)) {
-                    $category['parent'] = null;
-                }
-                $parentCategoryIds = array_values(
-                    array_filter(explode('|', $category['path']))
-                );
-
-                foreach ($parentCategoryIds as $parentCategoryId) {
-                    if (isset($locales[$parentCategoryId])) {
-                        $category['locale'] = $locales[$parentCategoryId];
-                    }
-                }
-
-                $this->setAllLocales($categories, $locales, $removedNodes);
+        $resultSet = [];
+        $ignoredNodes = [];
+        foreach ($categories as $key => $category) {
+            if (empty($category['path'])) {
+                $ignoredNodes[] = $category['id'];
+                continue;
             }
+            if (in_array($category['parent'], $ignoredNodes)) {
+                $category['parent'] = null;
+            }
+            $parentCategoryIds = array_values(
+                array_filter(explode('|', $category['path']))
+            );
+            $topMostParent = end($parentCategoryIds);
+            $category['locale'] = $topMostCategories[$topMostParent];
+            $resultSet[] = $category;
         }
 
-        return array_values($categories);
+        return $resultSet;
+    }
+
+    /**
+     * @param array $categories
+     *
+     * @return array
+     */
+    private function getTopMostParentIds(array $categories)
+    {
+        $ids = [];
+        foreach ($categories as $key => $category) {
+            $parentCategoryIds = array_values(
+                array_filter(explode('|', $category['category.path']))
+            );
+
+            $topMostParent = end($parentCategoryIds);
+            if (!in_array($topMostParent, $ids)) {
+                $ids[] = $topMostParent;
+            }
+        }
+        return $ids;
     }
 }
