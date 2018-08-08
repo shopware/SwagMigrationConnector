@@ -17,9 +17,9 @@ class CategoryRepository extends AbstractRepository
      *
      * @return array
      */
-    public function fetchCategories($offset = 0, $limit = 250)
+    public function fetch($offset = 0, $limit = 250)
     {
-        $query = $this->getConnection()->createQueryBuilder();
+        $query = $this->connection->createQueryBuilder();
 
         $query->from('s_categories', 'category');
         $this->addTableSelection($query, 's_categories', 'category');
@@ -50,7 +50,7 @@ class CategoryRepository extends AbstractRepository
      */
     public function fetchCategoriesById(array $topMostParentIds)
     {
-        $query = $this->getConnection()->createQueryBuilder();
+        $query = $this->connection->createQueryBuilder();
 
         $query->from('s_categories', 'category');
         $query->addSelect('category.id');

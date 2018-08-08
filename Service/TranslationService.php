@@ -32,7 +32,7 @@ class TranslationService extends AbstractApiService
      */
     public function getTranslations($offset = 0, $limit = 250)
     {
-        $fetchedTranslations = $this->translationRepository->fetchTranslations($offset, $limit);
+        $fetchedTranslations = $this->translationRepository->fetch($offset, $limit);
 
         $resultSet = $this->mapData(
             $fetchedTranslations, [], ['translation', 'locale', 'name']

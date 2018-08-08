@@ -32,7 +32,7 @@ class CategoryService extends AbstractApiService
      */
     public function getCategories($offset = 0, $limit = 250)
     {
-        $fetchedCategories = $this->categoryRepository->fetchCategories($offset, $limit);
+        $fetchedCategories = $this->categoryRepository->fetch($offset, $limit);
 
         $topMostParentIds = $this->getTopMostParentIds($fetchedCategories);
         $topMostCategories = $this->categoryRepository->fetchCategoriesById($topMostParentIds);
@@ -66,7 +66,7 @@ class CategoryService extends AbstractApiService
                 array_filter(explode('|', $category['path']))
             );
             $topMostParent = end($parentCategoryIds);
-            $category['locale'] = $topMostCategories[$topMostParent];
+            $category['_locale'] = $topMostCategories[$topMostParent];
             $resultSet[] = $category;
         }
 
@@ -91,6 +91,7 @@ class CategoryService extends AbstractApiService
                 $ids[] = $topMostParent;
             }
         }
+
         return $ids;
     }
 }

@@ -2,6 +2,7 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
+
         <!--Services-->
 
         <service id="swag_migration_api.service.category_service" class="SwagMigrationApi\Service\CategoryService">
@@ -16,10 +17,12 @@
 
         <service id="swag_migration_api.service.customer_service" class="SwagMigrationApi\Service\CustomerService">
             <argument type="service" id="swag_migration_api.repository.customer_repository" />
+            <argument type="service" id="models" />
         </service>
 
         <service id="swag_migration_api.service.order_service" class="SwagMigrationApi\Service\OrderService">
             <argument type="service" id="swag_migration_api.repository.order_repository" />
+            <argument type="service" id="models" />
         </service>
 
         <service id="swag_migration_api.service.translation_service" class="SwagMigrationApi\Service\TranslationService">
@@ -28,25 +31,20 @@
 
         <!--Repositories-->
 
-        <service id="swag_migration_api.repository.category_repository" class="SwagMigrationApi\Repository\CategoryRepository">
+        <service id="SwagMigrationApi\Repository\AbstractRepository" abstract="true">
             <argument type="service" id="dbal_connection" />
         </service>
 
-        <service id="swag_migration_api.repository.product_repository" class="SwagMigrationApi\Repository\ProductRepository">
-            <argument type="service" id="dbal_connection" />
-        </service>
+        <service id="swag_migration_api.repository.category_repository" class="SwagMigrationApi\Repository\CategoryRepository" parent="SwagMigrationApi\Repository\AbstractRepository" />
 
-        <service id="swag_migration_api.repository.customer_repository" class="SwagMigrationApi\Repository\CustomerRepository">
-            <argument type="service" id="dbal_connection" />
-        </service>
+        <service id="swag_migration_api.repository.product_repository" class="SwagMigrationApi\Repository\ProductRepository" parent="SwagMigrationApi\Repository\AbstractRepository" />
 
-        <service id="swag_migration_api.repository.order_repository" class="SwagMigrationApi\Repository\OrderRepository">
-            <argument type="service" id="dbal_connection" />
-        </service>
+        <service id="swag_migration_api.repository.customer_repository" class="SwagMigrationApi\Repository\CustomerRepository" parent="SwagMigrationApi\Repository\AbstractRepository" />
 
-        <service id="swag_migration_api.repository.translation_repository" class="SwagMigrationApi\Repository\TranslationRepository">
-            <argument type="service" id="dbal_connection" />
-        </service>
+        <service id="swag_migration_api.repository.order_repository" class="SwagMigrationApi\Repository\OrderRepository" parent="SwagMigrationApi\Repository\AbstractRepository" />
+
+        <service id="swag_migration_api.repository.translation_repository" class="SwagMigrationApi\Repository\TranslationRepository" parent="SwagMigrationApi\Repository\AbstractRepository" />
+
     </services>
 
 </container>

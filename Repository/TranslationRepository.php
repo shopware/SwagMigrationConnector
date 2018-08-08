@@ -13,9 +13,9 @@ class TranslationRepository extends AbstractRepository
      * @param int $offset
      * @param int $limit
      */
-    public function fetchTranslations($offset = 0, $limit = 250)
+    public function fetch($offset = 0, $limit = 250)
     {
-        $query = $this->getConnection()->createQueryBuilder();
+        $query = $this->connection->createQueryBuilder();
 
         $query->from('s_core_translations', 'translation');
         $this->addTableSelection($query, 's_core_translations', 'translation');

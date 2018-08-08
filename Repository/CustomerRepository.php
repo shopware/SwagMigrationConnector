@@ -17,9 +17,9 @@ class CustomerRepository extends AbstractRepository
      *
      * @return array
      */
-    public function fetchCustomers($offset = 0, $limit = 250)
+    public function fetch($offset = 0, $limit = 250)
     {
-        $query = $this->getConnection()->createQueryBuilder();
+        $query = $this->connection->createQueryBuilder();
 
         $query->from('s_user', 'customer');
         $this->addTableSelection($query, 's_user', 'customer');
@@ -55,7 +55,7 @@ class CustomerRepository extends AbstractRepository
      */
     public function fetchCustomerAdresses(array $ids)
     {
-        $query = $this->getConnection()->createQueryBuilder();
+        $query = $this->connection->createQueryBuilder();
 
         $query->from('s_user_addresses', 'address');
         $query->addSelect('address.user_id');
@@ -83,7 +83,7 @@ class CustomerRepository extends AbstractRepository
      */
     public function fetchPaymentData(array $ids)
     {
-        $query = $this->getConnection()->createQueryBuilder();
+        $query = $this->connection->createQueryBuilder();
 
         $query->from('s_core_payment_data', 'paymentdata');
         $query->addSelect('paymentdata.user_id');

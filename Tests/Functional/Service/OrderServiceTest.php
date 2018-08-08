@@ -1,4 +1,9 @@
 <?php
+/**
+ * (c) shopware AG <info@shopware.com>
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace SwagMigrationApi\Tests\Functional\Service;
 
@@ -14,6 +19,7 @@ class OrderServiceTest extends \PHPUnit_Framework_TestCase
         $this->assertCount(4, $orders);
 
         $this->assertArrayHasKey('attributes', $orders[0]);
+        $this->assertArrayHasKey('_locale', $orders[0]);
         $this->assertArrayHasKey('customer', $orders[0]);
         $this->assertArrayHasKey('billingaddress', $orders[0]);
         $this->assertArrayHasKey('shippingaddress', $orders[0]);

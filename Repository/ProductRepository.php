@@ -17,9 +17,9 @@ class ProductRepository extends AbstractRepository
      *
      * @return array
      */
-    public function fetchProducts($offset = 0, $limit = 250)
+    public function fetch($offset = 0, $limit = 250)
     {
-        $query = $this->getConnection()->createQueryBuilder();
+        $query = $this->connection->createQueryBuilder();
 
         $query->from('s_articles_details', 'product_detail');
         $this->addTableSelection($query, 's_articles_details', 'product_detail');
@@ -54,7 +54,7 @@ class ProductRepository extends AbstractRepository
      */
     public function fetchProductCategories(array $productIds)
     {
-        $query = $this->getConnection()->createQueryBuilder();
+        $query = $this->connection->createQueryBuilder();
 
         $query->from('s_categories', 'category');
         $query->addSelect('product_category.articleID');
@@ -75,7 +75,7 @@ class ProductRepository extends AbstractRepository
      */
     public function fetchProductPrices(array $variantIds)
     {
-        $query = $this->getConnection()->createQueryBuilder();
+        $query = $this->connection->createQueryBuilder();
 
         $query->from('s_articles_prices', 'price');
         $query->addSelect('price.articledetailsID');
@@ -100,7 +100,7 @@ class ProductRepository extends AbstractRepository
      */
     public function fetchProductConfiguratorOptions(array $variantIds)
     {
-        $query = $this->getConnection()->createQueryBuilder();
+        $query = $this->connection->createQueryBuilder();
 
         $query->from('s_article_configurator_options', 'configurator_option');
         $query->addSelect('option_relation.article_id');
@@ -122,7 +122,7 @@ class ProductRepository extends AbstractRepository
      */
     public function fetchProductAssets(array $productIds)
     {
-        $query = $this->getConnection()->createQueryBuilder();
+        $query = $this->connection->createQueryBuilder();
 
         $query->from('s_articles_img', 'asset');
         $query->addSelect('asset.articleID');
@@ -153,7 +153,7 @@ class ProductRepository extends AbstractRepository
      */
     public function fetchVariantAssets(array $variantIds)
     {
-        $query = $this->getConnection()->createQueryBuilder();
+        $query = $this->connection->createQueryBuilder();
 
         $query->from('s_articles_img', 'asset');
         $query->addSelect('asset.parent_id');

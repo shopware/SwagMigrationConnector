@@ -7,6 +7,8 @@
 
 namespace SwagMigrationApi\Service;
 
+use Shopware\Components\Model\ModelManager;
+use Shopware\Models\Shop\Shop;
 use SwagMigrationApi\Repository\OrderRepository;
 
 class OrderService extends AbstractApiService
@@ -17,16 +19,23 @@ class OrderService extends AbstractApiService
     private $orderRepository;
 
     /**
+     * @var ModelManager
+     */
+    private $modelManager;
+
+    /**
      * @var array
      */
     private $orderIds;
 
     /**
      * @param OrderRepository $orderRepository
+     * @param ModelManager    $modelManager
      */
-    public function __construct(OrderRepository $orderRepository)
+    public function __construct(OrderRepository $orderRepository, ModelManager $modelManager)
     {
         $this->orderRepository = $orderRepository;
+        $this->modelManager = $modelManager;
     }
 
     /**
@@ -37,7 +46,7 @@ class OrderService extends AbstractApiService
      */
     public function getOrders($offset = 0, $limit = 250)
     {
-        $fetchedOrders = $this->orderRepository->fetchOrders($offset, $limit);
+        $fetchedOrders = $this->orderRepository->fetch($offset, $limit);
 
         $this->orderIds = array_column($fetchedOrders, 'ordering.id');
 
@@ -60,7 +69,14 @@ class OrderService extends AbstractApiService
         $orderDetails = $this->getOrderDetails();
         $orderDocuments = $this->getOrderDocuments();
 
+        /** @var Shop $defaultShop */
+        $defaultShop = $this->modelManager->getRepository(Shop::class)->getDefault();
+
+        // represents the main language of the migrated shop
+        $locale = $defaultShop->getLocale()->getLocale();
+
         foreach ($orders as $key => &$order) {
+            $order['_locale'] = $locale;
             if (isset($orderDetails[$order['id']])) {
                 $order['details'] = $orderDetails[$order['id']];
             }

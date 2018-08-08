@@ -7,6 +7,8 @@
 
 namespace SwagMigrationApi\Service;
 
+use Shopware\Components\Model\ModelManager;
+use Shopware\Models\Shop\Shop;
 use SwagMigrationApi\Repository\CustomerRepository;
 
 class CustomerService extends AbstractApiService
@@ -17,11 +19,18 @@ class CustomerService extends AbstractApiService
     private $customerRepository;
 
     /**
-     * @param CustomerRepository $customerRepository
+     * @var ModelManager
      */
-    public function __construct(CustomerRepository $customerRepository)
+    private $modelManager;
+
+    /**
+     * @param CustomerRepository $customerRepository
+     * @param ModelManager       $modelManager
+     */
+    public function __construct(CustomerRepository $customerRepository, ModelManager $modelManager)
     {
         $this->customerRepository = $customerRepository;
+        $this->modelManager = $modelManager;
     }
 
     /**
@@ -32,7 +41,7 @@ class CustomerService extends AbstractApiService
      */
     public function getCustomers($offset = 0, $limit = 250)
     {
-        $fetchedCustomers = $this->customerRepository->fetchCustomers($offset, $limit);
+        $fetchedCustomers = $this->customerRepository->fetch($offset, $limit);
         $ids = array_column($fetchedCustomers, 'customer.id');
 
         $customers = $this->mapData($fetchedCustomers, [], ['customer']);
@@ -50,7 +59,14 @@ class CustomerService extends AbstractApiService
         $fetchedPaymentData = $this->customerRepository->fetchPaymentData($ids);
         $paymentData = $this->mapData($fetchedPaymentData, [], ['paymentdata']);
 
+        /** @var Shop $defaultShop */
+        $defaultShop = $this->modelManager->getRepository(Shop::class)->getDefault();
+
+        // represents the main language of the migrated shop
+        $locale = $defaultShop->getLocale()->getLocale();
+
         foreach ($customers as $key => &$customer) {
+            $customer['_locale'] = $locale;
             if (isset($addresses[$customer['id']])) {
                 $customer['addresses'] = $addresses[$customer['id']];
             }

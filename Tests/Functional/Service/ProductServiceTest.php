@@ -1,4 +1,9 @@
 <?php
+/**
+ * (c) shopware AG <info@shopware.com>
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace SwagMigrationApi\Tests\Functional\Service;
 
@@ -19,7 +24,7 @@ class ProductServiceTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('tax', $products[0]);
         $this->assertArrayHasKey('attributes', $products[0]);
         $this->assertArrayHasKey('manufacturer', $products[0]);
-        $this->assertArrayHasKey('locale', $products[0]);
+        $this->assertArrayHasKey('_locale', $products[0]);
         $this->assertArrayHasKey('categories', $products[0]);
         $this->assertArrayHasKey('prices', $products[0]);
         $this->assertArrayHasKey('customergroup', $products[0]['prices'][0]);

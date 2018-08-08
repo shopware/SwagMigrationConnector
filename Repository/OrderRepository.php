@@ -17,9 +17,9 @@ class OrderRepository extends AbstractRepository
      *
      * @return array
      */
-    public function fetchOrders($offset = 0, $limit = 250)
+    public function fetch($offset = 0, $limit = 250)
     {
-        $query = $this->getConnection()->createQueryBuilder();
+        $query = $this->connection->createQueryBuilder();
 
         $query->from('s_order', 'ordering');
         $this->addTableSelection($query, 's_order', 'ordering');
@@ -58,7 +58,7 @@ class OrderRepository extends AbstractRepository
      */
     public function fetchOrderDetails(array $orderIds)
     {
-        $query = $this->getConnection()->createQueryBuilder();
+        $query = $this->connection->createQueryBuilder();
 
         $query->from('s_order_details', 'detail');
         $query->select('detail.orderID');
@@ -86,7 +86,7 @@ class OrderRepository extends AbstractRepository
      */
     public function fetchOrderDocuments(array $orderIds)
     {
-        $query = $this->getConnection()->createQueryBuilder();
+        $query = $this->connection->createQueryBuilder();
 
         $query->from('s_order_documents', 'document');
         $query->select('document.orderID');

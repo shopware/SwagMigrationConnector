@@ -38,6 +38,7 @@ class ProductService extends AbstractApiService
     /**
      * @param ProductRepository $productRepository
      * @param MediaService      $mediaService
+     * @param ModelManager      $modelManager
      */
     public function __construct(
         ProductRepository $productRepository,
@@ -60,7 +61,7 @@ class ProductService extends AbstractApiService
      */
     public function getProducts($offset = 0, $limit = 250)
     {
-        $fetchedProducts = $this->productRepository->fetchProducts($offset, $limit);
+        $fetchedProducts = $this->productRepository->fetch($offset, $limit);
 
         $this->buildIdentifierMappings($fetchedProducts);
 
@@ -104,7 +105,7 @@ class ProductService extends AbstractApiService
         $locale = $defaultShop->getLocale()->getLocale();
 
         foreach ($products as $key => &$product) {
-            $product['locale'] = $locale;
+            $product['_locale'] = $locale;
 
             if (isset($categories[$product['id']])) {
                 $product['categories'] = $categories[$product['id']];

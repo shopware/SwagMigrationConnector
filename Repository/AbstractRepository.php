@@ -11,12 +11,12 @@ use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Query\QueryBuilder;
 use Doctrine\DBAL\Schema\Column;
 
-class AbstractRepository
+abstract class AbstractRepository implements ApiRepositoryInterface
 {
     /**
      * @var Connection
      */
-    private $connection;
+    protected $connection;
 
     /**
      * @param Connection $connection
@@ -24,14 +24,6 @@ class AbstractRepository
     public function __construct(Connection $connection)
     {
         $this->connection = $connection;
-    }
-
-    /**
-     * @return Connection
-     */
-    public function getConnection()
-    {
-        return $this->connection;
     }
 
     /**
