@@ -27,6 +27,21 @@ class CustomerRepository extends AbstractRepository
         $query->leftJoin('customer', 's_user_attributes', 'attributes', 'customer.id = attributes.userID');
         $this->addTableSelection($query, 's_user_attributes', 'attributes');
 
+        $query->leftJoin('customer', 's_core_customergroups', 'customer_group', 'customer.customergroup = customer_group.groupkey');
+        $this->addTableSelection($query, 's_core_customergroups', 'customer_group');
+
+        $query->leftJoin('customer', 's_core_paymentmeans', 'defaultpayment', 'customer.paymentID = defaultpayment.id');
+        $this->addTableSelection($query, 's_core_paymentmeans', 'defaultpayment');
+
+        $query->leftJoin('defaultpayment', 's_core_paymentmeans_attributes', 'defaultpayment_attributes', 'defaultpayment.id = defaultpayment_attributes.paymentmeanID');
+        $this->addTableSelection($query, 's_core_paymentmeans_attributes', 'defaultpayment_attributes');
+
+        $query->leftJoin('customer', 's_core_locales', 'customerlanguage', 'customer.language = customerlanguage.id');
+        $this->addTableSelection($query, 's_core_locales', 'customerlanguage');
+
+        $query->leftJoin('customer', 's_core_shops', 'shop', 'customer.subshopID = shop.id');
+        $this->addTableSelection($query, 's_core_shops', 'shop');
+
         $query->setFirstResult($offset);
         $query->setMaxResults($limit);
 
@@ -49,7 +64,32 @@ class CustomerRepository extends AbstractRepository
         $query->leftJoin('address', 's_user_addresses_attributes', 'address_attributes', 'address.id = address_attributes.address_id');
         $this->addTableSelection($query, 's_user_addresses_attributes', 'address_attributes');
 
+        $query->leftJoin('address', 's_core_countries', 'country', 'address.country_id = country.id');
+        $this->addTableSelection($query, 's_core_countries', 'country');
+
+        $query->leftJoin('address', 's_core_countries_states', 'state', 'address.state_id = state.id');
+        $this->addTableSelection($query, 's_core_countries_states', 'state');
+
         $query->where('address.user_id IN (:ids)');
+        $query->setParameter('ids', $ids, Connection::PARAM_INT_ARRAY);
+
+        return $query->execute()->fetchAll(\PDO::FETCH_GROUP);
+    }
+
+    /**
+     * @param array $ids
+     *
+     * @return array
+     */
+    public function fetchPaymentData(array $ids)
+    {
+        $query = $this->getConnection()->createQueryBuilder();
+
+        $query->from('s_core_payment_data', 'paymentdata');
+        $query->addSelect('paymentdata.user_id');
+        $this->addTableSelection($query, 's_core_payment_data', 'paymentdata');
+
+        $query->where('paymentdata.user_id IN (:ids)');
         $query->setParameter('ids', $ids, Connection::PARAM_INT_ARRAY);
 
         return $query->execute()->fetchAll(\PDO::FETCH_GROUP);

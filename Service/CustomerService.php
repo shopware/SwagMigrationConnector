@@ -47,9 +47,15 @@ class CustomerService extends AbstractApiService
         $customerAddresses = $this->customerRepository->fetchCustomerAdresses($ids);
         $addresses = $this->mapData($customerAddresses, [], ['address']);
 
+        $fetchedPaymentData = $this->customerRepository->fetchPaymentData($ids);
+        $paymentData = $this->mapData($fetchedPaymentData, [], ['paymentdata']);
+
         foreach ($customers as $key => &$customer) {
             if (isset($addresses[$customer['id']])) {
                 $customer['addresses'] = $addresses[$customer['id']];
+            }
+            if (isset($paymentData[$customer['id']])) {
+                $customer['paymentdata'] = $paymentData[$customer['id']];
             }
         }
         unset($customer);
