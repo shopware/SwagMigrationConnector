@@ -11,6 +11,8 @@
             <exclude>
                 <directory suffix=".php">./Tests</directory>
                 <directory suffix=".php">./vendor</directory>
+                <directory suffix=".php">./Controllers</directory>
+                <directory suffix=".php">./Exception</directory>
 
                 <!-- Bootstrap -->
                 <file>SwagMigrationApi.php</file>
