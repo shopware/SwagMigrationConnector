@@ -7,9 +7,10 @@
 
 namespace SwagMigrationApi\Service;
 
-use Shopware\Bundle\MediaBundle\MediaService;
+use Shopware\Bundle\MediaBundle\MediaServiceInterface;
 use Shopware\Components\Model\ModelManager;
 use Shopware\Models\Shop\Shop;
+use SwagMigrationApi\Repository\ApiRepositoryInterface;
 use SwagMigrationApi\Repository\ProductRepository;
 use Symfony\Component\HttpFoundation\ParameterBag;
 
@@ -21,7 +22,7 @@ class ProductService extends AbstractApiService
     private $productRepository;
 
     /**
-     * @var MediaService
+     * @var MediaServiceInterface
      */
     private $mediaService;
 
@@ -36,13 +37,13 @@ class ProductService extends AbstractApiService
     private $productMapping;
 
     /**
-     * @param ProductRepository $productRepository
-     * @param MediaService      $mediaService
-     * @param ModelManager      $modelManager
+     * @param ApiRepositoryInterface $productRepository
+     * @param MediaServiceInterface  $mediaService
+     * @param ModelManager           $modelManager
      */
     public function __construct(
-        ProductRepository $productRepository,
-        MediaService $mediaService,
+        ApiRepositoryInterface $productRepository,
+        MediaServiceInterface $mediaService,
         ModelManager $modelManager
     ) {
         $this->productRepository = $productRepository;

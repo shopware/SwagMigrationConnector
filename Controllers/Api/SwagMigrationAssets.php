@@ -13,7 +13,7 @@ use SwagMigrationApi\Exception\UnsecureRequestException;
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-class Shopware_Controllers_Api_SwagMigrationProducts extends Shopware_Controllers_Api_Rest
+class Shopware_Controllers_Api_SwagMigrationAssets extends Shopware_Controllers_Api_Rest
 {
     /**
      * @throws PermissionDeniedException
@@ -47,13 +47,13 @@ class Shopware_Controllers_Api_SwagMigrationProducts extends Shopware_Controller
     {
         $offset = (int) $this->Request()->getParam('offset', 0);
         $limit = (int) $this->Request()->getParam('limit', 250);
-        $productService = $this->container->get('swag_migration_api.service.product_service');
+        $assetService = $this->container->get('swag_migration_api.service.asset_service');
 
-        $products = $productService->getProducts($offset, $limit);
+        $assets = $assetService->getAssets($offset, $limit);
 
-        $this->view->assign([
+        $this->View()->assign([
             'success' => true,
-            'data' => $products,
+            'data' => $assets,
         ]);
     }
 }

@@ -29,6 +29,11 @@
             <argument type="service" id="swag_migration_api.repository.translation_repository" />
         </service>
 
+        <service id="swag_migration_api.service.asset_service" class="SwagMigrationApi\Service\AssetService">
+            <argument type="service" id="swag_migration_api.repository.asset_repository" />
+            <argument type="service" id="shopware_media.media_service" />
+        </service>
+
         <!--Repositories-->
 
         <service id="SwagMigrationApi\Repository\AbstractRepository" abstract="true">
@@ -44,6 +49,8 @@
         <service id="swag_migration_api.repository.order_repository" class="SwagMigrationApi\Repository\OrderRepository" parent="SwagMigrationApi\Repository\AbstractRepository" />
 
         <service id="swag_migration_api.repository.translation_repository" class="SwagMigrationApi\Repository\TranslationRepository" parent="SwagMigrationApi\Repository\AbstractRepository" />
+
+        <service id="swag_migration_api.repository.asset_repository" class="SwagMigrationApi\Repository\AssetRepository" parent="SwagMigrationApi\Repository\AbstractRepository" />
 
     </services>
 

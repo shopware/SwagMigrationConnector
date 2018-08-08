@@ -134,6 +134,9 @@ class ProductRepository extends AbstractRepository
         $query->leftJoin('asset', 's_media', 'asset_media', 'asset.media_id = asset_media.id');
         $this->addTableSelection($query, 's_media', 'asset_media');
 
+        $query->leftJoin('asset_media', 's_media_attributes', 'asset_media_attributes', 'asset_media.id = asset_media_attributes.mediaID');
+        $this->addTableSelection($query, 's_media_attributes', 'asset_media_attributes');
+
         $query->leftJoin('asset_media', 's_media_album', 'asset_media_album', 'asset_media.albumID = asset_media_album.id');
         $this->addTableSelection($query, 's_media_album', 'asset_media_album');
 

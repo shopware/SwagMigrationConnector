@@ -7,6 +7,7 @@
 
 namespace SwagMigrationApi\Service;
 
+use SwagMigrationApi\Repository\ApiRepositoryInterface;
 use SwagMigrationApi\Repository\CategoryRepository;
 
 class CategoryService extends AbstractApiService
@@ -17,9 +18,9 @@ class CategoryService extends AbstractApiService
     private $categoryRepository;
 
     /**
-     * @param CategoryRepository $categoryRepository
+     * @param ApiRepositoryInterface $categoryRepository
      */
-    public function __construct(CategoryRepository $categoryRepository)
+    public function __construct(ApiRepositoryInterface $categoryRepository)
     {
         $this->categoryRepository = $categoryRepository;
     }

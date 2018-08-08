@@ -7,7 +7,7 @@
 
 namespace SwagMigrationApi\Service;
 
-class AbstractApiService
+abstract class AbstractApiService
 {
     /**
      * @param array $data

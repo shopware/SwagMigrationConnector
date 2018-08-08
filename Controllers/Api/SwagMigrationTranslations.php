@@ -15,6 +15,10 @@ use SwagMigrationApi\Exception\UnsecureRequestException;
  */
 class Shopware_Controllers_Api_SwagMigrationTranslations extends Shopware_Controllers_Api_Rest
 {
+    /**
+     * @throws PermissionDeniedException
+     * @throws UnsecureRequestException
+     */
     public function preDispatch()
     {
         parent::preDispatch();

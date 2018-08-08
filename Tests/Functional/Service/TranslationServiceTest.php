@@ -20,7 +20,7 @@ class TranslationServiceTest extends \PHPUnit_Framework_TestCase
 
         $firstTranslation = $translations[0];
 
-        $this->assertSame($firstTranslation['objecttype'], 'custom_facet');
+        $this->assertSame('custom_facet', $firstTranslation['objecttype']);
         $this->assertArrayHasKey('locale', $firstTranslation);
         $this->assertSame('de_DE', $firstTranslation['locale']);
     }
@@ -36,7 +36,7 @@ class TranslationServiceTest extends \PHPUnit_Framework_TestCase
 
         $translation = $translations[5];
 
-        $this->assertSame($translation['objecttype'], 'propertyoption');
+        $this->assertSame('propertyoption', $translation['objecttype']);
         $this->assertArrayHasKey('locale', $translation);
         $this->assertSame('en_GB', $translation['locale']);
     }
@@ -52,7 +52,7 @@ class TranslationServiceTest extends \PHPUnit_Framework_TestCase
 
         $firstTranslation = $translations[0];
 
-        $this->assertSame($firstTranslation['objecttype'], 'custom_facet');
+        $this->assertSame('custom_facet', $firstTranslation['objecttype']);
         $this->assertArrayHasKey('locale', $firstTranslation);
         $this->assertSame('de_DE', $firstTranslation['locale']);
     }
@@ -68,8 +68,17 @@ class TranslationServiceTest extends \PHPUnit_Framework_TestCase
 
         $translation = $translations[0];
 
-        $this->assertSame($translation['objecttype'], 'propertyoption');
+        $this->assertSame('propertyoption', $translation['objecttype']);
         $this->assertArrayHasKey('locale', $translation);
         $this->assertSame('en_GB', $translation['locale']);
+    }
+
+    public function test_read_with_out_of_bounds_offset_should_offer_empty_array()
+    {
+        $translationService = Shopware()->Container()->get('swag_migration_api.service.translation_service');
+
+        $translations = $translationService->getTranslations(2000);
+
+        $this->assertEmpty($translations);
     }
 }

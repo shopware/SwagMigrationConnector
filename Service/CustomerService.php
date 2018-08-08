@@ -9,6 +9,7 @@ namespace SwagMigrationApi\Service;
 
 use Shopware\Components\Model\ModelManager;
 use Shopware\Models\Shop\Shop;
+use SwagMigrationApi\Repository\ApiRepositoryInterface;
 use SwagMigrationApi\Repository\CustomerRepository;
 
 class CustomerService extends AbstractApiService
@@ -24,10 +25,10 @@ class CustomerService extends AbstractApiService
     private $modelManager;
 
     /**
-     * @param CustomerRepository $customerRepository
-     * @param ModelManager       $modelManager
+     * @param ApiRepositoryInterface $customerRepository
+     * @param ModelManager           $modelManager
      */
-    public function __construct(CustomerRepository $customerRepository, ModelManager $modelManager)
+    public function __construct(ApiRepositoryInterface $customerRepository, ModelManager $modelManager)
     {
         $this->customerRepository = $customerRepository;
         $this->modelManager = $modelManager;
