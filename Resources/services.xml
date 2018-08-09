@@ -5,6 +5,14 @@
 
         <!--Services-->
 
+        <service id="swag_migration_api.service.environment_service" class="SwagMigrationApi\Service\EnvironmentService">
+            <argument type="service" id="models" />
+            <argument type="service" id="swag_migration_api.repository.environment_repository" />
+            <argument>%shopware.release.version%</argument>
+            <argument>%shopware.release.version_text%</argument>
+            <argument>%shopware.release.revision%</argument>
+        </service>
+
         <service id="swag_migration_api.service.category_service" class="SwagMigrationApi\Service\CategoryService">
             <argument type="service" id="swag_migration_api.repository.category_repository" />
         </service>
@@ -36,6 +44,10 @@
         </service>
 
         <!--Repositories-->
+
+        <service id="swag_migration_api.repository.environment_repository" class="SwagMigrationApi\Repository\EnvironmentRepository">
+            <argument type="service" id="dbal_connection"/>
+        </service>
 
         <service id="SwagMigrationApi\Repository\AbstractRepository" abstract="true">
             <argument type="service" id="dbal_connection" />
