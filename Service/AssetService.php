@@ -8,6 +8,8 @@
 namespace SwagMigrationApi\Service;
 
 use Shopware\Bundle\MediaBundle\MediaServiceInterface;
+use Shopware\Components\Model\ModelManager;
+use Shopware\Models\Shop\Shop;
 use SwagMigrationApi\Repository\ApiRepositoryInterface;
 use SwagMigrationApi\Repository\AssetRepository;
 
@@ -24,12 +26,18 @@ class AssetService extends AbstractApiService
     private $mediaService;
 
     /**
+     * @var ModelManager
+     */
+    private $modelManager;
+
+    /**
      * @param AssetRepository $assetRepository
      */
-    public function __construct(ApiRepositoryInterface $assetRepository, MediaServiceInterface $mediaService)
+    public function __construct(ApiRepositoryInterface $assetRepository, MediaServiceInterface $mediaService, ModelManager $modelManager)
     {
         $this->assetRepository = $assetRepository;
         $this->mediaService = $mediaService;
+        $this->modelManager = $modelManager;
     }
 
     /**
@@ -58,7 +66,14 @@ class AssetService extends AbstractApiService
      */
     private function prepareAssets(array $assets)
     {
+        /** @var Shop $defaultShop */
+        $defaultShop = $this->modelManager->getRepository(Shop::class)->getDefault();
+
+        // represents the main language of the migrated shop
+        $locale = $defaultShop->getLocale()->getLocale();
+
         foreach ($assets as &$asset) {
+            $asset['_locale'] = $locale;
             $asset['uri'] = $this->mediaService->getUrl($asset['path']);
         }
         unset($asset);

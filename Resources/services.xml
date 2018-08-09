@@ -32,6 +32,7 @@
         <service id="swag_migration_api.service.asset_service" class="SwagMigrationApi\Service\AssetService">
             <argument type="service" id="swag_migration_api.repository.asset_repository" />
             <argument type="service" id="shopware_media.media_service" />
+            <argument type="service" id="models" />
         </service>
 
         <!--Repositories-->
