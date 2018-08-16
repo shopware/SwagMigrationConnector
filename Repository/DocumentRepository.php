@@ -9,7 +9,6 @@ namespace SwagMigrationApi\Repository;
 
 class DocumentRepository extends AbstractRepository
 {
-
     /**
      * {@inheritdoc}
      */
