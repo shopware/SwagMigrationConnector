@@ -49,10 +49,11 @@ class EnvironmentService extends AbstractApiService
     private $revision;
 
     /**
-     * @param ModelManager $modelManager
-     * @param string       $version
-     * @param string       $versionText
-     * @param string       $revision
+     * @param ModelManager          $modelManager
+     * @param EnvironmentRepository $environmentRepository
+     * @param string                $version
+     * @param string                $versionText
+     * @param string                $revision
      */
     public function __construct(
         ModelManager $modelManager,
@@ -84,7 +85,7 @@ class EnvironmentService extends AbstractApiService
             'shopwareVersion' => $this->version,
             'versionText' => $this->versionText,
             'revision' => $this->revision,
-            'strucure' => $this->getShopStructure(),
+            'structure' => $this->getShopStructure(),
         ];
 
         foreach (self::TABLES_TO_COUNT as $key => $table) {

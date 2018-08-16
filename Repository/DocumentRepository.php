@@ -9,6 +9,10 @@ namespace SwagMigrationApi\Repository;
 
 class DocumentRepository extends AbstractRepository
 {
+
+    /**
+     * {@inheritdoc}
+     */
     public function fetch($offset = 0, $limit = 250)
     {
         $query = $this->connection->createQueryBuilder();

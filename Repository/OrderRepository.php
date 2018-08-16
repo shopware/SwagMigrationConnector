@@ -12,10 +12,7 @@ use Doctrine\DBAL\Connection;
 class OrderRepository extends AbstractRepository
 {
     /**
-     * @param int $offset
-     * @param int $limit
-     *
-     * @return array
+     * {@inheritdoc}
      */
     public function fetch($offset = 0, $limit = 250)
     {
@@ -29,6 +26,12 @@ class OrderRepository extends AbstractRepository
 
         $query->leftJoin('ordering', 's_user', 'customer', 'customer.id = ordering.userID');
         $this->addTableSelection($query, 's_user', 'customer');
+
+        $query->leftJoin('ordering', 's_core_states', 'orderstatus', 'orderstatus.group = "state" AND ordering.status = orderstatus.id');
+        $this->addTableSelection($query, 's_core_states', 'orderstatus');
+
+        $query->leftJoin('ordering', 's_core_states', 'paymentstatus', 'paymentstatus.group = "payment" AND ordering.cleared = paymentstatus.id');
+        $this->addTableSelection($query, 's_core_states', 'paymentstatus');
 
         $query->leftJoin('ordering', 's_order_billingaddress', 'billingaddress', 'ordering.id = billingaddress.orderID');
         $this->addTableSelection($query, 's_order_billingaddress', 'billingaddress');

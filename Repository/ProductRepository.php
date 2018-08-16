@@ -12,10 +12,7 @@ use Doctrine\DBAL\Connection;
 class ProductRepository extends AbstractRepository
 {
     /**
-     * @param int $offset
-     * @param int $limit
-     *
-     * @return array
+     * {@inheritdoc}
      */
     public function fetch($offset = 0, $limit = 250)
     {
