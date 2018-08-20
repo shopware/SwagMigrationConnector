@@ -51,6 +51,8 @@ class OrderRepository extends AbstractRepository
         $query->leftJoin('ordering', 's_core_paymentmeans', 'payment', 'payment.id = ordering.paymentID');
         $this->addTableSelection($query, 's_core_paymentmeans', 'payment');
 
+        $query->addOrderBy('ordering.id');
+
         $query->setFirstResult($offset);
         $query->setMaxResults($limit);
 
@@ -72,9 +74,6 @@ class OrderRepository extends AbstractRepository
 
         $query->leftJoin('detail', 's_order_details_attributes', 'attributes', 'detail.id = attributes.detailID');
         $this->addTableSelection($query, 's_order_details_attributes', 'attributes');
-
-        $query->leftJoin('detail', 's_articles', 'product', 'product.id = detail.articleID');
-        $this->addTableSelection($query, 's_articles', 'product');
 
         $query->leftJoin('detail', 's_core_tax', 'tax', 'tax.id = detail.taxID');
         $this->addTableSelection($query, 's_core_tax', 'tax');

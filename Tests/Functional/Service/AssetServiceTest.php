@@ -7,7 +7,9 @@
 
 namespace SwagMigrationApi\Tests\Functional\Service;
 
-class AssetServiceTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class AssetServiceTest extends TestCase
 {
     public function test_read_assets_should_be_successful()
     {

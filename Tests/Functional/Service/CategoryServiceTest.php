@@ -7,7 +7,9 @@
 
 namespace SwagMigrationApi\Tests\Functional\Service;
 
-class CategoryServiceTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class CategoryServiceTest extends TestCase
 {
     public function test_read_categories_should_be_successful()
     {

@@ -7,7 +7,9 @@
 
 namespace SwagMigrationApi\Tests\Functional\Service;
 
-class ProductServiceTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class ProductServiceTest extends TestCase
 {
     public function test_read_products_should_be_successful()
     {

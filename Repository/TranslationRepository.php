@@ -26,6 +26,7 @@ class TranslationRepository extends AbstractRepository
 
         $query->leftJoin('translation', 's_articles_supplier', 'manufacturer', 'translation.objecttype = "supplier" AND translation.objectkey = manufacturer.id');
         $query->addSelect('manufacturer.name');
+        $query->addOrderBy('translation.id');
 
         $query->setFirstResult($offset);
         $query->setMaxResults($limit);

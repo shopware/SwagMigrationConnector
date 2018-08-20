@@ -7,7 +7,9 @@
 
 namespace SwagMigrationApi\Tests\Functional\Service;
 
-class OrderServiceTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class OrderServiceTest extends TestCase
 {
     public function test_read_orders_should_be_successful()
     {
@@ -25,7 +27,6 @@ class OrderServiceTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('shippingaddress', $orders[0]);
         $this->assertArrayHasKey('payment', $orders[0]);
         $this->assertArrayHasKey('details', $orders[0]);
-        $this->assertArrayHasKey('product', $orders[0]['details'][0]);
     }
 
     public function test_read_orders_with_offset_should_be_successful()
@@ -55,7 +56,7 @@ class OrderServiceTest extends \PHPUnit_Framework_TestCase
 
         $order = $orders[1];
 
-        $this->assertSame('57', $order['id']);
+        $this->assertSame('52', $order['id']);
         $this->assertSame('19.00', $order['details'][1]['tax']['tax']);
     }
 

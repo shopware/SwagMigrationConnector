@@ -7,7 +7,9 @@
 
 namespace SwagMigrationApi\Tests\Functional\Service;
 
-class TranslationServiceTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class TranslationServiceTest extends TestCase
 {
     public function test_read_translations_should_be_successful()
     {
@@ -21,8 +23,8 @@ class TranslationServiceTest extends \PHPUnit_Framework_TestCase
         $firstTranslation = $translations[0];
 
         $this->assertSame('custom_facet', $firstTranslation['objecttype']);
-        $this->assertArrayHasKey('locale', $firstTranslation);
-        $this->assertSame('de_DE', $firstTranslation['locale']);
+        $this->assertArrayHasKey('_locale', $firstTranslation);
+        $this->assertSame('de_DE', $firstTranslation['_locale']);
     }
 
     public function test_read_translations_with_offset_should_be_successful()
@@ -37,8 +39,8 @@ class TranslationServiceTest extends \PHPUnit_Framework_TestCase
         $translation = $translations[5];
 
         $this->assertSame('propertyoption', $translation['objecttype']);
-        $this->assertArrayHasKey('locale', $translation);
-        $this->assertSame('en_GB', $translation['locale']);
+        $this->assertArrayHasKey('_locale', $translation);
+        $this->assertSame('en_GB', $translation['_locale']);
     }
 
     public function test_read_translations_with_limit_should_be_successful()
@@ -52,9 +54,9 @@ class TranslationServiceTest extends \PHPUnit_Framework_TestCase
 
         $firstTranslation = $translations[0];
 
-        $this->assertSame('custom_facet', $firstTranslation['objecttype']);
-        $this->assertArrayHasKey('locale', $firstTranslation);
-        $this->assertSame('de_DE', $firstTranslation['locale']);
+        $this->assertSame('config_mails', $firstTranslation['objecttype']);
+        $this->assertArrayHasKey('_locale', $firstTranslation);
+        $this->assertSame('en_GB', $firstTranslation['_locale']);
     }
 
     public function test_read_translations_with_offset_and_limit_should_be_successful()
@@ -69,8 +71,8 @@ class TranslationServiceTest extends \PHPUnit_Framework_TestCase
         $translation = $translations[0];
 
         $this->assertSame('propertyoption', $translation['objecttype']);
-        $this->assertArrayHasKey('locale', $translation);
-        $this->assertSame('en_GB', $translation['locale']);
+        $this->assertArrayHasKey('_locale', $translation);
+        $this->assertSame('en_GB', $translation['_locale']);
     }
 
     public function test_read_with_out_of_bounds_offset_should_offer_empty_array()

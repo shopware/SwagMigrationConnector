@@ -37,6 +37,7 @@ class ProductRepository extends AbstractRepository
         $this->addTableSelection($query, 's_articles_supplier', 'product_manufacturer');
 
         $query->addOrderBy('product_detail.kind');
+        $query->addOrderBy('product_detail.id');
 
         $query->setFirstResult($offset);
         $query->setMaxResults($limit);
