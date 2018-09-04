@@ -25,6 +25,11 @@ class CustomerService extends AbstractApiService
     private $modelManager;
 
     /**
+     * @var int
+     */
+    const MAX_ADDRESS_COUNT = 100;
+
+    /**
      * @param ApiRepositoryInterface $customerRepository
      * @param ModelManager           $modelManager
      */
@@ -69,7 +74,7 @@ class CustomerService extends AbstractApiService
         foreach ($customers as $key => &$customer) {
             $customer['_locale'] = $locale;
             if (isset($addresses[$customer['id']])) {
-                $customer['addresses'] = $addresses[$customer['id']];
+                $customer['addresses'] = array_slice($addresses[$customer['id']], 0, self::MAX_ADDRESS_COUNT);
             }
             if (isset($paymentData[$customer['id']])) {
                 $customer['paymentdata'] = $paymentData[$customer['id']];

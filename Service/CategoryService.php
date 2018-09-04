@@ -54,7 +54,7 @@ class CategoryService extends AbstractApiService
     private function setAllLocales(array $categories, array $topMostCategories)
     {
         $resultSet = [];
-        $ignoredNodes = [];
+        $ignoredNodes = $this->categoryRepository->fetchIgnoredCategories();
         foreach ($categories as $key => $category) {
             if (empty($category['path'])) {
                 $ignoredNodes[] = $category['id'];
