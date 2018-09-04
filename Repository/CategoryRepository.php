@@ -63,4 +63,15 @@ class CategoryRepository extends AbstractRepository
 
         return $query->execute()->fetchAll(\PDO::FETCH_KEY_PAIR);
     }
+
+    public function fetchIgnoredCategories()
+    {
+        $query = $this->connection->createQueryBuilder();
+
+        $query->addSelect('category.id');
+        $query->from('s_categories', 'category');
+        $query->andWhere('category.path IS NULL');
+
+        return $query->execute()->fetchAll(\PDO::FETCH_COLUMN);
+    }
 }
