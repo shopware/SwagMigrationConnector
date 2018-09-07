@@ -42,6 +42,8 @@ class Shopware_Controllers_Api_SwagMigrationOrderDocuments extends Shopware_Cont
                 );
             }
         }
+
+        throw new Exception('Service currently not implemented');
     }
 
     public function indexAction()

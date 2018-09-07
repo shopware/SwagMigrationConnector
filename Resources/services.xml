@@ -33,11 +33,13 @@
             <argument type="service" id="models" />
         </service>
 
+        <!-- Todo: Implement a DocumentService for 5.4
         <service id="swag_migration_api.service.document_service" class="SwagMigrationApi\Service\DocumentService">
             <argument type="service" id="swag_migration_api.repository.document_repository" />
             <argument type="service" id="shopware.filesystem.private" />
             <argument type="service" id="models" />
         </service>
+        -->
 
         <service id="swag_migration_api.service.translation_service" class="SwagMigrationApi\Service\TranslationService">
             <argument type="service" id="swag_migration_api.repository.translation_repository" />
