@@ -51,8 +51,6 @@ class OrderRepository extends AbstractRepository
         $query->leftJoin('ordering', 's_core_paymentmeans', 'payment', 'payment.id = ordering.paymentID');
         $this->addTableSelection($query, 's_core_paymentmeans', 'payment');
 
-        $query->addOrderBy('ordering.id');
-
         $query->setFirstResult($offset);
         $query->setMaxResults($limit);
 
