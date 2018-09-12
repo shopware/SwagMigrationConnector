@@ -7,6 +7,8 @@
 
 namespace SwagMigrationApi\Repository;
 
+use Doctrine\DBAL\Connection;
+
 class DocumentRepository extends AbstractRepository
 {
     /**
@@ -14,6 +16,8 @@ class DocumentRepository extends AbstractRepository
      */
     public function fetch($offset = 0, $limit = 250)
     {
+        $ids = $this->fetchIdentifiers('s_order_documents', $offset, $limit);
+
         $query = $this->connection->createQueryBuilder();
 
         $query->from('s_order_documents', 'document');
@@ -25,8 +29,10 @@ class DocumentRepository extends AbstractRepository
         $query->leftJoin('document', 's_core_documents', 'documenttype', 'document.type = documenttype.id');
         $this->addTableSelection($query, 's_core_documents', 'documenttype');
 
-        $query->setFirstResult($offset);
-        $query->setMaxResults($limit);
+        $query->where('document.id IN (:ids)');
+        $query->setParameter('ids', $ids, Connection::PARAM_STR_ARRAY);
+
+        $query->addOrderBy('document.id');
 
         return $query->execute()->fetchAll();
     }

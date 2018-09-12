@@ -15,6 +15,10 @@ use SwagMigrationApi\Repository\CustomerRepository;
 class CustomerService extends AbstractApiService
 {
     /**
+     * @var int
+     */
+    const MAX_ADDRESS_COUNT = 100;
+    /**
      * @var CustomerRepository
      */
     private $customerRepository;
@@ -23,11 +27,6 @@ class CustomerService extends AbstractApiService
      * @var ModelManager
      */
     private $modelManager;
-
-    /**
-     * @var int
-     */
-    const MAX_ADDRESS_COUNT = 100;
 
     /**
      * @param ApiRepositoryInterface $customerRepository

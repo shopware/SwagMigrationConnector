@@ -46,4 +46,25 @@ abstract class AbstractRepository implements ApiRepositoryInterface
             $query->addSelect($selection);
         }
     }
+
+    /**
+     * @param string $table
+     * @param int    $offset
+     * @param int    $limit
+     *
+     * @return array
+     */
+    protected function fetchIdentifiers($table, $offset = 0, $limit = 250)
+    {
+        $query = $this->connection->createQueryBuilder();
+
+        $query->select('id');
+        $query->from($table);
+        $query->addOrderBy('id');
+
+        $query->setFirstResult($offset);
+        $query->setMaxResults($limit);
+
+        return $query->execute()->fetchAll(\PDO::FETCH_COLUMN);
+    }
 }

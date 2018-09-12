@@ -22,9 +22,9 @@ class TranslationServiceTest extends TestCase
 
         $firstTranslation = $translations[0];
 
-        $this->assertSame('custom_facet', $firstTranslation['objecttype']);
+        $this->assertSame('config_mails', $firstTranslation['objecttype']);
         $this->assertArrayHasKey('_locale', $firstTranslation);
-        $this->assertSame('de_DE', $firstTranslation['_locale']);
+        $this->assertSame('en_GB', $firstTranslation['_locale']);
     }
 
     public function test_read_translations_with_offset_should_be_successful()
@@ -38,7 +38,8 @@ class TranslationServiceTest extends TestCase
 
         $translation = $translations[5];
 
-        $this->assertSame('propertyoption', $translation['objecttype']);
+        $this->assertSame('article', $translation['objecttype']);
+        $this->assertSame('122', $translation['objectkey']);
         $this->assertArrayHasKey('_locale', $translation);
         $this->assertSame('en_GB', $translation['_locale']);
     }
@@ -70,7 +71,8 @@ class TranslationServiceTest extends TestCase
 
         $translation = $translations[0];
 
-        $this->assertSame('propertyoption', $translation['objecttype']);
+        $this->assertSame('article', $translation['objecttype']);
+        $this->assertSame('122', $translation['objectkey']);
         $this->assertArrayHasKey('_locale', $translation);
         $this->assertSame('en_GB', $translation['_locale']);
     }

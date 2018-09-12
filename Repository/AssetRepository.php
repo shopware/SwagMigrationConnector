@@ -7,6 +7,8 @@
 
 namespace SwagMigrationApi\Repository;
 
+use Doctrine\DBAL\Connection;
+
 class AssetRepository extends AbstractRepository
 {
     /**
@@ -14,6 +16,8 @@ class AssetRepository extends AbstractRepository
      */
     public function fetch($offset = 0, $limit = 250)
     {
+        $ids = $this->fetchIdentifiers('s_media', $offset, $limit);
+
         $query = $this->connection->createQueryBuilder();
 
         $query->from('s_media', 'asset');
@@ -28,8 +32,10 @@ class AssetRepository extends AbstractRepository
         $query->leftJoin('album', 's_media_album_settings', 'album_settings', 'album.id = album_settings.albumID');
         $this->addTableSelection($query, 's_media_album_settings', 'album_settings');
 
-        $query->setFirstResult($offset);
-        $query->setMaxResults($limit);
+        $query->where('asset.id IN (:ids)');
+        $query->setParameter('ids', $ids, Connection::PARAM_STR_ARRAY);
+
+        $query->addOrderBy('asset.id');
 
         return $query->execute()->fetchAll();
     }

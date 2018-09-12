@@ -34,7 +34,7 @@ class CategoryRepository extends AbstractRepository
         $query->andWhere('category.parent IS NOT NULL OR category.path IS NOT NULL');
 
         $query->orderBy('category.parent');
-        
+
         $query->setFirstResult($offset);
         $query->setMaxResults($limit);
 
