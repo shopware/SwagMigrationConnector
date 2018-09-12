@@ -7,6 +7,8 @@
 
 namespace SwagMigrationApi\Repository;
 
+use Doctrine\DBAL\Connection;
+
 class TranslationRepository extends AbstractRepository
 {
     /**
@@ -15,6 +17,8 @@ class TranslationRepository extends AbstractRepository
      */
     public function fetch($offset = 0, $limit = 250)
     {
+        $ids = $this->fetchIdentifiers('s_core_translations', $offset, $limit);
+
         $query = $this->connection->createQueryBuilder();
 
         $query->from('s_core_translations', 'translation');
@@ -27,8 +31,10 @@ class TranslationRepository extends AbstractRepository
         $query->leftJoin('translation', 's_articles_supplier', 'manufacturer', 'translation.objecttype = "supplier" AND translation.objectkey = manufacturer.id');
         $query->addSelect('manufacturer.name');
 
-        $query->setFirstResult($offset);
-        $query->setMaxResults($limit);
+        $query->where('translation.id IN (:ids)');
+        $query->setParameter('ids', $ids, Connection::PARAM_STR_ARRAY);
+
+        $query->addOrderBy('translation.id');
 
         return $query->execute()->fetchAll();
     }

@@ -16,6 +16,8 @@ class OrderRepository extends AbstractRepository
      */
     public function fetch($offset = 0, $limit = 250)
     {
+        $ids = $this->fetchIdentifiers('s_order', $offset, $limit);
+
         $query = $this->connection->createQueryBuilder();
 
         $query->from('s_order', 'ordering');
@@ -51,8 +53,10 @@ class OrderRepository extends AbstractRepository
         $query->leftJoin('ordering', 's_core_paymentmeans', 'payment', 'payment.id = ordering.paymentID');
         $this->addTableSelection($query, 's_core_paymentmeans', 'payment');
 
-        $query->setFirstResult($offset);
-        $query->setMaxResults($limit);
+        $query->where('ordering.id IN (:ids)');
+        $query->setParameter('ids', $ids, Connection::PARAM_STR_ARRAY);
+
+        $query->addOrderBy('ordering.id');
 
         return $query->execute()->fetchAll();
     }

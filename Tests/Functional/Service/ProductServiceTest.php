@@ -50,8 +50,8 @@ class ProductServiceTest extends TestCase
 
         $product = $products[2];
 
-        $this->assertSame('178', $product['id']);
-        $this->assertSame('SW10178', $product['detail']['ordernumber']);
+        $this->assertSame('170', $product['id']);
+        $this->assertSame('SW10170', $product['detail']['ordernumber']);
     }
 
     public function test_read_products_with_limit_should_be_successful()

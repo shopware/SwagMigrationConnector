@@ -40,9 +40,9 @@ class OrderServiceTest extends TestCase
 
         $order = $orders[2];
 
-        $this->assertSame('54', $order['id']);
-        $this->assertSame('0', $order['ordernumber']);
-        $this->assertSame('2', $order['payment']['id']);
+        $this->assertSame('57', $order['id']);
+        $this->assertSame('20002', $order['ordernumber']);
+        $this->assertSame('4', $order['payment']['id']);
     }
 
     public function test_read_orders_with_limit_should_be_successful()
@@ -71,7 +71,7 @@ class OrderServiceTest extends TestCase
 
         $order = $orders[0];
 
-        $this->assertSame('52', $order['id']);
+        $this->assertSame('54', $order['id']);
     }
 
     public function test_read_with_out_of_bounds_offset_should_offer_empty_array()

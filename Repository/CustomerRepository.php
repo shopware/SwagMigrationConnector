@@ -16,6 +16,8 @@ class CustomerRepository extends AbstractRepository
      */
     public function fetch($offset = 0, $limit = 250)
     {
+        $ids = $this->fetchIdentifiers('s_user', $offset, $limit);
+
         $query = $this->connection->createQueryBuilder();
 
         $query->from('s_user', 'customer');
@@ -39,8 +41,10 @@ class CustomerRepository extends AbstractRepository
         $query->leftJoin('customer', 's_core_shops', 'shop', 'customer.subshopID = shop.id');
         $this->addTableSelection($query, 's_core_shops', 'shop');
 
-        $query->setFirstResult($offset);
-        $query->setMaxResults($limit);
+        $query->where('customer.id IN (:ids)');
+        $query->setParameter('ids', $ids, Connection::PARAM_STR_ARRAY);
+
+        $query->addOrderBy('customer.id');
 
         return $query->execute()->fetchAll();
     }
