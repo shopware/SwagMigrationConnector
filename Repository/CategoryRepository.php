@@ -21,10 +21,6 @@ class CategoryRepository extends AbstractRepository
         $query->from('s_categories', 'category');
         $this->addTableSelection($query, 's_categories', 'category');
 
-        $query->leftJoin('category', 's_core_shops', 'shop', 'category.id = shop.category_id');
-        $query->leftJoin('shop', 's_core_locales', 'locale', 'locale.id = shop.locale_id');
-        $query->addSelect('locale.locale');
-
         $query->leftJoin('category', 's_categories_attributes', 'attributes', 'category.id = attributes.categoryID');
         $this->addTableSelection($query, 's_categories_attributes', 'attributes');
 
