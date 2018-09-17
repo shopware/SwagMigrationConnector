@@ -32,7 +32,7 @@ It's that easy to connect your Shopware 5 Shop with Shopware Playground:
 <br><br><ul><li>Download the Shopware Playground Connector from the Community Store.</li><li>Then install and activate the plugin via the Plugin Manager of your shop.</li><li>In Shopware Playground, you then have to enter the API key* of your shop, user data and password for the API user and your shop domain. Afterwards you can connect both platforms with each other.<br><small>*You can find the API key in the user administration in your user data.</small></li></ul></div><p></p></div>]]></description>
 
     <changelog version="1.0.0">
-        <changes lang="de">Initielles release;</changes>
+        <changes lang="de">Erstveröffentlichung;</changes>
         <changes lang="en">Initial release;</changes>
     </changelog>
 </plugin>
