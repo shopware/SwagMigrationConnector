@@ -29,6 +29,9 @@ class CustomerRepository extends AbstractRepository
         $query->leftJoin('customer', 's_core_customergroups', 'customer_group', 'customer.customergroup = customer_group.groupkey');
         $this->addTableSelection($query, 's_core_customergroups', 'customer_group');
 
+        $query->leftJoin('customer_group', 's_core_customergroups_discounts', 'discount', 'discount.groupID = customer_group.id');
+        $this->addTableSelection($query, 's_core_customergroups_discounts', 'discount');
+
         $query->leftJoin('customer', 's_core_paymentmeans', 'defaultpayment', 'customer.paymentID = defaultpayment.id');
         $this->addTableSelection($query, 's_core_paymentmeans', 'defaultpayment');
 
