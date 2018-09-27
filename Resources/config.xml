@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/shopware/5.5/engine/Shopware/Components/Plugin/schema/config.xsd">
+
+    <elements>
+        <element required="true" type="boolean" scope="locale">
+            <name>enforceSSL</name>
+            <label lang="de">Sichere Verbindung erzwingen</label>
+            <label lang="en">Enforce secure connection</label>
+            <value>true</value>
+            <description lang="de">Erfordert bei Aktivierung eine SSL verschlüsselte Verbindung für die API Anfragen.</description>
+            <description lang="en">Enforces an SSL encrypted connection for the API request.</description>
+        </element>
+    </elements>
+</config>
