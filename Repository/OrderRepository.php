@@ -44,11 +44,23 @@ class OrderRepository extends AbstractRepository
         $query->leftJoin('billingaddress', 's_order_billingaddress_attributes', 'billingaddress_attributes', 'billingaddress.id = billingaddress_attributes.billingID');
         $this->addTableSelection($query, 's_order_billingaddress_attributes', 'billingaddress_attributes');
 
+        $query->leftJoin('billingaddress', 's_core_countries', 'billingaddress_country', 'billingaddress.countryID = billingaddress_country.id');
+        $this->addTableSelection($query, 's_core_countries', 'billingaddress_country');
+
+        $query->leftJoin('billingaddress', 's_core_countries_states', 'billingaddress_state', 'billingaddress.stateID = billingaddress_state.id');
+        $this->addTableSelection($query, 's_core_countries_states', 'billingaddress_state');
+
         $query->leftJoin('ordering', 's_order_shippingaddress', 'shippingaddress', 'ordering.id = shippingaddress.orderID');
         $this->addTableSelection($query, 's_order_shippingaddress', 'shippingaddress');
 
         $query->leftJoin('shippingaddress', 's_order_shippingaddress_attributes', 'shippingaddress_attributes', 'shippingaddress.id = shippingaddress_attributes.shippingID');
         $this->addTableSelection($query, 's_order_shippingaddress_attributes', 'shippingaddress_attributes');
+
+        $query->leftJoin('shippingaddress', 's_core_countries', 'shippingaddress_country', 'shippingaddress.countryID = shippingaddress_country.id');
+        $this->addTableSelection($query, 's_core_countries', 'shippingaddress_country');
+
+        $query->leftJoin('shippingaddress', 's_core_countries_states', 'shippingaddress_state', 'shippingaddress.stateID = shippingaddress_state.id');
+        $this->addTableSelection($query, 's_core_countries_states', 'shippingaddress_state');
 
         $query->leftJoin('ordering', 's_core_paymentmeans', 'payment', 'payment.id = ordering.paymentID');
         $this->addTableSelection($query, 's_core_paymentmeans', 'payment');
