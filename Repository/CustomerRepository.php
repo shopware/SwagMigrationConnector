@@ -29,9 +29,6 @@ class CustomerRepository extends AbstractRepository
         $query->leftJoin('customer', 's_core_customergroups', 'customer_group', 'customer.customergroup = customer_group.groupkey');
         $this->addTableSelection($query, 's_core_customergroups', 'customer_group');
 
-        $query->leftJoin('customer_group', 's_core_customergroups_discounts', 'discount', 'discount.groupID = customer_group.id');
-        $this->addTableSelection($query, 's_core_customergroups_discounts', 'discount');
-
         $query->leftJoin('customer', 's_core_paymentmeans', 'defaultpayment', 'customer.paymentID = defaultpayment.id');
         $this->addTableSelection($query, 's_core_paymentmeans', 'defaultpayment');
 
@@ -76,6 +73,25 @@ class CustomerRepository extends AbstractRepository
 
         $query->where('address.user_id IN (:ids)');
         $query->setParameter('ids', $ids, Connection::PARAM_INT_ARRAY);
+
+        return $query->execute()->fetchAll(\PDO::FETCH_GROUP);
+    }
+
+    /**
+     * @param array $groupIds
+     *
+     * @return array
+     */
+    public function fetchCustomerGroupDiscounts(array $groupIds)
+    {
+        $query = $this->connection->createQueryBuilder();
+
+        $query->from('s_core_customergroups_discounts', 'discount');
+        $query->addSelect(['groupID']);
+        $this->addTableSelection($query, 's_core_customergroups_discounts', 'discount');
+
+        $query->where('groupID IN (:ids)');
+        $query->setParameter('ids', $groupIds, Connection::PARAM_INT_ARRAY);
 
         return $query->execute()->fetchAll(\PDO::FETCH_GROUP);
     }
