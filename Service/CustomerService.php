@@ -64,6 +64,13 @@ class CustomerService extends AbstractApiService
         $fetchedPaymentData = $this->customerRepository->fetchPaymentData($ids);
         $paymentData = $this->mapData($fetchedPaymentData, [], ['paymentdata']);
 
+        $groupIds = array_column(
+            array_column($customers, 'group'),
+            'id'
+        );
+        $fetchedDiscounts = $this->customerRepository->fetchCustomerGroupDiscounts($groupIds);
+        $discounts = $this->mapData($fetchedDiscounts, [], ['discounts']);
+
         /** @var Shop $defaultShop */
         $defaultShop = $this->modelManager->getRepository(Shop::class)->getDefault();
 
@@ -77,6 +84,9 @@ class CustomerService extends AbstractApiService
             }
             if (isset($paymentData[$customer['id']])) {
                 $customer['paymentdata'] = $paymentData[$customer['id']];
+            }
+            if (isset($discounts[$customer['group']['id']])) {
+                $customer['group']['discounts'] = $discounts[$customer['group']['id']];
             }
         }
         unset($customer);
