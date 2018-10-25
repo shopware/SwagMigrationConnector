@@ -21,6 +21,7 @@ class EnvironmentService extends AbstractApiService
         'orders' => 's_order',
         'shops' => 's_core_shops',
         'shoppingWorlds' => 's_emotion',
+        'translations' => 's_core_translations',
     ];
 
     /**
