@@ -35,6 +35,11 @@ class EnvironmentService extends AbstractApiService
     private $repository;
 
     /**
+     * @var PluginInformationService
+     */
+    private $pluginInformationService;
+
+    /**
      * @var string
      */
     private $version;
@@ -50,21 +55,24 @@ class EnvironmentService extends AbstractApiService
     private $revision;
 
     /**
-     * @param ModelManager          $modelManager
-     * @param EnvironmentRepository $environmentRepository
-     * @param string                $version
-     * @param string                $versionText
-     * @param string                $revision
+     * @param ModelManager              $modelManager
+     * @param EnvironmentRepository     $environmentRepository
+     * @param PluginInformationService  $pluginInformationService
+     * @param string                    $version
+     * @param string                    $versionText
+     * @param string                    $revision
      */
     public function __construct(
-        ModelManager $modelManager,
-        EnvironmentRepository $environmentRepository,
+        ModelManager                $modelManager,
+        EnvironmentRepository       $environmentRepository,
+        PluginInformationService    $pluginInformationService,
         $version,
         $versionText,
         $revision
     ) {
         $this->modelManager = $modelManager;
         $this->repository = $environmentRepository;
+        $this->pluginInformationService = $pluginInformationService;
         $this->version = $version;
         $this->versionText = $versionText;
         $this->revision = $revision;
@@ -87,6 +95,7 @@ class EnvironmentService extends AbstractApiService
             'versionText' => $this->versionText,
             'revision' => $this->revision,
             'structure' => $this->getShopStructure(),
+            'updateAvailable' => $this->pluginInformationService->isUpdateRequired($locale),
         ];
 
         foreach (self::TABLES_TO_COUNT as $key => $table) {

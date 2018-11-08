@@ -8,9 +8,16 @@
         <service id="swag_migration_api.service.environment_service" class="SwagMigrationApi\Service\EnvironmentService">
             <argument type="service" id="models" />
             <argument type="service" id="swag_migration_api.repository.environment_repository" />
+            <argument type="service" id="swag_migration_api.service.plugin_information_service" />
             <argument>%shopware.release.version%</argument>
             <argument>%shopware.release.version_text%</argument>
             <argument>%shopware.release.revision%</argument>
+        </service>
+
+        <service id="swag_migration_api.service.plugin_information_service" class="SwagMigrationApi\Service\PluginInformationService">
+            <argument type="service" id="shopware_plugininstaller.plugin_service_store_production" />
+            <argument type="service" id="dbal_connection" />
+            <argument>%shopware.release.version%</argument>
         </service>
 
         <service id="swag_migration_api.service.category_service" class="SwagMigrationApi\Service\CategoryService">
