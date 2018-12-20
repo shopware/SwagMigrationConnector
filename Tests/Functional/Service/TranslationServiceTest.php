@@ -18,7 +18,7 @@ class TranslationServiceTest extends TestCase
         $translations = $translationService->getTranslations();
 
         $this->assertInternalType('array', $translations);
-        $this->assertCount(124, $translations);
+        $this->assertCount(125, $translations);
 
         $firstTranslation = $translations[0];
 
@@ -34,7 +34,7 @@ class TranslationServiceTest extends TestCase
         $translations = $translationService->getTranslations(1);
 
         $this->assertInternalType('array', $translations);
-        $this->assertCount(123, $translations);
+        $this->assertCount(124, $translations);
 
         $translation = $translations[5];
 
