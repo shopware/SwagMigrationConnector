@@ -171,7 +171,7 @@ class ProductService extends AbstractApiService
 
         foreach ($fetchedAssets as $productId => &$assets) {
             foreach ($assets as &$asset) {
-                if ($fetchedVariantAssets[$asset['asset.id']]) {
+                if (isset($fetchedVariantAssets[$asset['asset.id']])) {
                     $asset['children'] = $this->mapData($fetchedVariantAssets[$asset['asset.id']], [], ['asset']);
                 }
             }
