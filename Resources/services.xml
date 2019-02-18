@@ -82,6 +82,8 @@
 
         <service id="swag_migration_api.repository.asset_repository" class="SwagMigrationApi\Repository\AssetRepository" parent="SwagMigrationApi\Repository\AbstractRepository" />
 
+        <service id="swag_migration_api.repository.dynamic_repository" class="SwagMigrationApi\Repository\DynamicRepository" />
+
 </services>
 
 </container>
