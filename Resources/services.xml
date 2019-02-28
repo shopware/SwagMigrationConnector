@@ -82,7 +82,9 @@
 
         <service id="swag_migration_api.repository.asset_repository" class="SwagMigrationApi\Repository\AssetRepository" parent="SwagMigrationApi\Repository\AbstractRepository" />
 
-        <service id="swag_migration_api.repository.dynamic_repository" class="SwagMigrationApi\Repository\DynamicRepository" />
+        <service id="swag_migration_api.repository.dynamic_repository" class="SwagMigrationApi\Repository\DynamicRepository">
+            <argument type="service" id="dbal_connection" />
+        </service>
 
 </services>
 

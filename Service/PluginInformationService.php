@@ -59,6 +59,10 @@ class PluginInformationService
             /** @var PluginStruct $pluginStruct */
             $pluginStruct = $this->pluginStoreService->getPlugin($request);
 
+            if (empty($pluginStruct)) {
+                return null;
+            }
+
             return (version_compare(
                 $pluginStruct->getVersion(),
                 $localVersion
