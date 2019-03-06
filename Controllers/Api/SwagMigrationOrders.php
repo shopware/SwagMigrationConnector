@@ -9,11 +9,6 @@ use Shopware\Models\User\Role;
 use SwagMigrationApi\Exception\PermissionDeniedException;
 use SwagMigrationApi\Exception\UnsecureRequestException;
 
-/**
- * (c) shopware AG <info@shopware.com>
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
 class Shopware_Controllers_Api_SwagMigrationOrders extends Shopware_Controllers_Api_Rest
 {
     /**
