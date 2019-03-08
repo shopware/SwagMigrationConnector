@@ -5,11 +5,12 @@
  * file that was distributed with this source code.
  */
 
+use Shopware\Components\Api\Exception\ParameterMissingException;
 use Shopware\Models\User\Role;
 use SwagMigrationApi\Exception\PermissionDeniedException;
 use SwagMigrationApi\Exception\UnsecureRequestException;
 
-class Shopware_Controllers_Api_SwagMigrationProducts extends Shopware_Controllers_Api_Rest
+class Shopware_Controllers_Api_SwagMigrationDynamic extends Shopware_Controllers_Api_Rest
 {
     /**
      * @throws PermissionDeniedException
@@ -44,17 +45,26 @@ class Shopware_Controllers_Api_SwagMigrationProducts extends Shopware_Controller
         );
     }
 
+    /**
+     * @throws ParameterMissingException
+     */
     public function indexAction()
     {
         $offset = (int) $this->Request()->getParam('offset', 0);
         $limit = (int) $this->Request()->getParam('limit', 250);
-        $productService = $this->container->get('swag_migration_api.service.product_service');
+        $table = (string) $this->Request()->getParam('table', '');
 
-        $products = $productService->getProducts($offset, $limit);
+        if ($table === '') {
+            throw new ParameterMissingException('The required parameter "table" is missing');
+        }
 
-        $this->view->assign([
+        $repository = $this->container->get('swag_migration_api.repository.dynamic_repository');
+
+        $fetchedData = $repository->fetch($table, $offset, $limit);
+
+        $this->View()->assign([
             'success' => true,
-            'data' => $products,
+            'data' => $fetchedData,
         ]);
     }
 }

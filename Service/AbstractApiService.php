@@ -36,10 +36,10 @@ abstract class AbstractApiService
     }
 
     /**
-     * @param array  $array
-     * @param array  $path
-     * @param string $fieldKey
-     * @param string $value
+     * @param array     $array
+     * @param array     $path
+     * @param string    $fieldKey
+     * @param mixed     $value
      */
     protected function buildArrayFromChunks(array &$array, array $path, $fieldKey, $value)
     {

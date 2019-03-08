@@ -9,7 +9,7 @@ use Shopware\Models\User\Role;
 use SwagMigrationApi\Exception\PermissionDeniedException;
 use SwagMigrationApi\Exception\UnsecureRequestException;
 
-class Shopware_Controllers_Api_SwagMigrationProducts extends Shopware_Controllers_Api_Rest
+class Shopware_Controllers_Api_SwagMigrationCustomerGroups extends Shopware_Controllers_Api_Rest
 {
     /**
      * @throws PermissionDeniedException
@@ -48,13 +48,13 @@ class Shopware_Controllers_Api_SwagMigrationProducts extends Shopware_Controller
     {
         $offset = (int) $this->Request()->getParam('offset', 0);
         $limit = (int) $this->Request()->getParam('limit', 250);
-        $productService = $this->container->get('swag_migration_api.service.product_service');
+        $customerGroupService = $this->container->get('swag_migration_api.service.customer_group_service');
 
-        $products = $productService->getProducts($offset, $limit);
+        $customerGroups = $customerGroupService->getCustomerGroups($offset, $limit);
 
-        $this->view->assign([
+        $this->View()->assign([
             'success' => true,
-            'data' => $products,
+            'data' => $customerGroups,
         ]);
     }
 }
