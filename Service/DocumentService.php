@@ -5,13 +5,13 @@
  * file that was distributed with this source code.
  */
 
-namespace SwagMigrationApi\Service;
+namespace SwagMigrationAssistant\Service;
 
 use League\Flysystem\FilesystemInterface;
 use Shopware\Components\Model\ModelManager;
 use Shopware\Models\Shop\Shop;
-use SwagMigrationApi\Repository\ApiRepositoryInterface;
-use SwagMigrationApi\Repository\DocumentRepository;
+use SwagMigrationAssistant\Repository\ApiRepositoryInterface;
+use SwagMigrationAssistant\Repository\DocumentRepository;
 
 class DocumentService extends AbstractApiService
 {

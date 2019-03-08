@@ -5,7 +5,7 @@
  * file that was distributed with this source code.
  */
 
-namespace SwagMigrationApi\Repository;
+namespace SwagMigrationAssistant\Repository;
 
 interface ApiRepositoryInterface
 {

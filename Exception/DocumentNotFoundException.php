@@ -5,7 +5,7 @@
  * file that was distributed with this source code.
  */
 
-namespace SwagMigrationApi\Exception;
+namespace SwagMigrationAssistant\Exception;
 
 class DocumentNotFoundException extends \Enlight_Exception
 {

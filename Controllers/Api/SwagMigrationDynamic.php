@@ -7,8 +7,8 @@
 
 use Shopware\Components\Api\Exception\ParameterMissingException;
 use Shopware\Models\User\Role;
-use SwagMigrationApi\Exception\PermissionDeniedException;
-use SwagMigrationApi\Exception\UnsecureRequestException;
+use SwagMigrationAssistant\Exception\PermissionDeniedException;
+use SwagMigrationAssistant\Exception\UnsecureRequestException;
 
 class Shopware_Controllers_Api_SwagMigrationDynamic extends Shopware_Controllers_Api_Rest
 {

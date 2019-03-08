@@ -5,10 +5,10 @@
  * file that was distributed with this source code.
  */
 
-namespace SwagMigrationApi;
+namespace SwagMigrationAssistant;
 
 use Shopware\Components\Plugin;
 
-class SwagMigrationApi extends Plugin
+class SwagMigrationAssistant extends Plugin
 {
 }

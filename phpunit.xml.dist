@@ -15,7 +15,7 @@
                 <directory suffix=".php">./Exception</directory>
 
                 <!-- Bootstrap -->
-                <file>SwagMigrationApi.php</file>
+                <file>SwagMigrationAssistant.php</file>
             </exclude>
         </whitelist>
     </filter>

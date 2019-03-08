@@ -5,13 +5,13 @@
  * file that was distributed with this source code.
  */
 
-namespace SwagMigrationApi\Service;
+namespace SwagMigrationAssistant\Service;
 
 use Shopware\Bundle\MediaBundle\MediaServiceInterface;
 use Shopware\Components\Model\ModelManager;
 use Shopware\Models\Shop\Shop;
-use SwagMigrationApi\Repository\ApiRepositoryInterface;
-use SwagMigrationApi\Repository\AssetRepository;
+use SwagMigrationAssistant\Repository\ApiRepositoryInterface;
+use SwagMigrationAssistant\Repository\AssetRepository;
 
 class AssetService extends AbstractApiService
 {

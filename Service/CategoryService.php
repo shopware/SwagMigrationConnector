@@ -5,10 +5,10 @@
  * file that was distributed with this source code.
  */
 
-namespace SwagMigrationApi\Service;
+namespace SwagMigrationAssistant\Service;
 
-use SwagMigrationApi\Repository\ApiRepositoryInterface;
-use SwagMigrationApi\Repository\CategoryRepository;
+use SwagMigrationAssistant\Repository\ApiRepositoryInterface;
+use SwagMigrationAssistant\Repository\CategoryRepository;
 
 class CategoryService extends AbstractApiService
 {

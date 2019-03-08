@@ -5,12 +5,12 @@
  * file that was distributed with this source code.
  */
 
-namespace SwagMigrationApi\Service;
+namespace SwagMigrationAssistant\Service;
 
 use Shopware\Components\Model\ModelManager;
 use Shopware\Models\Shop\Shop;
-use SwagMigrationApi\Repository\ApiRepositoryInterface;
-use SwagMigrationApi\Repository\CustomerRepository;
+use SwagMigrationAssistant\Repository\ApiRepositoryInterface;
+use SwagMigrationAssistant\Repository\CustomerRepository;
 
 class CustomerService extends AbstractApiService
 {

@@ -2,48 +2,15 @@
 <plugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/shopware/5.4/engine/Shopware/Components/Plugin/schema/plugin.xsd">
 
-    <label lang="de">Shopware Playground Connector</label>
-    <label lang="en">Shopware Playground Connector</label>
+    <label lang="de">Shopware Migrationsassistent</label>
+    <label lang="en">Shopware Migration Assistant</label>
 
-    <version>1.2.0</version>
+    <version>1.0.0</version>
     <copyright>(c) by shopware AG</copyright>
     <license>proprietary</license>
     <link>http://store.shopware.com</link>
     <author>shopware AG</author>
     <compatibility minVersion="5.4.0"/>
-
-    <description lang="de">
-        <![CDATA[<div class="product--description" itemprop="description"><h3>Shopware Playground Connector</h3><br>
-Der Shopware Playground Connector verbindet deinen Shopware 5 Shop mit Shopware Playground und ermöglicht so einen Datenimport zur Shopware Playground Plattform. Auf diesem Wege kannst Du zahlreiche Daten (z.B. Produkte, Hersteller, Kunden etc.) aus einer vorhandenen Shopware 5 Installation in Playground zu Testzwecken zur Verfügung stellen und jeder Zeit auch wieder updaten. Die Daten kannst Du nun innerhalb von Playground für Deine Experimente nutzen.
-<br><br><strong>
-Der Shopware Playground Connector stellt API Endpunkte zur Verfügung, die es Shopware Playground darüber hinaus ermöglicht eine sichere Datenverbindung zum aktiven Shopware 5 Shop zu erstellen.</strong><br><br>
-Wichtig:<br>Durch die Verbindung werden keine Daten in deinem vorhandenen Shop verändert. Dennoch solltest Du wie vor jeder Installation von neuen Plugins eine Datensicherung Deines aktiven Shops vornehmen. Alle Prozesse passieren im Hintergrund und es sind keine Einstellungen und Eingaben erforderlich.<br>
-Solange Du mit Shopware Playground arbeitest solltest Du das Plugin aktiviert lassen. Nur so kannst Du Daten jederzeit aktualisieren.<br><br><p></p><div style="background: #f5f5f5; padding: 30px; font-size: 90%;">
-So einfach verbindest Du Deinen Shopware 5 Shop mit Shopware Playground:
-<br><br><ul><li>Lade Dir den Shopware Playground Connector aus dem Community Store.</li><li>Installiere und aktivere das Plugin anschliessend über den Plugin Manager deines Shops.</li><li>In Shopware Playground musst Du nun noch den API-Schlüssel* Deines Shops eintragen, Benutzerdaten und Passwort für den API-User und deine Shopdomain angeben. Anschliessend kannst Du beide Plattformen miteinander verbinden.<br><small>*Den API-Schlüssel findest Du in der Benutzerverwaltung in Deinen Benutzerdaten.</small></li></ul></div><p></p></div>]]>
-    </description>
-    <description lang="en">
-        <![CDATA[<div class="product--description" itemprop="description"><h3>Shopware Playground Connector</h3><br>
-The Shopware Playground Connector connects your Shopware 5 shop with Shopware Playground and allows you to import data to the Shopware Playground platform. This way, you allow Shopware Playgrond to access and update numerous data from an existing Shopware 5 environment (e.g. products, manufacturers, customers, etc.) for testing purposes and experiments at any time.
-<br><br><strong>
-The Shopware Playground Connector provides API endpoints that also allow Shopware Playground to create a secure data connection to the active Shopware 5 shop.</strong><br><br>
-Important:<br>The connection does not change any data in your existing shop.
-
-Nevertheless, you should make a data backup of your active shop as before every installation of new plugins. All processes take place in the background and thus, no settings or inputs are required.<br>
-As long as you work with Shopware Playground you should leave the plugin activated. This is the only way to update your data at any time.<br><br><p></p><div style="background: #f5f5f5; padding: 30px; font-size: 90%;">
-It's that easy to connect your Shopware 5 Shop with Shopware Playground:
-<br><br><ul><li>Download the Shopware Playground Connector from the Community Store.</li><li>Then install and activate the plugin via the Plugin Manager of your shop.</li><li>In Shopware Playground, you then have to enter the API key* of your shop, user data and password for the API user and your shop domain. Afterwards you can connect both platforms with each other.<br><small>*You can find the API key in the user administration in your user data.</small></li></ul></div><p></p></div>]]>
-    </description>
-
-    <changelog version="1.2.0">
-        <changes lang="de">PT-9695 - Liefert Information über eventuell verfügbares Plugin-Update;</changes>
-        <changes lang="en">PT-9695 - Added information about eventual plugin update</changes>
-    </changelog>
-
-    <changelog version="1.1.0">
-        <changes lang="de">PT-9509, PT-9508, PT-9795 - Zusätzliche Daten werden exportiert; PT-9640 - Möglichkeit https Zwang auszustellen;</changes>
-        <changes lang="en">PT-9509, PT-9508, PT-9795 - Additional data will be exported; PT-9640 - Possibility to disable https constraint;</changes>
-    </changelog>
 
     <changelog version="1.0.0">
         <changes lang="de">Erstveröffentlichung;</changes>

@@ -5,7 +5,7 @@
  * file that was distributed with this source code.
  */
 
-namespace SwagMigrationApi\Repository;
+namespace SwagMigrationAssistant\Repository;
 
 use Doctrine\DBAL\Connection;
 use SwagMigrationApi\Exception\UnknownTableException;

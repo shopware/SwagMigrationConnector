@@ -5,7 +5,7 @@
  * file that was distributed with this source code.
  */
 
-namespace SwagMigrationApi\Tests\Functional\Service;
+namespace SwagMigrationAssistant\Tests\Functional\Service;
 
 use PHPUnit\Framework\TestCase;
 

@@ -5,7 +5,7 @@
  * file that was distributed with this source code.
  */
 
-namespace SwagMigrationApi\Service;
+namespace SwagMigrationAssistant\Service;
 
 use Doctrine\DBAL\Connection;
 use Exception;
@@ -53,7 +53,7 @@ class PluginInformationService
     public function isUpdateRequired($locale)
     {
         try {
-            $request = new PluginsByTechnicalNameRequest($locale, $this->shopwareVersion, ['SwagMigrationApi']);
+            $request = new PluginsByTechnicalNameRequest($locale, $this->shopwareVersion, ['SwagMigrationAssistant']);
             $localVersion = $this->getInstalledVersion();
 
             /** @var PluginStruct $pluginStruct */
@@ -80,7 +80,7 @@ class PluginInformationService
         $query = $this->connection->createQueryBuilder();
         $query->select(['plugin.version'])
             ->from('s_core_plugins', 'plugin')
-            ->where('plugin.name = "SwagMigrationApi"');
+            ->where('plugin.name = "SwagMigrationAssistant"');
 
         /** @var $statement \PDOStatement */
         $statement = $query->execute();
