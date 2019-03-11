@@ -46,6 +46,26 @@ class Shopware_Controllers_Api_SwagMigrationDbTables extends Shopware_Controller
     
     public function indexAction()
     {
+        $connection = $this->container->get('dbal_connection');
 
+        $tableSchema = $connection->getSchemaManager()->listTables();
+        $tables = [];
+
+        foreach ($tableSchema as $table) {
+            $columns = [];
+
+            foreach ($table->getColumns() as $tableColumn) {
+                $column = $tableColumn->toArray();
+                $column['type'] = $tableColumn->getType()->getName();
+                $columns[] = $column;
+            }
+
+            $tables[] = [
+                'name' => $table->getName(),
+                'columns' => $columns
+            ];
+        }
+
+        $this->view->assign(['success' => true, 'data' => $tables]);
     }
 }
