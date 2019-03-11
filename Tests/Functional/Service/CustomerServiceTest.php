@@ -13,7 +13,7 @@ class CustomerServiceTest extends TestCase
 {
     public function test_read_customers_should_be_successful()
     {
-        $customerService = Shopware()->Container()->get('swag_migration_api.service.customer_service');
+        $customerService = Shopware()->Container()->get('swag_migration_assistant.service.customer_service');
 
         $customers = $customerService->getCustomers();
 
@@ -35,7 +35,7 @@ class CustomerServiceTest extends TestCase
 
     public function test_read_customers_with_offset_should_be_successful()
     {
-        $customerService = Shopware()->Container()->get('swag_migration_api.service.customer_service');
+        $customerService = Shopware()->Container()->get('swag_migration_assistant.service.customer_service');
 
         $customers = $customerService->getCustomers(1);
 
@@ -45,7 +45,7 @@ class CustomerServiceTest extends TestCase
 
     public function test_read_with_limit_should_be_successful()
     {
-        $customerService = Shopware()->Container()->get('swag_migration_api.service.customer_service');
+        $customerService = Shopware()->Container()->get('swag_migration_assistant.service.customer_service');
 
         $customers = $customerService->getCustomers(0, 1);
 
@@ -55,7 +55,7 @@ class CustomerServiceTest extends TestCase
 
     public function test_read_with_limit_and_offset_should_be_successful()
     {
-        $customerService = Shopware()->Container()->get('swag_migration_api.service.customer_service');
+        $customerService = Shopware()->Container()->get('swag_migration_assistant.service.customer_service');
 
         $customers = $customerService->getCustomers(1, 1);
 
@@ -65,7 +65,7 @@ class CustomerServiceTest extends TestCase
 
     public function test_read_with_out_of_bounds_offset_should_offer_empty_array()
     {
-        $customerService = Shopware()->Container()->get('swag_migration_api.service.customer_service');
+        $customerService = Shopware()->Container()->get('swag_migration_assistant.service.customer_service');
 
         $customers = $customerService->getCustomers(10);
 

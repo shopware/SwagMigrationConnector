@@ -8,7 +8,7 @@
 namespace SwagMigrationAssistant\Repository;
 
 use Doctrine\DBAL\Connection;
-use SwagMigrationApi\Exception\UnknownTableException;
+use SwagMigrationAssistant\Exception\UnknownTableException;
 
 class DynamicRepository
 {
