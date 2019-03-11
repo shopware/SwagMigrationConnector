@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit bootstrap="./Tests/Bootstrap.php"
          colors="true">
-    <testsuite name="Swag Migration Api Test Suite">
+    <testsuite name="Swag Migration Assistant Test Suite">
         <directory>Tests</directory>
     </testsuite>
 

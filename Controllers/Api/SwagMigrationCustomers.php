@@ -19,7 +19,7 @@ class Shopware_Controllers_Api_SwagMigrationCustomers extends Shopware_Controlle
     {
         parent::preDispatch();
 
-        $pluginName = $this->container->getParameter('swag_migration_api.plugin_name');
+        $pluginName = $this->container->getParameter('swag_migration_assistant.plugin_name');
         $pluginConfig = $this->container->get('shopware.plugin.config_reader')->getByPluginName($pluginName);
 
         if (!$this->Request()->isSecure() && (bool) $pluginConfig['enforceSSL']) {
@@ -48,7 +48,7 @@ class Shopware_Controllers_Api_SwagMigrationCustomers extends Shopware_Controlle
     {
         $offset = (int) $this->Request()->getParam('offset', 0);
         $limit = (int) $this->Request()->getParam('limit', 250);
-        $customerService = $this->container->get('swag_migration_api.service.customer_service');
+        $customerService = $this->container->get('swag_migration_assistant.service.customer_service');
 
         $customers = $customerService->getCustomers($offset, $limit);
 

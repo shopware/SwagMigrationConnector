@@ -19,7 +19,7 @@ class Shopware_Controllers_Api_SwagMigrationEnvironment extends Shopware_Control
     {
         parent::preDispatch();
 
-        $pluginName = $this->container->getParameter('swag_migration_api.plugin_name');
+        $pluginName = $this->container->getParameter('swag_migration_assistant.plugin_name');
         $pluginConfig = $this->container->get('shopware.plugin.config_reader')->getByPluginName($pluginName);
 
         if (!$this->Request()->isSecure() && (bool) $pluginConfig['enforceSSL']) {
@@ -46,7 +46,7 @@ class Shopware_Controllers_Api_SwagMigrationEnvironment extends Shopware_Control
 
     public function indexAction()
     {
-        $environmentService = $this->container->get('swag_migration_api.service.environment_service');
+        $environmentService = $this->container->get('swag_migration_assistant.service.environment_service');
 
         $data = $environmentService->getEnvironmentInformation();
 

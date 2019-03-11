@@ -9,7 +9,7 @@ use Shopware\Models\User\Role;
 use SwagMigrationAssistant\Exception\PermissionDeniedException;
 use SwagMigrationAssistant\Exception\UnsecureRequestException;
 
-class Shopware_Controllers_Api_SwagMigrationOrders extends Shopware_Controllers_Api_Rest
+class Shopware_Controllers_Api_SwagMigrationDbTables extends Shopware_Controllers_Api_Rest
 {
     /**
      * @throws PermissionDeniedException
@@ -43,15 +43,29 @@ class Shopware_Controllers_Api_SwagMigrationOrders extends Shopware_Controllers_
             401
         );
     }
-
+    
     public function indexAction()
     {
-        $offset = (int) $this->Request()->getParam('offset', 0);
-        $limit = (int) $this->Request()->getParam('limit', 250);
-        $orderService = $this->container->get('swag_migration_assistant.service.order_service');
+        $connection = $this->container->get('dbal_connection');
 
-        $orders = $orderService->getOrders($offset, $limit);
+        $tableSchema = $connection->getSchemaManager()->listTables();
+        $tables = [];
 
-        $this->view->assign(['success' => true, 'data' => $orders]);
+        foreach ($tableSchema as $table) {
+            $columns = [];
+
+            foreach ($table->getColumns() as $tableColumn) {
+                $column = $tableColumn->toArray();
+                $column['type'] = $tableColumn->getType()->getName();
+                $columns[] = $column;
+            }
+
+            $tables[] = [
+                'name' => $table->getName(),
+                'columns' => $columns
+            ];
+        }
+
+        $this->view->assign(['success' => true, 'data' => $tables]);
     }
 }
