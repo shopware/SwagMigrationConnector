@@ -64,6 +64,11 @@
             <argument type="service" id="models" />
         </service>
 
+        <service class="SwagMigrationAssistant\Service\AttributeService" id="swag_migration_assistant.service.attribute_service">
+            <argument type="service" id="swag_migration_assistant.repository.attribute_repository" />
+            <argument type="service" id="models" />
+        </service>
+
         <!--Repositories-->
 
         <service id="swag_migration_assistant.repository.environment_repository" class="SwagMigrationAssistant\Repository\EnvironmentRepository">
@@ -91,6 +96,10 @@
         <service id="swag_migration_assistant.repository.customer_group_repository" class="SwagMigrationAssistant\Repository\CustomerGroupRepository" parent="SwagMigrationAssistant\Repository\AbstractRepository" />
 
         <service id="swag_migration_assistant.repository.dynamic_repository" class="SwagMigrationAssistant\Repository\DynamicRepository">
+            <argument type="service" id="dbal_connection" />
+        </service>
+
+        <service id="swag_migration_assistant.repository.attribute_repository" class="SwagMigrationAssistant\Repository\AttributeRepository">
             <argument type="service" id="dbal_connection" />
         </service>
 

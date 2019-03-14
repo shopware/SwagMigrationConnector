@@ -6,10 +6,12 @@
  */
 
 use Shopware\Models\User\Role;
+use SwagMigrationAssistant\Exception\ParameterMissingException;
 use SwagMigrationAssistant\Exception\PermissionDeniedException;
+use SwagMigrationAssistant\Exception\UnknownTableException;
 use SwagMigrationAssistant\Exception\UnsecureRequestException;
 
-class Shopware_Controllers_Api_SwagMigrationDbTables extends Shopware_Controllers_Api_Rest
+class Shopware_Controllers_Api_SwagMigrationAttributes extends Shopware_Controllers_Api_Rest
 {
     /**
      * @throws PermissionDeniedException
@@ -43,29 +45,33 @@ class Shopware_Controllers_Api_SwagMigrationDbTables extends Shopware_Controller
             401
         );
     }
-    
+
+    /**
+     * @throws ParameterMissingException
+     * @throws UnknownTableException
+     */
     public function indexAction()
     {
-        $connection = $this->container->get('dbal_connection');
+        $attributeTable = $this->Request()->getParam('attribute_table', null);
 
-        $tableSchema = $connection->getSchemaManager()->listTables();
-        $tables = [];
-
-        foreach ($tableSchema as $table) {
-            $columns = [];
-
-            foreach ($table->getColumns() as $tableColumn) {
-                $column = $tableColumn->toArray();
-                $column['type'] = $tableColumn->getType()->getName();
-                $columns[] = $column;
-            }
-
-            $tables[] = [
-                'name' => $table->getName(),
-                'columns' => $columns
-            ];
+        if ($attributeTable === null) {
+            throw new ParameterMissingException(
+                'The attribute_table parameter is missing.',
+                422
+            );
         }
 
-        $this->view->assign(['success' => true, 'data' => $tables]);
+        $schemaManager = $this->container->get('dbal_connection')->getSchemaManager();
+
+        if (!$schemaManager->tablesExist([$attributeTable])) {
+            throw new UnknownTableException('The table: ' . $attributeTable . ' could not be found.');
+        }
+
+        $attributeConfiguration = $this->container
+            ->get('swag_migration_assistant.service.attribute_service')
+            ->getAttributeConfiguration($attributeTable)
+        ;
+
+        $this->view->assign(['success' => true, 'data' => $attributeConfiguration]);
     }
 }
