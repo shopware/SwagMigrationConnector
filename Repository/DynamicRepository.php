@@ -34,7 +34,7 @@ class DynamicRepository
      *
      * @throws UnknownTableException
      */
-    public function fetch($table, $offset = 0, $limit = 250)
+    public function fetch($table, $offset = 0, $limit = 250, array $filter = [])
     {
         $schemaManager = $this->connection->getSchemaManager();
 
@@ -45,6 +45,13 @@ class DynamicRepository
 
         $query->addSelect('*');
         $query->from($table);
+
+        if (!empty($filter)) {
+            foreach ($filter as $property => $value) {
+                $query->andWhere($property . ' = :value');
+                $query->setParameter('value', $value);
+            }
+        }
 
         $query->setFirstResult($offset);
         $query->setMaxResults($limit);

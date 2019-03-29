@@ -53,6 +53,7 @@ class Shopware_Controllers_Api_SwagMigrationDynamic extends Shopware_Controllers
         $offset = (int) $this->Request()->getParam('offset', 0);
         $limit = (int) $this->Request()->getParam('limit', 250);
         $table = (string) $this->Request()->getParam('table', '');
+        $filter = $this->Request()->getParam('filter', []);
 
         if ($table === '') {
             throw new ParameterMissingException('The required parameter "table" is missing');
@@ -60,7 +61,7 @@ class Shopware_Controllers_Api_SwagMigrationDynamic extends Shopware_Controllers
 
         $repository = $this->container->get('swag_migration_assistant.repository.dynamic_repository');
 
-        $fetchedData = $repository->fetch($table, $offset, $limit);
+        $fetchedData = $repository->fetch($table, $offset, $limit, $filter);
 
         $this->View()->assign([
             'success' => true,
