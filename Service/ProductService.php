@@ -121,6 +121,10 @@ class ProductService extends AbstractApiService
             if (isset($options[$product['detail']['id']])) {
                 $product['configuratorOptions'] = $options[$product['detail']['id']];
             }
+
+            if (isset($product['manufacturer']['media'])) {
+                $product['manufacturer']['media']['uri'] = $this->mediaService->getUrl($product['manufacturer']['img']);
+            }
         }
         unset(
             $product, $categories,
