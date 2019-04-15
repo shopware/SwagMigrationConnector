@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/shopware/5.4/engine/Shopware/Components/Plugin/schema/menu.xsd">
+    <entries>
+        <entry>
+            <name>UpdateCheck</name>
+            <label lang="en">Shopware 6 Update-Check</label>
+            <label lang="de">Shopware 6 Update-Check</label>
+            <controller>SwagUpdateCheck</controller>
+            <action>index</action>
+            <class>sprite-arrow-continue-090 misc--software-update</class>
+            <parent identifiedBy="class">ico question_frame shopware-help-menu</parent>
+        </entry>
+    </entries>
+</menu>
