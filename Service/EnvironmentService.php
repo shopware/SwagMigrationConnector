@@ -23,6 +23,7 @@ class EnvironmentService extends AbstractApiService
         'shoppingWorlds' => 's_emotion',
         'translations' => 's_core_translations',
         'customerGroups' => 's_core_customergroups',
+        'configuratorOptions' => 's_article_configurator_options',
     ];
 
     /**
