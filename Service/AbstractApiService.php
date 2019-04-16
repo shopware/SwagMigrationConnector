@@ -72,6 +72,12 @@ abstract class AbstractApiService
                     continue;
                 }
                 $this->cleanupResultSet($value);
+
+                if (empty(array_filter($value))) {
+                    unset($data[$key]);
+
+                    continue;
+                }
             }
         }
 

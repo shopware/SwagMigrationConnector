@@ -72,6 +72,12 @@
             <argument type="service" id="models" />
         </service>
 
+        <service class="SwagMigrationAssistant\Service\ConfiguratorOptionService" id="swag_migration_assistant.service.configurator_option_service">
+            <argument type="service" id="swag_migration_assistant.repository.configurator_option_repository" />
+            <argument type="service" id="models" />
+            <argument type="service" id="shopware_media.media_service"/>
+        </service>
+
         <!--Repositories-->
 
         <service id="swag_migration_assistant.repository.environment_repository" class="SwagMigrationAssistant\Repository\EnvironmentRepository">
@@ -97,6 +103,8 @@
         <service id="swag_migration_assistant.repository.asset_repository" class="SwagMigrationAssistant\Repository\AssetRepository" parent="SwagMigrationAssistant\Repository\AbstractRepository" />
 
         <service id="swag_migration_assistant.repository.customer_group_repository" class="SwagMigrationAssistant\Repository\CustomerGroupRepository" parent="SwagMigrationAssistant\Repository\AbstractRepository" />
+
+        <service id="swag_migration_assistant.repository.configurator_option_repository" class="SwagMigrationAssistant\Repository\ConfiguratorOptionRepository" parent="SwagMigrationAssistant\Repository\AbstractRepository" />
 
         <service id="swag_migration_assistant.repository.dynamic_repository" class="SwagMigrationAssistant\Repository\DynamicRepository">
             <argument type="service" id="dbal_connection" />
