@@ -78,6 +78,10 @@
             <argument type="service" id="shopware_media.media_service"/>
         </service>
 
+        <service class="SwagMigrationAssistant\Service\NumberRangeService" id="swag_migration_assistant.service.number_range_service">
+            <argument id="models" type="service"/>
+        </service>
+
         <!--Repositories-->
 
         <service id="swag_migration_assistant.repository.environment_repository" class="SwagMigrationAssistant\Repository\EnvironmentRepository">
