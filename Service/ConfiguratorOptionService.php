@@ -55,7 +55,7 @@ class ConfiguratorOptionService extends AbstractApiService
     public function getConfiguratorOptions($offset = 0, $limit = 250)
     {
         $fetchedConfiguratorOptions = $this->configuratorOptionRepository->fetch($offset, $limit);
-        $options = $this->mapData($fetchedConfiguratorOptions, [], ['configuratorOption']);
+        $options = $this->mapData($fetchedConfiguratorOptions, [], ['property']);
 
         /** @var Shop $defaultShop */
         $defaultShop = $this->modelManager->getRepository(Shop::class)->getDefault();

@@ -59,6 +59,27 @@ class EnvironmentRepository
     }
 
     /**
+     * @return int
+     */
+    public function getConfiguratorOptionCount()
+    {
+        $queryBuilder = $this->connection->createQueryBuilder();
+
+        $optionCount = (int) $queryBuilder->select('COUNT(id)')
+            ->from('s_filter_values')
+            ->execute()
+            ->fetchColumn();
+
+        $queryBuilder = $this->connection->createQueryBuilder();
+        $propertyCount = (int) $queryBuilder->select('COUNT(id)')
+            ->from('s_article_configurator_options')
+            ->execute()
+            ->fetchColumn();
+
+        return $optionCount + $propertyCount;
+    }
+
+    /**
      * @return array
      */
     public function getShops()
