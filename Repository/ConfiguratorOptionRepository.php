@@ -7,7 +7,7 @@
 
 namespace SwagMigrationAssistant\Repository;
 
-use Doctrine\DBAL\Connection;
+use PDO;
 
 class ConfiguratorOptionRepository extends AbstractRepository
 {
@@ -16,33 +16,65 @@ class ConfiguratorOptionRepository extends AbstractRepository
      */
     public function fetch($offset = 0, $limit = 250)
     {
-        $ids = $this->fetchIdentifiers('s_article_configurator_options', $offset, $limit);
+        $sql = <<<SQL
+SELECT
+           'property' AS "property.type",
+           filter.id AS "property.id",
+           filter.value AS "property.name",
+           filter.position AS "property.position",
+           filterOpt.id AS "property_group.id",
+           filterOpt.name AS "property_group.name",
+           filterOpt.name AS "property_group.description",
+           media.id AS "property_media.id",
+           media.name AS "property_media.name",
+           media.description AS "property_media.description",
+           media.path AS "property_media.path",
+           media.file_size AS "property_media.file_size",
+           mediaAttr.id AS "property_media.attribute",
+           mediaAlbum.name AS "property_media.album_name",
+           mediaAlbum.position AS "property_media.album_position"
+    FROM s_filter_values AS filter
+           LEFT JOIN s_filter_options AS filterOpt ON filterOpt.id = filter.optionID
+           LEFT JOIN s_media AS media ON media.id = filter.media_id
+           LEFT JOIN s_media_attributes AS mediaAttr ON mediaAttr.mediaID = media.id
+           LEFT JOIN s_media_album AS mediaAlbum ON mediaAlbum.id = media.albumID
+           LEFT JOIN s_media_album_settings AS mediaAlbumSetting ON mediaAlbumSetting.albumID = mediaAlbum.id
 
-        $query = $this->connection->createQueryBuilder();
+UNION
 
-        $query->from('s_article_configurator_options', 'configuratorOption');
-        $this->addTableSelection($query, 's_article_configurator_options', 'configuratorOption');
+(
+    SELECT
+           'option' AS "property.type",
+           opt.id AS "property.id",
+           opt.name AS "property.name",
+           opt.position AS "property.position",
+           optGroup.id AS "property_group.id",
+           optGroup.name AS "property_group.name",
+           optGroup.description AS "property_group.description",
+           media.id AS "property_media.id",
+           media.name AS "property_media.name",
+           media.description AS "property_media.description",
+           media.path AS "property_media.path",
+           media.file_size AS "property_media.file_size",
+           mediaAttr.id AS "property_media.attribute",
+           mediaAlbum.name AS "property_media.album_name",
+           mediaAlbum.position AS "property_media.album_position"
+    FROM s_article_configurator_options AS opt
+          LEFT JOIN s_article_configurator_groups AS optGroup ON optGroup.id = opt.group_id
+          LEFT JOIN s_media AS media ON media.id = opt.media_id
+          LEFT JOIN s_media_attributes AS mediaAttr ON mediaAttr.mediaID = media.id
+          LEFT JOIN s_media_album AS mediaAlbum ON mediaAlbum.id = media.albumID
+          LEFT JOIN s_media_album_settings AS mediaAlbumSetting ON mediaAlbumSetting.albumID = mediaAlbum.id
+)
+ORDER BY "property.type", "property.id" LIMIT :limit OFFSET :offset
+SQL;
 
-        $query->leftJoin('configuratorOption', 's_media', 'configuratorOption_media', 'configuratorOption.media_id = configuratorOption_media.id');
-        $this->addTableSelection($query, 's_media', 'configuratorOption_media');
+        $statement = $this->connection->prepare($sql);
+        $statement->bindValue('limit', $limit, \PDO::PARAM_INT);
+        $statement->bindValue('offset', $offset, \PDO::PARAM_INT);
+        $statement->setFetchMode(PDO::FETCH_ASSOC);
+        $statement->execute();
 
-        $query->leftJoin('configuratorOption_media', 's_media_attributes', 'configuratorOption_media_attributes', 'configuratorOption_media.id = configuratorOption_media_attributes.mediaID');
-        $this->addTableSelection($query, 's_media_attributes', 'configuratorOption_media_attributes');
-
-        $query->leftJoin('configuratorOption_media', 's_media_album', 'configuratorOption_media_album', 'configuratorOption_media.albumID = configuratorOption_media_album.id');
-        $this->addTableSelection($query, 's_media_album', 'configuratorOption_media_album');
-
-        $query->leftJoin('configuratorOption_media_album', 's_media_album_settings', 'configuratorOption_media_album_settings', 'configuratorOption_media_album.id = configuratorOption_media_album_settings.albumID');
-        $this->addTableSelection($query, 's_media_album_settings', 'configuratorOption_media_album_settings');
-
-        $query->leftJoin('configuratorOption', 's_article_configurator_groups', 'configuratorOption_group', 'configuratorOption.group_id = configuratorOption_group.id');
-        $this->addTableSelection($query, 's_article_configurator_groups', 'configuratorOption_group');
-
-        $query->where('configuratorOption.id IN (:ids)');
-        $query->setParameter('ids', $ids, Connection::PARAM_STR_ARRAY);
-
-        $query->addOrderBy('configuratorOption.id');
-
-        return $query->execute()->fetchAll();
+        return $statement->fetchAll();
     }
 }

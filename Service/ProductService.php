@@ -98,6 +98,7 @@ class ProductService extends AbstractApiService
         $prices = $this->getPrices();
         $assets = $this->getAssets();
         $options = $this->getConfiguratorOptions();
+        $filterValues = $this->getFilterOptionValues();
 
         /** @var Shop $defaultShop */
         $defaultShop = $this->modelManager->getRepository(Shop::class)->getDefault();
@@ -124,6 +125,10 @@ class ProductService extends AbstractApiService
 
             if (isset($product['manufacturer']['media'])) {
                 $product['manufacturer']['media']['uri'] = $this->mediaService->getUrl($product['manufacturer']['img']);
+            }
+
+            if (isset($filterValues[$product['detail']['id']])) {
+                $product['filters'] = $filterValues[$product['detail']['id']];
             }
         }
         unset(
@@ -194,6 +199,17 @@ class ProductService extends AbstractApiService
         $fetchedConfiguratorOptions = $this->productRepository->fetchProductConfiguratorOptions($variantIds);
 
         return $this->mapData($fetchedConfiguratorOptions, [], ['configurator', 'option']);
+    }
+
+    /**
+     * @return array
+     */
+    private function getFilterOptionValues()
+    {
+        $variantIds = $this->productMapping->keys();
+        $fetchedConfiguratorOptions = $this->productRepository->fetchFilterOptionValues($variantIds);
+
+        return $this->mapData($fetchedConfiguratorOptions, [], ['filter', 'values']);
     }
 
     /**

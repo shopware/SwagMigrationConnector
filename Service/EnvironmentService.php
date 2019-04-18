@@ -105,6 +105,10 @@ class EnvironmentService extends AbstractApiService
                 $resultSet[$key] = $this->repository->getCategoryCount();
                 continue;
             }
+            if ($key === 'configuratorOptions') {
+                $resultSet[$key] = $this->repository->getConfiguratorOptionCount();
+                continue;
+            }
             $resultSet[$key] = $this->repository->getTableCount($table);
         }
 

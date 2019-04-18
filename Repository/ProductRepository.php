@@ -125,6 +125,33 @@ class ProductRepository extends AbstractRepository
     }
 
     /**
+     * @param array $variantIds
+     *
+     * @return array
+     */
+    public function fetchFilterOptionValues(array $variantIds)
+    {
+        $query = $this->connection->createQueryBuilder();
+
+        $query->from('s_filter_articles', 'filter');
+        $query->leftJoin('filter', 's_articles_details', 'details', 'details.articleID = filter.articleID');
+        $query->addSelect('details.id');
+
+        $query->leftJoin('filter', 's_filter_values', 'filter_values', 'filter.valueID = filter_values.id');
+        $this->addTableSelection($query, 's_filter_values', 'filter_values');
+
+        $query->leftJoin('filter_values', 's_filter_options', 'filter_values_option', 'filter_values_option.id = filter_values.optionID');
+        $this->addTableSelection($query, 's_filter_options', 'filter_values_option');
+
+
+        $query->where('details.id IN (:ids)');
+
+        $query->setParameter('ids', $variantIds, Connection::PARAM_INT_ARRAY);
+
+        return $query->execute()->fetchAll(\PDO::FETCH_GROUP);
+    }
+
+    /**
      * @param array $productIds
      *
      * @return array
