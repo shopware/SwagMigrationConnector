@@ -89,7 +89,7 @@ class EnvironmentService extends AbstractApiService
         $defaultShop = $this->modelManager->getRepository(Shop::class)->getDefault();
 
         // represents the main language of the migrated shop
-        $locale = $defaultShop->getLocale()->getLocale();
+        $locale = str_replace('_', '-', $defaultShop->getLocale()->getLocale());
 
         $resultSet = [
             'defaultShopLanguage' => $locale,
@@ -124,6 +124,10 @@ class EnvironmentService extends AbstractApiService
         $shops = $this->mapData($fetchedShops, [], ['shop']);
 
         foreach ($shops as $key => &$shop) {
+            if (isset($shop['locale']['locale'])) {
+                $shop['locale']['locale'] = str_replace('_', '-', $shop['locale']['locale']);
+            }
+
             if (!empty($shop['main_id'])) {
                 $shops[$shop['main_id']]['children'][] = $shop;
                 unset($shops[$key]);

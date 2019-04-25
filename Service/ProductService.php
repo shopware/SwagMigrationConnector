@@ -104,7 +104,7 @@ class ProductService extends AbstractApiService
         $defaultShop = $this->modelManager->getRepository(Shop::class)->getDefault();
 
         // represents the main language of the migrated shop
-        $locale = $defaultShop->getLocale()->getLocale();
+        $locale = str_replace('_', '-', $defaultShop->getLocale()->getLocale());
 
         foreach ($products as $key => &$product) {
             $product['_locale'] = $locale;
