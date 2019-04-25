@@ -20,6 +20,7 @@ class CategoryRepository extends AbstractRepository
 
         $query->from('s_categories', 'category');
         $this->addTableSelection($query, 's_categories', 'category');
+        $query->addSelect('REPLACE(category.path, "|", "") as categorypath');
 
         $query->leftJoin('category', 's_categories_attributes', 'attributes', 'category.id = attributes.categoryID');
         $this->addTableSelection($query, 's_categories_attributes', 'attributes');
@@ -29,7 +30,7 @@ class CategoryRepository extends AbstractRepository
 
         $query->andWhere('category.parent IS NOT NULL OR category.path IS NOT NULL');
 
-        $query->orderBy('category.parent');
+        $query->orderBy('LENGTH(categorypath)');
 
         $query->setFirstResult($offset);
         $query->setMaxResults($limit);
