@@ -67,7 +67,7 @@ class CategoryService extends AbstractApiService
                 array_filter(explode('|', $category['path']))
             );
             $topMostParent = end($parentCategoryIds);
-            $category['_locale'] = $topMostCategories[$topMostParent];
+            $category['_locale'] = str_replace('_', '-', $topMostCategories[$topMostParent]);
             $resultSet[] = $category;
         }
 

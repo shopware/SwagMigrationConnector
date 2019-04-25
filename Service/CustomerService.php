@@ -75,7 +75,7 @@ class CustomerService extends AbstractApiService
         $defaultShop = $this->modelManager->getRepository(Shop::class)->getDefault();
 
         // represents the main language of the migrated shop
-        $locale = $defaultShop->getLocale()->getLocale();
+        $locale = str_replace('_', '-', $defaultShop->getLocale()->getLocale());
 
         foreach ($customers as $key => &$customer) {
             $customer['_locale'] = $locale;
@@ -87,6 +87,9 @@ class CustomerService extends AbstractApiService
             }
             if (isset($discounts[$customer['group']['id']])) {
                 $customer['group']['discounts'] = $discounts[$customer['group']['id']];
+            }
+            if (isset($customer['customerlanguage']['locale'])) {
+                $customer['customerlanguage']['locale'] = str_replace('_', '-', $customer['customerlanguage']['locale']);
             }
         }
         unset($customer);

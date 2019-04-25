@@ -27,7 +27,7 @@ class CategoryServiceTest extends TestCase
         $this->assertSame('5', $categories[0]['id']);
         $this->assertNull($categories[0]['parent']);
         $this->assertSame('Genusswelten', $categories[0]['description']);
-        $this->assertSame('de_DE', $categories[0]['_locale']);
+        $this->assertSame('de-DE', $categories[0]['_locale']);
     }
 
     public function test_read_categories_with_offset_should_be_succesful()
@@ -43,7 +43,7 @@ class CategoryServiceTest extends TestCase
         $category = $categories[1];
 
         $this->assertArrayHasKey('_locale', $category);
-        $this->assertSame('en_GB', $category['_locale']);
+        $this->assertSame('en-GB', $category['_locale']);
     }
 
     public function test_read_categories_with_limit_should_be_succesful()
@@ -59,7 +59,7 @@ class CategoryServiceTest extends TestCase
         $category = $categories[2];
 
         $this->assertArrayHasKey('_locale', $category);
-        $this->assertSame('de_DE', $category['_locale']);
+        $this->assertSame('de-DE', $category['_locale']);
     }
 
     public function test_read_categories_with_offset_and_limit_should_be_succesful()
@@ -73,7 +73,7 @@ class CategoryServiceTest extends TestCase
 
         $category = $categories[4];
         $this->assertArrayHasKey('_locale', $category);
-        $this->assertSame('en_GB', $category['_locale']);
+        $this->assertSame('en-GB', $category['_locale']);
         $this->assertSame('61', $category['parent']);
         $this->assertSame('|61|39|', $category['path']);
     }

@@ -49,7 +49,7 @@ class AttributeRepository
     public function getAttibuteConfigurationTranslations($table)
     {
         $sql = <<<SQL
-SELECT s.*, l.locale
+SELECT s.*, REPLACE(l.locale, '_', '-') AS locale
 FROM s_core_snippets s
 LEFT JOIN s_core_locales l ON s.localeID = l.id
 WHERE namespace = 'backend/attribute_columns'

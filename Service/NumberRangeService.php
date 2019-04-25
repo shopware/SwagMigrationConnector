@@ -47,7 +47,7 @@ class NumberRangeService extends AbstractApiService
         /** @var Shop $defaultShop */
         $defaultShop = $this->modelManager->getRepository(Shop::class)->getDefault();
         // represents the main language of the migrated shop
-        $locale = $defaultShop->getLocale()->getLocale();
+        $locale = str_replace('_', '-', $defaultShop->getLocale()->getLocale());
 
         foreach ($numberRanges as &$numberRange) {
             $numberRange['_locale'] = $locale;

@@ -24,7 +24,7 @@ class TranslationServiceTest extends TestCase
 
         $this->assertSame('config_mails', $firstTranslation['objecttype']);
         $this->assertArrayHasKey('_locale', $firstTranslation);
-        $this->assertSame('en_GB', $firstTranslation['_locale']);
+        $this->assertSame('en-GB', $firstTranslation['_locale']);
     }
 
     public function test_read_translations_with_offset_should_be_successful()
@@ -41,7 +41,7 @@ class TranslationServiceTest extends TestCase
         $this->assertSame('article', $translation['objecttype']);
         $this->assertSame('122', $translation['objectkey']);
         $this->assertArrayHasKey('_locale', $translation);
-        $this->assertSame('en_GB', $translation['_locale']);
+        $this->assertSame('en-GB', $translation['_locale']);
     }
 
     public function test_read_translations_with_limit_should_be_successful()
@@ -57,7 +57,7 @@ class TranslationServiceTest extends TestCase
 
         $this->assertSame('config_mails', $firstTranslation['objecttype']);
         $this->assertArrayHasKey('_locale', $firstTranslation);
-        $this->assertSame('en_GB', $firstTranslation['_locale']);
+        $this->assertSame('en-GB', $firstTranslation['_locale']);
     }
 
     public function test_read_translations_with_offset_and_limit_should_be_successful()
@@ -74,7 +74,7 @@ class TranslationServiceTest extends TestCase
         $this->assertSame('article', $translation['objecttype']);
         $this->assertSame('122', $translation['objectkey']);
         $this->assertArrayHasKey('_locale', $translation);
-        $this->assertSame('en_GB', $translation['_locale']);
+        $this->assertSame('en-GB', $translation['_locale']);
     }
 
     public function test_read_with_out_of_bounds_offset_should_offer_empty_array()
