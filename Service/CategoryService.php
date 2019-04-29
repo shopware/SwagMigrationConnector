@@ -54,19 +54,19 @@ class CategoryService extends AbstractApiService
     private function setAllLocales(array $categories, array $topMostCategories)
     {
         $resultSet = [];
-        $ignoredNodes = $this->categoryRepository->fetchIgnoredCategories();
+        $ignoredCategories = $this->categoryRepository->fetchIgnoredCategories();
+
         foreach ($categories as $key => $category) {
-            if (empty($category['path'])) {
-                $ignoredNodes[] = $category['id'];
-                continue;
-            }
-            if (in_array($category['parent'], $ignoredNodes)) {
+            if (in_array($category['parent'], $ignoredCategories, true)) {
                 $category['parent'] = null;
             }
-            $parentCategoryIds = array_values(
-                array_filter(explode('|', $category['path']))
-            );
-            $topMostParent = end($parentCategoryIds);
+            $topMostParent = $category['id'];
+            if (!empty($category['path'])) {
+                $parentCategoryIds = array_values(
+                    array_filter(explode('|', $category['path']))
+                );
+                $topMostParent = end($parentCategoryIds);
+            }
             $category['_locale'] = str_replace('_', '-', $topMostCategories[$topMostParent]);
             $resultSet[] = $category;
         }
@@ -83,12 +83,14 @@ class CategoryService extends AbstractApiService
     {
         $ids = [];
         foreach ($categories as $key => $category) {
+            if (empty($category['category.path'])) {
+                continue;
+            }
             $parentCategoryIds = array_values(
-                array_filter(explode('|', $category['category.path']))
+                array_filter(explode('|', (string) $category['category.path']))
             );
-
             $topMostParent = end($parentCategoryIds);
-            if (!in_array($topMostParent, $ids)) {
+            if (!in_array($topMostParent, $ids, true)) {
                 $ids[] = $topMostParent;
             }
         }

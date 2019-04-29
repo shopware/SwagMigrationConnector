@@ -18,15 +18,14 @@ class CategoryServiceTest extends TestCase
         $categories = $categoryService->getCategories();
 
         $this->assertInternalType('array', $categories);
-        // contains stripped results, e.g. unneeded parent categories
-        $this->assertCount(60, $categories);
+        $this->assertCount(62, $categories);
 
         $this->assertArrayHasKey('attributes', $categories[0]);
         $this->assertArrayHasKey('_locale', $categories[0]);
 
-        $this->assertSame('5', $categories[0]['id']);
+        $this->assertSame('3', $categories[0]['id']);
         $this->assertNull($categories[0]['parent']);
-        $this->assertSame('Genusswelten', $categories[0]['description']);
+        $this->assertSame('Deutsch', $categories[0]['description']);
         $this->assertSame('de-DE', $categories[0]['_locale']);
     }
 
@@ -37,7 +36,6 @@ class CategoryServiceTest extends TestCase
         $categories = $categoryService->getCategories(58);
 
         $this->assertInternalType('array', $categories);
-        // no results will be stripped out
         $this->assertCount(4, $categories);
 
         $category = $categories[1];
@@ -53,8 +51,7 @@ class CategoryServiceTest extends TestCase
         $categories = $categoryService->getCategories(0, 5);
 
         $this->assertInternalType('array', $categories);
-        // 2 results (Deutsch, English) will be stripped out
-        $this->assertCount(3, $categories);
+        $this->assertCount(5, $categories);
 
         $category = $categories[2];
 
