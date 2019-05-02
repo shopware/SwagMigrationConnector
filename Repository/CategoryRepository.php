@@ -28,7 +28,7 @@ class CategoryRepository extends AbstractRepository
         $query->leftJoin('category', 's_media', 'asset', 'category.mediaID = asset.id');
         $this->addTableSelection($query, 's_media', 'asset');
 
-        $query->andWhere('category.parent IS NOT NULL OR category.path IS NOT NULL');
+        $query->andWhere('category.parent IS NOT NULL');
 
         $query->orderBy('LENGTH(categorypath)');
 
@@ -68,7 +68,7 @@ class CategoryRepository extends AbstractRepository
 
         $query->addSelect('category.id');
         $query->from('s_categories', 'category');
-        $query->andWhere('category.path IS NULL');
+        $query->andWhere('category.parent IS NULL AND category.path IS NULL');
 
         return $query->execute()->fetchAll(\PDO::FETCH_COLUMN);
     }
