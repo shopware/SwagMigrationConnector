@@ -4,8 +4,8 @@
     <entries>
         <entry>
             <name>UpdateCheck</name>
-            <label lang="en">Shopware 6 Update-Check</label>
-            <label lang="de">Shopware 6 Update-Check</label>
+            <label lang="en">Shopware 6 Update</label>
+            <label lang="de">Shopware 6 Update</label>
             <controller>SwagUpdateCheck</controller>
             <action>index</action>
             <class>sprite-arrow-continue-090 misc--software-update</class>

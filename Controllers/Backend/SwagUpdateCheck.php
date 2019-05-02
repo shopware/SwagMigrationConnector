@@ -21,6 +21,7 @@ class Shopware_Controllers_Backend_SwagUpdateCheck extends Shopware_Controllers_
             'locale' => $this->getLocale(),
             'plugins' => $requestedPlugins,
         ], ['X-Shopware-Plugin-Successor-Secret' => 'ZfwRGnMdedoGj3Cxyz7NNQYApzUwyvr1337SroBtUVs2UuNakCgdC9IryTOpGiw']);
+
         $this->View()->assign($this->transformSbpResponse($response, array_column($requestedPlugins, 'name')));
     }
 
@@ -58,10 +59,10 @@ class Shopware_Controllers_Backend_SwagUpdateCheck extends Shopware_Controllers_
         foreach ($response['plugins'] as $name => $plugin) {
             $data[] = [
                 'name' => $name,
-                'recommandations' => $plugin,
+                'recommendations' => $plugin,
             ];
 
-            if ($i = array_search($name, $requestedPlugins, true)) {
+            if (($i = array_search($name, $requestedPlugins, true)) !== false) {
                 unset($requestedPlugins[$i]);
             }
         }
@@ -70,7 +71,7 @@ class Shopware_Controllers_Backend_SwagUpdateCheck extends Shopware_Controllers_
         foreach ($requestedPlugins as $requestedPlugin) {
             $data[] = [
                 'name' => $requestedPlugin,
-                'recommandations' => [
+                'recommendations' => [
                     [
                         'releaseInfo' => null,
                         'sourcePlugin' => [

@@ -31,9 +31,9 @@ Ext.define('Shopware.apps.SwagUpdateCheck.model.Plugins', {
     associations: [
         {
             type: 'hasMany',
-            model: 'Shopware.apps.SwagUpdateCheck.model.Recommandation',
-            name: 'getRecommandations',
-            associationKey: 'recommandations'
+            model: 'Shopware.apps.SwagUpdateCheck.model.Recommendation',
+            name: 'getRecommendations',
+            associationKey: 'recommendations'
         },
     ],
 

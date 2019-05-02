@@ -37,7 +37,7 @@ Ext.define('Shopware.apps.SwagUpdateCheck.view.list.Plugins', {
             {
                 header: '{s name="columns/plugin"}Plugin{/s}',
                 dataIndex: 'name',
-                flex: 1
+                flex: 0.7
             },
             {
                 header: '{s name="columns/available"}{/s}',
@@ -58,11 +58,11 @@ Ext.define('Shopware.apps.SwagUpdateCheck.view.list.Plugins', {
                         tooltip: '{s name="action/show_another_plugins"}{/s}',
                         handler: function (view, rowIndex, colIndex, item, opts, record) {
                             Ext.create('Shopware.apps.SwagUpdateCheck.view.plugin.Window', {
-                                store: record.getRecommandations()
+                                store: record.getRecommendations()
                             })
                         },
                         getClass: function (view, metadata, record) {
-                            if (record.getRecommandations().count() <= 1 && record.getRecommandations().first().get('type') !== 'recommendationByShopware') {
+                            if (record.getRecommendations().count() <= 1 && record.getRecommendations().first().get('type') !== 'recommendationByShopware') {
                                 return 'x-hidden';
                             }
                         }
@@ -73,14 +73,14 @@ Ext.define('Shopware.apps.SwagUpdateCheck.view.list.Plugins', {
     },
 
     availableRenderer: function (value, metaData, record) {
-        var recommand = record.getRecommandations().first();
+        var recommend = record.getRecommendations().first();
 
         var divClass,
             divStyle = 'style="width: 16px; height: 16px; margin: 0 auto;"';
 
-        if (recommand.get('type') === 'successorPlanned') {
+        if (recommend.get('type') === 'successorPlanned' || recommend.get('type') === 'recommendationByShopware') {
             divClass = 'class="sprite-exclamation"';
-        } else if (recommand.get('type') === 'noSuccessor') {
+        } else if (recommend.get('type') === 'noSuccessor') {
             divClass = 'class="sprite-cross"';
         } else {
             divClass = 'class="sprite-tick"';
@@ -90,11 +90,15 @@ Ext.define('Shopware.apps.SwagUpdateCheck.view.list.Plugins', {
     },
 
     messageRenderer: function (value, metaData, record) {
-        var recommand = record.getRecommandations().first(),
+        var recommand = record.getRecommendations().first(),
             text = '';
 
         if (recommand.get('type') === 'successorPlanned') {
             text = '{s name="type/successorPlanned"}{/s}';
+
+            if (recommand.get('plannedReleaseDate')) {
+                text = Ext.String.format('{s name="type/successorPlannedWithReleaseDate"}{/s}', Ext.util.Format.date(recommand.get('plannedReleaseDate')));
+            }
         } else if (recommand.get('type') === 'noSuccessor') {
             text = '{s name="type/noSuccessor"}{/s}';
         } else if (recommand.get('type') === 'recommendationByShopware') {

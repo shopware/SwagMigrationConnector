@@ -20,11 +20,12 @@
  * trademark license. Therefore any rights, title and interest in
  * our trademarks remain entirely with us.
  */
-Ext.define('Shopware.apps.SwagUpdateCheck.model.Recommandation', {
+Ext.define('Shopware.apps.SwagUpdateCheck.model.Recommendation', {
     extend: 'Ext.data.Model',
     fields: [
         { name: 'releaseInfo', type: 'date' },
         { name: 'type', type: 'string' },
+        { name: 'plannedReleaseDate', type: 'date' },
     ],
 
     associations: [

@@ -56,11 +56,6 @@ class RequirementsValidatorService
             'min' => '512M'
         ],
         [
-            'type' => MysqlConfiguration::class,
-            'config' => 'group_concat_max_len',
-            'min' => '320000'
-        ],
-        [
             'type' => LicenseCheck::class,
             'keys' => [
                 'SwagEnterprisePremium',
