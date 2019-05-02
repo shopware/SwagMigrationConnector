@@ -93,6 +93,9 @@ class ProductRepository extends AbstractRepository
         $query->leftJoin('price', 's_articles_prices_attributes', 'price_attributes', 'price.id = price_attributes.priceID');
         $this->addTableSelection($query, 's_articles_prices_attributes', 'price_attributes');
 
+        $query->leftJoin('price', 's_core_currencies', 'currency', 'currency.standard = 1');
+        $query->addSelect('currency.currency as currencyShortName');
+
         $query->where('price.articledetailsID IN (:ids)');
         $query->setParameter('ids', $variantIds, Connection::PARAM_INT_ARRAY);
 

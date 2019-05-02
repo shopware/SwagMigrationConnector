@@ -24,6 +24,8 @@ class EnvironmentService extends AbstractApiService
         'translations' => 's_core_translations',
         'customerGroups' => 's_core_customergroups',
         'configuratorOptions' => 's_article_configurator_options',
+        'numberRanges' => 's_order_number',
+        'currencies' => 's_core_currencies',
     ];
 
     /**

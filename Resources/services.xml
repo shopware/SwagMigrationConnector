@@ -79,7 +79,20 @@
         </service>
 
         <service class="SwagMigrationAssistant\Service\NumberRangeService" id="swag_migration_assistant.service.number_range_service">
-            <argument id="models" type="service"/>
+            <argument type="service" id="models" />
+        </service>
+
+        <service class="SwagMigrationAssistant\Service\CurrencyService" id="swag_migration_assistant.service.currency_service">
+            <argument type="service" id="swag_migration_assistant.repository.currency_repository" />
+            <argument type="service" id="models" />
+        </service>
+
+        <service class="SwagMigrationAssistant\Service\LanguageService" id="swag_migration_assistant.service.language_service">
+            <argument type="service" id="models" />
+        </service>
+
+        <service class="SwagMigrationAssistant\Service\ShopService" id="swag_migration_assistant.service.shop_service">
+            <argument type="service" id="models" />
         </service>
 
         <!--Repositories-->
@@ -118,6 +131,7 @@
             <argument type="service" id="dbal_connection" />
         </service>
 
+        <service id="swag_migration_assistant.repository.currency_repository" class="SwagMigrationAssistant\Repository\CurrencyRepository" parent="SwagMigrationAssistant\Repository\AbstractRepository" />
 </services>
 
 </container>
