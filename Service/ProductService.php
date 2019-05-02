@@ -162,7 +162,7 @@ class ProductService extends AbstractApiService
         $variantIds = $this->productMapping->keys();
         $fetchedPrices = $this->productRepository->fetchProductPrices($variantIds);
 
-        return $this->mapData($fetchedPrices, [], ['price']);
+        return $this->mapData($fetchedPrices, [], ['price', 'currencyShortName']);
     }
 
     /**
