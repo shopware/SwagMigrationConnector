@@ -30,9 +30,8 @@ SELECT
            media.description AS "property_media.description",
            media.path AS "property_media.path",
            media.file_size AS "property_media.file_size",
-           mediaAttr.id AS "property_media.attribute",
-           mediaAlbum.name AS "property_media.album_name",
-           mediaAlbum.position AS "property_media.album_position"
+           media.albumID AS "property_media.albumID",
+           mediaAttr.id AS "property_media.attribute"
     FROM s_filter_values AS filter
            LEFT JOIN s_filter_options AS filterOpt ON filterOpt.id = filter.optionID
            LEFT JOIN s_media AS media ON media.id = filter.media_id
@@ -56,9 +55,8 @@ UNION
            media.description AS "property_media.description",
            media.path AS "property_media.path",
            media.file_size AS "property_media.file_size",
-           mediaAttr.id AS "property_media.attribute",
-           mediaAlbum.name AS "property_media.album_name",
-           mediaAlbum.position AS "property_media.album_position"
+           media.albumID AS "property_media.albumID",
+           mediaAttr.id AS "property_media.attribute"
     FROM s_article_configurator_options AS opt
           LEFT JOIN s_article_configurator_groups AS optGroup ON optGroup.id = opt.group_id
           LEFT JOIN s_media AS media ON media.id = opt.media_id
