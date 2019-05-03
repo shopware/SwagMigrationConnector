@@ -7,6 +7,8 @@
 
 namespace SwagMigrationAssistant\Service;
 
+use Shopware\Components\Model\ModelManager;
+use Shopware\Models\Shop\Shop;
 use SwagMigrationAssistant\Repository\ApiRepositoryInterface;
 use SwagMigrationAssistant\Repository\CategoryRepository;
 
@@ -18,11 +20,18 @@ class CategoryService extends AbstractApiService
     private $categoryRepository;
 
     /**
-     * @param ApiRepositoryInterface $categoryRepository
+     * @var ModelManager
      */
-    public function __construct(ApiRepositoryInterface $categoryRepository)
+    private $modelManager;
+
+    /**
+     * @param ApiRepositoryInterface $categoryRepository
+     * @param ModelManager $modelManager
+     */
+    public function __construct(ApiRepositoryInterface $categoryRepository, ModelManager $modelManager)
     {
         $this->categoryRepository = $categoryRepository;
+        $this->modelManager = $modelManager;
     }
 
     /**
@@ -55,6 +64,10 @@ class CategoryService extends AbstractApiService
     {
         $resultSet = [];
         $ignoredCategories = $this->categoryRepository->fetchIgnoredCategories();
+        $defaultShop = $this->modelManager->getRepository(Shop::class)->getDefault();
+
+        // represents the main language of the migrated shop
+        $defaultLocale = str_replace('_', '-', $defaultShop->getLocale()->getLocale());
 
         foreach ($categories as $key => $category) {
             if (in_array($category['parent'], $ignoredCategories, true)) {
@@ -67,7 +80,12 @@ class CategoryService extends AbstractApiService
                 );
                 $topMostParent = end($parentCategoryIds);
             }
-            $category['_locale'] = str_replace('_', '-', $topMostCategories[$topMostParent]);
+            $locale = str_replace('_', '-', $topMostCategories[$topMostParent]);
+
+            if (empty($locale)) {
+                $locale = $defaultLocale;
+            }
+            $category['_locale'] = $locale;
             $resultSet[] = $category;
         }
 
