@@ -49,7 +49,7 @@ class CustomerService extends AbstractApiService
         $fetchedCustomers = $this->customerRepository->fetch($offset, $limit);
         $ids = array_column($fetchedCustomers, 'customer.id');
 
-        $customers = $this->mapData($fetchedCustomers, [], ['customer']);
+        $customers = $this->mapData($fetchedCustomers, [], ['customer', 'customerGroupId']);
 
         $resultSet = $this->assignAssociatedData($customers, $ids);
 
@@ -64,13 +64,6 @@ class CustomerService extends AbstractApiService
         $fetchedPaymentData = $this->customerRepository->fetchPaymentData($ids);
         $paymentData = $this->mapData($fetchedPaymentData, [], ['paymentdata']);
 
-        $groupIds = array_column(
-            array_column($customers, 'group'),
-            'id'
-        );
-        $fetchedDiscounts = $this->customerRepository->fetchCustomerGroupDiscounts($groupIds);
-        $discounts = $this->mapData($fetchedDiscounts, [], ['discounts']);
-
         /** @var Shop $defaultShop */
         $defaultShop = $this->modelManager->getRepository(Shop::class)->getDefault();
 
@@ -84,9 +77,6 @@ class CustomerService extends AbstractApiService
             }
             if (isset($paymentData[$customer['id']])) {
                 $customer['paymentdata'] = $paymentData[$customer['id']];
-            }
-            if (isset($discounts[$customer['group']['id']])) {
-                $customer['group']['discounts'] = $discounts[$customer['group']['id']];
             }
             if (isset($customer['customerlanguage']['locale'])) {
                 $customer['customerlanguage']['locale'] = str_replace('_', '-', $customer['customerlanguage']['locale']);

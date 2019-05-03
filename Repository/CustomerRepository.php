@@ -27,7 +27,7 @@ class CustomerRepository extends AbstractRepository
         $this->addTableSelection($query, 's_user_attributes', 'attributes');
 
         $query->leftJoin('customer', 's_core_customergroups', 'customer_group', 'customer.customergroup = customer_group.groupkey');
-        $this->addTableSelection($query, 's_core_customergroups', 'customer_group');
+        $query->addSelect('customer_group.id as customerGroupId');
 
         $query->leftJoin('customer', 's_core_paymentmeans', 'defaultpayment', 'customer.paymentID = defaultpayment.id');
         $this->addTableSelection($query, 's_core_paymentmeans', 'defaultpayment');
@@ -37,9 +37,6 @@ class CustomerRepository extends AbstractRepository
 
         $query->leftJoin('customer', 's_core_locales', 'customerlanguage', 'customer.language = customerlanguage.id');
         $this->addTableSelection($query, 's_core_locales', 'customerlanguage');
-
-        $query->leftJoin('customer', 's_core_shops', 'shop', 'customer.subshopID = shop.id');
-        $this->addTableSelection($query, 's_core_shops', 'shop');
 
         $query->where('customer.id IN (:ids)');
         $query->setParameter('ids', $ids, Connection::PARAM_STR_ARRAY);

@@ -28,9 +28,8 @@ class CustomerServiceTest extends TestCase
         $this->assertArrayHasKey('_locale', $customer);
         $this->assertArrayHasKey('country', $customer['addresses'][0]);
 
-        $this->assertArrayHasKey('group', $customer);
+        $this->assertArrayHasKey('customerGroupId', $customer);
         $this->assertArrayHasKey('customerlanguage', $customer);
-        $this->assertArrayHasKey('shop', $customer);
     }
 
     public function test_read_customers_with_offset_should_be_successful()

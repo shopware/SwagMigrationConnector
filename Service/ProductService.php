@@ -149,9 +149,8 @@ class ProductService extends AbstractApiService
         $productIds = array_values(
             $this->productMapping->getIterator()->getArrayCopy()
         );
-        $fetchedCategories = $this->productRepository->fetchProductCategories($productIds);
 
-        return $this->mapData($fetchedCategories, [], ['category', 'id']);
+        return $this->productRepository->fetchProductCategories($productIds);
     }
 
     /**
