@@ -25,6 +25,7 @@
 
         <service id="swag_migration_assistant.service.category_service" class="SwagMigrationAssistant\Service\CategoryService">
             <argument type="service" id="swag_migration_assistant.repository.category_repository" />
+            <argument type="service" id="models" />
         </service>
 
         <service id="swag_migration_assistant.service.product_service" class="SwagMigrationAssistant\Service\ProductService">
