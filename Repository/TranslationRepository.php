@@ -24,9 +24,9 @@ class TranslationRepository extends AbstractRepository
         $query->from('s_core_translations', 'translation');
         $this->addTableSelection($query, 's_core_translations', 'translation');
 
-        $query->leftJoin('translation', 's_core_shops', 'shop', 'shop.id = translation.objectlanguage');
+        $query->innerJoin('translation', 's_core_shops', 'shop', 'shop.id = translation.objectlanguage');
         $query->leftJoin('shop', 's_core_locales', 'locale', 'locale.id = shop.locale_id');
-        $query->addSelect('REPLACE(locale.locale, "_", "-") as _locale');
+        $query->addSelect('REPLACE(locale.locale, "_", "-") as locale');
 
         $query->leftJoin('translation', 's_articles_supplier', 'manufacturer', 'translation.objecttype = "supplier" AND translation.objectkey = manufacturer.id');
         $query->addSelect('manufacturer.name');
