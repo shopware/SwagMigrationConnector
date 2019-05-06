@@ -60,7 +60,7 @@ Ext.define('Shopware.apps.SwagUpdateCheck.view.list.Requirements', {
     },
 
     availableRenderer: function (value, metaData, record) {
-        var recommand = record.getRecommandations().first();
+        var recommand = record.getRecommendations().first();
 
         var divClass,
             divStyle = 'style="width: 16px; height: 16px; margin: 0 auto;"';
@@ -77,7 +77,7 @@ Ext.define('Shopware.apps.SwagUpdateCheck.view.list.Requirements', {
     },
 
     messageRenderer: function (value, metaData, record) {
-        var recommand = record.getRecommandations().first(),
+        var recommand = record.getRecommendations().first(),
             text = '';
 
         if (recommand.get('type') === 'successorPlanned') {

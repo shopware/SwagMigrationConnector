@@ -20,17 +20,11 @@
  * trademark license. Therefore any rights, title and interest in
  * our trademarks remain entirely with us.
  */
-Ext.define('Shopware.apps.SwagUpdateCheck', {
-    extend: 'Enlight.app.SubApplication',
-    name:'Shopware.apps.SwagUpdateCheck',
-    loadPath: '{url action=load}',
-    bulkLoad: true,
-    controllers: [ 'Main' ],
-    stores: [ 'Requirements', 'Plugins' ],
-    models: [ 'Requirement', 'Plugins', 'Recommendation', 'StorePlugin' ],
-    views: [ 'list.Window', 'list.Plugins', 'list.Requirements', 'list.Info', 'plugin.Window' ],
 
-    launch: function() {
-        return this.getController('Main').mainWindow;
-    }
+// {namespace name=backend/swag_update_check/main}
+Ext.define('Shopware.apps.SwagUpdateCheck.view.list.Info', {
+   extend: 'Ext.container.Container',
+   title: 'Info',
+
+   html: '{s name="tabs/info"}{/s}'
 });

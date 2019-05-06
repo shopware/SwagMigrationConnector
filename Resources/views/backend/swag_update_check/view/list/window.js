@@ -32,7 +32,7 @@ Ext.define('Shopware.apps.SwagUpdateCheck.view.list.Window', {
 
     layout: 'fit',
 
-    width: 755,
+    width: 1000,
     height: 715,
 
     bodyStyle: 'border-bottom-width: 0 !important; border-radius: 0; -webkit-border-radius: 0; -moz-border-radius: 0;',
@@ -64,6 +64,7 @@ Ext.define('Shopware.apps.SwagUpdateCheck.view.list.Window', {
         this.tabPanel = Ext.create('Ext.tab.Panel', {
             flex: 1,
             items: [
+                Ext.create('Shopware.apps.SwagUpdateCheck.view.list.Info'),
                 Ext.create('Shopware.apps.SwagUpdateCheck.view.list.Requirements', {
                     store: this.requirementsStore,
                 }),
@@ -89,9 +90,9 @@ Ext.define('Shopware.apps.SwagUpdateCheck.view.list.Window', {
 
         me.updateButton = Ext.create('Ext.button.Button', {
             cls: 'primary',
-            text: '{s name="start_update"}Start update{/s}',
+            text: '{s name="start_update"}zum Shopware Account{/s}',
             handler: function() {
-                window.open('https://google.de')
+                window.open('https://account.shopware.com/shops/shops')
             }
         });
 
