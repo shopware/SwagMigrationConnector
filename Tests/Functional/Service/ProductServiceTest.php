@@ -32,9 +32,7 @@ class ProductServiceTest extends TestCase
         $this->assertArrayHasKey('customergroup', $products[0]['prices'][0]);
         $this->assertArrayHasKey('assets', $products[0]);
         $this->assertArrayHasKey('media', $products[0]['assets'][0]);
-        $this->assertArrayHasKey('album', $products[0]['assets'][0]['media']);
         $this->assertArrayHasKey('uri', $products[0]['assets'][0]['media']);
-        $this->assertArrayHasKey('settings', $products[0]['assets'][0]['media']['album']);
 
         $this->assertSame('3', $products[0]['id']);
     }

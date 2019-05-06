@@ -176,12 +176,6 @@ class ProductRepository extends AbstractRepository
         $query->leftJoin('asset_media', 's_media_attributes', 'asset_media_attributes', 'asset_media.id = asset_media_attributes.mediaID');
         $this->addTableSelection($query, 's_media_attributes', 'asset_media_attributes');
 
-        $query->leftJoin('asset_media', 's_media_album', 'asset_media_album', 'asset_media.albumID = asset_media_album.id');
-        $this->addTableSelection($query, 's_media_album', 'asset_media_album');
-
-        $query->leftJoin('asset_media_album', 's_media_album_settings', 'asset_media_album_settings', 'asset_media_album.id = asset_media_album_settings.albumID');
-        $this->addTableSelection($query, 's_media_album_settings', 'asset_media_album_settings');
-
         $query->where('asset.articleID IN (:ids)');
         $query->setParameter('ids', $productIds, Connection::PARAM_INT_ARRAY);
 

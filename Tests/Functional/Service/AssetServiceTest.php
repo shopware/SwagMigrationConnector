@@ -22,8 +22,6 @@ class AssetServiceTest extends TestCase
 
         $firstAsset = $assets[0];
 
-        $this->assertArrayHasKey('album', $firstAsset);
-        $this->assertArrayHasKey('settings', $firstAsset['album']);
         $this->assertArrayHasKey('uri', $firstAsset);
     }
 
@@ -38,8 +36,6 @@ class AssetServiceTest extends TestCase
 
         $asset = $assets[5];
 
-        $this->assertArrayHasKey('album', $asset);
-        $this->assertArrayHasKey('settings', $asset['album']);
         $this->assertArrayHasKey('uri', $asset);
     }
 
@@ -54,8 +50,6 @@ class AssetServiceTest extends TestCase
 
         $firstAsset = $assets[0];
 
-        $this->assertArrayHasKey('album', $firstAsset);
-        $this->assertArrayHasKey('settings', $firstAsset['album']);
         $this->assertArrayHasKey('uri', $firstAsset);
     }
 
@@ -70,8 +64,6 @@ class AssetServiceTest extends TestCase
 
         $asset = $assets[0];
 
-        $this->assertArrayHasKey('album', $asset);
-        $this->assertArrayHasKey('settings', $asset['album']);
         $this->assertArrayHasKey('uri', $asset);
     }
 
