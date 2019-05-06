@@ -18,7 +18,7 @@ class TranslationServiceTest extends TestCase
         $translations = $translationService->getTranslations();
 
         $this->assertInternalType('array', $translations);
-        $this->assertCount(125, $translations);
+        $this->assertCount(123, $translations);
 
         $firstTranslation = $translations[0];
 
@@ -34,12 +34,12 @@ class TranslationServiceTest extends TestCase
         $translations = $translationService->getTranslations(1);
 
         $this->assertInternalType('array', $translations);
-        $this->assertCount(124, $translations);
+        $this->assertCount(122, $translations);
 
         $translation = $translations[5];
 
-        $this->assertSame('article', $translation['objecttype']);
-        $this->assertSame('122', $translation['objectkey']);
+        $this->assertSame('propertyoption', $translation['objecttype']);
+        $this->assertSame('1', $translation['objectkey']);
         $this->assertArrayHasKey('locale', $translation);
         $this->assertSame('en-GB', $translation['locale']);
     }
