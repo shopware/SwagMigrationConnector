@@ -70,6 +70,7 @@ class CategoryService extends AbstractApiService
         $defaultLocale = str_replace('_', '-', $defaultShop->getLocale()->getLocale());
 
         foreach ($categories as $key => $category) {
+            $locale = '';
             if (in_array($category['parent'], $ignoredCategories, true)) {
                 $category['parent'] = null;
             }
@@ -80,8 +81,9 @@ class CategoryService extends AbstractApiService
                 );
                 $topMostParent = end($parentCategoryIds);
             }
-            $locale = str_replace('_', '-', $topMostCategories[$topMostParent]);
-
+            if (isset($topMostCategories[$topMostParent])) {
+                $locale = str_replace('_', '-', $topMostCategories[$topMostParent]);
+            }
             if (empty($locale)) {
                 $locale = $defaultLocale;
             }
