@@ -18,7 +18,7 @@ class OrderServiceTest extends TestCase
         $orders = $orderService->getOrders();
 
         $this->assertInternalType('array', $orders);
-        $this->assertCount(4, $orders);
+        $this->assertCount(2, $orders);
 
         $this->assertArrayHasKey('attributes', $orders[0]);
         $this->assertArrayHasKey('_locale', $orders[0]);
@@ -36,9 +36,9 @@ class OrderServiceTest extends TestCase
         $orders = $orderService->getOrders(1);
 
         $this->assertInternalType('array', $orders);
-        $this->assertCount(3, $orders);
+        $this->assertCount(1, $orders);
 
-        $order = $orders[2];
+        $order = $orders[0];
 
         $this->assertSame('57', $order['id']);
         $this->assertSame('20002', $order['ordernumber']);
@@ -52,11 +52,11 @@ class OrderServiceTest extends TestCase
         $orders = $orderService->getOrders(0, 2);
 
         $this->assertInternalType('array', $orders);
-        $this->assertCount(2, $orders);
+        $this->assertCount(1, $orders);
 
-        $order = $orders[1];
+        $order = $orders[0];
 
-        $this->assertSame('52', $order['id']);
+        $this->assertSame('15', $order['id']);
         $this->assertSame('19.00', $order['details'][1]['tax']['tax']);
     }
 
@@ -67,11 +67,7 @@ class OrderServiceTest extends TestCase
         $orders = $orderService->getOrders(2, 1);
 
         $this->assertInternalType('array', $orders);
-        $this->assertCount(1, $orders);
-
-        $order = $orders[0];
-
-        $this->assertSame('54', $order['id']);
+        $this->assertCount(0, $orders);
     }
 
     public function test_read_with_out_of_bounds_offset_should_offer_empty_array()
