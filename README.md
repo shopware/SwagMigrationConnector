@@ -1,4 +1,4 @@
-# SwagMigrationAssistant
+# SwagMigrationConnector
 
 ## A plugin which delivers new API endpoints for fast data reads.
 

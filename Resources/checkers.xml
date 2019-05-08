@@ -5,7 +5,7 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="swag_migration_api.service.requirements_validator_service" class="SwagMigrationAssistant\Service\RequirementsValidatorService">
+        <service id="swag_migration_api.service.requirements_validator_service" class="SwagMigrationConnector\Service\RequirementsValidatorService">
             <argument type="collection">
                 <argument type="service" id="swag_migration_api.service.checker.php_version"/>
                 <argument type="service" id="swag_migration_api.service.checker.mysql_version"/>
@@ -16,29 +16,29 @@
             </argument>
         </service>
 
-        <service id="swag_migration_api.service.checker.php_version" class="SwagMigrationAssistant\Service\Checker\PhpVersion">
+        <service id="swag_migration_api.service.checker.php_version" class="SwagMigrationConnector\Service\Checker\PhpVersion">
             <argument type="service" id="snippets"/>
         </service>
 
-        <service id="swag_migration_api.service.checker.mysql_version" class="SwagMigrationAssistant\Service\Checker\MysqlVersion">
+        <service id="swag_migration_api.service.checker.mysql_version" class="SwagMigrationConnector\Service\Checker\MysqlVersion">
             <argument type="service" id="dbal_connection"/>
             <argument type="service" id="snippets"/>
         </service>
 
-        <service id="swag_migration_api.service.checker.php_extensions" class="SwagMigrationAssistant\Service\Checker\PhpExtensions">
+        <service id="swag_migration_api.service.checker.php_extensions" class="SwagMigrationConnector\Service\Checker\PhpExtensions">
             <argument type="service" id="snippets"/>
         </service>
 
-        <service id="swag_migration_api.service.checker.php_configuration" class="SwagMigrationAssistant\Service\Checker\PhpConfiguration">
+        <service id="swag_migration_api.service.checker.php_configuration" class="SwagMigrationConnector\Service\Checker\PhpConfiguration">
             <argument type="service" id="snippets"/>
         </service>
 
-        <service id="swag_migration_api.service.checker.mysql_configuration" class="SwagMigrationAssistant\Service\Checker\MysqlConfiguration">
+        <service id="swag_migration_api.service.checker.mysql_configuration" class="SwagMigrationConnector\Service\Checker\MysqlConfiguration">
             <argument type="service" id="snippets"/>
             <argument type="service" id="dbal_connection"/>
         </service>
 
-        <service id="swag_migration_api.service.checker.license_check" class="SwagMigrationAssistant\Service\Checker\LicenseCheck">
+        <service id="swag_migration_api.service.checker.license_check" class="SwagMigrationConnector\Service\Checker\LicenseCheck">
             <argument type="service" id="snippets"/>
             <argument>%shopware.store.apiEndpoint%</argument>
             <argument>%shopware.release.version%</argument>

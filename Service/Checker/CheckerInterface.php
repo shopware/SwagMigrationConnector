@@ -1,6 +1,6 @@
 <?php
 
-namespace SwagMigrationAssistant\Service\Checker;
+namespace SwagMigrationConnector\Service\Checker;
 
 interface CheckerInterface
 {

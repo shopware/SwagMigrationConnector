@@ -8,135 +8,135 @@
 
         <!--Services-->
 
-        <service id="swag_migration_assistant.service.environment_service" class="SwagMigrationAssistant\Service\EnvironmentService">
+        <service id="swag_migration_connector.service.environment_service" class="SwagMigrationConnector\Service\EnvironmentService">
             <argument type="service" id="models" />
-            <argument type="service" id="swag_migration_assistant.repository.environment_repository" />
-            <argument type="service" id="swag_migration_assistant.service.plugin_information_service" />
+            <argument type="service" id="swag_migration_connector.repository.environment_repository" />
+            <argument type="service" id="swag_migration_connector.service.plugin_information_service" />
             <argument>%shopware.release.version%</argument>
             <argument>%shopware.release.version_text%</argument>
             <argument>%shopware.release.revision%</argument>
         </service>
 
-        <service id="swag_migration_assistant.service.plugin_information_service" class="SwagMigrationAssistant\Service\PluginInformationService">
+        <service id="swag_migration_connector.service.plugin_information_service" class="SwagMigrationConnector\Service\PluginInformationService">
             <argument type="service" id="shopware_plugininstaller.plugin_service_store_production" />
             <argument type="service" id="dbal_connection" />
             <argument>%shopware.release.version%</argument>
         </service>
 
-        <service id="swag_migration_assistant.service.category_service" class="SwagMigrationAssistant\Service\CategoryService">
-            <argument type="service" id="swag_migration_assistant.repository.category_repository" />
+        <service id="swag_migration_connector.service.category_service" class="SwagMigrationConnector\Service\CategoryService">
+            <argument type="service" id="swag_migration_connector.repository.category_repository" />
             <argument type="service" id="models" />
         </service>
 
-        <service id="swag_migration_assistant.service.product_service" class="SwagMigrationAssistant\Service\ProductService">
-            <argument type="service" id="swag_migration_assistant.repository.product_repository" />
+        <service id="swag_migration_connector.service.product_service" class="SwagMigrationConnector\Service\ProductService">
+            <argument type="service" id="swag_migration_connector.repository.product_repository" />
             <argument type="service" id="shopware_media.media_service" />
             <argument type="service" id="models" />
         </service>
 
-        <service id="swag_migration_assistant.service.customer_service" class="SwagMigrationAssistant\Service\CustomerService">
-            <argument type="service" id="swag_migration_assistant.repository.customer_repository" />
+        <service id="swag_migration_connector.service.customer_service" class="SwagMigrationConnector\Service\CustomerService">
+            <argument type="service" id="swag_migration_connector.repository.customer_repository" />
             <argument type="service" id="models" />
         </service>
 
-        <service id="swag_migration_assistant.service.order_service" class="SwagMigrationAssistant\Service\OrderService">
-            <argument type="service" id="swag_migration_assistant.repository.order_repository" />
+        <service id="swag_migration_connector.service.order_service" class="SwagMigrationConnector\Service\OrderService">
+            <argument type="service" id="swag_migration_connector.repository.order_repository" />
             <argument type="service" id="models" />
         </service>
 
         <!-- Todo: Implement a DocumentService for 5.4
-        <service id="swag_migration_assistant.service.document_service" class="SwagMigrationAssistant\Service\DocumentService">
-            <argument type="service" id="swag_migration_assistant.repository.document_repository" />
+        <service id="swag_migration_connector.service.document_service" class="SwagMigrationConnector\Service\DocumentService">
+            <argument type="service" id="swag_migration_connector.repository.document_repository" />
             <argument type="service" id="shopware.filesystem.private" />
             <argument type="service" id="models" />
         </service>
         -->
 
-        <service id="swag_migration_assistant.service.translation_service" class="SwagMigrationAssistant\Service\TranslationService">
-            <argument type="service" id="swag_migration_assistant.repository.translation_repository" />
+        <service id="swag_migration_connector.service.translation_service" class="SwagMigrationConnector\Service\TranslationService">
+            <argument type="service" id="swag_migration_connector.repository.translation_repository" />
         </service>
 
-        <service id="swag_migration_assistant.service.asset_service" class="SwagMigrationAssistant\Service\AssetService">
-            <argument type="service" id="swag_migration_assistant.repository.asset_repository" />
+        <service id="swag_migration_connector.service.asset_service" class="SwagMigrationConnector\Service\AssetService">
+            <argument type="service" id="swag_migration_connector.repository.asset_repository" />
             <argument type="service" id="shopware_media.media_service" />
             <argument type="service" id="models" />
         </service>
 
-        <service id="swag_migration_assistant.service.customer_group_service" class="SwagMigrationAssistant\Service\CustomerGroupService">
-            <argument type="service" id="swag_migration_assistant.repository.customer_group_repository" />
-            <argument type="service" id="swag_migration_assistant.repository.customer_repository" />
+        <service id="swag_migration_connector.service.customer_group_service" class="SwagMigrationConnector\Service\CustomerGroupService">
+            <argument type="service" id="swag_migration_connector.repository.customer_group_repository" />
+            <argument type="service" id="swag_migration_connector.repository.customer_repository" />
             <argument type="service" id="models" />
         </service>
 
-        <service class="SwagMigrationAssistant\Service\AttributeService" id="swag_migration_assistant.service.attribute_service">
-            <argument type="service" id="swag_migration_assistant.repository.attribute_repository" />
+        <service class="SwagMigrationConnector\Service\AttributeService" id="swag_migration_connector.service.attribute_service">
+            <argument type="service" id="swag_migration_connector.repository.attribute_repository" />
             <argument type="service" id="models" />
         </service>
 
-        <service class="SwagMigrationAssistant\Service\ConfiguratorOptionService" id="swag_migration_assistant.service.configurator_option_service">
-            <argument type="service" id="swag_migration_assistant.repository.configurator_option_repository" />
+        <service class="SwagMigrationConnector\Service\ConfiguratorOptionService" id="swag_migration_connector.service.configurator_option_service">
+            <argument type="service" id="swag_migration_connector.repository.configurator_option_repository" />
             <argument type="service" id="models" />
             <argument type="service" id="shopware_media.media_service"/>
         </service>
 
-        <service class="SwagMigrationAssistant\Service\NumberRangeService" id="swag_migration_assistant.service.number_range_service">
+        <service class="SwagMigrationConnector\Service\NumberRangeService" id="swag_migration_connector.service.number_range_service">
             <argument type="service" id="models" />
         </service>
 
-        <service class="SwagMigrationAssistant\Service\CurrencyService" id="swag_migration_assistant.service.currency_service">
-            <argument type="service" id="swag_migration_assistant.repository.currency_repository" />
+        <service class="SwagMigrationConnector\Service\CurrencyService" id="swag_migration_connector.service.currency_service">
+            <argument type="service" id="swag_migration_connector.repository.currency_repository" />
             <argument type="service" id="models" />
         </service>
 
-        <service class="SwagMigrationAssistant\Service\LanguageService" id="swag_migration_assistant.service.language_service">
+        <service class="SwagMigrationConnector\Service\LanguageService" id="swag_migration_connector.service.language_service">
             <argument type="service" id="models" />
         </service>
 
-        <service class="SwagMigrationAssistant\Service\ShopService" id="swag_migration_assistant.service.shop_service">
+        <service class="SwagMigrationConnector\Service\ShopService" id="swag_migration_connector.service.shop_service">
             <argument type="service" id="models" />
         </service>
 
-        <service class="SwagMigrationAssistant\Service\MediaAlbumService" id="swag_migration_assistant.service.media_album_service">
+        <service class="SwagMigrationConnector\Service\MediaAlbumService" id="swag_migration_connector.service.media_album_service">
             <argument type="service" id="models" />
         </service>
 
         <!--Repositories-->
 
-        <service id="swag_migration_assistant.repository.environment_repository" class="SwagMigrationAssistant\Repository\EnvironmentRepository">
+        <service id="swag_migration_connector.repository.environment_repository" class="SwagMigrationConnector\Repository\EnvironmentRepository">
             <argument type="service" id="dbal_connection"/>
         </service>
 
-        <service id="SwagMigrationAssistant\Repository\AbstractRepository" abstract="true">
+        <service id="SwagMigrationConnector\Repository\AbstractRepository" abstract="true">
             <argument type="service" id="dbal_connection" />
         </service>
 
-        <service id="swag_migration_assistant.repository.category_repository" class="SwagMigrationAssistant\Repository\CategoryRepository" parent="SwagMigrationAssistant\Repository\AbstractRepository" />
+        <service id="swag_migration_connector.repository.category_repository" class="SwagMigrationConnector\Repository\CategoryRepository" parent="SwagMigrationConnector\Repository\AbstractRepository" />
 
-        <service id="swag_migration_assistant.repository.product_repository" class="SwagMigrationAssistant\Repository\ProductRepository" parent="SwagMigrationAssistant\Repository\AbstractRepository" />
+        <service id="swag_migration_connector.repository.product_repository" class="SwagMigrationConnector\Repository\ProductRepository" parent="SwagMigrationConnector\Repository\AbstractRepository" />
 
-        <service id="swag_migration_assistant.repository.customer_repository" class="SwagMigrationAssistant\Repository\CustomerRepository" parent="SwagMigrationAssistant\Repository\AbstractRepository" />
+        <service id="swag_migration_connector.repository.customer_repository" class="SwagMigrationConnector\Repository\CustomerRepository" parent="SwagMigrationConnector\Repository\AbstractRepository" />
 
-        <service id="swag_migration_assistant.repository.order_repository" class="SwagMigrationAssistant\Repository\OrderRepository" parent="SwagMigrationAssistant\Repository\AbstractRepository" />
+        <service id="swag_migration_connector.repository.order_repository" class="SwagMigrationConnector\Repository\OrderRepository" parent="SwagMigrationConnector\Repository\AbstractRepository" />
 
-        <service id="swag_migration_assistant.repository.document_repository" class="SwagMigrationAssistant\Repository\DocumentRepository" parent="SwagMigrationAssistant\Repository\AbstractRepository" />
+        <service id="swag_migration_connector.repository.document_repository" class="SwagMigrationConnector\Repository\DocumentRepository" parent="SwagMigrationConnector\Repository\AbstractRepository" />
 
-        <service id="swag_migration_assistant.repository.translation_repository" class="SwagMigrationAssistant\Repository\TranslationRepository" parent="SwagMigrationAssistant\Repository\AbstractRepository" />
+        <service id="swag_migration_connector.repository.translation_repository" class="SwagMigrationConnector\Repository\TranslationRepository" parent="SwagMigrationConnector\Repository\AbstractRepository" />
 
-        <service id="swag_migration_assistant.repository.asset_repository" class="SwagMigrationAssistant\Repository\AssetRepository" parent="SwagMigrationAssistant\Repository\AbstractRepository" />
+        <service id="swag_migration_connector.repository.asset_repository" class="SwagMigrationConnector\Repository\AssetRepository" parent="SwagMigrationConnector\Repository\AbstractRepository" />
 
-        <service id="swag_migration_assistant.repository.customer_group_repository" class="SwagMigrationAssistant\Repository\CustomerGroupRepository" parent="SwagMigrationAssistant\Repository\AbstractRepository" />
+        <service id="swag_migration_connector.repository.customer_group_repository" class="SwagMigrationConnector\Repository\CustomerGroupRepository" parent="SwagMigrationConnector\Repository\AbstractRepository" />
 
-        <service id="swag_migration_assistant.repository.configurator_option_repository" class="SwagMigrationAssistant\Repository\ConfiguratorOptionRepository" parent="SwagMigrationAssistant\Repository\AbstractRepository" />
+        <service id="swag_migration_connector.repository.configurator_option_repository" class="SwagMigrationConnector\Repository\ConfiguratorOptionRepository" parent="SwagMigrationConnector\Repository\AbstractRepository" />
 
-        <service id="swag_migration_assistant.repository.dynamic_repository" class="SwagMigrationAssistant\Repository\DynamicRepository">
+        <service id="swag_migration_connector.repository.dynamic_repository" class="SwagMigrationConnector\Repository\DynamicRepository">
             <argument type="service" id="dbal_connection" />
         </service>
 
-        <service id="swag_migration_assistant.repository.attribute_repository" class="SwagMigrationAssistant\Repository\AttributeRepository">
+        <service id="swag_migration_connector.repository.attribute_repository" class="SwagMigrationConnector\Repository\AttributeRepository">
             <argument type="service" id="dbal_connection" />
         </service>
 
-        <service id="swag_migration_assistant.repository.currency_repository" class="SwagMigrationAssistant\Repository\CurrencyRepository" parent="SwagMigrationAssistant\Repository\AbstractRepository" />
+        <service id="swag_migration_connector.repository.currency_repository" class="SwagMigrationConnector\Repository\CurrencyRepository" parent="SwagMigrationConnector\Repository\AbstractRepository" />
 </services>
 
 </container>

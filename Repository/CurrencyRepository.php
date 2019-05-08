@@ -5,7 +5,7 @@
  * file that was distributed with this source code.
  */
 
-namespace SwagMigrationAssistant\Repository;
+namespace SwagMigrationConnector\Repository;
 
 class CurrencyRepository extends AbstractRepository
 {

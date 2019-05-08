@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit bootstrap="./Tests/Bootstrap.php"
          colors="true">
-    <testsuite name="Swag Migration Assistant Test Suite">
+    <testsuite name="Swag Migration Connector Test Suite">
         <directory>Tests</directory>
     </testsuite>
 
@@ -15,7 +15,7 @@
                 <directory suffix=".php">./Exception</directory>
 
                 <!-- Bootstrap -->
-                <file>SwagMigrationAssistant.php</file>
+                <file>SwagMigrationConnector.php</file>
             </exclude>
         </whitelist>
     </filter>

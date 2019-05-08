@@ -5,7 +5,7 @@
  * file that was distributed with this source code.
  */
 
-namespace SwagMigrationAssistant\Service;
+namespace SwagMigrationConnector\Service;
 
 use Doctrine\DBAL\Connection;
 use Shopware\Components\Model\ModelManager;

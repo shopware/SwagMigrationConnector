@@ -6,10 +6,10 @@
  */
 
 use Shopware\Models\User\Role;
-use SwagMigrationAssistant\Exception\ParameterMissingException;
-use SwagMigrationAssistant\Exception\PermissionDeniedException;
-use SwagMigrationAssistant\Exception\UnknownTableException;
-use SwagMigrationAssistant\Exception\UnsecureRequestException;
+use SwagMigrationConnector\Exception\ParameterMissingException;
+use SwagMigrationConnector\Exception\PermissionDeniedException;
+use SwagMigrationConnector\Exception\UnknownTableException;
+use SwagMigrationConnector\Exception\UnsecureRequestException;
 
 class Shopware_Controllers_Api_SwagMigrationAttributes extends Shopware_Controllers_Api_Rest
 {
@@ -21,7 +21,7 @@ class Shopware_Controllers_Api_SwagMigrationAttributes extends Shopware_Controll
     {
         parent::preDispatch();
 
-        $pluginName = $this->container->getParameter('swag_migration_assistant.plugin_name');
+        $pluginName = $this->container->getParameter('swag_migration_connector.plugin_name');
         $pluginConfig = $this->container->get('shopware.plugin.config_reader')->getByPluginName($pluginName);
 
         if (!$this->Request()->isSecure() && (bool) $pluginConfig['enforceSSL']) {
@@ -68,7 +68,7 @@ class Shopware_Controllers_Api_SwagMigrationAttributes extends Shopware_Controll
         }
 
         $attributeConfiguration = $this->container
-            ->get('swag_migration_assistant.service.attribute_service')
+            ->get('swag_migration_connector.service.attribute_service')
             ->getAttributeConfiguration($attributeTable)
         ;
 

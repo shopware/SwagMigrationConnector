@@ -5,7 +5,7 @@
  * file that was distributed with this source code.
  */
 
-namespace SwagMigrationAssistant\Tests\Functional\Service;
+namespace SwagMigrationConnector\Tests\Functional\Service;
 
 use PHPUnit\Framework\TestCase;
 
@@ -13,7 +13,7 @@ class OrderServiceTest extends TestCase
 {
     public function test_read_orders_should_be_successful()
     {
-        $orderService = Shopware()->Container()->get('swag_migration_assistant.service.order_service');
+        $orderService = Shopware()->Container()->get('swag_migration_connector.service.order_service');
 
         $orders = $orderService->getOrders();
 
@@ -31,7 +31,7 @@ class OrderServiceTest extends TestCase
 
     public function test_read_orders_with_offset_should_be_successful()
     {
-        $orderService = Shopware()->Container()->get('swag_migration_assistant.service.order_service');
+        $orderService = Shopware()->Container()->get('swag_migration_connector.service.order_service');
 
         $orders = $orderService->getOrders(1);
 
@@ -47,7 +47,7 @@ class OrderServiceTest extends TestCase
 
     public function test_read_orders_with_limit_should_be_successful()
     {
-        $orderService = Shopware()->Container()->get('swag_migration_assistant.service.order_service');
+        $orderService = Shopware()->Container()->get('swag_migration_connector.service.order_service');
 
         $orders = $orderService->getOrders(0, 2);
 
@@ -62,7 +62,7 @@ class OrderServiceTest extends TestCase
 
     public function test_read_orders_with_offset_and_limit_should_be_successful()
     {
-        $orderService = Shopware()->Container()->get('swag_migration_assistant.service.order_service');
+        $orderService = Shopware()->Container()->get('swag_migration_connector.service.order_service');
 
         $orders = $orderService->getOrders(2, 1);
 
@@ -72,7 +72,7 @@ class OrderServiceTest extends TestCase
 
     public function test_read_with_out_of_bounds_offset_should_offer_empty_array()
     {
-        $orderService = Shopware()->Container()->get('swag_migration_assistant.service.order_service');
+        $orderService = Shopware()->Container()->get('swag_migration_connector.service.order_service');
 
         $orders = $orderService->getOrders(30);
 

@@ -5,9 +5,9 @@
  * file that was distributed with this source code.
  */
 
-namespace SwagMigrationAssistant\Service;
+namespace SwagMigrationConnector\Service;
 
-use SwagMigrationAssistant\Repository\TranslationRepository;
+use SwagMigrationConnector\Repository\TranslationRepository;
 
 class TranslationService extends AbstractApiService
 {

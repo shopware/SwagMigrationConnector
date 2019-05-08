@@ -7,8 +7,8 @@
 
 use Shopware\Components\Api\Exception\ParameterMissingException;
 use Shopware\Models\User\Role;
-use SwagMigrationAssistant\Exception\PermissionDeniedException;
-use SwagMigrationAssistant\Exception\UnsecureRequestException;
+use SwagMigrationConnector\Exception\PermissionDeniedException;
+use SwagMigrationConnector\Exception\UnsecureRequestException;
 
 class Shopware_Controllers_Api_SwagMigrationDynamic extends Shopware_Controllers_Api_Rest
 {
@@ -20,7 +20,7 @@ class Shopware_Controllers_Api_SwagMigrationDynamic extends Shopware_Controllers
     {
         parent::preDispatch();
 
-        $pluginName = $this->container->getParameter('swag_migration_assistant.plugin_name');
+        $pluginName = $this->container->getParameter('swag_migration_connector.plugin_name');
         $pluginConfig = $this->container->get('shopware.plugin.config_reader')->getByPluginName($pluginName);
 
         if (!$this->Request()->isSecure() && (bool) $pluginConfig['enforceSSL']) {
@@ -59,7 +59,7 @@ class Shopware_Controllers_Api_SwagMigrationDynamic extends Shopware_Controllers
             throw new ParameterMissingException('The required parameter "table" is missing');
         }
 
-        $repository = $this->container->get('swag_migration_assistant.repository.dynamic_repository');
+        $repository = $this->container->get('swag_migration_connector.repository.dynamic_repository');
 
         $fetchedData = $repository->fetch($table, $offset, $limit, $filter);
 

@@ -6,8 +6,8 @@
  */
 
 use Shopware\Models\User\Role;
-use SwagMigrationAssistant\Exception\PermissionDeniedException;
-use SwagMigrationAssistant\Exception\UnsecureRequestException;
+use SwagMigrationConnector\Exception\PermissionDeniedException;
+use SwagMigrationConnector\Exception\UnsecureRequestException;
 
 class Shopware_Controllers_Api_SwagMigrationTranslations extends Shopware_Controllers_Api_Rest
 {
@@ -19,7 +19,7 @@ class Shopware_Controllers_Api_SwagMigrationTranslations extends Shopware_Contro
     {
         parent::preDispatch();
 
-        $pluginName = $this->container->getParameter('swag_migration_assistant.plugin_name');
+        $pluginName = $this->container->getParameter('swag_migration_connector.plugin_name');
         $pluginConfig = $this->container->get('shopware.plugin.config_reader')->getByPluginName($pluginName);
 
         if (!$this->Request()->isSecure() && (bool) $pluginConfig['enforceSSL']) {
@@ -48,7 +48,7 @@ class Shopware_Controllers_Api_SwagMigrationTranslations extends Shopware_Contro
     {
         $offset = (int) $this->Request()->getParam('offset', 0);
         $limit = (int) $this->Request()->getParam('limit', 250);
-        $translationService = $this->container->get('swag_migration_assistant.service.translation_service');
+        $translationService = $this->container->get('swag_migration_connector.service.translation_service');
 
         $translations = $translationService->getTranslations($offset, $limit);
 

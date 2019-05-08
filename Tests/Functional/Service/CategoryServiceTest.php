@@ -5,7 +5,7 @@
  * file that was distributed with this source code.
  */
 
-namespace SwagMigrationAssistant\Tests\Functional\Service;
+namespace SwagMigrationConnector\Tests\Functional\Service;
 
 use PHPUnit\Framework\TestCase;
 
@@ -13,7 +13,7 @@ class CategoryServiceTest extends TestCase
 {
     public function test_read_categories_should_be_successful()
     {
-        $categoryService = Shopware()->Container()->get('swag_migration_assistant.service.category_service');
+        $categoryService = Shopware()->Container()->get('swag_migration_connector.service.category_service');
 
         $categories = $categoryService->getCategories();
 
@@ -31,7 +31,7 @@ class CategoryServiceTest extends TestCase
 
     public function test_read_categories_with_offset_should_be_succesful()
     {
-        $categoryService = Shopware()->Container()->get('swag_migration_assistant.service.category_service');
+        $categoryService = Shopware()->Container()->get('swag_migration_connector.service.category_service');
 
         $categories = $categoryService->getCategories(58);
 
@@ -46,7 +46,7 @@ class CategoryServiceTest extends TestCase
 
     public function test_read_categories_with_limit_should_be_succesful()
     {
-        $categoryService = Shopware()->Container()->get('swag_migration_assistant.service.category_service');
+        $categoryService = Shopware()->Container()->get('swag_migration_connector.service.category_service');
 
         $categories = $categoryService->getCategories(0, 5);
 
@@ -61,7 +61,7 @@ class CategoryServiceTest extends TestCase
 
     public function test_read_categories_with_offset_and_limit_should_be_succesful()
     {
-        $categoryService = Shopware()->Container()->get('swag_migration_assistant.service.category_service');
+        $categoryService = Shopware()->Container()->get('swag_migration_connector.service.category_service');
 
         $categories = $categoryService->getCategories(50, 5);
 
@@ -77,7 +77,7 @@ class CategoryServiceTest extends TestCase
 
     public function test_read_with_out_of_bounds_offset_should_offer_empty_array()
     {
-        $categoryService = Shopware()->Container()->get('swag_migration_assistant.service.category_service');
+        $categoryService = Shopware()->Container()->get('swag_migration_connector.service.category_service');
 
         $categories = $categoryService->getCategories(200);
 
