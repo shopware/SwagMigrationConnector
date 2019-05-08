@@ -38,7 +38,7 @@ class Shopware_Controllers_Backend_SwagUpdateCheck extends Shopware_Controllers_
             ->andWhere('plugin.active = 1')
             ->andWhere('plugin.capability_install = 1')
             ->andWhere('plugin.source != "Default"')
-            ->andWhere('plugin.name != "SwagMigrationAssistant"')
+            ->andWhere('plugin.name != "SwagMigrationConnector"')
             ->select('name')
             ->execute()
             ->fetchAll();

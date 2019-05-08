@@ -5,14 +5,14 @@
  * file that was distributed with this source code.
  */
 
-namespace SwagMigrationAssistant\Service;
+namespace SwagMigrationConnector\Service;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Schema\Column;
 use Doctrine\DBAL\Schema\ForeignKeyConstraint;
 use Shopware\Components\Model\ModelManager;
 use Shopware\Models\Shop\Shop;
-use SwagMigrationAssistant\Repository\AttributeRepository;
+use SwagMigrationConnector\Repository\AttributeRepository;
 
 class AttributeService
 {

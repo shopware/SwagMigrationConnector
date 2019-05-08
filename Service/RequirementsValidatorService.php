@@ -1,13 +1,13 @@
 <?php
 
-namespace SwagMigrationAssistant\Service;
+namespace SwagMigrationConnector\Service;
 
-use SwagMigrationAssistant\Service\Checker\LicenseCheck;
-use SwagMigrationAssistant\Service\Checker\MysqlConfiguration;
-use SwagMigrationAssistant\Service\Checker\MysqlVersion;
-use SwagMigrationAssistant\Service\Checker\PhpConfiguration;
-use SwagMigrationAssistant\Service\Checker\PhpExtensions;
-use SwagMigrationAssistant\Service\Checker\PhpVersion;
+use SwagMigrationConnector\Service\Checker\LicenseCheck;
+use SwagMigrationConnector\Service\Checker\MysqlConfiguration;
+use SwagMigrationConnector\Service\Checker\MysqlVersion;
+use SwagMigrationConnector\Service\Checker\PhpConfiguration;
+use SwagMigrationConnector\Service\Checker\PhpExtensions;
+use SwagMigrationConnector\Service\Checker\PhpVersion;
 
 class RequirementsValidatorService
 {

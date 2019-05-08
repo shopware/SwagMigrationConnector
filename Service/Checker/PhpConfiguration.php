@@ -1,6 +1,6 @@
 <?php
 
-namespace SwagMigrationAssistant\Service\Checker;
+namespace SwagMigrationConnector\Service\Checker;
 
 use Shopware\Components\MemoryLimit;
 use Shopware_Components_Snippet_Manager as SnippetManager;

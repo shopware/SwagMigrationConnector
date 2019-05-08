@@ -6,8 +6,8 @@
  */
 
 use Shopware\Models\User\Role;
-use SwagMigrationAssistant\Exception\PermissionDeniedException;
-use SwagMigrationAssistant\Exception\UnsecureRequestException;
+use SwagMigrationConnector\Exception\PermissionDeniedException;
+use SwagMigrationConnector\Exception\UnsecureRequestException;
 
 class Shopware_Controllers_Api_SwagMigrationLanguages extends Shopware_Controllers_Api_Rest
 {
@@ -19,7 +19,7 @@ class Shopware_Controllers_Api_SwagMigrationLanguages extends Shopware_Controlle
     {
         parent::preDispatch();
 
-        $pluginName = $this->container->getParameter('swag_migration_assistant.plugin_name');
+        $pluginName = $this->container->getParameter('swag_migration_connector.plugin_name');
         $pluginConfig = $this->container->get('shopware.plugin.config_reader')->getByPluginName($pluginName);
 
         if (!$this->Request()->isSecure() && (bool) $pluginConfig['enforceSSL']) {
@@ -46,7 +46,7 @@ class Shopware_Controllers_Api_SwagMigrationLanguages extends Shopware_Controlle
 
     public function indexAction()
     {
-        $languageService = $this->container->get('swag_migration_assistant.service.language_service');
+        $languageService = $this->container->get('swag_migration_connector.service.language_service');
 
         $languages = $languageService->getLanguages();
 

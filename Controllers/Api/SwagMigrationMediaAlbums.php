@@ -6,8 +6,8 @@
  */
 
 use Shopware\Models\User\Role;
-use SwagMigrationAssistant\Exception\PermissionDeniedException;
-use SwagMigrationAssistant\Exception\UnsecureRequestException;
+use SwagMigrationConnector\Exception\PermissionDeniedException;
+use SwagMigrationConnector\Exception\UnsecureRequestException;
 
 class Shopware_Controllers_Api_SwagMigrationMediaAlbums extends Shopware_Controllers_Api_Rest
 {
@@ -19,7 +19,7 @@ class Shopware_Controllers_Api_SwagMigrationMediaAlbums extends Shopware_Control
     {
         parent::preDispatch();
 
-        $pluginName = $this->container->getParameter('swag_migration_assistant.plugin_name');
+        $pluginName = $this->container->getParameter('swag_migration_connector.plugin_name');
         $pluginConfig = $this->container->get('shopware.plugin.config_reader')->getByPluginName($pluginName);
 
         if (!$this->Request()->isSecure() && (bool) $pluginConfig['enforceSSL']) {
@@ -46,7 +46,7 @@ class Shopware_Controllers_Api_SwagMigrationMediaAlbums extends Shopware_Control
 
     public function indexAction()
     {
-        $mediaAlbumService = $this->container->get('swag_migration_assistant.service.media_album_service');
+        $mediaAlbumService = $this->container->get('swag_migration_connector.service.media_album_service');
 
         $assets = $mediaAlbumService->getAlbums();
 

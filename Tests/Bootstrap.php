@@ -6,7 +6,7 @@
  */
 require __DIR__ . '/../../../../autoload.php';
 
-class SwagMigrationAssistantTestKernel extends \Shopware\Kernel
+class SwagMigrationConnectorTestKernel extends \Shopware\Kernel
 {
     public static function start()
     {
@@ -19,7 +19,7 @@ class SwagMigrationAssistantTestKernel extends \Shopware\Kernel
         if (!self::isPluginInstalledAndActivated()) {
             die('Error: The plugin is not installed or activated, tests aborted!');
         }
-        Shopware()->Loader()->registerNamespace('SwagMigrationAssistant', __DIR__ . '/../');
+        Shopware()->Loader()->registerNamespace('SwagMigrationConnector', __DIR__ . '/../');
     }
 
     /**
@@ -29,11 +29,11 @@ class SwagMigrationAssistantTestKernel extends \Shopware\Kernel
     {
         /** @var \Doctrine\DBAL\Connection $db */
         $db = Shopware()->Container()->get('dbal_connection');
-        $sql = "SELECT active FROM s_core_plugins WHERE name='SwagMigrationAssistant'";
+        $sql = "SELECT active FROM s_core_plugins WHERE name='SwagMigrationConnector'";
         $active = $db->fetchColumn($sql);
 
         return (bool) $active;
     }
 }
 
-SwagMigrationAssistantTestKernel::start();
+SwagMigrationConnectorTestKernel::start();

@@ -5,10 +5,10 @@
  * file that was distributed with this source code.
  */
 
-namespace SwagMigrationAssistant\Repository;
+namespace SwagMigrationConnector\Repository;
 
 use Doctrine\DBAL\Connection;
-use SwagMigrationAssistant\Exception\UnknownTableException;
+use SwagMigrationConnector\Exception\UnknownTableException;
 
 class DynamicRepository
 {

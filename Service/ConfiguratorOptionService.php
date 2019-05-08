@@ -5,14 +5,14 @@
  * file that was distributed with this source code.
  */
 
-namespace SwagMigrationAssistant\Service;
+namespace SwagMigrationConnector\Service;
 
 
 use Shopware\Bundle\MediaBundle\MediaServiceInterface;
 use Shopware\Components\Model\ModelManager;
 use Shopware\Models\Shop\Shop;
-use SwagMigrationAssistant\Repository\ApiRepositoryInterface;
-use SwagMigrationAssistant\Repository\ConfiguratorOptionRepository;
+use SwagMigrationConnector\Repository\ApiRepositoryInterface;
+use SwagMigrationConnector\Repository\ConfiguratorOptionRepository;
 
 class ConfiguratorOptionService extends AbstractApiService
 {

@@ -5,7 +5,7 @@
  * file that was distributed with this source code.
  */
 
-namespace SwagMigrationAssistant\Exception;
+namespace SwagMigrationConnector\Exception;
 
 class PermissionDeniedException extends \Enlight_Exception
 {

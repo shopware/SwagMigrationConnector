@@ -5,7 +5,7 @@
  * file that was distributed with this source code.
  */
 
-namespace SwagMigrationAssistant\Tests\Functional\Service;
+namespace SwagMigrationConnector\Tests\Functional\Service;
 
 use PHPUnit\Framework\TestCase;
 
@@ -13,7 +13,7 @@ class ProductServiceTest extends TestCase
 {
     public function test_read_products_should_be_successful()
     {
-        $productService = Shopware()->Container()->get('swag_migration_assistant.service.product_service');
+        $productService = Shopware()->Container()->get('swag_migration_connector.service.product_service');
 
         $products = $productService->getProducts();
 
@@ -39,7 +39,7 @@ class ProductServiceTest extends TestCase
 
     public function test_read_products_with_offset_should_be_successful()
     {
-        $productService = Shopware()->Container()->get('swag_migration_assistant.service.product_service');
+        $productService = Shopware()->Container()->get('swag_migration_connector.service.product_service');
 
         $products = $productService->getProducts(134);
 
@@ -54,7 +54,7 @@ class ProductServiceTest extends TestCase
 
     public function test_read_products_with_limit_should_be_successful()
     {
-        $productService = Shopware()->Container()->get('swag_migration_assistant.service.product_service');
+        $productService = Shopware()->Container()->get('swag_migration_connector.service.product_service');
 
         $products = $productService->getProducts(0, 2);
 
@@ -69,7 +69,7 @@ class ProductServiceTest extends TestCase
 
     public function test_read_products_with_offset_and_limit_should_be_successful()
     {
-        $productService = Shopware()->Container()->get('swag_migration_assistant.service.product_service');
+        $productService = Shopware()->Container()->get('swag_migration_connector.service.product_service');
 
         $products = $productService->getProducts(350, 10);
 
@@ -84,7 +84,7 @@ class ProductServiceTest extends TestCase
 
     public function test_read_with_out_of_bounds_offset_should_offer_empty_array()
     {
-        $productService = Shopware()->Container()->get('swag_migration_assistant.service.product_service');
+        $productService = Shopware()->Container()->get('swag_migration_connector.service.product_service');
 
         $products = $productService->getProducts(2000);
 

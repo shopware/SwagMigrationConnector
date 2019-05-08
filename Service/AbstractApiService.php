@@ -5,7 +5,7 @@
  * file that was distributed with this source code.
  */
 
-namespace SwagMigrationAssistant\Service;
+namespace SwagMigrationConnector\Service;
 
 abstract class AbstractApiService
 {

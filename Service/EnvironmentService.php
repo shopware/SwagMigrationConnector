@@ -5,11 +5,11 @@
  * file that was distributed with this source code.
  */
 
-namespace SwagMigrationAssistant\Service;
+namespace SwagMigrationConnector\Service;
 
 use Shopware\Components\Model\ModelManager;
 use Shopware\Models\Shop\Shop;
-use SwagMigrationAssistant\Repository\EnvironmentRepository;
+use SwagMigrationConnector\Repository\EnvironmentRepository;
 
 class EnvironmentService extends AbstractApiService
 {
