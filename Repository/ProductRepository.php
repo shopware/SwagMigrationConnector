@@ -163,6 +163,8 @@ class ProductRepository extends AbstractRepository
         $query->addSelect('asset.articleID');
         $this->addTableSelection($query, 's_articles_img', 'asset');
 
+        $query->leftJoin('asset', 's_articles_img', 'variantAsset', 'variantAsset.parent_id = asset.id');
+
         $query->leftJoin('asset', 's_articles_img_attributes', 'asset_attributes', 'asset_attributes.imageID = asset.id');
         $this->addTableSelection($query, 's_articles_img_attributes', 'asset_attributes');
 
@@ -172,7 +174,7 @@ class ProductRepository extends AbstractRepository
         $query->leftJoin('asset_media', 's_media_attributes', 'asset_media_attributes', 'asset_media.id = asset_media_attributes.mediaID');
         $this->addTableSelection($query, 's_media_attributes', 'asset_media_attributes');
 
-        $query->where('asset.articleID IN (:ids)');
+        $query->where('asset.articleID IN (:ids) AND variantAsset.id IS NULL');
         $query->setParameter('ids', $productIds, Connection::PARAM_INT_ARRAY);
 
         return $query->execute()->fetchAll(\PDO::FETCH_GROUP);
@@ -188,11 +190,20 @@ class ProductRepository extends AbstractRepository
         $query = $this->connection->createQueryBuilder();
 
         $query->from('s_articles_img', 'asset');
-        $query->addSelect('asset.parent_id');
+        $query->addSelect('parentasset.articleID');
         $this->addTableSelection($query, 's_articles_img', 'asset');
+        $query->addSelect('parentasset.img as img, parentasset.description as description');
 
         $query->leftJoin('asset', 's_articles_img_attributes', 'asset_attributes', 'asset_attributes.imageID = asset.id');
         $this->addTableSelection($query, 's_articles_img_attributes', 'asset_attributes');
+
+        $query->leftJoin('asset', 's_articles_img', 'parentasset', 'asset.parent_id = parentasset.id');
+
+        $query->leftJoin('asset', 's_media', 'asset_media', 'parentasset.media_id = asset_media.id');
+        $this->addTableSelection($query, 's_media', 'asset_media');
+
+        $query->leftJoin('asset_media', 's_media_attributes', 'asset_media_attributes', 'asset_media.id = asset_media_attributes.mediaID');
+        $this->addTableSelection($query, 's_media_attributes', 'asset_media_attributes');
 
         $query->where('asset.article_detail_id IN (:ids)');
         $query->setParameter('ids', $variantIds, Connection::PARAM_INT_ARRAY);

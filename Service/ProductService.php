@@ -108,6 +108,7 @@ class ProductService extends AbstractApiService
 
         foreach ($products as $key => &$product) {
             $product['_locale'] = $locale;
+            $product['assets'] = [];
 
             if (isset($categories[$product['id']])) {
                 $product['categories'] = $categories[$product['id']];
@@ -115,9 +116,13 @@ class ProductService extends AbstractApiService
             if (isset($prices[$product['detail']['id']])) {
                 $product['prices'] = $prices[$product['detail']['id']];
             }
-            if (isset($assets[$product['id']])) {
-                $productAssets = $assets[$product['id']];
+            if (isset($assets[$product['id']][$product['detail']['id']])) {
+                $productAssets = $assets[$product['id']][$product['detail']['id']];
                 $product['assets'] = $this->prepareAssets($productAssets);
+            }
+            if (isset($assets['general'][$product['id']])) {
+                $generalAssets = $this->prepareAssets($assets['general'][$product['id']]);
+                $product['assets'] = array_merge($product['assets'], $generalAssets);
             }
             if (isset($options[$product['detail']['id']])) {
                 $product['configuratorOptions'] = $options[$product['detail']['id']];
@@ -172,21 +177,29 @@ class ProductService extends AbstractApiService
         $productIds = array_values(
             $this->productMapping->getIterator()->getArrayCopy()
         );
-        $fetchedAssets = $this->productRepository->fetchProductAssets($productIds);
-
         $variantIds = $this->productMapping->keys();
-        $fetchedVariantAssets = $this->productRepository->fetchVariantAssets($variantIds);
 
-        foreach ($fetchedAssets as $productId => &$assets) {
-            foreach ($assets as &$asset) {
-                if (isset($fetchedVariantAssets[$asset['asset.id']])) {
-                    $asset['children'] = $this->mapData($fetchedVariantAssets[$asset['asset.id']], [], ['asset']);
+        $fetchedUnlinkedAssets = $this->mapData($this->productRepository->fetchProductAssets($productIds), [], ['asset']);
+        $fetchedVariantAssets = $this->mapData($this->productRepository->fetchVariantAssets($variantIds), [], ['asset', 'img', 'description']);
+        
+        $assets = [];
+        foreach ($fetchedVariantAssets as $articleId => $productAssets) {
+            if (!isset($assets[$articleId])) {
+                $assets[$articleId] = [];
+            }
+
+            foreach ($productAssets as $productAsset) {
+                if (!isset($assets[$articleId][$productAsset['article_detail_id']])) {
+                    $assets[$articleId][$productAsset['article_detail_id']] = [];
                 }
+                $assets[$articleId][$productAsset['article_detail_id']][] = $productAsset;
             }
         }
-        unset($assets, $asset);
+        
+        $assets['general'] = $fetchedUnlinkedAssets;
+        unset($fetchedUnlinkedAssets, $fetchedVariantAssets);
 
-        return $this->mapData($fetchedAssets, [], ['asset', 'children']);
+        return $assets;
     }
 
     /**
