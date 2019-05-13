@@ -20,28 +20,18 @@
  * trademark license. Therefore any rights, title and interest in
  * our trademarks remain entirely with us.
  */
-Ext.define('Shopware.apps.SwagUpdateCheck.model.Plugins', {
-
+Ext.define('Shopware.apps.SwagMigrationConnector.model.Requirement', {
     extend: 'Ext.data.Model',
-
     fields: [
-        { name: 'name', type: 'string' },
+        { name: 'validation', type: 'integer'  },
+        { name: 'message', type: 'string'  },
     ],
-
-    associations: [
-        {
-            type: 'hasMany',
-            model: 'Shopware.apps.SwagUpdateCheck.model.Recommendation',
-            name: 'getRecommendations',
-            associationKey: 'recommendations'
-        },
-    ],
-
     proxy: {
         type: 'ajax',
+        timeout: 180000,
 
         api: {
-            read: '{url action="getPlugins"}'
+            read: '{url action="getRequirements"}'
         },
 
         reader: {

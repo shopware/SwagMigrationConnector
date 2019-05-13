@@ -13,7 +13,7 @@ class PhpVersion implements CheckerInterface
 
     public function __construct(SnippetManager $manager)
     {
-        $this->namespace = $manager->getNamespace('backend/swag_update_check/main');
+        $this->namespace = $manager->getNamespace('backend/swag_migration_connector/main');
     }
 
     public function validate(array $options)

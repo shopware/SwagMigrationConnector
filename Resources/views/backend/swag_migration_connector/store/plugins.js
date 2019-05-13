@@ -20,26 +20,19 @@
  * trademark license. Therefore any rights, title and interest in
  * our trademarks remain entirely with us.
  */
-Ext.define('Shopware.apps.SwagUpdateCheck.model.Recommendation', {
-    extend: 'Ext.data.Model',
-    fields: [
-        { name: 'releaseInfo', type: 'date' },
-        { name: 'type', type: 'string' },
-        { name: 'plannedReleaseDate', type: 'date' },
-    ],
+Ext.define('Shopware.apps.SwagMigrationConnector.store.Plugins', {
 
-    associations: [
-        {
-            type: 'hasMany',
-            model: 'Shopware.apps.SwagUpdateCheck.model.StorePlugin',
-            name: 'getSourcePlugin',
-            associationKey: 'sourcePlugin'
-        },
-        {
-            type: 'hasMany',
-            model: 'Shopware.apps.SwagUpdateCheck.model.StorePlugin',
-            name: 'getTargetPlugin',
-            associationKey: 'targetPlugin'
-        },
-    ],
+    /**
+     * Extend for the standard ExtJS 4
+     * @string
+     */
+    extend: 'Ext.data.Store',
+
+    /**
+     * Define the used model for this store
+     * @string
+     */
+    model : 'Shopware.apps.SwagMigrationConnector.model.Plugins',
+
+    pageSize: 999
 });

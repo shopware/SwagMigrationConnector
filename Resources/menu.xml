@@ -6,7 +6,7 @@
             <name>UpdateCheck</name>
             <label lang="en">Shopware 6 Update</label>
             <label lang="de">Shopware 6 Update</label>
-            <controller>SwagUpdateCheck</controller>
+            <controller>SwagMigrationConnector</controller>
             <action>index</action>
             <class>sprite-arrow-continue-090 misc--software-update</class>
             <parent identifiedBy="class">ico question_frame shopware-help-menu</parent>

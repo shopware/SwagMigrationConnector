@@ -24,7 +24,7 @@
 // {namespace name=backend/swag_update/main}
 // {block name="backend/swag_update/controller/main"}
 
-Ext.define('Shopware.apps.SwagUpdateCheck.controller.Main', {
+Ext.define('Shopware.apps.SwagMigrationConnector.controller.Main', {
     extend: 'Enlight.app.Controller',
 
     init: function() {
@@ -155,7 +155,7 @@ Ext.define('Shopware.apps.SwagUpdateCheck.controller.Main', {
             return;
         }
 
-        var ftp = Ext.create('Shopware.apps.SwagUpdateCheck.model.Ftp');
+        var ftp = Ext.create('Shopware.apps.SwagMigrationConnector.model.Ftp');
 
         form.getForm().updateRecord(ftp);
 

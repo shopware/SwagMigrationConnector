@@ -20,23 +20,17 @@
  * trademark license. Therefore any rights, title and interest in
  * our trademarks remain entirely with us.
  */
-Ext.define('Shopware.apps.SwagUpdateCheck.model.Requirement', {
-    extend: 'Ext.data.Model',
-    fields: [
-        { name: 'validation', type: 'integer'  },
-        { name: 'message', type: 'string'  },
-    ],
-    proxy: {
-        type: 'ajax',
-        timeout: 180000,
+Ext.define('Shopware.apps.SwagMigrationConnector', {
+    extend: 'Enlight.app.SubApplication',
+    name:'Shopware.apps.SwagMigrationConnector',
+    loadPath: '{url action=load}',
+    bulkLoad: true,
+    controllers: [ 'Main' ],
+    stores: [ 'Requirements', 'Plugins' ],
+    models: [ 'Requirement', 'Plugins', 'Recommendation', 'StorePlugin' ],
+    views: [ 'list.Window', 'list.Plugins', 'list.Requirements', 'list.Info', 'plugin.Window' ],
 
-        api: {
-            read: '{url action="getRequirements"}'
-        },
-
-        reader: {
-            type: 'json',
-            root: 'data'
-        }
+    launch: function() {
+        return this.getController('Main').mainWindow;
     }
 });

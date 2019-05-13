@@ -5,7 +5,7 @@
  * file that was distributed with this source code.
  */
 
-class Shopware_Controllers_Backend_SwagUpdateCheck extends Shopware_Controllers_Backend_ExtJs
+class Shopware_Controllers_Backend_SwagMigrationConnector extends Shopware_Controllers_Backend_ExtJs
 {
     public function preDispatch()
     {

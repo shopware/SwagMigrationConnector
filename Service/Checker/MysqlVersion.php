@@ -19,7 +19,7 @@ class MysqlVersion implements CheckerInterface
 
     public function __construct(Connection $connection, SnippetManager $manager)
     {
-        $this->namespace = $manager->getNamespace('backend/swag_update_check/main');
+        $this->namespace = $manager->getNamespace('backend/swag_migration_connector/main');
         $this->connection = $connection;
     }
 
