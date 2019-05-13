@@ -20,19 +20,11 @@
  * trademark license. Therefore any rights, title and interest in
  * our trademarks remain entirely with us.
  */
-Ext.define('Shopware.apps.SwagUpdateCheck.store.Plugins', {
 
-    /**
-     * Extend for the standard ExtJS 4
-     * @string
-     */
-    extend: 'Ext.data.Store',
+// {namespace name=backend/swag_migration_connector/main}
+Ext.define('Shopware.apps.SwagMigrationConnector.view.list.Info', {
+   extend: 'Ext.container.Container',
+   title: 'Info',
 
-    /**
-     * Define the used model for this store
-     * @string
-     */
-    model : 'Shopware.apps.SwagUpdateCheck.model.Plugins',
-
-    pageSize: 999
+   html: '{s name="tabs/info"}{/s}'
 });

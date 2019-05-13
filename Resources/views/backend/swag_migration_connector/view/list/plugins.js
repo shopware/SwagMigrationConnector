@@ -21,8 +21,8 @@
  * our trademarks remain entirely with us.
  */
 
-// {namespace name=backend/swag_update_check/main}
-Ext.define('Shopware.apps.SwagUpdateCheck.view.list.Plugins', {
+// {namespace name=backend/swag_migration_connector/main}
+Ext.define('Shopware.apps.SwagMigrationConnector.view.list.Plugins', {
     extend: 'Ext.grid.Panel',
     border: false,
     title: 'Plugins',
@@ -57,7 +57,7 @@ Ext.define('Shopware.apps.SwagUpdateCheck.view.list.Plugins', {
                         iconCls: 'sprite-balloon-ellipsis',
                         tooltip: '{s name="action/show_another_plugins"}{/s}',
                         handler: function (view, rowIndex, colIndex, item, opts, record) {
-                            Ext.create('Shopware.apps.SwagUpdateCheck.view.plugin.Window', {
+                            Ext.create('Shopware.apps.SwagMigrationConnector.view.plugin.Window', {
                                 store: record.getRecommendations()
                             })
                         },

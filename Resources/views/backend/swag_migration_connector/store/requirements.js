@@ -20,11 +20,8 @@
  * trademark license. Therefore any rights, title and interest in
  * our trademarks remain entirely with us.
  */
-
-// {namespace name=backend/swag_update_check/main}
-Ext.define('Shopware.apps.SwagUpdateCheck.view.list.Info', {
-   extend: 'Ext.container.Container',
-   title: 'Info',
-
-   html: '{s name="tabs/info"}{/s}'
+Ext.define('Shopware.apps.SwagMigrationConnector.store.Requirements', {
+    extend: 'Ext.data.Store',
+    model : 'Shopware.apps.SwagMigrationConnector.model.Requirement',
+    pageSize: 999
 });

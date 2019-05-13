@@ -29,7 +29,7 @@ class LicenseCheck implements CheckerInterface
 
     public function __construct(SnippetManager $manager, $endpoint, $shopwareVersion, Connection $connection)
     {
-        $this->namespace = $manager->getNamespace('backend/swag_update_check/main');
+        $this->namespace = $manager->getNamespace('backend/swag_migration_connector/main');
         $this->endpoint = $endpoint;
         $this->shopwareVersion = $shopwareVersion;
         $this->connection = $connection;

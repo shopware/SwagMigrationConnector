@@ -20,12 +20,26 @@
  * trademark license. Therefore any rights, title and interest in
  * our trademarks remain entirely with us.
  */
-Ext.define('Shopware.apps.SwagUpdateCheck.model.StorePlugin', {
+Ext.define('Shopware.apps.SwagMigrationConnector.model.Recommendation', {
     extend: 'Ext.data.Model',
     fields: [
-        { name: 'name', type: 'string' },
-        { name: 'localizedName', type: 'string' },
-        { name: 'iconPath', type: 'string' },
-        { name: 'storeLink', type: 'string' },
+        { name: 'releaseInfo', type: 'date' },
+        { name: 'type', type: 'string' },
+        { name: 'plannedReleaseDate', type: 'date' },
+    ],
+
+    associations: [
+        {
+            type: 'hasMany',
+            model: 'Shopware.apps.SwagMigrationConnector.model.StorePlugin',
+            name: 'getSourcePlugin',
+            associationKey: 'sourcePlugin'
+        },
+        {
+            type: 'hasMany',
+            model: 'Shopware.apps.SwagMigrationConnector.model.StorePlugin',
+            name: 'getTargetPlugin',
+            associationKey: 'targetPlugin'
+        },
     ],
 });

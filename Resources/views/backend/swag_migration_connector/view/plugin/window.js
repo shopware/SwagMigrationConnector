@@ -21,8 +21,8 @@
  * our trademarks remain entirely with us.
  */
 
-// {namespace name=backend/swag_update_check/main}
-Ext.define('Shopware.apps.SwagUpdateCheck.view.plugin.Window', {
+// {namespace name=backend/swag_migration_connector/main}
+Ext.define('Shopware.apps.SwagMigrationConnector.view.plugin.Window', {
     extend: 'Enlight.app.Window',
     alias: 'widget.update-plugin-window',
     cls: Ext.baseCSSPrefix + 'swag-update-window',

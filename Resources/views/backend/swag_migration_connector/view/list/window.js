@@ -21,8 +21,8 @@
  * our trademarks remain entirely with us.
  */
 
-// {namespace name=backend/swag_update_check/main}
-Ext.define('Shopware.apps.SwagUpdateCheck.view.list.Window', {
+// {namespace name=backend/swag_migration_connector/main}
+Ext.define('Shopware.apps.SwagMigrationConnector.view.list.Window', {
 
     extend: 'Enlight.app.Window',
 
@@ -64,11 +64,11 @@ Ext.define('Shopware.apps.SwagUpdateCheck.view.list.Window', {
         this.tabPanel = Ext.create('Ext.tab.Panel', {
             flex: 1,
             items: [
-                Ext.create('Shopware.apps.SwagUpdateCheck.view.list.Info'),
-                Ext.create('Shopware.apps.SwagUpdateCheck.view.list.Requirements', {
+                Ext.create('Shopware.apps.SwagMigrationConnector.view.list.Info'),
+                Ext.create('Shopware.apps.SwagMigrationConnector.view.list.Requirements', {
                     store: this.requirementsStore,
                 }),
-                Ext.create('Shopware.apps.SwagUpdateCheck.view.list.Plugins', {
+                Ext.create('Shopware.apps.SwagMigrationConnector.view.list.Plugins', {
                     store: this.pluginsStore,
                 }),
             ]
