@@ -95,6 +95,8 @@ class ProductService extends AbstractApiService
     protected function appendAssociatedData(array $products)
     {
         $categories = $this->getCategories();
+        $topMostParentIds = $this->getTopMostParentIds($categories);
+        $shops = $this->getShops($topMostParentIds);
         $prices = $this->getPrices();
         $assets = $this->getAssets();
         $options = $this->getConfiguratorOptions();
@@ -127,13 +129,14 @@ class ProductService extends AbstractApiService
             if (isset($options[$product['detail']['id']])) {
                 $product['configuratorOptions'] = $options[$product['detail']['id']];
             }
-
             if (isset($product['manufacturer']['media'])) {
                 $product['manufacturer']['media']['uri'] = $this->mediaService->getUrl($product['manufacturer']['img']);
             }
-
             if (isset($filterValues[$product['detail']['id']])) {
                 $product['filters'] = $filterValues[$product['detail']['id']];
+            }
+            if (isset($shops[$product['id']])) {
+                $product['shops'] = array_values($shops[$product['id']]);
             }
         }
         unset(
@@ -156,6 +159,66 @@ class ProductService extends AbstractApiService
         );
 
         return $this->productRepository->fetchProductCategories($productIds);
+    }
+
+    private function getShops(array $topMostCategoriesByProduct)
+    {
+        $ids = [];
+        foreach ($topMostCategoriesByProduct as $product) {
+            foreach ($product as $category) {
+                if (!isset($ids[$category])) {
+                    $ids[$category] = $category;
+                }
+            }
+        }
+
+        $shops = $this->productRepository->fetchShopsByCategories($ids);
+
+        $ids = [];
+        foreach ($topMostCategoriesByProduct as $productKey => $product) {
+            foreach ($product as $key => $category) {
+                if (isset($shops[$key]) && !isset($ids[$productKey][$key])) {
+                    foreach ($shops[$key] as $shop) {
+                        if (empty($shop['main_id'])) {
+                            $shopId = $shop['id'];
+                        } else {
+                            $shopId = $shop['main_id'];
+                        }
+
+                        if (!isset($ids[$productKey][$shopId])) {
+                            $ids[$productKey][$shopId] = $shopId;
+                        }
+                    }
+                }
+            }
+        }
+
+        return $ids;
+    }
+
+    /**
+     * @param array $categories
+     * @return array
+     */
+    private function getTopMostParentIds(array $categories)
+    {
+        $ids = [];
+        foreach ($categories as $productKey => $product) {
+            foreach ($product as $key => $category) {
+                if (empty($category['path'])) {
+                    continue;
+                }
+                $parentCategoryIds = array_values(
+                    array_filter(explode('|', (string) $category['path']))
+                );
+                $topMostParent = end($parentCategoryIds);
+                if (!isset($ids[$productKey]) || !in_array($topMostParent, $ids[$productKey], true)) {
+                    $ids[$productKey][$topMostParent] = $topMostParent;
+                }
+            }
+        }
+
+        return $ids;
     }
 
     /**
