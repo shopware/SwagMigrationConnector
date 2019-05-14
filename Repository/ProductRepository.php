@@ -63,9 +63,33 @@ class ProductRepository extends AbstractRepository
         $query = $this->connection->createQueryBuilder();
 
         $query->from('s_articles_categories', 'product_category');
-        $query->addSelect('product_category.articleID', 'product_category.categoryID as id');
+
+        $query->leftJoin('product_category', 's_categories', 'category', 'category.id = product_category.categoryID');
+        $query->addSelect('product_category.articleID', 'product_category.categoryID as id, category.path');
+
         $query->where('product_category.articleID IN (:ids)');
         $query->setParameter('ids', $productIds, Connection::PARAM_INT_ARRAY);
+
+        return $query->execute()->fetchAll(\PDO::FETCH_GROUP);
+    }
+
+    /**
+     * @param array $categories
+     * @return array
+     */
+    public function fetchShopsByCategories(array $categories)
+    {
+        $query = $this->connection->createQueryBuilder();
+
+        $query->from('s_categories', 'category');
+        $query->addSelect('category.id');
+
+        $query->leftJoin('category', 's_core_shops', 'shop', 'category.id = shop.category_id');
+        $query->addSelect('shop.id');
+        $query->addSelect('shop.main_id');
+
+        $query->where('category.id IN (:ids)');
+        $query->setParameter('ids', $categories, Connection::PARAM_INT_ARRAY);
 
         return $query->execute()->fetchAll(\PDO::FETCH_GROUP);
     }
