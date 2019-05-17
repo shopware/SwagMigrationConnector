@@ -97,7 +97,7 @@ Ext.define('Shopware.apps.SwagMigrationConnector.view.list.Plugins', {
             text = '{s name="type/successorPlanned"}{/s}';
 
             if (recommand.get('plannedReleaseDate')) {
-                text = Ext.String.format('{s name="type/successorPlannedWithReleaseDate"}{/s}', Ext.util.Format.date(recommand.get('plannedReleaseDate')));
+                text = Ext.String.format('{s name="type/successorPlannedWithReleaseDate"}{/s}', Ext.Date.format(recommand.get('plannedReleaseDate'), 'F Y'));
             }
         } else if (recommand.get('type') === 'noSuccessor') {
             text = '{s name="type/noSuccessor"}{/s}';
