@@ -48,7 +48,7 @@ class LanguageService
      *
      * @return array
      */
-    private function appendAssociatedData(array $locales): array
+    private function appendAssociatedData(array $locales)
     {
         $translations = $this->fetchTranslations(array_keys($locales));
 
