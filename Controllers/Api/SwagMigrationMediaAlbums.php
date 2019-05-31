@@ -8,6 +8,7 @@
 use Shopware\Models\User\Role;
 use SwagMigrationConnector\Exception\PermissionDeniedException;
 use SwagMigrationConnector\Exception\UnsecureRequestException;
+use SwagMigrationConnector\Service\ControllerReturnStruct;
 
 class Shopware_Controllers_Api_SwagMigrationMediaAlbums extends Shopware_Controllers_Api_Rest
 {
@@ -46,13 +47,20 @@ class Shopware_Controllers_Api_SwagMigrationMediaAlbums extends Shopware_Control
 
     public function indexAction()
     {
+        $offset = (int) $this->Request()->getParam('offset', 0);
+        if ($offset !== 0) {
+            $this->View()->assign([
+                'success' => true,
+                'data' => [],
+            ]);
+            return;
+        }
+
         $mediaAlbumService = $this->container->get('swag_migration_connector.service.media_album_service');
 
         $assets = $mediaAlbumService->getAlbums();
+        $response = new ControllerReturnStruct($assets, empty($assets));
 
-        $this->View()->assign([
-            'success' => true,
-            'data' => $assets,
-        ]);
+        $this->view->assign($response->jsonSerialize());
     }
 }

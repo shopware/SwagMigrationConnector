@@ -8,6 +8,7 @@
 use Shopware\Models\User\Role;
 use SwagMigrationConnector\Exception\PermissionDeniedException;
 use SwagMigrationConnector\Exception\UnsecureRequestException;
+use SwagMigrationConnector\Service\ControllerReturnStruct;
 
 class Shopware_Controllers_Api_SwagMigrationEnvironment extends Shopware_Controllers_Api_Rest
 {
@@ -49,10 +50,8 @@ class Shopware_Controllers_Api_SwagMigrationEnvironment extends Shopware_Control
         $environmentService = $this->container->get('swag_migration_connector.service.environment_service');
 
         $data = $environmentService->getEnvironmentInformation();
+        $response = new ControllerReturnStruct($data);
 
-        $this->View()->assign([
-            'success' => true,
-            'data' => $data,
-        ]);
+        $this->view->assign($response->jsonSerialize());
     }
 }

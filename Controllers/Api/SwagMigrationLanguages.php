@@ -8,6 +8,7 @@
 use Shopware\Models\User\Role;
 use SwagMigrationConnector\Exception\PermissionDeniedException;
 use SwagMigrationConnector\Exception\UnsecureRequestException;
+use SwagMigrationConnector\Service\ControllerReturnStruct;
 
 class Shopware_Controllers_Api_SwagMigrationLanguages extends Shopware_Controllers_Api_Rest
 {
@@ -49,10 +50,8 @@ class Shopware_Controllers_Api_SwagMigrationLanguages extends Shopware_Controlle
         $languageService = $this->container->get('swag_migration_connector.service.language_service');
 
         $languages = $languageService->getLanguages();
+        $response = new ControllerReturnStruct($languages, true);
 
-        $this->View()->assign([
-            'success' => true,
-            'data' => $languages,
-        ]);
+        $this->view->assign($response->jsonSerialize());
     }
 }

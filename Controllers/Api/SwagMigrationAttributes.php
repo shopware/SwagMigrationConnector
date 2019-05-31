@@ -52,6 +52,7 @@ class Shopware_Controllers_Api_SwagMigrationAttributes extends Shopware_Controll
      */
     public function indexAction()
     {
+        $offset = (int) $this->Request()->getParam('offset', 0);
         $attributeTable = $this->Request()->getParam('attribute_table', null);
 
         if ($attributeTable === null) {
@@ -59,6 +60,14 @@ class Shopware_Controllers_Api_SwagMigrationAttributes extends Shopware_Controll
                 'The attribute_table parameter is missing.',
                 422
             );
+        }
+
+        if ($offset !== 0) {
+            $this->View()->assign([
+                'success' => true,
+                'data' => [],
+            ]);
+            return;
         }
 
         $schemaManager = $this->container->get('dbal_connection')->getSchemaManager();

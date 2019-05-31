@@ -9,6 +9,7 @@ use Shopware\Components\Api\Exception\ParameterMissingException;
 use Shopware\Models\User\Role;
 use SwagMigrationConnector\Exception\PermissionDeniedException;
 use SwagMigrationConnector\Exception\UnsecureRequestException;
+use SwagMigrationConnector\Service\ControllerReturnStruct;
 
 class Shopware_Controllers_Api_SwagMigrationDynamic extends Shopware_Controllers_Api_Rest
 {
@@ -62,10 +63,8 @@ class Shopware_Controllers_Api_SwagMigrationDynamic extends Shopware_Controllers
         $repository = $this->container->get('swag_migration_connector.repository.dynamic_repository');
 
         $fetchedData = $repository->fetch($table, $offset, $limit, $filter);
+        $response = new ControllerReturnStruct($fetchedData, empty($fetchedData));
 
-        $this->View()->assign([
-            'success' => true,
-            'data' => $fetchedData,
-        ]);
+        $this->view->assign($response->jsonSerialize());
     }
 }

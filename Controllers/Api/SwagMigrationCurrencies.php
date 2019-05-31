@@ -8,6 +8,7 @@
 use Shopware\Models\User\Role;
 use SwagMigrationConnector\Exception\PermissionDeniedException;
 use SwagMigrationConnector\Exception\UnsecureRequestException;
+use SwagMigrationConnector\Service\ControllerReturnStruct;
 
 class Shopware_Controllers_Api_SwagMigrationCurrencies extends Shopware_Controllers_Api_Rest
 {
@@ -51,7 +52,8 @@ class Shopware_Controllers_Api_SwagMigrationCurrencies extends Shopware_Controll
         $currencyService = $this->container->get('swag_migration_connector.service.currency_service');
 
         $currencies = $currencyService->getCurrencies($offset, $limit);
+        $response = new ControllerReturnStruct($currencies, empty($currencies));
 
-        $this->view->assign(['success' => true, 'data' => $currencies]);
+        $this->view->assign($response->jsonSerialize());
     }
 }

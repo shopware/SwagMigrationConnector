@@ -8,6 +8,7 @@
 use Shopware\Models\User\Role;
 use SwagMigrationConnector\Exception\PermissionDeniedException;
 use SwagMigrationConnector\Exception\UnsecureRequestException;
+use SwagMigrationConnector\Service\ControllerReturnStruct;
 
 class Shopware_Controllers_Api_SwagMigrationTranslations extends Shopware_Controllers_Api_Rest
 {
@@ -51,10 +52,8 @@ class Shopware_Controllers_Api_SwagMigrationTranslations extends Shopware_Contro
         $translationService = $this->container->get('swag_migration_connector.service.translation_service');
 
         $translations = $translationService->getTranslations($offset, $limit);
+        $response = new ControllerReturnStruct($translations, empty($translations));
 
-        $this->View()->assign([
-            'success' => true,
-            'data' => $translations,
-        ]);
+        $this->view->assign($response->jsonSerialize());
     }
 }

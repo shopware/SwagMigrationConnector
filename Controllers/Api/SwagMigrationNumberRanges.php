@@ -8,6 +8,7 @@
 use Shopware\Models\User\Role;
 use SwagMigrationConnector\Exception\PermissionDeniedException;
 use SwagMigrationConnector\Exception\UnsecureRequestException;
+use SwagMigrationConnector\Service\ControllerReturnStruct;
 
 class Shopware_Controllers_Api_SwagMigrationNumberRanges extends Shopware_Controllers_Api_Rest
 {
@@ -48,10 +49,8 @@ class Shopware_Controllers_Api_SwagMigrationNumberRanges extends Shopware_Contro
     {
         $service = $this->container->get('swag_migration_connector.service.number_range_service');
         $data = $service->getNumberRanges();
+        $response = new ControllerReturnStruct($data, true);
 
-        $this->View()->assign([
-            'success' => true,
-            'data' => $data,
-        ]);
+        $this->View()->assign($response->jsonSerialize());
     }
 }
