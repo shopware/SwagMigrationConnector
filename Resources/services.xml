@@ -101,6 +101,10 @@
             <argument type="service" id="models" />
         </service>
 
+        <service id="swag_migration_connector.service.newsletter_recipient_service" class="SwagMigrationConnector\Service\NewsletterRecipientService">
+            <argument type="service" id="swag_migration_connector.repository.newsletter_recipient_repository" />
+        </service>
+
         <!--Repositories-->
 
         <service id="swag_migration_connector.repository.environment_repository" class="SwagMigrationConnector\Repository\EnvironmentRepository">
@@ -138,6 +142,8 @@
         </service>
 
         <service id="swag_migration_connector.repository.currency_repository" class="SwagMigrationConnector\Repository\CurrencyRepository" parent="SwagMigrationConnector\Repository\AbstractRepository" />
+
+        <service id="swag_migration_connector.repository.newsletter_recipient_repository" class="SwagMigrationConnector\Repository\NewsletterRecipientRepository" parent="SwagMigrationConnector\Repository\AbstractRepository" />
 </services>
 
 </container>

@@ -26,6 +26,7 @@ class EnvironmentService extends AbstractApiService
         'configuratorOptions' => 's_article_configurator_options',
         'numberRanges' => 's_order_number',
         'currencies' => 's_core_currencies',
+        'newsletterRecipients' => 's_campaigns_mailaddresses',
     ];
 
     /**
