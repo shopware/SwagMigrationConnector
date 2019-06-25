@@ -9,6 +9,7 @@ use Shopware\Models\User\Role;
 use SwagMigrationConnector\Exception\DocumentNotFoundException;
 use SwagMigrationConnector\Exception\PermissionDeniedException;
 use SwagMigrationConnector\Exception\UnsecureRequestException;
+use SwagMigrationConnector\Service\ControllerReturnStruct;
 
 class Shopware_Controllers_Api_SwagMigrationOrderDocuments extends Shopware_Controllers_Api_Rest
 {
@@ -52,11 +53,9 @@ class Shopware_Controllers_Api_SwagMigrationOrderDocuments extends Shopware_Cont
         $documentService = $this->container->get('swag_migration_connector.service.document_service');
 
         $documents = $documentService->getDocuments($offset, $limit);
+        $response = new ControllerReturnStruct($documents, empty($documents));
 
-        $this->View()->assign([
-            'success' => true,
-            'data' => $documents,
-        ]);
+        $this->View()->assign($response->jsonSerialize());
     }
 
     /**

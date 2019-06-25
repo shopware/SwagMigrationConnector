@@ -8,6 +8,7 @@
 use Shopware\Models\User\Role;
 use SwagMigrationConnector\Exception\PermissionDeniedException;
 use SwagMigrationConnector\Exception\UnsecureRequestException;
+use SwagMigrationConnector\Service\ControllerReturnStruct;
 
 class Shopware_Controllers_Api_SwagMigrationAssets extends Shopware_Controllers_Api_Rest
 {
@@ -51,10 +52,8 @@ class Shopware_Controllers_Api_SwagMigrationAssets extends Shopware_Controllers_
         $assetService = $this->container->get('swag_migration_connector.service.asset_service');
 
         $assets = $assetService->getAssets($offset, $limit);
+        $response = new ControllerReturnStruct($assets, empty($assets));
 
-        $this->View()->assign([
-            'success' => true,
-            'data' => $assets,
-        ]);
+        $this->view->assign($response->jsonSerialize());
     }
 }

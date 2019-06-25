@@ -5,13 +5,12 @@
  * file that was distributed with this source code.
  */
 
-use Shopware\Components\Api\Exception\ParameterMissingException;
 use Shopware\Models\User\Role;
 use SwagMigrationConnector\Exception\PermissionDeniedException;
 use SwagMigrationConnector\Exception\UnsecureRequestException;
 use SwagMigrationConnector\Service\ControllerReturnStruct;
 
-class Shopware_Controllers_Api_SwagMigrationDynamic extends Shopware_Controllers_Api_Rest
+class Shopware_Controllers_Api_SwagMigrationNewsletterRecipients extends Shopware_Controllers_Api_Rest
 {
     /**
      * @throws PermissionDeniedException
@@ -46,24 +45,14 @@ class Shopware_Controllers_Api_SwagMigrationDynamic extends Shopware_Controllers
         );
     }
 
-    /**
-     * @throws ParameterMissingException
-     */
     public function indexAction()
     {
         $offset = (int) $this->Request()->getParam('offset', 0);
         $limit = (int) $this->Request()->getParam('limit', 250);
-        $table = (string) $this->Request()->getParam('table', '');
-        $filter = $this->Request()->getParam('filter', []);
+        $newsletterRecipientService = $this->container->get('swag_migration_connector.service.newsletter_recipient_service');
 
-        if ($table === '') {
-            throw new ParameterMissingException('The required parameter "table" is missing');
-        }
-
-        $repository = $this->container->get('swag_migration_connector.repository.dynamic_repository');
-
-        $fetchedData = $repository->fetch($table, $offset, $limit, $filter);
-        $response = new ControllerReturnStruct($fetchedData, empty($fetchedData));
+        $newsletterRecipients = $newsletterRecipientService->getNewsletterRecipients($offset, $limit);
+        $response = new ControllerReturnStruct($newsletterRecipients, empty($newsletterRecipients));
 
         $this->view->assign($response->jsonSerialize());
     }

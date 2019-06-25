@@ -8,6 +8,7 @@
 use Shopware\Models\User\Role;
 use SwagMigrationConnector\Exception\PermissionDeniedException;
 use SwagMigrationConnector\Exception\UnsecureRequestException;
+use SwagMigrationConnector\Service\ControllerReturnStruct;
 
 class Shopware_Controllers_Api_SwagMigrationConfiguratorOptions extends Shopware_Controllers_Api_Rest
 {
@@ -51,10 +52,8 @@ class Shopware_Controllers_Api_SwagMigrationConfiguratorOptions extends Shopware
         $configuratorOptionService = $this->container->get('swag_migration_connector.service.configurator_option_service');
 
         $configuratorOptions = $configuratorOptionService->getConfiguratorOptions($offset, $limit);
+        $response = new ControllerReturnStruct($configuratorOptions, empty($configuratorOptions));
 
-        $this->View()->assign([
-            'success' => true,
-            'data' => $configuratorOptions,
-        ]);
+        $this->view->assign($response->jsonSerialize());
     }
 }
