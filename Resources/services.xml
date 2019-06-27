@@ -49,13 +49,11 @@
             <argument type="service" id="dbal_connection" />
         </service>
 
-        <!-- Todo: Implement a DocumentService for 5.4
         <service id="swag_migration_connector.service.document_service" class="SwagMigrationConnector\Service\DocumentService">
             <argument type="service" id="swag_migration_connector.repository.document_repository" />
             <argument type="service" id="shopware.filesystem.private" />
             <argument type="service" id="models" />
         </service>
-        -->
 
         <service id="swag_migration_connector.service.translation_service" class="SwagMigrationConnector\Service\TranslationService">
             <argument type="service" id="swag_migration_connector.repository.translation_repository" />
