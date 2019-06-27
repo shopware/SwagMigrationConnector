@@ -99,7 +99,7 @@ class EnvironmentService extends AbstractApiService
             'shopwareVersion' => $this->version,
             'versionText' => $this->versionText,
             'revision' => $this->revision,
-            'structure' => $this->getShopStructure(),
+            'additionalData' => $this->getAdditionalData(),
             'updateAvailable' => $this->pluginInformationService->isUpdateRequired($locale),
         ];
 
@@ -121,7 +121,7 @@ class EnvironmentService extends AbstractApiService
     /**
      * @return array
      */
-    private function getShopStructure()
+    private function getAdditionalData()
     {
         $fetchedShops = $this->repository->getShops();
         $shops = $this->mapData($fetchedShops, [], ['shop']);
