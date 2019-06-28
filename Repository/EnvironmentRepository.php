@@ -27,59 +27,6 @@ class EnvironmentRepository
     }
 
     /**
-     * @param string $table
-     *
-     * @return int
-     */
-    public function getTableCount($table)
-    {
-        $querybuilder = $this->connection->createQueryBuilder();
-
-        return (int) $querybuilder->select('COUNT(id)')
-            ->from($table)
-            ->execute()
-            ->fetchColumn()
-        ;
-    }
-
-    /**
-     * @return int
-     */
-    public function getCategoryCount()
-    {
-        $querybuilder = $this->connection->createQueryBuilder();
-
-        return (int) $querybuilder->select('COUNT(id)')
-            ->from('s_categories')
-            ->where('path IS NOT NULL')
-            ->andWhere('parent IS NOT NULL')
-            ->execute()
-            ->fetchColumn()
-        ;
-    }
-
-    /**
-     * @return int
-     */
-    public function getConfiguratorOptionCount()
-    {
-        $queryBuilder = $this->connection->createQueryBuilder();
-
-        $optionCount = (int) $queryBuilder->select('COUNT(id)')
-            ->from('s_filter_values')
-            ->execute()
-            ->fetchColumn();
-
-        $queryBuilder = $this->connection->createQueryBuilder();
-        $propertyCount = (int) $queryBuilder->select('COUNT(id)')
-            ->from('s_article_configurator_options')
-            ->execute()
-            ->fetchColumn();
-
-        return $optionCount + $propertyCount;
-    }
-
-    /**
      * @return array
      */
     public function getShops()

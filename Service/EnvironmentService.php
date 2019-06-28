@@ -13,22 +13,6 @@ use SwagMigrationConnector\Repository\EnvironmentRepository;
 
 class EnvironmentService extends AbstractApiService
 {
-    const TABLES_TO_COUNT = [
-        'products' => 's_articles_details',
-        'customers' => 's_user',
-        'categories' => 's_categories',
-        'assets' => 's_media',
-        'orders' => 's_order',
-        'shops' => 's_core_shops',
-        'shoppingWorlds' => 's_emotion',
-        'translations' => 's_core_translations',
-        'customerGroups' => 's_core_customergroups',
-        'configuratorOptions' => 's_article_configurator_options',
-        'numberRanges' => 's_order_number',
-        'currencies' => 's_core_currencies',
-        'newsletterRecipients' => 's_campaigns_mailaddresses',
-    ];
-
     /**
      * @var ModelManager
      */
@@ -60,12 +44,12 @@ class EnvironmentService extends AbstractApiService
     private $revision;
 
     /**
-     * @param ModelManager              $modelManager
-     * @param EnvironmentRepository     $environmentRepository
-     * @param PluginInformationService  $pluginInformationService
-     * @param string                    $version
-     * @param string                    $versionText
-     * @param string                    $revision
+     * @param ModelManager             $modelManager
+     * @param EnvironmentRepository    $environmentRepository
+     * @param PluginInformationService $pluginInformationService
+     * @param string                   $version
+     * @param string                   $versionText
+     * @param string                   $revision
      */
     public function __construct(
         ModelManager                $modelManager,
@@ -102,18 +86,6 @@ class EnvironmentService extends AbstractApiService
             'additionalData' => $this->getAdditionalData(),
             'updateAvailable' => $this->pluginInformationService->isUpdateRequired($locale),
         ];
-
-        foreach (self::TABLES_TO_COUNT as $key => $table) {
-            if ($key === 'categories') {
-                $resultSet[$key] = $this->repository->getCategoryCount();
-                continue;
-            }
-            if ($key === 'configuratorOptions') {
-                $resultSet[$key] = $this->repository->getConfiguratorOptionCount();
-                continue;
-            }
-            $resultSet[$key] = $this->repository->getTableCount($table);
-        }
 
         return $resultSet;
     }

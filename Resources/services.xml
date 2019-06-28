@@ -45,6 +45,10 @@
             <argument type="service" id="models" />
         </service>
 
+        <service id="swag_migration_connector.service.totals_service" class="SwagMigrationConnector\Service\TotalsService">
+            <argument type="service" id="dbal_connection" />
+        </service>
+
         <!-- Todo: Implement a DocumentService for 5.4
         <service id="swag_migration_connector.service.document_service" class="SwagMigrationConnector\Service\DocumentService">
             <argument type="service" id="swag_migration_connector.repository.document_repository" />
