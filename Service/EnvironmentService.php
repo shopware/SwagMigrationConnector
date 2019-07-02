@@ -8,6 +8,7 @@
 namespace SwagMigrationConnector\Service;
 
 use Shopware\Components\Model\ModelManager;
+use Shopware\Models\Shop\Currency;
 use Shopware\Models\Shop\Shop;
 use SwagMigrationConnector\Repository\EnvironmentRepository;
 
@@ -78,8 +79,14 @@ class EnvironmentService extends AbstractApiService
         // represents the main language of the migrated shop
         $locale = str_replace('_', '-', $defaultShop->getLocale()->getLocale());
 
+        /** @var Currency $defaultCurrency */
+        $defaultCurrency = $this->modelManager->getRepository(Currency::class)->findOneBy([
+            'default' => 1
+        ]);
+
         $resultSet = [
             'defaultShopLanguage' => $locale,
+            'defaultCurrency' => $defaultCurrency->getCurrency(),
             'shopwareVersion' => $this->version,
             'versionText' => $this->versionText,
             'revision' => $this->revision,
