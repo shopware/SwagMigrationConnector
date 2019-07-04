@@ -35,8 +35,7 @@ class Shopware_Controllers_Api_SwagMigrationOrderDocuments extends Shopware_Cont
             $role = $this->container->get('Auth')->getIdentity()->role;
 
             if ($role->getAdmin()) {
-                // return when implemented
-                throw new Exception('Service currently not implemented');
+                return;
             }
         }
 
