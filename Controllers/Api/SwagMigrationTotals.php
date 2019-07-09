@@ -49,9 +49,9 @@ class Shopware_Controllers_Api_SwagMigrationTotals extends Shopware_Controllers_
     {
         $countInfos = $this->Request()->getParam('countInfos', []);
         $totalsService = $this->container->get('swag_migration_connector.service.totals_service');
-        $totals = $totalsService->fetchTotals($countInfos);
+        $totalResult = $totalsService->fetchTotals($countInfos);
 
-        $response = new ControllerReturnStruct($totals, empty($counts));
+        $response = new ControllerReturnStruct($totalResult, true);
 
         $this->view->assign($response->jsonSerialize());
     }
