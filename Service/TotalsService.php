@@ -32,6 +32,7 @@ class TotalsService
     public function fetchTotals(array $countInfos)
     {
         $totals = [];
+        $exceptions = [];
 
         foreach ($countInfos as $entityInfo) {
             $entity = $entityInfo['entity'];
@@ -39,18 +40,31 @@ class TotalsService
 
             $total = 0;
             foreach ($queryRules as $queryRule) {
-                $query = $this->connection->createQueryBuilder();
-                $query = $query->select('COUNT(*)')->from($queryRule['table']);
+                try {
+                    $query = $this->connection->createQueryBuilder();
+                    $query = $query->select('COUNT(*)')->from($queryRule['table']);
 
-                if (isset($queryRule['conditions'])) {
-                    $query->where($queryRule['condition']);
+                    if (isset($queryRule['conditions'])) {
+                        $query->where($queryRule['condition']);
+                    }
+                    $total += (int) $query->execute()->fetchColumn();
+                } catch (\Exception $exception) {
+                    $exceptions[] = [
+                        'code' => $exception->getCode(),
+                        'message' => $exception->getMessage(),
+                        'entity' => $entity,
+                        'table' => $queryRule['table'],
+                        'condition' => isset($queryRule['condition']) ? $queryRule['condition'] : null
+                    ];
                 }
-                $total += (int) $query->execute()->fetchColumn();
             }
 
             $totals[$entity] = $total;
         }
 
-        return $totals;
+        return [
+            'totals' => $totals,
+            'exceptions' => $exceptions
+        ];
     }
 }
