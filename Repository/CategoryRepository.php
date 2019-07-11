@@ -28,10 +28,12 @@ class CategoryRepository extends AbstractRepository
         $query->leftJoin('category', 's_media', 'asset', 'category.mediaID = asset.id');
         $this->addTableSelection($query, 's_media', 'asset');
 
+        $query->leftJoin('category', 's_categories', 'sibling', 'category.parent = sibling.parent AND CAST(category.position AS SIGNED) - 1 = CAST(sibling.position AS SIGNED)');
+        $query->addSelect('sibling.id as previousSiblingId');
+
         $query->andWhere('category.parent IS NOT NULL');
-
         $query->orderBy('LENGTH(categorypath)');
-
+        $query->addOrderBy('category.position');
         $query->setFirstResult($offset);
         $query->setMaxResults($limit);
 

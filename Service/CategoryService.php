@@ -31,16 +31,15 @@ class CategoryService extends AbstractApiService
     private $mediaService;
 
     /**
-     * @param ApiRepositoryInterface    $categoryRepository
-     * @param ModelManager              $modelManager
-     * @param MediaServiceInterface     $mediaService
+     * @param ApiRepositoryInterface $categoryRepository
+     * @param ModelManager           $modelManager
+     * @param MediaServiceInterface  $mediaService
      */
     public function __construct(
         ApiRepositoryInterface $categoryRepository,
         ModelManager $modelManager,
         MediaServiceInterface $mediaService
-    )
-    {
+    ) {
         $this->categoryRepository = $categoryRepository;
         $this->modelManager = $modelManager;
         $this->mediaService = $mediaService;
@@ -59,7 +58,7 @@ class CategoryService extends AbstractApiService
         $topMostParentIds = $this->getTopMostParentIds($fetchedCategories);
         $topMostCategories = $this->categoryRepository->fetchCategoriesById($topMostParentIds);
 
-        $categories = $this->mapData($fetchedCategories, [], ['category', 'categorypath']);
+        $categories = $this->mapData($fetchedCategories, [], ['category', 'categorypath', 'previousSiblingId']);
 
         $resultSet = $this->setAllLocales($categories, $topMostCategories);
 
