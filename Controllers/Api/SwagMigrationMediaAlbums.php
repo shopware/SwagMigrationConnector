@@ -53,6 +53,7 @@ class Shopware_Controllers_Api_SwagMigrationMediaAlbums extends Shopware_Control
                 'success' => true,
                 'data' => [],
             ]);
+
             return;
         }
 

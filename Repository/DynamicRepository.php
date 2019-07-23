@@ -30,9 +30,9 @@ class DynamicRepository
      * @param int $offset
      * @param int $limit
      *
-     * @return array
-     *
      * @throws UnknownTableException
+     *
+     * @return array
      */
     public function fetch($table, $offset = 0, $limit = 250, array $filter = [])
     {

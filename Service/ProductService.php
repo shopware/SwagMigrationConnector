@@ -198,6 +198,7 @@ class ProductService extends AbstractApiService
 
     /**
      * @param array $categories
+     *
      * @return array
      */
     private function getTopMostParentIds(array $categories)
@@ -244,7 +245,7 @@ class ProductService extends AbstractApiService
 
         $fetchedUnlinkedAssets = $this->mapData($this->productRepository->fetchProductAssets($productIds), [], ['asset']);
         $fetchedVariantAssets = $this->mapData($this->productRepository->fetchVariantAssets($variantIds), [], ['asset', 'img', 'description']);
-        
+
         $assets = [];
         foreach ($fetchedVariantAssets as $articleId => $productAssets) {
             if (!isset($assets[$articleId])) {
@@ -258,7 +259,7 @@ class ProductService extends AbstractApiService
                 $assets[$articleId][$productAsset['article_detail_id']][] = $productAsset;
             }
         }
-        
+
         $assets['general'] = $fetchedUnlinkedAssets;
         unset($fetchedUnlinkedAssets, $fetchedVariantAssets);
 

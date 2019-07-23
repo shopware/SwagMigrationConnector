@@ -51,7 +51,7 @@ class AttributeService
         $columns = $this->getTableColumns($table);
         $foreignKeys = $this->getTableForeignKeys($table);
         $columns = $this->cleanupColumns($columns, $foreignKeys);
-        
+
         $attributeConfiguration = $this->attributeRepository->getAttributeConfiguration($table);
         $attributeConfigTranslations = $this->attributeRepository->getAttibuteConfigurationTranslations($table);
 
@@ -72,20 +72,20 @@ class AttributeService
             }
             $attributeConfiguration[$column]['translations'][$field][$translation['locale']] = $translation['value'];
         }
-        
+
         $resultSet = [];
 
         /** @var Column $column */
         foreach ($columns as $column) {
             $columnData = [
-                'name'          => $column->getName(),
-                'type'          => $column->getType()->getName(),
-                '_locale'       => $locale,
-                'configuration' => null
+                'name' => $column->getName(),
+                'type' => $column->getType()->getName(),
+                '_locale' => $locale,
+                'configuration' => null,
             ];
 
             if (isset($attributeConfiguration[$column->getName()])) {
-                $columnData['configuration'] =  $attributeConfiguration[$column->getName()];
+                $columnData['configuration'] = $attributeConfiguration[$column->getName()];
             }
             $resultSet[] = $columnData;
         }
@@ -95,7 +95,7 @@ class AttributeService
 
     /**
      * @param string $table
-     * 
+     *
      * @return Column[]
      */
     private function getTableColumns($table)
@@ -105,7 +105,7 @@ class AttributeService
 
     /**
      * @param $table
-     * 
+     *
      * @return ForeignKeyConstraint[]
      */
     private function getTableForeignKeys($table)
@@ -116,7 +116,7 @@ class AttributeService
     /**
      * Filter autoincrement and FK constraint columns
      *
-     * @param Column[] $columns
+     * @param Column[]               $columns
      * @param ForeignKeyConstraint[] $foreignKeys
      *
      * @return Column[]

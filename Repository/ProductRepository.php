@@ -75,6 +75,7 @@ class ProductRepository extends AbstractRepository
 
     /**
      * @param array $categories
+     *
      * @return array
      */
     public function fetchShopsByCategories(array $categories)
@@ -165,7 +166,6 @@ class ProductRepository extends AbstractRepository
 
         $query->leftJoin('filter_values', 's_filter_options', 'filter_values_option', 'filter_values_option.id = filter_values.optionID');
         $this->addTableSelection($query, 's_filter_options', 'filter_values_option');
-
 
         $query->where('details.id IN (:ids)');
 

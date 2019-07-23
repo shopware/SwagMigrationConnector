@@ -26,7 +26,7 @@ class CurrencyService extends AbstractApiService
 
     /**
      * @param ApiRepositoryInterface $currencyRepository
-     * @param ModelManager $modelManager
+     * @param ModelManager           $modelManager
      */
     public function __construct(ApiRepositoryInterface $currencyRepository, ModelManager $modelManager)
     {

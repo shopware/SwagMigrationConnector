@@ -67,6 +67,7 @@ class Shopware_Controllers_Api_SwagMigrationAttributes extends Shopware_Controll
                 'success' => true,
                 'data' => [],
             ]);
+
             return;
         }
 

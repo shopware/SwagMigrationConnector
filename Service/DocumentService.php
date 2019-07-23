@@ -7,7 +7,6 @@
 
 namespace SwagMigrationConnector\Service;
 
-use League\Flysystem\FilesystemInterface;
 use Shopware\Components\Model\ModelManager;
 use Shopware\Models\Shop\Shop;
 use SwagMigrationConnector\Repository\ApiRepositoryInterface;
@@ -21,28 +20,31 @@ class DocumentService extends AbstractApiService
     private $documentRepository;
 
     /**
-     * @var FilesystemInterface
-     */
-    private $fileSystem;
-
-    /**
      * @var ModelManager
      */
     private $modelManager;
 
     /**
+     * @var bool
+     */
+    private $existsFileSystem;
+
+    private $fileSystem;
+
+    /**
      * @param ApiRepositoryInterface $documentRepository
-     * @param FilesystemInterface    $fileSystem
-     * @param ModelManager           $modelManager
+     * @param $container
+     * @param ModelManager $modelManager
      */
     public function __construct(
         ApiRepositoryInterface $documentRepository,
-        FilesystemInterface $fileSystem,
+        $fileSystem,
         ModelManager $modelManager
     ) {
         $this->documentRepository = $documentRepository;
-        $this->fileSystem = $fileSystem;
         $this->modelManager = $modelManager;
+        $this->existsFileSystem = ($fileSystem !== null && is_subclass_of($fileSystem, 'League\Flysystem\FilesystemInterface'));
+        $this->fileSystem = $fileSystem;
     }
 
     /**
@@ -73,13 +75,39 @@ class DocumentService extends AbstractApiService
     }
 
     /**
+     * @param string $documentHash
+     *
+     * @return string
+     */
+    public function getFilePath($documentHash)
+    {
+        if ($this->existsFileSystem) {
+            return sprintf('documents/%s.pdf', basename($documentHash));
+        }
+
+        return sprintf('%s/%s.pdf', Shopware()->Container()->getParameter('shopware.app.documentsdir'), basename($documentHash));
+    }
+
+    /**
+     * @return bool
+     */
+    public function existsFileSystem()
+    {
+        return $this->existsFileSystem;
+    }
+
+    /**
      * @param string $filePath
      *
      * @return bool
      */
     public function fileExists($filePath)
     {
-        return $this->fileSystem->has($filePath);
+        if ($this->existsFileSystem) {
+            return $this->fileSystem->has($filePath);
+        }
+
+        return file_exists($filePath);
     }
 
     /**
@@ -89,7 +117,11 @@ class DocumentService extends AbstractApiService
      */
     public function getFileSize($filePath)
     {
-        return $this->fileSystem->getSize($filePath);
+        if ($this->existsFileSystem) {
+            return $this->fileSystem->getSize($filePath);
+        }
+
+        return filesize($filePath);
     }
 
     /**
