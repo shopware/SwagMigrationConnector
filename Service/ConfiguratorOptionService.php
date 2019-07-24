@@ -7,7 +7,6 @@
 
 namespace SwagMigrationConnector\Service;
 
-
 use Shopware\Bundle\MediaBundle\MediaServiceInterface;
 use Shopware\Components\Model\ModelManager;
 use Shopware\Models\Shop\Shop;
@@ -34,7 +33,7 @@ class ConfiguratorOptionService extends AbstractApiService
     /**
      * @param ApiRepositoryInterface $customerGroupRepository
      * @param ApiRepositoryInterface $customerRepository
-     * @param ModelManager $modelManager
+     * @param ModelManager           $modelManager
      */
     public function __construct(
         ApiRepositoryInterface $customerGroupRepository,

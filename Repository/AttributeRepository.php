@@ -60,7 +60,7 @@ SQL;
             $sql,
             [
                 'pos' => $table,
-                'table' => $table . '%'
+                'table' => $table . '%',
             ]
         )->fetchAll();
     }

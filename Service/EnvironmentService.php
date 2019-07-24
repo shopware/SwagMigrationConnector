@@ -81,7 +81,7 @@ class EnvironmentService extends AbstractApiService
 
         /** @var Currency $defaultCurrency */
         $defaultCurrency = $this->modelManager->getRepository(Currency::class)->findOneBy([
-            'default' => 1
+            'default' => 1,
         ]);
 
         $resultSet = [

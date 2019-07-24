@@ -1,4 +1,9 @@
 <?php
+/**
+ * (c) shopware AG <info@shopware.com>
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace SwagMigrationConnector\Service\Checker;
 
@@ -30,6 +35,7 @@ class PhpConfiguration implements CheckerInterface
 
         if ($value >= $min || $value === -1) {
             $successMessage = $this->namespace->get('check/php_config_success');
+
             return [
                 'validation' => CheckerInterface::VALIDATION_SUCCESS,
                 'message' => sprintf(

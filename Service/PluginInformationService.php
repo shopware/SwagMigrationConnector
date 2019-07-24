@@ -31,9 +31,9 @@ class PluginInformationService
     private $shopwareVersion;
 
     /**
-     * @param PluginStoreService    $pluginStoreService
-     * @param Connection            $connection
-     * @param string                $version
+     * @param PluginStoreService $pluginStoreService
+     * @param Connection         $connection
+     * @param string             $version
      */
     public function __construct(
         PluginStoreService      $pluginStoreService,
@@ -41,7 +41,7 @@ class PluginInformationService
         $version
     ) {
         $this->pluginStoreService = $pluginStoreService;
-        $this->connection= $connection;
+        $this->connection = $connection;
         $this->shopwareVersion = $version;
     }
 

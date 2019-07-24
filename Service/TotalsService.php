@@ -54,7 +54,7 @@ class TotalsService
                         'message' => $exception->getMessage(),
                         'entity' => $entity,
                         'table' => $queryRule['table'],
-                        'condition' => isset($queryRule['condition']) ? $queryRule['condition'] : null
+                        'condition' => isset($queryRule['condition']) ? $queryRule['condition'] : null,
                     ];
                 }
             }
@@ -64,7 +64,7 @@ class TotalsService
 
         return [
             'totals' => $totals,
-            'exceptions' => $exceptions
+            'exceptions' => $exceptions,
         ];
     }
 }

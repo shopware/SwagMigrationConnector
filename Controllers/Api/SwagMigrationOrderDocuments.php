@@ -62,6 +62,7 @@ class Shopware_Controllers_Api_SwagMigrationOrderDocuments extends Shopware_Cont
      */
     public function getAction()
     {
+        $documentService = $this->container->get('swag_migration_connector.service.document_service');
         $documentHash = $this->Request()->getParam('id', null);
 
         if (empty($documentHash)) {
@@ -71,24 +72,30 @@ class Shopware_Controllers_Api_SwagMigrationOrderDocuments extends Shopware_Cont
             );
         }
 
-        $filePath = sprintf('documents/%s.pdf', basename($documentHash));
-        $documentService = $this->container->get('swag_migration_connector.service.document_service');
-
+        $filePath = $documentService->getFilePath($documentHash);
         if (!$documentService->fileExists($filePath)) {
             throw new DocumentNotFoundException(
                 'File not found',
                 404
             );
         }
+
         $orderNumber = $documentService->getOrderNumberByDocumentHash($documentHash);
 
-        $this->setDownloadHeaders($filePath, $orderNumber);
+        if ($documentService->existsFileSystem()) {
+            $this->setDownloadHeaders($filePath, $orderNumber);
 
-        $upstream = $documentService->readFile($filePath);
-        $downstream = fopen('php://output', 'rb');
+            $upstream = $documentService->readFile($filePath);
+            $downstream = fopen('php://output', 'rb');
+            stream_copy_to_stream($upstream, $downstream);
+        } else {
+            // Disable Smarty rendering
+            $this->Front()->Plugins()->ViewRenderer()->setNoRender();
+            $this->Front()->Plugins()->Json()->setRenderer(false);
 
-        while (!feof($upstream)) {
-            fwrite($downstream, fread($upstream, 1024));
+            $this->setDownloadHeaders($filePath, $orderNumber);
+
+            readfile($filePath);
         }
     }
 

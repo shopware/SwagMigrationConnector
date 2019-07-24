@@ -11,7 +11,6 @@ use Doctrine\DBAL\Connection;
 
 class NewsletterRecipientRepository extends AbstractRepository
 {
-
     /**
      * {@inheritdoc}
      */
@@ -75,6 +74,7 @@ class NewsletterRecipientRepository extends AbstractRepository
 
     /**
      * @param array $ids
+     *
      * @return array
      */
     public function getShopsAndLocalesByCustomer(array $ids)

@@ -90,7 +90,6 @@ class MediaAlbumService extends AbstractApiService
             if (!empty($childAlbums)) {
                 $returnAlbums[] = $childAlbums;
             }
-
         }
         unset($mediaAlbum);
 
@@ -98,9 +97,10 @@ class MediaAlbumService extends AbstractApiService
     }
 
     /**
-     * @param array $mediaAlbums
+     * @param array  $mediaAlbums
      * @param string $id
      * @param string $locale
+     *
      * @return array
      */
     private function getChildAlbums(array &$mediaAlbums, $id, $locale)
