@@ -129,7 +129,7 @@ class ProductService extends AbstractApiService
             if (isset($options[$product['detail']['id']])) {
                 $product['configuratorOptions'] = $options[$product['detail']['id']];
             }
-            if (isset($product['manufacturer']['media'])) {
+            if (isset($product['manufacturer']['media']['id'])) {
                 $product['manufacturer']['media']['uri'] = $this->mediaService->getUrl($product['manufacturer']['img']);
             }
             if (isset($filterValues[$product['detail']['id']])) {
@@ -253,6 +253,10 @@ class ProductService extends AbstractApiService
             }
 
             foreach ($productAssets as $productAsset) {
+                if (!isset($productAsset['article_detail_id'])) {
+                    continue;
+                }
+
                 if (!isset($assets[$articleId][$productAsset['article_detail_id']])) {
                     $assets[$articleId][$productAsset['article_detail_id']] = [];
                 }
