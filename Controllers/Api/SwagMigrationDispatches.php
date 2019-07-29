@@ -11,7 +11,7 @@ use SwagMigrationConnector\Exception\UnsecureRequestException;
 use SwagMigrationConnector\Service\ControllerReturnStruct;
 use Symfony\Component\HttpFoundation\Response;
 
-class Shopware_Controllers_Api_SwagMigrationTranslations extends Shopware_Controllers_Api_Rest
+class Shopware_Controllers_Api_SwagMigrationDispatches extends Shopware_Controllers_Api_Rest
 {
     /**
      * @throws PermissionDeniedException
@@ -50,10 +50,10 @@ class Shopware_Controllers_Api_SwagMigrationTranslations extends Shopware_Contro
     {
         $offset = (int) $this->Request()->getParam('offset', 0);
         $limit = (int) $this->Request()->getParam('limit', 250);
-        $translationService = $this->container->get('swag_migration_connector.service.translation_service');
+        $dispatchService = $this->container->get('swag_migration_connector.service.dispatch_service');
 
-        $translations = $translationService->getTranslations($offset, $limit);
-        $response = new ControllerReturnStruct($translations, empty($translations));
+        $dispatches = $dispatchService->getDispatches($offset, $limit);
+        $response = new ControllerReturnStruct($dispatches, empty($dispatches));
 
         $this->view->assign($response->jsonSerialize());
     }
