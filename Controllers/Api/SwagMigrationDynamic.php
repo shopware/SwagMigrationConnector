@@ -10,6 +10,7 @@ use Shopware\Models\User\Role;
 use SwagMigrationConnector\Exception\PermissionDeniedException;
 use SwagMigrationConnector\Exception\UnsecureRequestException;
 use SwagMigrationConnector\Service\ControllerReturnStruct;
+use Symfony\Component\HttpFoundation\Response;
 
 class Shopware_Controllers_Api_SwagMigrationDynamic extends Shopware_Controllers_Api_Rest
 {
@@ -27,7 +28,7 @@ class Shopware_Controllers_Api_SwagMigrationDynamic extends Shopware_Controllers
         if (!$this->Request()->isSecure() && (bool) $pluginConfig['enforceSSL']) {
             throw new UnsecureRequestException(
                 'SSL required',
-                426
+                Response::HTTP_UPGRADE_REQUIRED
             );
         }
 
@@ -42,7 +43,7 @@ class Shopware_Controllers_Api_SwagMigrationDynamic extends Shopware_Controllers
 
         throw new PermissionDeniedException(
             'Permission denied. API user does not have sufficient rights for this action or could not be authenticated.',
-            401
+            Response::HTTP_UNAUTHORIZED
         );
     }
 
