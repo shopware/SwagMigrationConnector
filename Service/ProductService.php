@@ -163,11 +163,20 @@ class ProductService extends AbstractApiService
 
     private function getShops(array $topMostCategoriesByProduct)
     {
+        $productToCategory = [];
         $ids = [];
-        foreach ($topMostCategoriesByProduct as $product) {
+        foreach ($topMostCategoriesByProduct as $productKey => $product) {
             foreach ($product as $category) {
                 if (!isset($ids[$category])) {
                     $ids[$category] = $category;
+                }
+
+                $key = $productKey . '_' . $category;
+                if (!isset($productToCategory[$key])) {
+                    $productToCategory[$key] = [
+                        'productId' => $productKey,
+                        'categoryId' => $category,
+                    ];
                 }
             }
         }
@@ -175,19 +184,16 @@ class ProductService extends AbstractApiService
         $shops = $this->productRepository->fetchShopsByCategories($ids);
 
         $ids = [];
-        foreach ($topMostCategoriesByProduct as $productKey => $product) {
-            foreach ($product as $key => $category) {
-                if (isset($shops[$key]) && !isset($ids[$productKey][$key])) {
-                    foreach ($shops[$key] as $shop) {
-                        if (empty($shop['main_id'])) {
-                            $shopId = $shop['id'];
-                        } else {
-                            $shopId = $shop['main_id'];
-                        }
+        foreach ($productToCategory as $content) {
+            $productId = $content['productId'];
+            $categoryId = $content['categoryId'];
 
-                        if (!isset($ids[$productKey][$shopId])) {
-                            $ids[$productKey][$shopId] = $shopId;
-                        }
+            if (isset($shops[$categoryId])) {
+                foreach ($shops[$categoryId] as $shop) {
+                    $shopId = $shop['id'];
+
+                    if (!isset($ids[$productId][$shopId])) {
+                        $ids[$productId][$shopId] = $shopId;
                     }
                 }
             }
