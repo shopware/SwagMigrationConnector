@@ -86,8 +86,7 @@ class ProductRepository extends AbstractRepository
         $query->addSelect('category.id');
 
         $query->innerJoin('category', 's_core_shops', 'shop', 'category.id = shop.category_id');
-        $query->addSelect('shop.id');
-        $query->addSelect('shop.main_id');
+        $query->addSelect('IFNULL(shop.main_id, shop.id) AS "id"');
 
         $query->where('category.id IN (:ids)');
         $query->setParameter('ids', $categories, Connection::PARAM_INT_ARRAY);
