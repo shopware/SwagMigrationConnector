@@ -58,7 +58,7 @@ class CategoryService extends AbstractApiService
         $topMostParentIds = $this->getTopMostParentIds($fetchedCategories);
         $topMostCategories = $this->categoryRepository->fetchCategoriesById($topMostParentIds);
 
-        $categories = $this->mapData($fetchedCategories, [], ['category', 'categorypath', 'previousSiblingId']);
+        $categories = $this->mapData($fetchedCategories, [], ['category', 'categorypath', 'previousSiblingId', 'categoryPosition']);
 
         $resultSet = $this->setAllLocales($categories, $topMostCategories);
 
