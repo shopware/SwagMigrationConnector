@@ -34,9 +34,11 @@ class NewsletterRecipientService extends AbstractApiService
     public function getNewsletterRecipients($offset = 0, $limit = 250)
     {
         $fetchedNewsletterRecipients = $this->newsletterRecipientRepository->fetch($offset, $limit);
-        $ids = array_column($fetchedNewsletterRecipients, 'id');
+        $recipients = $this->mapData($fetchedNewsletterRecipients, [], ['recipient']);
 
-        $resultSet = $this->assignAssociatedData($fetchedNewsletterRecipients, $ids);
+        $ids = array_column($recipients, 'id');
+
+        $resultSet = $this->assignAssociatedData($recipients, $ids);
 
         return $this->cleanupResultSet($resultSet);
     }
