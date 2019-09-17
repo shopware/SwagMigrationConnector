@@ -20,14 +20,14 @@ class NewsletterRecipientRepository extends AbstractRepository
 
         $query = $this->connection->createQueryBuilder();
 
-        $query->select('addresses.id, newsletter.*, addresses.customer');
+        $query->from('s_campaigns_mailaddresses', 'recipient');
+        $this->addTableSelection($query, 's_campaigns_mailaddresses', 'recipient');
 
-        $query->from('s_campaigns_mailaddresses', 'addresses');
-        $query->leftJoin('addresses', 's_campaigns_maildata', 'newsletter', 'addresses.email = newsletter.email');
+        $query->leftJoin('recipient', 's_campaigns_maildata', 'recipient_address', 'recipient.email = recipient_address.email');
+        $this->addTableSelection($query, 's_campaigns_maildata', 'recipient_address');
 
-        $query->where('newsletter.id IN (:ids)');
+        $query->where('recipient.id IN (:ids)');
         $query->setParameter('ids', $ids, Connection::PARAM_STR_ARRAY);
-        $query->addOrderBy('newsletter.id');
 
         return $query->execute()->fetchAll();
     }
