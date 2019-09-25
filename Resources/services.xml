@@ -112,6 +112,10 @@
             <argument type="service" id="models" />
         </service>
 
+        <service id="swag_migration_connector.service.vote_service" class="SwagMigrationConnector\Service\VoteService">
+            <argument type="service" id="swag_migration_connector.repository.vote_repository" />
+        </service>
+
         <!--Repositories-->
 
         <service id="swag_migration_connector.repository.environment_repository" class="SwagMigrationConnector\Repository\EnvironmentRepository">
@@ -153,6 +157,8 @@
         <service id="swag_migration_connector.repository.newsletter_recipient_repository" class="SwagMigrationConnector\Repository\NewsletterRecipientRepository" parent="SwagMigrationConnector\Repository\AbstractRepository" />
 
         <service id="swag_migration_connector.repository.dispatch_repository" class="SwagMigrationConnector\Repository\DispatchRepository" parent="SwagMigrationConnector\Repository\AbstractRepository" />
+
+        <service id="swag_migration_connector.repository.vote_repository" class="SwagMigrationConnector\Repository\VoteRepository" parent="SwagMigrationConnector\Repository\AbstractRepository" />
 </services>
 
 </container>
