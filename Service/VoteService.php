@@ -30,7 +30,7 @@ class VoteService extends AbstractApiService
     public function getVotes($offset = 0, $limit = 250)
     {
         $fetchedVotes = $this->voteRepository->fetch($offset, $limit);
-        $votes = $this->mapData($fetchedVotes, [], ['vote']);
+        $votes = $this->mapData($fetchedVotes, [], ['vote', 'mainShopId']);
 
         foreach ($votes as &$vote) {
             $vote['_locale'] = str_replace('_', '-', $vote['_locale']);

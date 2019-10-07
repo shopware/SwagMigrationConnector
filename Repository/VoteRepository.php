@@ -18,7 +18,8 @@ class VoteRepository extends AbstractRepository
         $query->from('s_articles_vote', 'vote');
         $this->addTableSelection($query, 's_articles_vote', 'vote');
 
-        $query->leftJoin('vote', 's_core_shops', 'shop', 'shop.id = vote.shop_id');
+        $query->leftJoin('vote', 's_core_shops', 'shop', 'shop.id = vote.shop_id OR (vote.shop_id IS NULL AND shop.default = 1)');
+        $query->addSelect('shop.id as mainShopId');
         $query->leftJoin('shop', 's_core_locales', 'locale', 'shop.locale_id = locale.id');
         $query->addSelect('locale.locale as _locale');
 
