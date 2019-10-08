@@ -116,6 +116,10 @@
             <argument type="service" id="swag_migration_connector.repository.vote_repository" />
         </service>
 
+        <service id="swag_migration_connector.service.seourl_service" class="SwagMigrationConnector\Service\SeoUrlService">
+            <argument type="service" id="swag_migration_connector.repository.seourl_repository" />
+        </service>
+
         <!--Repositories-->
 
         <service id="swag_migration_connector.repository.environment_repository" class="SwagMigrationConnector\Repository\EnvironmentRepository">
@@ -159,6 +163,8 @@
         <service id="swag_migration_connector.repository.dispatch_repository" class="SwagMigrationConnector\Repository\DispatchRepository" parent="SwagMigrationConnector\Repository\AbstractRepository" />
 
         <service id="swag_migration_connector.repository.vote_repository" class="SwagMigrationConnector\Repository\VoteRepository" parent="SwagMigrationConnector\Repository\AbstractRepository" />
+
+        <service id="swag_migration_connector.repository.seourl_repository" class="SwagMigrationConnector\Repository\SeoUrlRepository" parent="SwagMigrationConnector\Repository\AbstractRepository" />
 </services>
 
 </container>
