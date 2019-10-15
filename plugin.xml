@@ -5,12 +5,27 @@
     <label lang="de">Shopware Migration Connector</label>
     <label lang="en">Shopware Migration Connector</label>
 
-    <version>0.11.0</version>
+    <version>0.12.0</version>
     <copyright>(c) by shopware AG</copyright>
     <license>MIT</license>
     <link>http://store.shopware.com</link>
     <author>shopware AG</author>
     <compatibility minVersion="5.4.0" maxVersion="5.99.99"/>
+
+    <changelog version="0.12.0">
+        <changes lang="de">
+            NTR - Behebt ein Problem mit der mysql Kompatibilität;
+            PT-10819 - Optimiert das Holen der Newsletter-Empfänger;
+            PT-10846 - Migration von Produktbewertungen;
+            PT-10861 - Migration von SEO Urls;
+        </changes>
+        <changes lang="en">
+            NTR - Fix mysql compatibility;
+            PT-10819 - Optimize newsletter fetch query;
+            PT-10846 - Migration of product reviews;
+            PT-10861 - Migration of seo urls;
+        </changes>
+    </changelog>
 
     <changelog version="0.11.0">
         <changes lang="de">
