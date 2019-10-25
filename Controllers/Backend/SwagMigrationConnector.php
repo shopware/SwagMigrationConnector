@@ -89,10 +89,10 @@ class Shopware_Controllers_Backend_SwagMigrationConnector extends Shopware_Contr
         // Fix invalid types
         foreach ($data as &$plugin) {
             foreach ($plugin['recommendations'] as &$recommendation) {
-                if (empty($recommendation['targetPlugin']['releaseDate']['date'])) {
+                if (empty($recommendation['targetPlugin']['releaseDate'])) {
                     continue;
                 }
-                $releaseDate = strtotime($recommendation['targetPlugin']['releaseDate']['date']);
+                $releaseDate = strtotime($recommendation['targetPlugin']['releaseDate']);
 
                 if (time() >= $releaseDate) {
                     $recommendation['type'] = 'targetPluginReleased';
