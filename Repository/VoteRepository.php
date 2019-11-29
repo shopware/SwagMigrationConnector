@@ -8,9 +8,33 @@
 namespace SwagMigrationConnector\Repository;
 
 use Doctrine\DBAL\Connection;
+use SwagMigrationConnector\Util\DefaultEntities;
+use SwagMigrationConnector\Util\TotalStruct;
 
 class VoteRepository extends AbstractRepository
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function requiredForCount(array $entities)
+    {
+        return !in_array(DefaultEntities::PRODUCT_REVIEW, $entities);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTotal()
+    {
+        $total = (int) $this->connection->createQueryBuilder()
+            ->select('COUNT(*)')
+            ->from('s_articles_vote')
+            ->execute()
+            ->fetchColumn();
+
+        return new TotalStruct(DefaultEntities::PRODUCT_REVIEW, $total);
+    }
+
     /**
      * {@inheritdoc}
      */

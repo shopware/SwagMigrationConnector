@@ -10,6 +10,7 @@ namespace SwagMigrationConnector\Repository;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Query\QueryBuilder;
 use Doctrine\DBAL\Schema\Column;
+use SwagMigrationConnector\Util\TotalStruct;
 
 abstract class AbstractRepository implements ApiRepositoryInterface
 {
@@ -24,6 +25,24 @@ abstract class AbstractRepository implements ApiRepositoryInterface
     public function __construct(Connection $connection)
     {
         $this->connection = $connection;
+    }
+
+    /**
+     * @return TotalStruct|null
+     */
+    public function getTotal()
+    {
+        return null;
+    }
+
+    /**
+     * @param array $entities
+     *
+     * @return bool
+     */
+    public function requiredForCount(array $entities)
+    {
+        return false;
     }
 
     /**

@@ -7,6 +7,8 @@
 
 namespace SwagMigrationConnector\Repository;
 
+use SwagMigrationConnector\Util\TotalStruct;
+
 interface ApiRepositoryInterface
 {
     /**
@@ -16,4 +18,16 @@ interface ApiRepositoryInterface
      * @return array
      */
     public function fetch($offset = 0, $limit = 250);
+
+    /**
+     * @return TotalStruct|null
+     */
+    public function getTotal();
+
+    /**
+     * @param array
+     *
+     * @return bool
+     */
+    public function requiredForCount(array $entities);
 }

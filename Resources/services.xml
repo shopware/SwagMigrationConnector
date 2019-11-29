@@ -46,7 +46,8 @@
         </service>
 
         <service id="swag_migration_connector.service.totals_service" class="SwagMigrationConnector\Service\TotalsService">
-            <argument type="service" id="dbal_connection" />
+            <argument type="service" id="swag_migration_connector.repository.registry"/>
+            <argument type="service" id="dbal_connection"/>
         </service>
 
         <service id="swag_migration_connector.service.document_service" class="SwagMigrationConnector\Service\DocumentService">
@@ -83,6 +84,7 @@
         </service>
 
         <service class="SwagMigrationConnector\Service\NumberRangeService" id="swag_migration_connector.service.number_range_service">
+            <argument type="service" id="swag_migration_connector.repository.number_range_repository"/>
             <argument type="service" id="models" />
         </service>
 
@@ -96,6 +98,7 @@
         </service>
 
         <service class="SwagMigrationConnector\Service\ShopService" id="swag_migration_connector.service.shop_service">
+            <argument type="service" id="swag_migration_connector.repository.shop_repository"/>
             <argument type="service" id="models" />
         </service>
 
@@ -121,50 +124,123 @@
         </service>
 
         <!--Repositories-->
+        <service id="swag_migration_connector.repository.registry" class="SwagMigrationConnector\Util\RepositoryRegistry">
+            <argument type="tagged" tag="shopware.migration.connector.repository"/>
+        </service>
 
         <service id="swag_migration_connector.repository.environment_repository" class="SwagMigrationConnector\Repository\EnvironmentRepository">
             <argument type="service" id="dbal_connection"/>
         </service>
 
         <service id="SwagMigrationConnector\Repository\AbstractRepository" abstract="true">
+            <argument type="service" id="dbal_connection"/>
+        </service>
+
+        <service id="swag_migration_connector.repository.category_repository"
+                 class="SwagMigrationConnector\Repository\CategoryRepository"
+                 parent="SwagMigrationConnector\Repository\AbstractRepository">
+            <tag name="shopware.migration.connector.repository"/>
+        </service>
+
+        <service id="swag_migration_connector.repository.product_repository"
+                 class="SwagMigrationConnector\Repository\ProductRepository"
+                 parent="SwagMigrationConnector\Repository\AbstractRepository">
+            <tag name="shopware.migration.connector.repository"/>
+        </service>
+
+        <service id="swag_migration_connector.repository.customer_repository"
+                 class="SwagMigrationConnector\Repository\CustomerRepository"
+                 parent="SwagMigrationConnector\Repository\AbstractRepository">
+            <tag name="shopware.migration.connector.repository"/>
+        </service>
+
+        <service id="swag_migration_connector.repository.order_repository"
+                 class="SwagMigrationConnector\Repository\OrderRepository"
+                 parent="SwagMigrationConnector\Repository\AbstractRepository">
+            <tag name="shopware.migration.connector.repository"/>
+        </service>
+
+        <service id="swag_migration_connector.repository.document_repository"
+                 class="SwagMigrationConnector\Repository\DocumentRepository"
+                 parent="SwagMigrationConnector\Repository\AbstractRepository">
+            <tag name="shopware.migration.connector.repository"/>
+        </service>
+
+        <service id="swag_migration_connector.repository.translation_repository"
+                 class="SwagMigrationConnector\Repository\TranslationRepository"
+                 parent="SwagMigrationConnector\Repository\AbstractRepository">
+            <tag name="shopware.migration.connector.repository"/>
+        </service>
+
+        <service id="swag_migration_connector.repository.asset_repository"
+                 class="SwagMigrationConnector\Repository\AssetRepository"
+                 parent="SwagMigrationConnector\Repository\AbstractRepository">
+            <tag name="shopware.migration.connector.repository"/>
+        </service>
+
+        <service id="swag_migration_connector.repository.customer_group_repository"
+                 class="SwagMigrationConnector\Repository\CustomerGroupRepository"
+                 parent="SwagMigrationConnector\Repository\AbstractRepository">
+            <tag name="shopware.migration.connector.repository"/>
+        </service>
+
+        <service id="swag_migration_connector.repository.configurator_option_repository"
+                 class="SwagMigrationConnector\Repository\ConfiguratorOptionRepository"
+                 parent="SwagMigrationConnector\Repository\AbstractRepository">
+            <tag name="shopware.migration.connector.repository"/>
+        </service>
+
+        <service id="swag_migration_connector.repository.dynamic_repository"
+                 class="SwagMigrationConnector\Repository\DynamicRepository">
             <argument type="service" id="dbal_connection" />
         </service>
 
-        <service id="swag_migration_connector.repository.category_repository" class="SwagMigrationConnector\Repository\CategoryRepository" parent="SwagMigrationConnector\Repository\AbstractRepository" />
-
-        <service id="swag_migration_connector.repository.product_repository" class="SwagMigrationConnector\Repository\ProductRepository" parent="SwagMigrationConnector\Repository\AbstractRepository" />
-
-        <service id="swag_migration_connector.repository.customer_repository" class="SwagMigrationConnector\Repository\CustomerRepository" parent="SwagMigrationConnector\Repository\AbstractRepository" />
-
-        <service id="swag_migration_connector.repository.order_repository" class="SwagMigrationConnector\Repository\OrderRepository" parent="SwagMigrationConnector\Repository\AbstractRepository" />
-
-        <service id="swag_migration_connector.repository.document_repository" class="SwagMigrationConnector\Repository\DocumentRepository" parent="SwagMigrationConnector\Repository\AbstractRepository" />
-
-        <service id="swag_migration_connector.repository.translation_repository" class="SwagMigrationConnector\Repository\TranslationRepository" parent="SwagMigrationConnector\Repository\AbstractRepository" />
-
-        <service id="swag_migration_connector.repository.asset_repository" class="SwagMigrationConnector\Repository\AssetRepository" parent="SwagMigrationConnector\Repository\AbstractRepository" />
-
-        <service id="swag_migration_connector.repository.customer_group_repository" class="SwagMigrationConnector\Repository\CustomerGroupRepository" parent="SwagMigrationConnector\Repository\AbstractRepository" />
-
-        <service id="swag_migration_connector.repository.configurator_option_repository" class="SwagMigrationConnector\Repository\ConfiguratorOptionRepository" parent="SwagMigrationConnector\Repository\AbstractRepository" />
-
-        <service id="swag_migration_connector.repository.dynamic_repository" class="SwagMigrationConnector\Repository\DynamicRepository">
+        <service id="swag_migration_connector.repository.attribute_repository"
+                 class="SwagMigrationConnector\Repository\AttributeRepository">
             <argument type="service" id="dbal_connection" />
         </service>
 
-        <service id="swag_migration_connector.repository.attribute_repository" class="SwagMigrationConnector\Repository\AttributeRepository">
-            <argument type="service" id="dbal_connection" />
+        <service id="swag_migration_connector.repository.currency_repository"
+                 class="SwagMigrationConnector\Repository\CurrencyRepository"
+                 parent="SwagMigrationConnector\Repository\AbstractRepository">
+            <tag name="shopware.migration.connector.repository"/>
         </service>
 
-        <service id="swag_migration_connector.repository.currency_repository" class="SwagMigrationConnector\Repository\CurrencyRepository" parent="SwagMigrationConnector\Repository\AbstractRepository" />
+        <service id="swag_migration_connector.repository.newsletter_recipient_repository"
+                 class="SwagMigrationConnector\Repository\NewsletterRecipientRepository"
+                 parent="SwagMigrationConnector\Repository\AbstractRepository">
+            <tag name="shopware.migration.connector.repository"/>
+        </service>
 
-        <service id="swag_migration_connector.repository.newsletter_recipient_repository" class="SwagMigrationConnector\Repository\NewsletterRecipientRepository" parent="SwagMigrationConnector\Repository\AbstractRepository" />
+        <service id="swag_migration_connector.repository.number_range_repository"
+                 class="SwagMigrationConnector\Repository\NumberRangeRepository"
+                 parent="SwagMigrationConnector\Repository\AbstractRepository">
+            <tag name="shopware.migration.connector.repository"/>
+        </service>
 
-        <service id="swag_migration_connector.repository.dispatch_repository" class="SwagMigrationConnector\Repository\DispatchRepository" parent="SwagMigrationConnector\Repository\AbstractRepository" />
+        <service id="swag_migration_connector.repository.dispatch_repository"
+                 class="SwagMigrationConnector\Repository\DispatchRepository"
+                 parent="SwagMigrationConnector\Repository\AbstractRepository">
+            <tag name="shopware.migration.connector.repository"/>
+        </service>
 
-        <service id="swag_migration_connector.repository.vote_repository" class="SwagMigrationConnector\Repository\VoteRepository" parent="SwagMigrationConnector\Repository\AbstractRepository" />
+        <service id="swag_migration_connector.repository.vote_repository"
+                 class="SwagMigrationConnector\Repository\VoteRepository"
+                 parent="SwagMigrationConnector\Repository\AbstractRepository">
+            <tag name="shopware.migration.connector.repository"/>
+        </service>
 
-        <service id="swag_migration_connector.repository.seourl_repository" class="SwagMigrationConnector\Repository\SeoUrlRepository" parent="SwagMigrationConnector\Repository\AbstractRepository" />
+        <service id="swag_migration_connector.repository.shop_repository"
+                 class="SwagMigrationConnector\Repository\ShopRepository"
+                 parent="SwagMigrationConnector\Repository\AbstractRepository">
+            <tag name="shopware.migration.connector.repository"/>
+        </service>
+
+        <service id="swag_migration_connector.repository.seourl_repository"
+                 class="SwagMigrationConnector\Repository\SeoUrlRepository"
+                 parent="SwagMigrationConnector\Repository\AbstractRepository">
+            <tag name="shopware.migration.connector.repository"/>
+        </service>
 </services>
 
 </container>

@@ -8,9 +8,34 @@
 namespace SwagMigrationConnector\Repository;
 
 use Doctrine\DBAL\Connection;
+use SwagMigrationConnector\Util\DefaultEntities;
+use SwagMigrationConnector\Util\TotalStruct;
 
 class CategoryRepository extends AbstractRepository
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function requiredForCount(array $entities)
+    {
+        return !in_array(DefaultEntities::CATEGORY, $entities);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTotal()
+    {
+        $total = (int) $this->connection->createQueryBuilder()
+            ->select('COUNT(*)')
+            ->from('s_categories')
+            ->where('path IS NOT NULL AND parent IS NOT NULL')
+            ->execute()
+            ->fetchColumn();
+
+        return new TotalStruct(DefaultEntities::CATEGORY, $total);
+    }
+
     /**
      * {@inheritdoc}
      */
