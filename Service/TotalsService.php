@@ -8,9 +8,16 @@
 namespace SwagMigrationConnector\Service;
 
 use Doctrine\DBAL\Connection;
+use SwagMigrationConnector\Repository\ApiRepositoryInterface;
+use SwagMigrationConnector\Util\RepositoryRegistry;
 
 class TotalsService
 {
+    /**
+     * @var RepositoryRegistry
+     */
+    private $repositoryRegistry;
+
     /**
      * @var Connection
      */
@@ -19,8 +26,9 @@ class TotalsService
     /**
      * @param Connection $connection
      */
-    public function __construct(Connection $connection)
+    public function __construct(RepositoryRegistry $repositoryRegistry, Connection $connection)
     {
+        $this->repositoryRegistry = $repositoryRegistry;
         $this->connection = $connection;
     }
 
@@ -29,10 +37,26 @@ class TotalsService
      *
      * @return array
      */
-    public function fetchTotals(array $countInfos)
+    public function fetchTotals(array $countInfos = [])
     {
         $totals = [];
         $exceptions = [];
+        $entities = [];
+
+        if (!empty($countInfos)) {
+            $entities = array_column($countInfos, 'entity');
+        }
+        /**
+         * @var ApiRepositoryInterface[] $repos
+         */
+        $repos = $this->repositoryRegistry->getRepositories($entities);
+        foreach ($repos as $repo) {
+            $total = $repo->getTotal();
+
+            if ($total !== null) {
+                $totals[$total->getEntityName()] = $total->getTotal();
+            }
+        }
 
         foreach ($countInfos as $entityInfo) {
             $entity = $entityInfo['entity'];

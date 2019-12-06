@@ -7,18 +7,17 @@
 
 namespace SwagMigrationConnector\Repository;
 
-use Doctrine\DBAL\Connection;
 use SwagMigrationConnector\Util\DefaultEntities;
 use SwagMigrationConnector\Util\TotalStruct;
 
-class SeoUrlRepository extends AbstractRepository
+class ShopRepository extends AbstractRepository
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function requiredForCount(array $entities)
     {
-        return !in_array(DefaultEntities::SEO_URL, $entities);
+        return !in_array(DefaultEntities::SALES_CHANNEL, $entities);
     }
 
     /**
@@ -28,32 +27,32 @@ class SeoUrlRepository extends AbstractRepository
     {
         $total = (int) $this->connection->createQueryBuilder()
             ->select('COUNT(*)')
-            ->from('s_core_rewrite_urls')
+            ->from('s_core_shops')
             ->execute()
             ->fetchColumn();
 
-        return new TotalStruct(DefaultEntities::SEO_URL, $total);
+        return new TotalStruct(DefaultEntities::SALES_CHANNEL, $total);
     }
 
     /**
-     * {@inheritdoc}
+     * @return array
      */
     public function fetch($offset = 0, $limit = 250)
     {
-        $ids = $this->fetchIdentifiers('s_core_rewrite_urls', $offset, $limit);
-
         $query = $this->connection->createQueryBuilder();
 
-        $query->from('s_core_rewrite_urls', 'url');
-        $this->addTableSelection($query, 's_core_rewrite_urls', 'url');
+        $query->from('s_core_shops', 'shop');
+        $query->addSelect('shop.id as identifier');
+        $this->addTableSelection($query, 's_core_shops', 'shop');
 
-        $query->leftJoin('url', 's_core_shops', 'shop', 'shop.id = url.subshopID');
         $query->leftJoin('shop', 's_core_locales', 'locale', 'shop.locale_id = locale.id');
-        $query->addSelect('locale.locale as _locale');
+        $query->addSelect('locale.locale');
 
-        $query->where('url.id IN (:ids)');
-        $query->setParameter('ids', $ids, Connection::PARAM_STR_ARRAY);
+        $query->leftJoin('shop', 's_core_currencies', 'currency', 'shop.currency_id = currency.id');
+        $query->addSelect('currency.currency');
 
-        return $query->execute()->fetchAll();
+        $query->orderBy('shop.main_id');
+
+        return $query->execute()->fetchAll(\PDO::FETCH_GROUP | \PDO::FETCH_UNIQUE);
     }
 }

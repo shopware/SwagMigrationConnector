@@ -7,8 +7,33 @@
 
 namespace SwagMigrationConnector\Repository;
 
+use SwagMigrationConnector\Util\DefaultEntities;
+use SwagMigrationConnector\Util\TotalStruct;
+
 class CurrencyRepository extends AbstractRepository
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function requiredForCount(array $entities)
+    {
+        return !in_array(DefaultEntities::CURRENCY, $entities);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTotal()
+    {
+        $total = (int) $this->connection->createQueryBuilder()
+            ->select('COUNT(*)')
+            ->from('s_core_currencies')
+            ->execute()
+            ->fetchColumn();
+
+        return new TotalStruct(DefaultEntities::CURRENCY, $total);
+    }
+
     /**
      * @param int $offset
      * @param int $limit

@@ -8,9 +8,33 @@
 namespace SwagMigrationConnector\Repository;
 
 use Doctrine\DBAL\Connection;
+use SwagMigrationConnector\Util\DefaultEntities;
+use SwagMigrationConnector\Util\TotalStruct;
 
 class TranslationRepository extends AbstractRepository
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function requiredForCount(array $entities)
+    {
+        return !in_array(DefaultEntities::TRANSLATION, $entities);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTotal()
+    {
+        $total = (int) $this->connection->createQueryBuilder()
+            ->select('COUNT(*)')
+            ->from('s_core_translations')
+            ->execute()
+            ->fetchColumn();
+
+        return new TotalStruct(DefaultEntities::TRANSLATION, $total);
+    }
+
     /**
      * @param int $offset
      * @param int $limit

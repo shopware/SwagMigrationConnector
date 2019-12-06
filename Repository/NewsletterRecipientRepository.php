@@ -8,9 +8,33 @@
 namespace SwagMigrationConnector\Repository;
 
 use Doctrine\DBAL\Connection;
+use SwagMigrationConnector\Util\DefaultEntities;
+use SwagMigrationConnector\Util\TotalStruct;
 
 class NewsletterRecipientRepository extends AbstractRepository
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function requiredForCount(array $entities)
+    {
+        return !in_array(DefaultEntities::NEWSLETTER_RECIPIENT, $entities);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTotal()
+    {
+        $total = (int) $this->connection->createQueryBuilder()
+            ->select('COUNT(*)')
+            ->from('s_campaigns_mailaddresses')
+            ->execute()
+            ->fetchColumn();
+
+        return new TotalStruct(DefaultEntities::NEWSLETTER_RECIPIENT, $total);
+    }
+
     /**
      * {@inheritdoc}
      */

@@ -8,9 +8,33 @@
 namespace SwagMigrationConnector\Repository;
 
 use Doctrine\DBAL\Connection;
+use SwagMigrationConnector\Util\DefaultEntities;
+use SwagMigrationConnector\Util\TotalStruct;
 
 class CustomerGroupRepository extends AbstractRepository
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function requiredForCount(array $entities)
+    {
+        return !in_array(DefaultEntities::CUSTOMER_GROUP, $entities);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTotal()
+    {
+        $total = (int) $this->connection->createQueryBuilder()
+            ->select('COUNT(*)')
+            ->from('s_core_customergroups')
+            ->execute()
+            ->fetchColumn();
+
+        return new TotalStruct(DefaultEntities::CUSTOMER_GROUP, $total);
+    }
+
     /**
      * {@inheritdoc}
      */

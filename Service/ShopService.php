@@ -12,13 +12,15 @@ use Doctrine\DBAL\Query\QueryBuilder;
 use Doctrine\DBAL\Schema\Column;
 use Shopware\Components\Model\ModelManager;
 use Shopware\Models\Shop\Shop;
+use SwagMigrationConnector\Repository\ApiRepositoryInterface;
+use SwagMigrationConnector\Repository\ShopRepository;
 
 class ShopService extends AbstractApiService
 {
     /**
-     * @var Connection
+     * @var ShopRepository
      */
-    private $connection;
+    private $repository;
 
     /**
      * @var ModelManager
@@ -28,10 +30,10 @@ class ShopService extends AbstractApiService
     /**
      * @param ModelManager $modelManager
      */
-    public function __construct(ModelManager $modelManager)
+    public function __construct(ApiRepositoryInterface $repository, ModelManager $modelManager)
     {
+        $this->repository = $repository;
         $this->modelManager = $modelManager;
-        $this->connection = $this->modelManager->getConnection();
     }
 
     /**
@@ -39,7 +41,7 @@ class ShopService extends AbstractApiService
      */
     public function getShops()
     {
-        $fetchedSalesChannels = $this->fetchData();
+        $fetchedSalesChannels = $this->repository->fetch();
         $salesChannels = $this->mapData($fetchedSalesChannels, [], ['shop', 'locale', 'currency']);
 
         /** @var Shop $defaultShop */
@@ -58,48 +60,5 @@ class ShopService extends AbstractApiService
         $salesChannels = array_values($salesChannels);
 
         return $this->cleanupResultSet($salesChannels);
-    }
-
-    /**
-     * @return array
-     */
-    private function fetchData()
-    {
-        $query = $this->connection->createQueryBuilder();
-
-        $query->from('s_core_shops', 'shop');
-        $query->addSelect('shop.id as identifier');
-        $this->addTableSelection($query, 's_core_shops', 'shop');
-
-        $query->leftJoin('shop', 's_core_locales', 'locale', 'shop.locale_id = locale.id');
-        $query->addSelect('locale.locale');
-
-        $query->leftJoin('shop', 's_core_currencies', 'currency', 'shop.currency_id = currency.id');
-        $query->addSelect('currency.currency');
-
-        $query->orderBy('shop.main_id');
-
-        return $query->execute()->fetchAll(\PDO::FETCH_GROUP | \PDO::FETCH_UNIQUE);
-    }
-
-    /**
-     * @param QueryBuilder $query
-     * @param $table
-     * @param $tableAlias
-     */
-    private function addTableSelection(QueryBuilder $query, $table, $tableAlias)
-    {
-        $columns = $this->connection->getSchemaManager()->listTableColumns($table);
-
-        /** @var Column $column */
-        foreach ($columns as $column) {
-            $selection = str_replace(
-                ['#tableAlias#', '#column#'],
-                [$tableAlias, $column->getName()],
-                '`#tableAlias#`.`#column#` as `#tableAlias#.#column#`'
-            );
-
-            $query->addSelect($selection);
-        }
     }
 }

@@ -8,9 +8,33 @@
 namespace SwagMigrationConnector\Repository;
 
 use Doctrine\DBAL\Connection;
+use SwagMigrationConnector\Util\DefaultEntities;
+use SwagMigrationConnector\Util\TotalStruct;
 
 class DocumentRepository extends AbstractRepository
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function requiredForCount(array $entities)
+    {
+        return !in_array(DefaultEntities::ORDER_DOCUMENT, $entities);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTotal()
+    {
+        $total = (int) $this->connection->createQueryBuilder()
+            ->select('COUNT(*)')
+            ->from('s_order_documents')
+            ->execute()
+            ->fetchColumn();
+
+        return new TotalStruct(DefaultEntities::ORDER_DOCUMENT, $total);
+    }
+
     /**
      * {@inheritdoc}
      */

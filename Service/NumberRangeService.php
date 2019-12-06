@@ -10,26 +10,28 @@ namespace SwagMigrationConnector\Service;
 use Doctrine\DBAL\Connection;
 use Shopware\Components\Model\ModelManager;
 use Shopware\Models\Shop\Shop;
+use SwagMigrationConnector\Repository\ApiRepositoryInterface;
+use SwagMigrationConnector\Repository\NumberRangeRepository;
 
 class NumberRangeService extends AbstractApiService
 {
+    /**
+     * @var NumberRangeRepository
+     */
+    private $repository;
+
     /**
      * @var ModelManager
      */
     private $modelManager;
 
     /**
-     * @var Connection
-     */
-    private $connection;
-
-    /**
      * @param ModelManager $modelManager
      */
-    public function __construct(ModelManager $modelManager)
+    public function __construct(ApiRepositoryInterface $repository, ModelManager $modelManager)
     {
+        $this->repository = $repository;
         $this->modelManager = $modelManager;
-        $this->connection = $modelManager->getConnection();
     }
 
     /**
@@ -37,8 +39,8 @@ class NumberRangeService extends AbstractApiService
      */
     public function getNumberRanges()
     {
-        $numberRanges = $this->fetchNumberRanges();
-        $prefix = unserialize($this->fetchPrefix(), ['allowedClasses' => false]);
+        $numberRanges = $this->repository->fetch();
+        $prefix = unserialize($this->repository->fetchPrefix(), ['allowedClasses' => false]);
 
         if (!$prefix) {
             $prefix = '';
@@ -55,32 +57,5 @@ class NumberRangeService extends AbstractApiService
         }
 
         return $numberRanges;
-    }
-
-    /**
-     * @return array
-     */
-    private function fetchNumberRanges()
-    {
-        return $this->connection->createQueryBuilder()
-            ->select('*')
-            ->from('s_order_number')
-            ->execute()
-            ->fetchAll()
-        ;
-    }
-
-    /**
-     * @return mixed
-     */
-    private function fetchPrefix()
-    {
-        return $this->connection->createQueryBuilder()
-            ->select('value')
-            ->from('s_core_config_elements')
-            ->where('name = "backendautoordernumberprefix"')
-            ->execute()
-            ->fetch(\PDO::FETCH_COLUMN)
-        ;
     }
 }

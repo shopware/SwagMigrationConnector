@@ -8,9 +8,48 @@
 namespace SwagMigrationConnector\Repository;
 
 use PDO;
+use SwagMigrationConnector\Util\DefaultEntities;
+use SwagMigrationConnector\Util\TotalStruct;
 
 class ConfiguratorOptionRepository extends AbstractRepository
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function requiredForCount(array $entities)
+    {
+        return !in_array(DefaultEntities::PROPERTY_GROUP_OPTION, $entities);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTotal()
+    {
+        $sql = <<<SQL
+SELECT 
+    COUNT(*)
+FROM
+    (
+        SELECT
+            'property' AS "property.type",
+            filter.id AS "property.id"
+        FROM s_filter_values AS filter
+        
+        UNION
+        
+        SELECT 
+            'option' AS "property.type",
+            opt.id AS "property.id"
+        FROM s_article_configurator_options AS opt
+    ) AS result
+SQL;
+
+        $total = (int) $this->connection->executeQuery($sql)->fetchColumn();
+
+        return new TotalStruct(DefaultEntities::PROPERTY_GROUP_OPTION, $total);
+    }
+
     /**
      * {@inheritdoc}
      */
