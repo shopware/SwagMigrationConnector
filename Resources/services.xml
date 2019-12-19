@@ -124,10 +124,6 @@
         </service>
 
         <!--Repositories-->
-        <service id="swag_migration_connector.repository.registry" class="SwagMigrationConnector\Util\RepositoryRegistry">
-            <argument type="tagged" tag="shopware.migration.connector.repository"/>
-        </service>
-
         <service id="swag_migration_connector.repository.environment_repository" class="SwagMigrationConnector\Repository\EnvironmentRepository">
             <argument type="service" id="dbal_connection"/>
         </service>
@@ -241,6 +237,6 @@
                  parent="SwagMigrationConnector\Repository\AbstractRepository">
             <tag name="shopware.migration.connector.repository"/>
         </service>
-</services>
+    </services>
 
 </container>
