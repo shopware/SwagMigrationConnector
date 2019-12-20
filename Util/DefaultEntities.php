@@ -12,37 +12,37 @@ namespace SwagMigrationConnector\Util;
  */
 class DefaultEntities
 {
-    public const CATEGORY = 'category';
+    const CATEGORY = 'category';
 
-    public const CURRENCY = 'currency';
+    const CURRENCY = 'currency';
 
-    public const CUSTOMER = 'customer';
+    const CUSTOMER = 'customer';
 
-    public const CUSTOMER_GROUP = 'customer_group';
+    const CUSTOMER_GROUP = 'customer_group';
 
-    public const LANGUAGE = 'language';
+    const LANGUAGE = 'language';
 
-    public const MEDIA = 'media';
+    const MEDIA = 'media';
 
-    public const NEWSLETTER_RECIPIENT = 'newsletter_recipient';
+    const NEWSLETTER_RECIPIENT = 'newsletter_recipient';
 
-    public const NUMBER_RANGE = 'number_range';
+    const NUMBER_RANGE = 'number_range';
 
-    public const ORDER = 'order';
+    const ORDER = 'order';
 
-    public const ORDER_DOCUMENT = 'order_document';
+    const ORDER_DOCUMENT = 'order_document';
 
-    public const PRODUCT = 'product';
+    const PRODUCT = 'product';
 
-    public const PRODUCT_REVIEW = 'product_review';
+    const PRODUCT_REVIEW = 'product_review';
 
-    public const PROPERTY_GROUP_OPTION = 'property_group_option';
+    const PROPERTY_GROUP_OPTION = 'property_group_option';
 
-    public const SALES_CHANNEL = 'sales_channel';
+    const SALES_CHANNEL = 'sales_channel';
 
-    public const SEO_URL = 'seo_url';
+    const SEO_URL = 'seo_url';
 
-    public const SHIPPING_METHOD = 'shipping_method';
+    const SHIPPING_METHOD = 'shipping_method';
 
-    public const TRANSLATION = 'translation';
+    const TRANSLATION = 'translation';
 }
