@@ -97,25 +97,16 @@ class CategoryRepository extends AbstractRepository
     }
 
     /**
-     * @param array $topMostParentIds
-     *
      * @return array
      */
-    public function fetchCategoriesById(array $topMostParentIds)
+    public function fetchMainCategoryLocales()
     {
         $query = $this->connection->createQueryBuilder();
 
-        $query->from('s_categories', 'category');
-        $query->addSelect('category.id');
-
-        $query->leftJoin('category', 's_core_shops', 'shop', 'category.id = shop.category_id');
+        $query->from('s_core_shops', 'shop');
+        $query->addSelect('shop.category_id');
         $query->leftJoin('shop', 's_core_locales', 'locale', 'locale.id = shop.locale_id');
         $query->addSelect('locale.locale');
-
-        $query->where('category.id IN (:ids)');
-        $query->setParameter('ids', $topMostParentIds, Connection::PARAM_INT_ARRAY);
-
-        $query->orderBy('category.parent');
 
         return $query->execute()->fetchAll(\PDO::FETCH_KEY_PAIR);
     }

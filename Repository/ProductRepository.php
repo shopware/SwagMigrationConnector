@@ -78,6 +78,19 @@ class ProductRepository extends AbstractRepository
     }
 
     /**
+     * @return array
+     */
+    public function fetchMainCategoryShops()
+    {
+        $query = $this->connection->createQueryBuilder();
+
+        $query->from('s_core_shops', 'shop');
+        $query->addSelect('shop.category_id, IFNULL(shop.main_id, shop.id)');
+
+        return $query->execute()->fetchAll(\PDO::FETCH_KEY_PAIR);
+    }
+
+    /**
      * @param array $productIds
      *
      * @return array
