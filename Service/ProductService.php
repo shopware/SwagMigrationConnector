@@ -95,8 +95,9 @@ class ProductService extends AbstractApiService
     protected function appendAssociatedData(array $products)
     {
         $categories = $this->getCategories();
-        $topMostParentIds = $this->getTopMostParentIds($categories);
-        $shops = $this->getShops($topMostParentIds);
+        $mainCategoryShops = $this->fetchMainCategoryShops();
+        $productVisibility = $this->getProductVisibility($categories, $mainCategoryShops);
+
         $prices = $this->getPrices();
         $assets = $this->getAssets();
         $options = $this->getConfiguratorOptions();
@@ -135,8 +136,8 @@ class ProductService extends AbstractApiService
             if (isset($filterValues[$product['detail']['id']])) {
                 $product['filters'] = $filterValues[$product['detail']['id']];
             }
-            if (isset($shops[$product['id']])) {
-                $product['shops'] = array_values($shops[$product['id']]);
+            if (isset($productVisibility[$product['id']])) {
+                $product['shops'] = array_values($productVisibility[$product['id']]);
             }
         }
         unset(
@@ -159,73 +160,6 @@ class ProductService extends AbstractApiService
         );
 
         return $this->productRepository->fetchProductCategories($productIds);
-    }
-
-    private function getShops(array $topMostCategoriesByProduct)
-    {
-        $productToCategory = [];
-        $ids = [];
-        foreach ($topMostCategoriesByProduct as $productKey => $product) {
-            foreach ($product as $category) {
-                if (!isset($ids[$category])) {
-                    $ids[$category] = $category;
-                }
-
-                $key = $productKey . '_' . $category;
-                if (!isset($productToCategory[$key])) {
-                    $productToCategory[$key] = [
-                        'productId' => $productKey,
-                        'categoryId' => $category,
-                    ];
-                }
-            }
-        }
-
-        $shops = $this->productRepository->fetchShopsByCategories($ids);
-
-        $ids = [];
-        foreach ($productToCategory as $content) {
-            $productId = $content['productId'];
-            $categoryId = $content['categoryId'];
-
-            if (isset($shops[$categoryId])) {
-                foreach ($shops[$categoryId] as $shop) {
-                    $shopId = $shop['id'];
-
-                    if (!isset($ids[$productId][$shopId])) {
-                        $ids[$productId][$shopId] = $shopId;
-                    }
-                }
-            }
-        }
-
-        return $ids;
-    }
-
-    /**
-     * @param array $categories
-     *
-     * @return array
-     */
-    private function getTopMostParentIds(array $categories)
-    {
-        $ids = [];
-        foreach ($categories as $productKey => $product) {
-            foreach ($product as $key => $category) {
-                if (empty($category['path'])) {
-                    continue;
-                }
-                $parentCategoryIds = array_values(
-                    array_filter(explode('|', (string) $category['path']))
-                );
-                $topMostParent = end($parentCategoryIds);
-                if (!isset($ids[$productKey]) || !in_array($topMostParent, $ids[$productKey], true)) {
-                    $ids[$productKey][$topMostParent] = $topMostParent;
-                }
-            }
-        }
-
-        return $ids;
     }
 
     /**
@@ -311,5 +245,41 @@ class ProductService extends AbstractApiService
         unset($asset);
 
         return $assets;
+    }
+
+    /**
+     * @return array
+     */
+    private function fetchMainCategoryShops()
+    {
+        return $this->productRepository->fetchMainCategoryShops();
+    }
+
+    /**
+     * @param array $categories
+     * @param array $mainCategoryShops
+     *
+     * @return array
+     */
+    private function getProductVisibility(array $categories, array $mainCategoryShops)
+    {
+        $productVisibility = [];
+        foreach ($categories as $productId => $productCategories) {
+            foreach ($productCategories as $category) {
+                if (empty($category['path'])) {
+                    continue;
+                }
+                $parentCategoryIds = array_values(
+                    array_filter(explode('|', $category['path']))
+                );
+                foreach ($parentCategoryIds as $parentCategoryId) {
+                    if (isset($mainCategoryShops[$parentCategoryId])) {
+                        $productVisibility[$productId][$mainCategoryShops[$parentCategoryId]] = $mainCategoryShops[$parentCategoryId];
+                    }
+                }
+            }
+        }
+
+        return $productVisibility;
     }
 }

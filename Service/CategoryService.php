@@ -54,24 +54,22 @@ class CategoryService extends AbstractApiService
     public function getCategories($offset = 0, $limit = 250)
     {
         $fetchedCategories = $this->categoryRepository->fetch($offset, $limit);
-
-        $topMostParentIds = $this->getTopMostParentIds($fetchedCategories);
-        $topMostCategories = $this->categoryRepository->fetchCategoriesById($topMostParentIds);
+        $mainCategoryLocales = $this->categoryRepository->fetchMainCategoryLocales();
 
         $categories = $this->mapData($fetchedCategories, [], ['category', 'categorypath', 'previousSiblingId', 'categoryPosition']);
 
-        $resultSet = $this->setAllLocales($categories, $topMostCategories);
+        $resultSet = $this->setAllLocales($categories, $mainCategoryLocales);
 
         return $this->cleanupResultSet($resultSet);
     }
 
     /**
      * @param array $categories
-     * @param array $topMostCategories
+     * @param array $mainCategoryLocales
      *
      * @return array
      */
-    private function setAllLocales(array $categories, array $topMostCategories)
+    private function setAllLocales(array $categories, array $mainCategoryLocales)
     {
         $resultSet = [];
         $ignoredCategories = $this->categoryRepository->fetchIgnoredCategories();
@@ -85,19 +83,18 @@ class CategoryService extends AbstractApiService
             if (in_array($category['parent'], $ignoredCategories, true)) {
                 $category['parent'] = null;
             }
-            $topMostParent = $category['id'];
             if (!empty($category['path'])) {
                 $parentCategoryIds = array_values(
                     array_filter(explode('|', $category['path']))
                 );
-                $topMostParent = end($parentCategoryIds);
+                foreach ($parentCategoryIds as $parentCategoryId) {
+                    if (isset($mainCategoryLocales[$parentCategoryId])) {
+                        $locale = str_replace('_', '-', $mainCategoryLocales[$parentCategoryId]);
+                        break;
+                    }
+                }
             }
-            if (isset($topMostCategories[$topMostParent])) {
-                $locale = str_replace('_', '-', $topMostCategories[$topMostParent]);
-            }
-            if (isset($category['asset'])) {
-                $category['asset']['uri'] = $this->mediaService->getUrl($category['asset']['path']);
-            }
+
             if (empty($locale)) {
                 $locale = $defaultLocale;
             }
@@ -106,29 +103,5 @@ class CategoryService extends AbstractApiService
         }
 
         return $resultSet;
-    }
-
-    /**
-     * @param array $categories
-     *
-     * @return array
-     */
-    private function getTopMostParentIds(array $categories)
-    {
-        $ids = [];
-        foreach ($categories as $key => $category) {
-            if (empty($category['category.path'])) {
-                continue;
-            }
-            $parentCategoryIds = array_values(
-                array_filter(explode('|', (string) $category['category.path']))
-            );
-            $topMostParent = end($parentCategoryIds);
-            if (!in_array($topMostParent, $ids, true)) {
-                $ids[] = $topMostParent;
-            }
-        }
-
-        return $ids;
     }
 }
