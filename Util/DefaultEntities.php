@@ -34,6 +34,10 @@ class DefaultEntities
 
     const PRODUCT = 'product';
 
+    const PRODUCT_PROPERTY_RELATION = 'product_property_relation';
+
+    const PRODUCT_OPTION_RELATION = 'product_option_relation';
+
     const PRODUCT_REVIEW = 'product_review';
 
     const PROPERTY_GROUP_OPTION = 'property_group_option';

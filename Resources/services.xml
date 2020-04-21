@@ -123,6 +123,14 @@
             <argument type="service" id="swag_migration_connector.repository.seourl_repository" />
         </service>
 
+        <service id="swag_migration_connector.service.product_option_relation_service" class="SwagMigrationConnector\Service\ProductOptionRelationService">
+            <argument type="service" id="swag_migration_connector.repository.product_option_relation_repository" />
+        </service>
+
+        <service id="swag_migration_connector.service.product_property_relation_service" class="SwagMigrationConnector\Service\ProductPropertyRelationService">
+            <argument type="service" id="swag_migration_connector.repository.product_property_relation_repository" />
+        </service>
+
         <!--Repositories-->
         <service id="swag_migration_connector.repository.environment_repository" class="SwagMigrationConnector\Repository\EnvironmentRepository">
             <argument type="service" id="dbal_connection"/>
@@ -234,6 +242,18 @@
 
         <service id="swag_migration_connector.repository.seourl_repository"
                  class="SwagMigrationConnector\Repository\SeoUrlRepository"
+                 parent="SwagMigrationConnector\Repository\AbstractRepository">
+            <tag name="shopware.migration.connector.repository"/>
+        </service>
+
+        <service id="swag_migration_connector.repository.product_option_relation_repository"
+                 class="SwagMigrationConnector\Repository\ProductOptionRelationRepository"
+                 parent="SwagMigrationConnector\Repository\AbstractRepository">
+            <tag name="shopware.migration.connector.repository"/>
+        </service>
+
+        <service id="swag_migration_connector.repository.product_property_relation_repository"
+                 class="SwagMigrationConnector\Repository\ProductPropertyRelationRepository"
                  parent="SwagMigrationConnector\Repository\AbstractRepository">
             <tag name="shopware.migration.connector.repository"/>
         </service>
