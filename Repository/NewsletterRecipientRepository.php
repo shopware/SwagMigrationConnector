@@ -101,8 +101,6 @@ class NewsletterRecipientRepository extends AbstractRepository
     }
 
     /**
-     * @param array $ids
-     *
      * @return array
      */
     public function getShopsAndLocalesByCustomer(array $ids)
@@ -127,8 +125,6 @@ class NewsletterRecipientRepository extends AbstractRepository
     }
 
     /**
-     * @param array $shops
-     *
      * @return array
      */
     private function getGroupedResult(array $shops)
@@ -142,6 +138,7 @@ class NewsletterRecipientRepository extends AbstractRepository
             }
             $resultSet[$groupId][] = $shop;
         }
+
         return $resultSet;
     }
 }

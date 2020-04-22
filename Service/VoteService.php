@@ -17,9 +17,6 @@ class VoteService extends AbstractApiService
      */
     private $voteRepository;
 
-    /**
-     * @param ApiRepositoryInterface $voteRepository
-     */
     public function __construct(
         ApiRepositoryInterface $voteRepository
     ) {

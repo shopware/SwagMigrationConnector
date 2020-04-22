@@ -25,9 +25,8 @@ class ControllerReturnStruct implements \JsonSerializable
     public $success;
 
     /**
-     * @param array $data
-     * @param bool  $isLastRequest
-     * @param bool  $success
+     * @param bool $isLastRequest
+     * @param bool $success
      */
     public function __construct(array $data, $isLastRequest = false, $success = true)
     {

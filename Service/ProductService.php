@@ -36,11 +36,6 @@ class ProductService extends AbstractApiService
      */
     private $productMapping;
 
-    /**
-     * @param ApiRepositoryInterface $productRepository
-     * @param MediaServiceInterface  $mediaService
-     * @param ModelManager           $modelManager
-     */
     public function __construct(
         ApiRepositoryInterface $productRepository,
         MediaServiceInterface $mediaService,
@@ -75,9 +70,6 @@ class ProductService extends AbstractApiService
         return $this->cleanupResultSet($resultSet);
     }
 
-    /**
-     * @param array $fetchedProducts
-     */
     protected function buildIdentifierMappings(array $fetchedProducts)
     {
         foreach ($fetchedProducts as $product) {
@@ -86,7 +78,6 @@ class ProductService extends AbstractApiService
     }
 
     /**
-     * @param array $products
      * @param array $detailIds
      * @param array $productIds
      *
@@ -233,8 +224,6 @@ class ProductService extends AbstractApiService
     }
 
     /**
-     * @param array $assets
-     *
      * @return array
      */
     private function prepareAssets(array $assets)
@@ -256,9 +245,6 @@ class ProductService extends AbstractApiService
     }
 
     /**
-     * @param array $categories
-     * @param array $mainCategoryShops
-     *
      * @return array
      */
     private function getProductVisibility(array $categories, array $mainCategoryShops)

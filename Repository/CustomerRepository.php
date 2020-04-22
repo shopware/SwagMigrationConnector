@@ -71,8 +71,6 @@ class CustomerRepository extends AbstractRepository
     }
 
     /**
-     * @param array $ids
-     *
      * @return array
      */
     public function fetchCustomerAdresses(array $ids)
@@ -99,8 +97,6 @@ class CustomerRepository extends AbstractRepository
     }
 
     /**
-     * @param array $groupIds
-     *
      * @return array
      */
     public function fetchCustomerGroupDiscounts(array $groupIds)
@@ -118,8 +114,6 @@ class CustomerRepository extends AbstractRepository
     }
 
     /**
-     * @param array $ids
-     *
      * @return array
      */
     public function fetchPaymentData(array $ids)

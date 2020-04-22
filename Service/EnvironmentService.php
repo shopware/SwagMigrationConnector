@@ -45,17 +45,14 @@ class EnvironmentService extends AbstractApiService
     private $revision;
 
     /**
-     * @param ModelManager             $modelManager
-     * @param EnvironmentRepository    $environmentRepository
-     * @param PluginInformationService $pluginInformationService
-     * @param string                   $version
-     * @param string                   $versionText
-     * @param string                   $revision
+     * @param string $version
+     * @param string $versionText
+     * @param string $revision
      */
     public function __construct(
-        ModelManager                $modelManager,
-        EnvironmentRepository       $environmentRepository,
-        PluginInformationService    $pluginInformationService,
+        ModelManager $modelManager,
+        EnvironmentRepository $environmentRepository,
+        PluginInformationService $pluginInformationService,
         $version,
         $versionText,
         $revision

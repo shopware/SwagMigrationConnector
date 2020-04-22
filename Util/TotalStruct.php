@@ -20,8 +20,8 @@ class TotalStruct
     private $total;
 
     /**
-     * @param string    $entityName
-     * @param int       $total
+     * @param string $entityName
+     * @param int    $total
      */
     public function __construct($entityName, $total)
     {

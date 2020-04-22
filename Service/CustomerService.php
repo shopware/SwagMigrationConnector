@@ -28,10 +28,6 @@ class CustomerService extends AbstractApiService
      */
     private $modelManager;
 
-    /**
-     * @param ApiRepositoryInterface $customerRepository
-     * @param ModelManager           $modelManager
-     */
     public function __construct(ApiRepositoryInterface $customerRepository, ModelManager $modelManager)
     {
         $this->customerRepository = $customerRepository;

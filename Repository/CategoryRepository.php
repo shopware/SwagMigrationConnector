@@ -7,7 +7,6 @@
 
 namespace SwagMigrationConnector\Repository;
 
-use Doctrine\DBAL\Connection;
 use SwagMigrationConnector\Util\DefaultEntities;
 use SwagMigrationConnector\Util\TotalStruct;
 

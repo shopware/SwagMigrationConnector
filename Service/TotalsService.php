@@ -23,9 +23,6 @@ class TotalsService
      */
     private $connection;
 
-    /**
-     * @param Connection $connection
-     */
     public function __construct(RepositoryRegistry $repositoryRegistry, Connection $connection)
     {
         $this->repositoryRegistry = $repositoryRegistry;
@@ -33,8 +30,6 @@ class TotalsService
     }
 
     /**
-     * @param array $countInfos
-     *
      * @return array
      */
     public function fetchTotals(array $countInfos = [])
@@ -47,7 +42,7 @@ class TotalsService
             $entities = array_column($countInfos, 'entity');
         }
         /**
-         * @var ApiRepositoryInterface[] $repos
+         * @var ApiRepositoryInterface[]
          */
         $repos = $this->repositoryRegistry->getRepositories($entities);
         foreach ($repos as $repo) {

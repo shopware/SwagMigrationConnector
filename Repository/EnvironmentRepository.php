@@ -18,9 +18,6 @@ class EnvironmentRepository
      */
     private $connection;
 
-    /**
-     * @param Connection $connection
-     */
     public function __construct(Connection $connection)
     {
         $this->connection = $connection;
@@ -46,9 +43,8 @@ class EnvironmentRepository
     }
 
     /**
-     * @param QueryBuilder $query
-     * @param string       $table
-     * @param string       $tableAlias
+     * @param string $table
+     * @param string $tableAlias
      */
     private function addTableSelection(QueryBuilder $query, $table, $tableAlias)
     {

@@ -29,10 +29,6 @@ class OrderService extends AbstractApiService
      */
     private $orderIds;
 
-    /**
-     * @param ApiRepositoryInterface $orderRepository
-     * @param ModelManager           $modelManager
-     */
     public function __construct(ApiRepositoryInterface $orderRepository, ModelManager $modelManager)
     {
         $this->orderRepository = $orderRepository;
@@ -61,8 +57,6 @@ class OrderService extends AbstractApiService
     }
 
     /**
-     * @param array $orders
-     *
      * @return array
      */
     protected function appendAssociatedData(array $orders)

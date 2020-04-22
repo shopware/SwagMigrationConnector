@@ -32,9 +32,7 @@ class DocumentService extends AbstractApiService
     private $fileSystem;
 
     /**
-     * @param ApiRepositoryInterface $documentRepository
      * @param $container
-     * @param ModelManager $modelManager
      */
     public function __construct(
         ApiRepositoryInterface $documentRepository,

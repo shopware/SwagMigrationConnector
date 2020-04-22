@@ -20,9 +20,6 @@ class RepositoryRegistry
      */
     private $repositories;
 
-    /**
-     * @param iterable $repositories
-     */
     public function __construct(iterable $repositories)
     {
         $this->repositories = $repositories;

@@ -62,8 +62,6 @@ class DispatchRepository extends AbstractRepository
     }
 
     /**
-     * @param array $shippingMethodIds
-     *
      * @return array
      */
     public function fetchShippingCosts(array $shippingMethodIds)

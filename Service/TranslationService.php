@@ -16,9 +16,6 @@ class TranslationService extends AbstractApiService
      */
     private $translationRepository;
 
-    /**
-     * @param TranslationRepository $translationRepository
-     */
     public function __construct(TranslationRepository $translationRepository)
     {
         $this->translationRepository = $translationRepository;
