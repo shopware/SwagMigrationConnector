@@ -60,8 +60,6 @@ class AssetService extends AbstractApiService
     }
 
     /**
-     * @param array $assets
-     *
      * @return array
      */
     private function prepareAssets(array $assets)

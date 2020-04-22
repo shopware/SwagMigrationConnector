@@ -19,9 +19,6 @@ abstract class AbstractRepository implements ApiRepositoryInterface
      */
     protected $connection;
 
-    /**
-     * @param Connection $connection
-     */
     public function __construct(Connection $connection)
     {
         $this->connection = $connection;
@@ -36,8 +33,6 @@ abstract class AbstractRepository implements ApiRepositoryInterface
     }
 
     /**
-     * @param array $entities
-     *
      * @return bool
      */
     public function requiredForCount(array $entities)
@@ -46,9 +41,8 @@ abstract class AbstractRepository implements ApiRepositoryInterface
     }
 
     /**
-     * @param QueryBuilder $query
-     * @param string       $table
-     * @param string       $tableAlias
+     * @param string $table
+     * @param string $tableAlias
      */
     protected function addTableSelection(QueryBuilder $query, $table, $tableAlias)
     {

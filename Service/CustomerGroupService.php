@@ -30,11 +30,6 @@ class CustomerGroupService extends AbstractApiService
      */
     private $modelManager;
 
-    /**
-     * @param ApiRepositoryInterface $customerGroupRepository
-     * @param ApiRepositoryInterface $customerRepository
-     * @param ModelManager           $modelManager
-     */
     public function __construct(
         ApiRepositoryInterface $customerGroupRepository,
         ApiRepositoryInterface $customerRepository,

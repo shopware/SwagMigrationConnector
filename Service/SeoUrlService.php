@@ -17,9 +17,6 @@ class SeoUrlService extends AbstractApiService
      */
     private $seoUrlRepository;
 
-    /**
-     * @param ApiRepositoryInterface $seoUrlRepository
-     */
     public function __construct(
         ApiRepositoryInterface $seoUrlRepository
     ) {

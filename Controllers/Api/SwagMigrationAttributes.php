@@ -26,10 +26,7 @@ class Shopware_Controllers_Api_SwagMigrationAttributes extends Shopware_Controll
         $pluginConfig = $this->container->get('shopware.plugin.config_reader')->getByPluginName($pluginName);
 
         if (!$this->Request()->isSecure() && (bool) $pluginConfig['enforceSSL']) {
-            throw new UnsecureRequestException(
-                'SSL required',
-                Response::HTTP_UPGRADE_REQUIRED
-            );
+            throw new UnsecureRequestException('SSL required', Response::HTTP_UPGRADE_REQUIRED);
         }
 
         if ($this->container->initialized('Auth')) {
@@ -41,10 +38,7 @@ class Shopware_Controllers_Api_SwagMigrationAttributes extends Shopware_Controll
             }
         }
 
-        throw new PermissionDeniedException(
-            'Permission denied. API user does not have sufficient rights for this action or could not be authenticated.',
-            Response::HTTP_UNAUTHORIZED
-        );
+        throw new PermissionDeniedException('Permission denied. API user does not have sufficient rights for this action or could not be authenticated.', Response::HTTP_UNAUTHORIZED);
     }
 
     /**
@@ -57,10 +51,7 @@ class Shopware_Controllers_Api_SwagMigrationAttributes extends Shopware_Controll
         $attributeTable = $this->Request()->getParam('attribute_table', null);
 
         if ($attributeTable === null) {
-            throw new ParameterMissingException(
-                'The attribute_table parameter is missing.',
-                422
-            );
+            throw new ParameterMissingException('The attribute_table parameter is missing.', 422);
         }
 
         if ($offset !== 0) {

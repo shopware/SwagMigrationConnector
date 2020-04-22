@@ -23,9 +23,6 @@ class LanguageService
      */
     private $modelManager;
 
-    /**
-     * @param ModelManager $modelManager
-     */
     public function __construct(ModelManager $modelManager)
     {
         $this->modelManager = $modelManager;
@@ -44,8 +41,6 @@ class LanguageService
     }
 
     /**
-     * @param array $locales
-     *
      * @return array
      */
     private function appendAssociatedData(array $locales)
@@ -82,8 +77,6 @@ class LanguageService
     }
 
     /**
-     * @param array $fetchedShopLocaleIds
-     *
      * @return array
      */
     private function fetchLocales(array $fetchedShopLocaleIds)
@@ -98,8 +91,6 @@ class LanguageService
     }
 
     /**
-     * @param array $locales
-     *
      * @return array
      */
     private function fetchTranslations(array $locales)

@@ -91,8 +91,6 @@ class ProductRepository extends AbstractRepository
     }
 
     /**
-     * @param array $productIds
-     *
      * @return array
      */
     public function fetchProductCategories(array $productIds)
@@ -111,8 +109,6 @@ class ProductRepository extends AbstractRepository
     }
 
     /**
-     * @param array $categories
-     *
      * @return array
      */
     public function fetchShopsByCategories(array $categories)
@@ -132,8 +128,6 @@ class ProductRepository extends AbstractRepository
     }
 
     /**
-     * @param array $variantIds
-     *
      * @return array
      */
     public function fetchProductPrices(array $variantIds)
@@ -160,8 +154,6 @@ class ProductRepository extends AbstractRepository
     }
 
     /**
-     * @param array $variantIds
-     *
      * @return array
      */
     public function fetchProductConfiguratorOptions(array $variantIds)
@@ -185,8 +177,6 @@ class ProductRepository extends AbstractRepository
     }
 
     /**
-     * @param array $variantIds
-     *
      * @return array
      */
     public function fetchFilterOptionValues(array $variantIds)
@@ -211,8 +201,6 @@ class ProductRepository extends AbstractRepository
     }
 
     /**
-     * @param array $productIds
-     *
      * @return array
      */
     public function fetchProductAssets(array $productIds)
@@ -241,8 +229,6 @@ class ProductRepository extends AbstractRepository
     }
 
     /**
-     * @param array $variantIds
-     *
      * @return array
      */
     public function fetchVariantAssets(array $variantIds)

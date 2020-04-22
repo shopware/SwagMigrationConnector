@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * (c) shopware AG <info@shopware.com>
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 use SwagMigrationConnector\Exception\PermissionDeniedException;
 use SwagMigrationConnector\Exception\UnsecureRequestException;
@@ -20,10 +24,7 @@ class Shopware_Controllers_Api_SwagMigrationProductOptionRelation extends Shopwa
         $pluginConfig = $this->container->get('shopware.plugin.config_reader')->getByPluginName($pluginName);
 
         if (!$this->Request()->isSecure() && (bool) $pluginConfig['enforceSSL']) {
-            throw new UnsecureRequestException(
-                'SSL required',
-                Response::HTTP_UPGRADE_REQUIRED
-            );
+            throw new UnsecureRequestException('SSL required', Response::HTTP_UPGRADE_REQUIRED);
         }
 
         if ($this->container->initialized('Auth')) {
@@ -35,10 +36,7 @@ class Shopware_Controllers_Api_SwagMigrationProductOptionRelation extends Shopwa
             }
         }
 
-        throw new PermissionDeniedException(
-            'Permission denied. API user does not have sufficient rights for this action or could not be authenticated.',
-            Response::HTTP_UNAUTHORIZED
-        );
+        throw new PermissionDeniedException('Permission denied. API user does not have sufficient rights for this action or could not be authenticated.', Response::HTTP_UNAUTHORIZED);
     }
 
     public function indexAction()

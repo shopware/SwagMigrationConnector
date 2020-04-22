@@ -13,7 +13,7 @@ use SwagMigrationConnector\Util\TotalStruct;
 class ShopRepository extends AbstractRepository
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function requiredForCount(array $entities)
     {

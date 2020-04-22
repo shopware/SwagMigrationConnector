@@ -30,11 +30,6 @@ class CategoryService extends AbstractApiService
      */
     private $mediaService;
 
-    /**
-     * @param ApiRepositoryInterface $categoryRepository
-     * @param ModelManager           $modelManager
-     * @param MediaServiceInterface  $mediaService
-     */
     public function __construct(
         ApiRepositoryInterface $categoryRepository,
         ModelManager $modelManager,
@@ -64,9 +59,6 @@ class CategoryService extends AbstractApiService
     }
 
     /**
-     * @param array $categories
-     * @param array $mainCategoryLocales
-     *
      * @return array
      */
     private function setAllLocales(array $categories, array $mainCategoryLocales)

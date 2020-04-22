@@ -25,10 +25,7 @@ class Shopware_Controllers_Api_SwagMigrationOrderDocuments extends Shopware_Cont
         $pluginConfig = $this->container->get('shopware.plugin.config_reader')->getByPluginName($pluginName);
 
         if (!$this->Request()->isSecure() && (bool) $pluginConfig['enforceSSL']) {
-            throw new UnsecureRequestException(
-                'SSL required',
-                Response::HTTP_UPGRADE_REQUIRED
-            );
+            throw new UnsecureRequestException('SSL required', Response::HTTP_UPGRADE_REQUIRED);
         }
 
         if ($this->container->initialized('Auth')) {
@@ -40,10 +37,7 @@ class Shopware_Controllers_Api_SwagMigrationOrderDocuments extends Shopware_Cont
             }
         }
 
-        throw new PermissionDeniedException(
-            'Permission denied. API user does not have sufficient rights for this action or could not be authenticated.',
-            Response::HTTP_UNAUTHORIZED
-        );
+        throw new PermissionDeniedException('Permission denied. API user does not have sufficient rights for this action or could not be authenticated.', Response::HTTP_UNAUTHORIZED);
     }
 
     public function indexAction()
@@ -67,18 +61,12 @@ class Shopware_Controllers_Api_SwagMigrationOrderDocuments extends Shopware_Cont
         $documentHash = $this->Request()->getParam('id', null);
 
         if (empty($documentHash)) {
-            throw new DocumentNotFoundException(
-                'File not found',
-                404
-            );
+            throw new DocumentNotFoundException('File not found', 404);
         }
 
         $filePath = $documentService->getFilePath($documentHash);
         if (!$documentService->fileExists($filePath)) {
-            throw new DocumentNotFoundException(
-                'File not found',
-                404
-            );
+            throw new DocumentNotFoundException('File not found', 404);
         }
 
         $orderNumber = $documentService->getOrderNumberByDocumentHash($documentHash);
