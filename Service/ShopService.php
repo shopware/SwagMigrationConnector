@@ -7,9 +7,6 @@
 
 namespace SwagMigrationConnector\Service;
 
-use Doctrine\DBAL\Connection;
-use Doctrine\DBAL\Query\QueryBuilder;
-use Doctrine\DBAL\Schema\Column;
 use Shopware\Components\Model\ModelManager;
 use Shopware\Models\Shop\Shop;
 use SwagMigrationConnector\Repository\ApiRepositoryInterface;
@@ -27,9 +24,6 @@ class ShopService extends AbstractApiService
      */
     private $modelManager;
 
-    /**
-     * @param ModelManager $modelManager
-     */
     public function __construct(ApiRepositoryInterface $repository, ModelManager $modelManager)
     {
         $this->repository = $repository;

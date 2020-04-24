@@ -17,9 +17,6 @@ class NewsletterRecipientService extends AbstractApiService
      */
     private $newsletterRecipientRepository;
 
-    /**
-     * @param ApiRepositoryInterface $customerRepository
-     */
     public function __construct(ApiRepositoryInterface $customerRepository)
     {
         $this->newsletterRecipientRepository = $customerRepository;
@@ -44,9 +41,6 @@ class NewsletterRecipientService extends AbstractApiService
     }
 
     /**
-     * @param array $newsletterRecipients
-     * @param array $ids
-     *
      * @return array
      */
     private function assignAssociatedData(array $newsletterRecipients, array $ids)
@@ -68,11 +62,6 @@ class NewsletterRecipientService extends AbstractApiService
         return $newsletterRecipients;
     }
 
-    /**
-     * @param array $item
-     * @param array $defaultShop
-     * @param array $shops
-     */
     private function addShopAndLocaleByGroupId(array &$item, array $defaultShop, array $shops)
     {
         if (isset($defaultShop[$item['groupID']][0])) {
@@ -92,10 +81,6 @@ class NewsletterRecipientService extends AbstractApiService
         }
     }
 
-    /**
-     * @param array $item
-     * @param array $shop
-     */
     private function addShopAndLocaleByCustomer(array &$item, array $shop)
     {
         $shopId = $shop['shopId'];

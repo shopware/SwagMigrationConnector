@@ -13,7 +13,7 @@ use SwagMigrationConnector\Util\TotalStruct;
 class NumberRangeRepository extends AbstractRepository
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function requiredForCount(array $entities)
     {
@@ -31,7 +31,7 @@ class NumberRangeRepository extends AbstractRepository
             ->execute()
             ->fetchColumn();
 
-        return new TotalStruct(DefaultEntities::NUMBER_RANGE,$total);
+        return new TotalStruct(DefaultEntities::NUMBER_RANGE, $total);
     }
 
     /**

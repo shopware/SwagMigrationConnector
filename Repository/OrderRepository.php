@@ -51,7 +51,7 @@ class OrderRepository extends AbstractRepository
         $query->leftJoin('ordering', 's_order_attributes', 'attributes', 'ordering.id = attributes.orderID');
         $this->addTableSelection($query, 's_order_attributes', 'attributes');
 
-        /**
+        /*
          * @deprecated Will be removed in version 1.0.0
          * (The left join and table selection on shippingMethod)
          */
@@ -103,8 +103,6 @@ class OrderRepository extends AbstractRepository
     }
 
     /**
-     * @param array $orderIds
-     *
      * @return array
      */
     public function fetchOrderDetails(array $orderIds)
@@ -128,8 +126,6 @@ class OrderRepository extends AbstractRepository
     }
 
     /**
-     * @param array $orderIds
-     *
      * @return array
      */
     public function fetchOrderDocuments(array $orderIds)

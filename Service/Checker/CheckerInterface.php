@@ -14,8 +14,6 @@ interface CheckerInterface
     const VALIDATION_WARNING = 0;
 
     /**
-     * @param array $options
-     *
      * @return array
      */
     public function validate(array $options);

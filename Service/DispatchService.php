@@ -24,10 +24,6 @@ class DispatchService extends AbstractApiService
      */
     private $modelManager;
 
-    /**
-     * @param ApiRepositoryInterface $dispatchRepository
-     * @param ModelManager           $modelManager
-     */
     public function __construct(ApiRepositoryInterface $dispatchRepository, ModelManager $modelManager)
     {
         $this->dispatchRepository = $dispatchRepository;
@@ -53,9 +49,6 @@ class DispatchService extends AbstractApiService
     }
 
     /**
-     * @param array $dispatches
-     * @param array $ids
-     *
      * @return array
      */
     private function assignAssociatedData(array $dispatches, array $ids)

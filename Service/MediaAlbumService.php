@@ -97,7 +97,6 @@ class MediaAlbumService extends AbstractApiService
     }
 
     /**
-     * @param array  $mediaAlbums
      * @param string $id
      * @param string $locale
      *
@@ -126,7 +125,6 @@ class MediaAlbumService extends AbstractApiService
     }
 
     /**
-     * @param QueryBuilder $query
      * @param $table
      * @param $tableAlias
      */

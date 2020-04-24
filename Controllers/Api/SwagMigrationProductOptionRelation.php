@@ -5,13 +5,12 @@
  * file that was distributed with this source code.
  */
 
-use Shopware\Models\User\Role;
 use SwagMigrationConnector\Exception\PermissionDeniedException;
 use SwagMigrationConnector\Exception\UnsecureRequestException;
 use SwagMigrationConnector\Service\ControllerReturnStruct;
 use Symfony\Component\HttpFoundation\Response;
 
-class Shopware_Controllers_Api_SwagMigrationCategories extends Shopware_Controllers_Api_Rest
+class Shopware_Controllers_Api_SwagMigrationProductOptionRelation extends Shopware_Controllers_Api_Rest
 {
     /**
      * @throws PermissionDeniedException
@@ -44,10 +43,10 @@ class Shopware_Controllers_Api_SwagMigrationCategories extends Shopware_Controll
     {
         $offset = (int) $this->Request()->getParam('offset', 0);
         $limit = (int) $this->Request()->getParam('limit', 250);
-        $categoryService = $this->container->get('swag_migration_connector.service.category_service');
+        $productOptionRelationService = $this->container->get('swag_migration_connector.service.product_option_relation_service');
 
-        $categories = $categoryService->getCategories($offset, $limit);
-        $response = new ControllerReturnStruct($categories, empty($categories));
+        $productOptionRelations = $productOptionRelationService->getProductOptionRelations($offset, $limit);
+        $response = new ControllerReturnStruct($productOptionRelations, empty($productOptionRelations));
 
         $this->view->assign($response->jsonSerialize());
     }
