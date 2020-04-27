@@ -5,12 +5,21 @@
     <label lang="de">Shopware Migration Connector</label>
     <label lang="en">Shopware Migration Connector</label>
 
-    <version>1.0.0</version>
+    <version>1.1.0</version>
     <copyright>(c) by shopware AG</copyright>
     <license>MIT</license>
     <link>http://store.shopware.com</link>
     <author>shopware AG</author>
     <compatibility minVersion="5.4.0" maxVersion="5.99.99"/>
+
+    <changelog version="1.1.0">
+        <changes lang="de">
+            PT-11586 - Optimierte Produktmigration
+        </changes>
+        <changes lang="en">
+            PT-11586 - Optimized product migration
+        </changes>
+    </changelog>
 
     <changelog version="1.0.0">
         <changes lang="de">
