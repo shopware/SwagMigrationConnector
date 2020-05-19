@@ -20,7 +20,7 @@ class RepositoryRegistry
      */
     private $repositories;
 
-    public function __construct(iterable $repositories)
+    public function __construct(array $repositories)
     {
         $this->repositories = $repositories;
     }
