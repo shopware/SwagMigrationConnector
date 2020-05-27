@@ -20,8 +20,12 @@ class RepositoryRegistry
      */
     private $repositories;
 
-    public function __construct(array $repositories)
+    public function __construct($repositories)
     {
+        if ($repositories instanceof \IteratorAggregate) {
+            $repositories = iterator_to_array($repositories, true);
+        }
+
         $this->repositories = $repositories;
     }
 
