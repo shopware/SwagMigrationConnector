@@ -17,12 +17,10 @@ class CustomerServiceTest extends TestCase
 
         $customers = $customerService->getCustomers();
 
-        $this->assertInternalType('array', $customers);
         $this->assertCount(2, $customers);
 
         $customer = $customers[0];
 
-        $this->assertInternalType('array', $customer);
         $this->assertSame('1', $customer['id']);
         $this->assertArrayHasKey('addresses', $customer);
         $this->assertArrayHasKey('_locale', $customer);
@@ -38,7 +36,6 @@ class CustomerServiceTest extends TestCase
 
         $customers = $customerService->getCustomers(1);
 
-        $this->assertInternalType('array', $customers);
         $this->assertCount(1, $customers);
     }
 
@@ -48,7 +45,6 @@ class CustomerServiceTest extends TestCase
 
         $customers = $customerService->getCustomers(0, 1);
 
-        $this->assertInternalType('array', $customers);
         $this->assertCount(1, $customers);
     }
 
@@ -58,7 +54,6 @@ class CustomerServiceTest extends TestCase
 
         $customers = $customerService->getCustomers(1, 1);
 
-        $this->assertInternalType('array', $customers);
         $this->assertCount(1, $customers);
     }
 

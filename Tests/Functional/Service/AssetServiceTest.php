@@ -17,7 +17,6 @@ class AssetServiceTest extends TestCase
 
         $assets = $assetService->getAssets();
 
-        $this->assertInternalType('array', $assets);
         $this->assertCount(250, $assets);
 
         $firstAsset = $assets[0];
@@ -31,7 +30,6 @@ class AssetServiceTest extends TestCase
 
         $assets = $assetService->getAssets(1);
 
-        $this->assertInternalType('array', $assets);
         $this->assertCount(250, $assets);
 
         $asset = $assets[5];
@@ -45,7 +43,6 @@ class AssetServiceTest extends TestCase
 
         $assets = $assetService->getAssets(0, 2);
 
-        $this->assertInternalType('array', $assets);
         $this->assertCount(2, $assets);
 
         $firstAsset = $assets[0];
@@ -59,7 +56,6 @@ class AssetServiceTest extends TestCase
 
         $assets = $assetService->getAssets(250, 40);
 
-        $this->assertInternalType('array', $assets);
         $this->assertCount(40, $assets);
 
         $asset = $assets[0];
