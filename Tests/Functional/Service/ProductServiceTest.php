@@ -17,7 +17,6 @@ class ProductServiceTest extends TestCase
 
         $products = $productService->getProducts();
 
-        $this->assertInternalType('array', $products);
         $this->assertCount(250, $products);
 
         $this->assertArrayHasKey('detail', $products[0]);
@@ -43,7 +42,6 @@ class ProductServiceTest extends TestCase
 
         $products = $productService->getProducts(134);
 
-        $this->assertInternalType('array', $products);
         $this->assertCount(250, $products);
 
         $product = $products[2];
@@ -58,7 +56,6 @@ class ProductServiceTest extends TestCase
 
         $products = $productService->getProducts(0, 2);
 
-        $this->assertInternalType('array', $products);
         $this->assertCount(2, $products);
 
         $product = $products[1];
@@ -73,7 +70,6 @@ class ProductServiceTest extends TestCase
 
         $products = $productService->getProducts(350, 10);
 
-        $this->assertInternalType('array', $products);
         $this->assertCount(10, $products);
 
         $product = $products[0];

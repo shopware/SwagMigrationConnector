@@ -17,7 +17,6 @@ class CategoryServiceTest extends TestCase
 
         $categories = $categoryService->getCategories();
 
-        $this->assertInternalType('array', $categories);
         $this->assertCount(62, $categories);
 
         $this->assertArrayHasKey('attributes', $categories[0]);
@@ -35,7 +34,6 @@ class CategoryServiceTest extends TestCase
 
         $categories = $categoryService->getCategories(58);
 
-        $this->assertInternalType('array', $categories);
         $this->assertCount(4, $categories);
 
         $category = $categories[1];
@@ -50,7 +48,6 @@ class CategoryServiceTest extends TestCase
 
         $categories = $categoryService->getCategories(0, 5);
 
-        $this->assertInternalType('array', $categories);
         $this->assertCount(5, $categories);
 
         $category = $categories[2];
@@ -65,7 +62,6 @@ class CategoryServiceTest extends TestCase
 
         $categories = $categoryService->getCategories(50, 5);
 
-        $this->assertInternalType('array', $categories);
         $this->assertCount(5, $categories);
 
         $category = $categories[4];

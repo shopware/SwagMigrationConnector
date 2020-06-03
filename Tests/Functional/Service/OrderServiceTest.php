@@ -17,7 +17,6 @@ class OrderServiceTest extends TestCase
 
         $orders = $orderService->getOrders();
 
-        $this->assertInternalType('array', $orders);
         $this->assertCount(2, $orders);
 
         $this->assertArrayHasKey('attributes', $orders[0]);
@@ -35,7 +34,6 @@ class OrderServiceTest extends TestCase
 
         $orders = $orderService->getOrders(1);
 
-        $this->assertInternalType('array', $orders);
         $this->assertCount(1, $orders);
 
         $order = $orders[0];
@@ -51,7 +49,6 @@ class OrderServiceTest extends TestCase
 
         $orders = $orderService->getOrders(0, 2);
 
-        $this->assertInternalType('array', $orders);
         $this->assertCount(1, $orders);
 
         $order = $orders[0];
@@ -66,7 +63,6 @@ class OrderServiceTest extends TestCase
 
         $orders = $orderService->getOrders(2, 1);
 
-        $this->assertInternalType('array', $orders);
         $this->assertCount(0, $orders);
     }
 
