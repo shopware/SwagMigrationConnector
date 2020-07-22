@@ -20,6 +20,12 @@ class DefaultEntities
 
     const CUSTOMER_GROUP = 'customer_group';
 
+    const CROSS_SELLING = 'product_cross_selling';
+
+    const CROSS_SELLING_ACCESSORY = 'product_cross_selling_accessory';
+
+    const CROSS_SELLING_SIMILAR = 'product_cross_selling_similar';
+
     const LANGUAGE = 'language';
 
     const MEDIA = 'media';
