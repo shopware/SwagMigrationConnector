@@ -12,6 +12,13 @@
     <author>shopware AG</author>
     <compatibility minVersion="5.4.0" maxVersion="5.99.99"/>
 
+    <description lang="de">
+        Der Migration Connector stellt API-Endpunkte zur Verfügung, die es Shopware 6 ermöglicht, eine sichere Datenverbindung zum aktiven Shopware 5-Shop zu erstellen.
+    </description>
+    <description lang="en">
+        The Migration Connector provides API endpoints that allow Shopware 6 to create a secure data connection with the active Shopware 5 shop which support the data migration to Shopware 6.
+    </description>
+
     <changelog version="1.2.0">
         <changes lang="de">
             PT-11910 - Migration von Cross-Selling-Relationen
