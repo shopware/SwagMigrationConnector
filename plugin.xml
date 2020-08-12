@@ -5,13 +5,22 @@
     <label lang="de">Shopware Migration Connector</label>
     <label lang="en">Shopware Migration Connector</label>
 
-    <version>1.1.3</version>
+    <version>1.2.0</version>
     <copyright>(c) by shopware AG</copyright>
     <license>MIT</license>
     <link>http://store.shopware.com</link>
     <author>shopware AG</author>
     <compatibility minVersion="5.4.0" maxVersion="5.99.99"/>
-    
+
+    <changelog version="1.2.0">
+        <changes lang="de">
+            PT-11910 - Migration von Cross-Selling-Relationen
+        </changes>
+        <changes lang="en">
+            PT-11910 - Migration of cross selling relations
+        </changes>
+    </changelog>
+
     <changelog version="1.1.3">
         <changes lang="de">
             PT-11819 - Optimiert die Produkt-Varianten Migration
@@ -19,7 +28,7 @@
         <changes lang="en">
             PT-11819 - Optimizes product variant migration
         </changes>
-    </changelog>    
+    </changelog>
 
     <changelog version="1.1.2">
         <changes lang="de">
