@@ -9,6 +9,14 @@ variables:
     WEB_DOCUMENT_ROOT: $CI_PROJECT_DIR/
     GIT_STRATEGY: clone
     CHECKOUT_SHOPWARE_BRANCH: "5.6"
+    DB_USER: "app"
+    DB_PASSWORD: "app"
+    DB_HOST: "mysql"
+    DB_PORT: 3306
+    DB_NAME: shopware
+    SW_HOST: "localhost"
+    SW_BASE_PATH: ""
+    ELASTICSEARCH_HOST: elasticsearch
 
 stages:
     - Code Style Check
@@ -121,6 +129,17 @@ SW 5.7:
     stage: Unit
     needs: [PHP analyze]
     image: shopware/5-continuous:7.3
+    before_script:
+        - zip -rq plugin.zip .
+        - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.shopware.com/shopware/5/product/shopware.git shopware --depth=1 -b ${CHECKOUT_SHOPWARE_BRANCH}
+        - unzip -q plugin.zip -d shopware/custom/plugins/SwagMigrationConnector
+        - cd shopware
+        - /entrypoint supervisord &>/dev/null &
+        - make init
+        - php bin/console sw:plugin:refresh
+        - php bin/console sw:plugin:list
+        - php bin/console sw:plugin:install --activate SwagMigrationConnector
+        - php bin/console sw:cache:clear -e testing
     variables:
         CHECKOUT_SHOPWARE_BRANCH: "5.7"
     script:

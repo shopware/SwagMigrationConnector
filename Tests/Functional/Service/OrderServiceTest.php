@@ -49,11 +49,14 @@ class OrderServiceTest extends TestCase
 
         $orders = $orderService->getOrders(0, 2);
 
-        $this->assertCount(1, $orders);
+        $this->assertCount(2, $orders);
 
         $order = $orders[0];
-
         $this->assertSame('15', $order['id']);
+        $this->assertSame('19.00', $order['details'][1]['tax']['tax']);
+
+        $order = $orders[1];
+        $this->assertSame('57', $order['id']);
         $this->assertSame('19.00', $order['details'][1]['tax']['tax']);
     }
 
