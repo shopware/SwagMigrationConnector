@@ -88,7 +88,7 @@ class EnvironmentService extends AbstractApiService
             'versionText' => $this->versionText,
             'revision' => $this->revision,
             'additionalData' => $this->getAdditionalData(),
-            'updateAvailable' => false,
+            'updateAvailable' => $this->pluginInformationService->isUpdateRequired($locale),
         ];
 
         return $resultSet;
