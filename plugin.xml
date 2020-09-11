@@ -5,7 +5,7 @@
     <label lang="de">Shopware Migration Connector</label>
     <label lang="en">Shopware Migration Connector</label>
 
-    <version>1.2.2</version>
+    <version>1.2.3</version>
     <copyright>(c) by shopware AG</copyright>
     <license>MIT</license>
     <link>http://store.shopware.com</link>
@@ -18,6 +18,15 @@
     <description lang="en">
         The Migration Connector provides API endpoints that allow Shopware 6 to create a secure data connection with the active Shopware 5 shop which support the data migration to Shopware 6.
     </description>
+
+    <changelog version="1.2.3">
+        <changes lang="de">
+            MIG-73 - Optimiert die Migration der Variantenübersetzungen
+        </changes>
+        <changes lang="en">
+            MIG-73 - Optimizes migration of variant translations
+        </changes>
+    </changelog>
 
     <changelog version="1.2.2">
         <changes lang="de">
