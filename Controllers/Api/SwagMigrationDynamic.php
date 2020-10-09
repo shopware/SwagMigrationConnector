@@ -29,9 +29,9 @@ class Shopware_Controllers_Api_SwagMigrationDynamic extends Shopware_Controllers
             throw new UnsecureRequestException('SSL required', Response::HTTP_UPGRADE_REQUIRED);
         }
 
-        if ($this->container->initialized('Auth')) {
+        if ($this->container->initialized('auth')) {
             /** @var Role $role */
-            $role = $this->container->get('Auth')->getIdentity()->role;
+            $role = $this->container->get('auth')->getIdentity()->role;
 
             if ($role->getAdmin()) {
                 return;
