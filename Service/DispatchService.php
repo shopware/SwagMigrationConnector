@@ -55,6 +55,9 @@ class DispatchService extends AbstractApiService
     {
         $fetchedShippingCosts = $this->dispatchRepository->fetchShippingCosts($ids);
         $fetchedShippingCosts = $this->mapData($fetchedShippingCosts, [], ['shippingcosts', 'currencyShortName']);
+        $shippingCountries = $this->dispatchRepository->fetchShippingCountries($ids);
+        $paymentMethods = $this->dispatchRepository->fetchPaymentMethods($ids);
+        $excludedCategories = $this->dispatchRepository->fetchExcludedCategories($ids);
 
         /** @var Shop $defaultShop */
         $defaultShop = $this->modelManager->getRepository(Shop::class)->getDefault();
@@ -64,6 +67,15 @@ class DispatchService extends AbstractApiService
         foreach ($dispatches as &$item) {
             if (isset($fetchedShippingCosts[$item['id']])) {
                 $item['shippingCosts'] = $fetchedShippingCosts[$item['id']];
+            }
+            if (isset($shippingCountries[$item['id']])) {
+                $item['shippingCountries'] = $shippingCountries[$item['id']];
+            }
+            if (isset($paymentMethods[$item['id']])) {
+                $item['paymentMethods'] = array_column($paymentMethods[$item['id']], 'paymentID');
+            }
+            if (isset($excludedCategories[$item['id']])) {
+                $item['excludedCategories'] = array_column($excludedCategories[$item['id']], 'categoryID');
             }
 
             $item['_locale'] = str_replace('_', '-', $locale);
