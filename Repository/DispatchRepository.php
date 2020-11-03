@@ -82,4 +82,58 @@ class DispatchRepository extends AbstractRepository
 
         return $query->execute()->fetchAll(\PDO::FETCH_GROUP);
     }
+
+    /**
+     * @return array
+     */
+    public function fetchShippingCountries(array $shippingMethodIds)
+    {
+        $query = $this->connection->createQueryBuilder();
+
+        $query->from('s_premium_dispatch_countries', 'shippingcountries');
+        $query->addSelect('shippingcountries.dispatchID, shippingcountries.countryID');
+
+        $query->innerJoin('shippingcountries', 's_core_countries', 'country', 'country.id = shippingcountries.countryID');
+        $query->addSelect('country.countryiso', 'country.iso3');
+
+        $query->where('shippingcountries.dispatchID IN (:ids)');
+        $query->setParameter('ids', $shippingMethodIds, Connection::PARAM_STR_ARRAY);
+        $query->orderBy('shippingcountries.dispatchID, shippingcountries.countryID');
+
+        return $query->execute()->fetchAll(\PDO::FETCH_GROUP);
+    }
+
+    /**
+     * @return array
+     */
+    public function fetchPaymentMethods(array $shippingMethodIds)
+    {
+        $query = $this->connection->createQueryBuilder();
+
+        $query->from('s_premium_dispatch_paymentmeans', 'paymentMethods');
+        $query->addSelect('paymentMethods.dispatchID, paymentMethods.paymentID');
+
+        $query->where('paymentMethods.dispatchID IN (:ids)');
+        $query->setParameter('ids', $shippingMethodIds, Connection::PARAM_STR_ARRAY);
+        $query->orderBy('paymentMethods.dispatchID, paymentMethods.paymentID');
+
+        return $query->execute()->fetchAll(\PDO::FETCH_GROUP);
+    }
+
+    /**
+     * @return array
+     */
+    public function fetchExcludedCategories(array $shippingMethodIds)
+    {
+        $query = $this->connection->createQueryBuilder();
+
+        $query->from('s_premium_dispatch_categories', 'categories');
+        $query->addSelect('categories.dispatchID, categories.categoryID');
+
+        $query->where('categories.dispatchID IN (:ids)');
+        $query->setParameter('ids', $shippingMethodIds, Connection::PARAM_STR_ARRAY);
+        $query->orderBy('categories.dispatchID, categories.categoryID');
+
+        return $query->execute()->fetchAll(\PDO::FETCH_GROUP);
+    }
 }
