@@ -92,6 +92,10 @@ class OrderRepository extends AbstractRepository
         $query->leftJoin('ordering', 's_core_paymentmeans', 'payment', 'payment.id = ordering.paymentID');
         $this->addTableSelection($query, 's_core_paymentmeans', 'payment');
 
+        $query->leftJoin('ordering', 's_core_shops', 'languageshop', 'languageshop.id = ordering.language');
+        $query->leftJoin('languageshop', 's_core_locales', 'language', 'language.id = languageshop.locale_id');
+        $query->addSelect('language.locale AS \'ordering.locale\'');
+
         $query->where('ordering.status != -1');
         $query->setFirstResult($offset);
         $query->setMaxResults($limit);

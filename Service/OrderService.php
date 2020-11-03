@@ -78,6 +78,9 @@ class OrderService extends AbstractApiService
             if (isset($orderDocuments[$order['id']])) {
                 $order['documents'] = $orderDocuments[$order['id']];
             }
+            if (isset($order['locale'])) {
+                $order['locale'] = str_replace('_', '-', $order['locale']);
+            }
         }
 
         return $orders;
