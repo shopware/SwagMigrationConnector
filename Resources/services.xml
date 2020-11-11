@@ -134,6 +134,10 @@
             <argument type="service" id="swag_migration_connector.repository.cross_selling_repository" />
         </service>
 
+        <service id="swag_migration_connector.service.main_variant_relation_service" class="SwagMigrationConnector\Service\MainVariantRelationService" public="true">
+            <argument type="service" id="swag_migration_connector.repository.main_variant_relation_repository" />
+        </service>
+
         <!--Repositories-->
         <service id="swag_migration_connector.repository.environment_repository" class="SwagMigrationConnector\Repository\EnvironmentRepository">
             <argument type="service" id="dbal_connection"/>
@@ -263,6 +267,12 @@
 
         <service id="swag_migration_connector.repository.cross_selling_repository"
                  class="SwagMigrationConnector\Repository\CrossSellingRepository"
+                 parent="SwagMigrationConnector\Repository\AbstractRepository">
+            <tag name="shopware.migration.connector.repository"/>
+        </service>
+
+        <service id="swag_migration_connector.repository.main_variant_relation_repository"
+                 class="SwagMigrationConnector\Repository\MainVariantRelationRepository"
                  parent="SwagMigrationConnector\Repository\AbstractRepository">
             <tag name="shopware.migration.connector.repository"/>
         </service>
