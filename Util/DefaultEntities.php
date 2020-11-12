@@ -28,6 +28,8 @@ class DefaultEntities
 
     const LANGUAGE = 'language';
 
+    const MAIN_VARIANT_RELATION = 'main_variant_relation';
+
     const MEDIA = 'media';
 
     const NEWSLETTER_RECIPIENT = 'newsletter_recipient';
