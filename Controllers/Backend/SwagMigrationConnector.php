@@ -49,7 +49,7 @@ class Shopware_Controllers_Backend_SwagMigrationConnector extends Shopware_Contr
      */
     private function getLocale()
     {
-        return Shopware()->Container()->get('Auth')->getIdentity()->locale->getLocale();
+        return Shopware()->Container()->get('auth')->getIdentity()->locale->getLocale();
     }
 
     private function transformSbpResponse(array $response, array $requestedPlugins)
