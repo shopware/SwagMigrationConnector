@@ -61,7 +61,7 @@ class PluginInformationService
                 return null;
             }
 
-            return (version_compare(
+            return (\version_compare(
                 $pluginStruct->getVersion(),
                 $localVersion
             )) === 1;
@@ -80,7 +80,7 @@ class PluginInformationService
             ->from('s_core_plugins', 'plugin')
             ->where('plugin.name = "SwagMigrationConnector"');
 
-        /** @var $statement \PDOStatement */
+        /** @var \PDOStatement $statement */
         $statement = $query->execute();
 
         return $statement->fetch(\PDO::FETCH_COLUMN);

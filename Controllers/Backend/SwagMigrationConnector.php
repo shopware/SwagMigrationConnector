@@ -10,7 +10,7 @@ class Shopware_Controllers_Backend_SwagMigrationConnector extends Shopware_Contr
     public function preDispatch()
     {
         parent::preDispatch();
-        $this->View()->addTemplateDir(dirname(dirname(__DIR__)) . '/Resources/views');
+        $this->View()->addTemplateDir(\dirname(\dirname(__DIR__)) . '/Resources/views');
     }
 
     public function getPluginsAction()
@@ -22,7 +22,7 @@ class Shopware_Controllers_Backend_SwagMigrationConnector extends Shopware_Contr
             'plugins' => $requestedPlugins,
         ], ['X-Shopware-Plugin-Successor-Secret' => 'ZfwRGnMdedoGj3Cxyz7NNQYApzUwyvr1337SroBtUVs2UuNakCgdC9IryTOpGiw']);
 
-        $this->View()->assign($this->transformSbpResponse($response, array_column($requestedPlugins, 'name')));
+        $this->View()->assign($this->transformSbpResponse($response, \array_column($requestedPlugins, 'name')));
     }
 
     public function getRequirementsAction()
@@ -62,7 +62,7 @@ class Shopware_Controllers_Backend_SwagMigrationConnector extends Shopware_Contr
                 'recommendations' => $plugin,
             ];
 
-            if (($i = array_search($name, $requestedPlugins, true)) !== false) {
+            if (($i = \array_search($name, $requestedPlugins, true)) !== false) {
                 unset($requestedPlugins[$i]);
             }
         }
@@ -92,16 +92,16 @@ class Shopware_Controllers_Backend_SwagMigrationConnector extends Shopware_Contr
                 if (empty($recommendation['targetPlugin']['releaseDate'])) {
                     continue;
                 }
-                $releaseDate = strtotime($recommendation['targetPlugin']['releaseDate']);
+                $releaseDate = \strtotime($recommendation['targetPlugin']['releaseDate']);
 
-                if (time() >= $releaseDate) {
+                if (\time() >= $releaseDate) {
                     $recommendation['type'] = 'targetPluginReleased';
                 }
             }
         }
 
         return [
-            'total' => count($data),
+            'total' => \count($data),
             'data' => $data,
             'success' => true,
         ];

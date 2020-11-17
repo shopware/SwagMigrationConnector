@@ -63,7 +63,9 @@ class ProductService extends AbstractApiService
 
         $resultSet = $this->appendAssociatedData(
             $this->mapData(
-                $fetchedProducts, [], ['product']
+                $fetchedProducts,
+                [],
+                ['product']
             )
         );
 
@@ -78,9 +80,6 @@ class ProductService extends AbstractApiService
     }
 
     /**
-     * @param array $detailIds
-     * @param array $productIds
-     *
      * @return array
      */
     protected function appendAssociatedData(array $products)
@@ -98,7 +97,7 @@ class ProductService extends AbstractApiService
         $defaultShop = $this->modelManager->getRepository(Shop::class)->getDefault();
 
         // represents the main language of the migrated shop
-        $locale = str_replace('_', '-', $defaultShop->getLocale()->getLocale());
+        $locale = \str_replace('_', '-', $defaultShop->getLocale()->getLocale());
 
         foreach ($products as $key => &$product) {
             $product['_locale'] = $locale;
@@ -116,7 +115,7 @@ class ProductService extends AbstractApiService
             }
             if (isset($assets['general'][$product['id']])) {
                 $generalAssets = $this->prepareAssets($assets['general'][$product['id']]);
-                $product['assets'] = array_merge($product['assets'], $generalAssets);
+                $product['assets'] = \array_merge($product['assets'], $generalAssets);
             }
             if (isset($options[$product['detail']['id']])) {
                 $product['configuratorOptions'] = $options[$product['detail']['id']];
@@ -128,7 +127,7 @@ class ProductService extends AbstractApiService
                 $product['filters'] = $filterValues[$product['detail']['id']];
             }
             if (isset($productVisibility[$product['id']])) {
-                $product['shops'] = array_values($productVisibility[$product['id']]);
+                $product['shops'] = \array_values($productVisibility[$product['id']]);
             }
         }
         unset(
@@ -146,7 +145,7 @@ class ProductService extends AbstractApiService
      */
     private function getCategories()
     {
-        $productIds = array_values(
+        $productIds = \array_values(
             $this->productMapping->getIterator()->getArrayCopy()
         );
 
@@ -169,7 +168,7 @@ class ProductService extends AbstractApiService
      */
     private function getAssets()
     {
-        $productIds = array_values(
+        $productIds = \array_values(
             $this->productMapping->getIterator()->getArrayCopy()
         );
         $variantIds = $this->productMapping->keys();
@@ -255,8 +254,8 @@ class ProductService extends AbstractApiService
                 if (empty($category['path'])) {
                     continue;
                 }
-                $parentCategoryIds = array_values(
-                    array_filter(explode('|', $category['path']))
+                $parentCategoryIds = \array_values(
+                    \array_filter(\explode('|', $category['path']))
                 );
                 foreach ($parentCategoryIds as $parentCategoryId) {
                     if (isset($mainCategoryShops[$parentCategoryId])) {

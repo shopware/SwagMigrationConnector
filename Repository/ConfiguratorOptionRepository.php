@@ -18,7 +18,7 @@ class ConfiguratorOptionRepository extends AbstractRepository
      */
     public function requiredForCount(array $entities)
     {
-        return !in_array(DefaultEntities::PROPERTY_GROUP_OPTION, $entities);
+        return !\in_array(DefaultEntities::PROPERTY_GROUP_OPTION, $entities);
     }
 
     /**

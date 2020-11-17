@@ -17,7 +17,7 @@ class ShopRepository extends AbstractRepository
      */
     public function requiredForCount(array $entities)
     {
-        return !in_array(DefaultEntities::SALES_CHANNEL, $entities);
+        return !\in_array(DefaultEntities::SALES_CHANNEL, $entities);
     }
 
     /**

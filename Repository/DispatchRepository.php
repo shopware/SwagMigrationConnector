@@ -18,7 +18,7 @@ class DispatchRepository extends AbstractRepository
      */
     public function requiredForCount(array $entities)
     {
-        return !in_array(DefaultEntities::SHIPPING_METHOD, $entities);
+        return !\in_array(DefaultEntities::SHIPPING_METHOD, $entities);
     }
 
     /**

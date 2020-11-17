@@ -18,7 +18,7 @@ class AssetRepository extends AbstractRepository
      */
     public function requiredForCount(array $entities)
     {
-        return !in_array(DefaultEntities::MEDIA, $entities);
+        return !\in_array(DefaultEntities::MEDIA, $entities);
     }
 
     /**

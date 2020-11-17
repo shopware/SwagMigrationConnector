@@ -17,15 +17,15 @@ class CategoryServiceTest extends TestCase
 
         $categories = $categoryService->getCategories();
 
-        $this->assertCount(62, $categories);
+        static::assertCount(62, $categories);
 
-        $this->assertArrayHasKey('attributes', $categories[0]);
-        $this->assertArrayHasKey('_locale', $categories[0]);
+        static::assertArrayHasKey('attributes', $categories[0]);
+        static::assertArrayHasKey('_locale', $categories[0]);
 
-        $this->assertSame('3', $categories[0]['id']);
-        $this->assertNull($categories[0]['parent']);
-        $this->assertSame('Deutsch', $categories[0]['description']);
-        $this->assertSame('de-DE', $categories[0]['_locale']);
+        static::assertSame('3', $categories[0]['id']);
+        static::assertNull($categories[0]['parent']);
+        static::assertSame('Deutsch', $categories[0]['description']);
+        static::assertSame('de-DE', $categories[0]['_locale']);
     }
 
     public function test_read_categories_with_offset_should_be_succesful()
@@ -34,12 +34,12 @@ class CategoryServiceTest extends TestCase
 
         $categories = $categoryService->getCategories(58);
 
-        $this->assertCount(4, $categories);
+        static::assertCount(4, $categories);
 
         $category = $categories[1];
 
-        $this->assertArrayHasKey('_locale', $category);
-        $this->assertSame('en-GB', $category['_locale']);
+        static::assertArrayHasKey('_locale', $category);
+        static::assertSame('en-GB', $category['_locale']);
     }
 
     public function test_read_categories_with_limit_should_be_succesful()
@@ -48,12 +48,12 @@ class CategoryServiceTest extends TestCase
 
         $categories = $categoryService->getCategories(0, 5);
 
-        $this->assertCount(5, $categories);
+        static::assertCount(5, $categories);
 
         $category = $categories[2];
 
-        $this->assertArrayHasKey('_locale', $category);
-        $this->assertSame('de-DE', $category['_locale']);
+        static::assertArrayHasKey('_locale', $category);
+        static::assertSame('de-DE', $category['_locale']);
     }
 
     public function test_read_categories_with_offset_and_limit_should_be_succesful()
@@ -62,13 +62,13 @@ class CategoryServiceTest extends TestCase
 
         $categories = $categoryService->getCategories(50, 5);
 
-        $this->assertCount(5, $categories);
+        static::assertCount(5, $categories);
 
         $category = $categories[4];
-        $this->assertArrayHasKey('_locale', $category);
-        $this->assertSame('en-GB', $category['_locale']);
-        $this->assertSame('61', $category['parent']);
-        $this->assertSame('|61|39|', $category['path']);
+        static::assertArrayHasKey('_locale', $category);
+        static::assertSame('en-GB', $category['_locale']);
+        static::assertSame('61', $category['parent']);
+        static::assertSame('|61|39|', $category['path']);
     }
 
     public function test_read_with_out_of_bounds_offset_should_offer_empty_array()
@@ -77,6 +77,6 @@ class CategoryServiceTest extends TestCase
 
         $categories = $categoryService->getCategories(200);
 
-        $this->assertEmpty($categories);
+        static::assertEmpty($categories);
     }
 }

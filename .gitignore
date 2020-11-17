@@ -12,3 +12,4 @@ ehthumbs.db
 Thumbs.db
 
 vendor
+.phpunit.result.cache

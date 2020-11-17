@@ -26,7 +26,7 @@ class PhpConfiguration implements CheckerInterface
     {
         $config = $options['config'];
         $min = $options['min'];
-        $value = ini_get($config);
+        $value = \ini_get($config);
 
         if ($config === 'memory_limit') {
             $min = MemoryLimit::convertToBytes($min);
@@ -38,7 +38,7 @@ class PhpConfiguration implements CheckerInterface
 
             return [
                 'validation' => CheckerInterface::VALIDATION_SUCCESS,
-                'message' => sprintf(
+                'message' => \sprintf(
                     $successMessage,
                     $config,
                     $this->formatValue($min, $options),
@@ -51,7 +51,7 @@ class PhpConfiguration implements CheckerInterface
 
         return [
             'validation' => CheckerInterface::VALIDATION_FAILED,
-            'message' => sprintf(
+            'message' => \sprintf(
                 $failMessage,
                 $config,
                 $this->formatValue($min, $options),
@@ -73,6 +73,6 @@ class PhpConfiguration implements CheckerInterface
     {
         $unit = ['B', 'KB', 'MB', 'GB', 'TB', 'PB'];
 
-        return @round($size / pow(1024, $i = floor(log($size, 1024))), 2) . ' ' . $unit[$i];
+        return @\round($size / \pow(1024, $i = \floor(\log($size, 1024))), 2) . ' ' . $unit[$i];
     }
 }

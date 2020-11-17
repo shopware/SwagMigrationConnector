@@ -17,7 +17,7 @@ class CurrencyRepository extends AbstractRepository
      */
     public function requiredForCount(array $entities)
     {
-        return !in_array(DefaultEntities::CURRENCY, $entities);
+        return !\in_array(DefaultEntities::CURRENCY, $entities);
     }
 
     /**

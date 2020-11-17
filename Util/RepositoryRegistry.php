@@ -23,7 +23,7 @@ class RepositoryRegistry
     public function __construct($repositories)
     {
         if ($repositories instanceof \IteratorAggregate) {
-            $repositories = iterator_to_array($repositories, true);
+            $repositories = \iterator_to_array($repositories, true);
         }
 
         $this->repositories = $repositories;

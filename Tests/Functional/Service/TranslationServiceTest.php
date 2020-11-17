@@ -13,7 +13,7 @@ class TranslationServiceTest extends TestCase
 {
     public function setUpOwn()
     {
-        $sql = file_get_contents(__DIR__ . '/_fixtures/translations.sql');
+        $sql = \file_get_contents(__DIR__ . '/_fixtures/translations.sql');
         Shopware()->Container()->get('dbal_connection')->exec($sql);
     }
 
@@ -40,13 +40,13 @@ class TranslationServiceTest extends TestCase
 
         $translations = $translationService->getTranslations();
 
-        $this->assertCount(52, $translations);
+        static::assertCount(52, $translations);
 
         $firstTranslation = $translations[0];
 
-        $this->assertSame('config_mails', $firstTranslation['objecttype']);
-        $this->assertArrayHasKey('locale', $firstTranslation);
-        $this->assertSame('en-GB', $firstTranslation['locale']);
+        static::assertSame('config_mails', $firstTranslation['objecttype']);
+        static::assertArrayHasKey('locale', $firstTranslation);
+        static::assertSame('en-GB', $firstTranslation['locale']);
     }
 
     public function test_read_translations_with_offset_should_be_successful()
@@ -56,14 +56,14 @@ class TranslationServiceTest extends TestCase
 
         $translations = $translationService->getTranslations(1);
 
-        $this->assertCount(51, $translations);
+        static::assertCount(51, $translations);
 
         $translation = $translations[5];
 
-        $this->assertSame('article', $translation['objecttype']);
-        $this->assertSame('122', $translation['objectkey']);
-        $this->assertArrayHasKey('locale', $translation);
-        $this->assertSame('en-GB', $translation['locale']);
+        static::assertSame('article', $translation['objecttype']);
+        static::assertSame('122', $translation['objectkey']);
+        static::assertArrayHasKey('locale', $translation);
+        static::assertSame('en-GB', $translation['locale']);
     }
 
     public function test_read_translations_with_limit_should_be_successful()
@@ -73,13 +73,13 @@ class TranslationServiceTest extends TestCase
 
         $translations = $translationService->getTranslations(0, 2);
 
-        $this->assertCount(2, $translations);
+        static::assertCount(2, $translations);
 
         $firstTranslation = $translations[0];
 
-        $this->assertSame('config_mails', $firstTranslation['objecttype']);
-        $this->assertArrayHasKey('locale', $firstTranslation);
-        $this->assertSame('en-GB', $firstTranslation['locale']);
+        static::assertSame('config_mails', $firstTranslation['objecttype']);
+        static::assertArrayHasKey('locale', $firstTranslation);
+        static::assertSame('en-GB', $firstTranslation['locale']);
     }
 
     public function test_read_translations_with_offset_and_limit_should_be_successful()
@@ -89,14 +89,14 @@ class TranslationServiceTest extends TestCase
 
         $translations = $translationService->getTranslations(10, 1);
 
-        $this->assertCount(1, $translations);
+        static::assertCount(1, $translations);
 
         $translation = $translations[0];
 
-        $this->assertSame('propertyoption', $translation['objecttype']);
-        $this->assertSame('1', $translation['objectkey']);
-        $this->assertArrayHasKey('locale', $translation);
-        $this->assertSame('en-GB', $translation['locale']);
+        static::assertSame('propertyoption', $translation['objecttype']);
+        static::assertSame('1', $translation['objectkey']);
+        static::assertArrayHasKey('locale', $translation);
+        static::assertSame('en-GB', $translation['locale']);
     }
 
     public function test_read_with_out_of_bounds_offset_should_offer_empty_array()
@@ -106,6 +106,6 @@ class TranslationServiceTest extends TestCase
 
         $translations = $translationService->getTranslations(2000);
 
-        $this->assertEmpty($translations);
+        static::assertEmpty($translations);
     }
 }

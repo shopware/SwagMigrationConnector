@@ -33,7 +33,7 @@ class NewsletterRecipientService extends AbstractApiService
         $fetchedNewsletterRecipients = $this->newsletterRecipientRepository->fetch($offset, $limit);
         $recipients = $this->mapData($fetchedNewsletterRecipients, [], ['recipient']);
 
-        $ids = array_column($recipients, 'id');
+        $ids = \array_column($recipients, 'id');
 
         $resultSet = $this->assignAssociatedData($recipients, $ids);
 
@@ -66,7 +66,7 @@ class NewsletterRecipientService extends AbstractApiService
     {
         if (isset($defaultShop[$item['groupID']][0])) {
             $item['shopId'] = $defaultShop[$item['groupID']][0]['shopId'];
-            $item['_locale'] = str_replace('_', '-', $defaultShop[$item['groupID']][0]['locale']);
+            $item['_locale'] = \str_replace('_', '-', $defaultShop[$item['groupID']][0]['locale']);
         } else {
             if (isset($shops[$item['groupID']])) {
                 $shop = $shops[$item['groupID']][0];
@@ -76,7 +76,7 @@ class NewsletterRecipientService extends AbstractApiService
                 }
 
                 $item['shopId'] = $shopId;
-                $item['_locale'] = str_replace('_', '-', $shop['locale']);
+                $item['_locale'] = \str_replace('_', '-', $shop['locale']);
             }
         }
     }
@@ -89,6 +89,6 @@ class NewsletterRecipientService extends AbstractApiService
         }
 
         $item['shopId'] = $shopId;
-        $item['_locale'] = str_replace('_', '-', $shop['locale']);
+        $item['_locale'] = \str_replace('_', '-', $shop['locale']);
     }
 }

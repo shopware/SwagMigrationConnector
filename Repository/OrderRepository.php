@@ -18,7 +18,7 @@ class OrderRepository extends AbstractRepository
      */
     public function requiredForCount(array $entities)
     {
-        return !in_array(DefaultEntities::ORDER, $entities);
+        return !\in_array(DefaultEntities::ORDER, $entities);
     }
 
     /**

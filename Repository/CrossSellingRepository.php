@@ -17,7 +17,7 @@ class CrossSellingRepository extends AbstractRepository
      */
     public function requiredForCount(array $entities)
     {
-        return !in_array(DefaultEntities::CROSS_SELLING, $entities);
+        return !\in_array(DefaultEntities::CROSS_SELLING, $entities);
     }
 
     /**

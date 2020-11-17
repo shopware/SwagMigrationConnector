@@ -130,11 +130,13 @@ SW 5.6:
     needs: [PHP analyze]
     variables:
         CHECKOUT_SHOPWARE_BRANCH: "5.7"
+    before_script: []
     script:
         - zip -rq plugin.zip .
         - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.shopware.com/shopware/5/product/shopware.git shopware --depth=1 -b ${CHECKOUT_SHOPWARE_BRANCH}
         - unzip -q plugin.zip -d shopware/custom/plugins/SwagMigrationConnector
         - cd shopware
+        - cp .env.dist .env
         - make init
         - php bin/console sw:plugin:refresh
         - php bin/console sw:plugin:list
