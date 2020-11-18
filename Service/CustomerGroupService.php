@@ -49,7 +49,7 @@ class CustomerGroupService extends AbstractApiService
     public function getCustomerGroups($offset = 0, $limit = 250)
     {
         $fetchedCustomerGroups = $this->customerGroupRepository->fetch($offset, $limit);
-        $groupIds = array_column($fetchedCustomerGroups, 'customerGroup.id');
+        $groupIds = \array_column($fetchedCustomerGroups, 'customerGroup.id');
         $customerGroups = $this->mapData($fetchedCustomerGroups, [], ['customerGroup']);
 
         $fetchedDiscounts = $this->customerRepository->fetchCustomerGroupDiscounts($groupIds);
@@ -59,7 +59,7 @@ class CustomerGroupService extends AbstractApiService
         $defaultShop = $this->modelManager->getRepository(Shop::class)->getDefault();
 
         // represents the main language of the migrated shop
-        $locale = str_replace('_', '-', $defaultShop->getLocale()->getLocale());
+        $locale = \str_replace('_', '-', $defaultShop->getLocale()->getLocale());
 
         foreach ($customerGroups as $key => &$customerGroup) {
             $customerGroup['_locale'] = $locale;

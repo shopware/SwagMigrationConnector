@@ -39,7 +39,7 @@ class MysqlConfiguration implements CheckerInterface
 
             return [
                 'validation' => CheckerInterface::VALIDATION_SUCCESS,
-                'message' => sprintf(
+                'message' => \sprintf(
                     $successMessage,
                     $config,
                     $min,
@@ -52,7 +52,7 @@ class MysqlConfiguration implements CheckerInterface
 
         return [
             'validation' => CheckerInterface::VALIDATION_FAILED,
-            'message' => sprintf(
+            'message' => \sprintf(
                 $failMessage,
                 $config,
                 $min,

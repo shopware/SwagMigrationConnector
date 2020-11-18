@@ -17,9 +17,6 @@ class CrossSellingService extends AbstractApiService
      */
     private $crossSellingRepository;
 
-    /**
-     * @param ApiRepositoryInterface $customerRepository
-     */
     public function __construct(
         ApiRepositoryInterface $crossSellingRepository
     ) {

@@ -18,7 +18,7 @@ class VoteRepository extends AbstractRepository
      */
     public function requiredForCount(array $entities)
     {
-        return !in_array(DefaultEntities::PRODUCT_REVIEW, $entities);
+        return !\in_array(DefaultEntities::PRODUCT_REVIEW, $entities);
     }
 
     /**

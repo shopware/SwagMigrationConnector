@@ -7,6 +7,7 @@
 
 namespace SwagMigrationConnector\Service;
 
+use League\Flysystem\FilesystemInterface;
 use Shopware\Components\Model\ModelManager;
 use Shopware\Models\Shop\Shop;
 use SwagMigrationConnector\Repository\ApiRepositoryInterface;
@@ -29,19 +30,19 @@ class DocumentService extends AbstractApiService
      */
     private $existsFileSystem;
 
+    /**
+     * @var FilesystemInterface|null
+     */
     private $fileSystem;
 
-    /**
-     * @param $container
-     */
     public function __construct(
         ApiRepositoryInterface $documentRepository,
-        $fileSystem,
+        ?FilesystemInterface $fileSystem,
         ModelManager $modelManager
     ) {
         $this->documentRepository = $documentRepository;
         $this->modelManager = $modelManager;
-        $this->existsFileSystem = ($fileSystem !== null && is_subclass_of($fileSystem, 'League\Flysystem\FilesystemInterface'));
+        $this->existsFileSystem = ($fileSystem !== null && \is_subclass_of($fileSystem, 'League\Flysystem\FilesystemInterface'));
         $this->fileSystem = $fileSystem;
     }
 
@@ -56,14 +57,16 @@ class DocumentService extends AbstractApiService
         $fetchedDocuments = $this->documentRepository->fetch($offset, $limit);
 
         $documents = $this->mapData(
-            $fetchedDocuments, [], ['document']
+            $fetchedDocuments,
+            [],
+            ['document']
         );
 
         /** @var Shop $defaultShop */
         $defaultShop = $this->modelManager->getRepository(Shop::class)->getDefault();
 
         // represents the main language of the migrated shop
-        $locale = str_replace('_', '-', $defaultShop->getLocale()->getLocale());
+        $locale = \str_replace('_', '-', $defaultShop->getLocale()->getLocale());
 
         foreach ($documents as &$document) {
             $document['_locale'] = $locale;
@@ -80,10 +83,10 @@ class DocumentService extends AbstractApiService
     public function getFilePath($documentHash)
     {
         if ($this->existsFileSystem) {
-            return sprintf('documents/%s.pdf', basename($documentHash));
+            return \sprintf('documents/%s.pdf', \basename($documentHash));
         }
 
-        return sprintf('%s/%s.pdf', Shopware()->Container()->getParameter('shopware.app.documentsdir'), basename($documentHash));
+        return \sprintf('%s/%s.pdf', Shopware()->Container()->getParameter('shopware.app.documentsdir'), \basename($documentHash));
     }
 
     /**
@@ -105,7 +108,7 @@ class DocumentService extends AbstractApiService
             return $this->fileSystem->has($filePath);
         }
 
-        return file_exists($filePath);
+        return \file_exists($filePath);
     }
 
     /**
@@ -119,7 +122,7 @@ class DocumentService extends AbstractApiService
             return $this->fileSystem->getSize($filePath);
         }
 
-        return filesize($filePath);
+        return \filesize($filePath);
     }
 
     /**
@@ -140,7 +143,6 @@ class DocumentService extends AbstractApiService
     public function getOrderNumberByDocumentHash($documentHash)
     {
         return $this->documentRepository
-            ->getOrderNumberByDocumentHash($documentHash)
-        ;
+            ->getOrderNumberByDocumentHash($documentHash);
     }
 }

@@ -36,7 +36,7 @@ class NumberRangeService extends AbstractApiService
     public function getNumberRanges()
     {
         $numberRanges = $this->repository->fetch();
-        $prefix = unserialize($this->repository->fetchPrefix(), ['allowedClasses' => false]);
+        $prefix = \unserialize($this->repository->fetchPrefix(), ['allowedClasses' => false]);
 
         if (!$prefix) {
             $prefix = '';
@@ -45,7 +45,7 @@ class NumberRangeService extends AbstractApiService
         /** @var Shop $defaultShop */
         $defaultShop = $this->modelManager->getRepository(Shop::class)->getDefault();
         // represents the main language of the migrated shop
-        $locale = str_replace('_', '-', $defaultShop->getLocale()->getLocale());
+        $locale = \str_replace('_', '-', $defaultShop->getLocale()->getLocale());
 
         foreach ($numberRanges as &$numberRange) {
             $numberRange['_locale'] = $locale;

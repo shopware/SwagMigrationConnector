@@ -39,7 +39,9 @@ class MediaAlbumService extends AbstractApiService
         $fetchedAlbums = $this->fetchAlbums();
 
         $mediaAlbums = $this->mapData(
-            $fetchedAlbums, [], ['album']
+            $fetchedAlbums,
+            [],
+            ['album']
         );
 
         $resultSet = $this->prepareMediaAlbums($mediaAlbums);
@@ -73,7 +75,7 @@ class MediaAlbumService extends AbstractApiService
         /** @var Shop $defaultShop */
         $defaultShop = $this->modelManager->getRepository(Shop::class)->getDefault();
         // represents the main language of the migrated shop
-        $defaultLocale = str_replace('_', '-', $defaultShop->getLocale()->getLocale());
+        $defaultLocale = \str_replace('_', '-', $defaultShop->getLocale()->getLocale());
 
         $returnAlbums = [];
         foreach ($mediaAlbums as $key => $mediaAlbum) {
@@ -93,7 +95,7 @@ class MediaAlbumService extends AbstractApiService
         }
         unset($mediaAlbum);
 
-        return array_merge(...$returnAlbums);
+        return \array_merge(...$returnAlbums);
     }
 
     /**
@@ -121,12 +123,12 @@ class MediaAlbumService extends AbstractApiService
             }
         }
 
-        return array_merge(...$returnAlbums);
+        return \array_merge(...$returnAlbums);
     }
 
     /**
-     * @param $table
-     * @param $tableAlias
+     * @param string $table
+     * @param string $tableAlias
      */
     private function addTableSelection(QueryBuilder $query, $table, $tableAlias)
     {
@@ -134,7 +136,7 @@ class MediaAlbumService extends AbstractApiService
 
         /** @var Column $column */
         foreach ($columns as $column) {
-            $selection = str_replace(
+            $selection = \str_replace(
                 ['#tableAlias#', '#column#'],
                 [$tableAlias, $column->getName()],
                 '`#tableAlias#`.`#column#` as `#tableAlias#.#column#`'

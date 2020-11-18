@@ -22,7 +22,7 @@ class SwagMigrationConnector extends Plugin
         $version = $container->getParameter('shopware.release.version');
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/Resources/'));
 
-        if (version_compare($version, '5.5.0', '<')) {
+        if (\version_compare($version, '5.5.0', '<')) {
             $loader->load('services_54.xml');
             $container->addCompilerPass(new MigrationConnectorCompilerPass());
         } else {

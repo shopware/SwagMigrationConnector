@@ -45,11 +45,13 @@ class OrderService extends AbstractApiService
     {
         $fetchedOrders = $this->orderRepository->fetch($offset, $limit);
 
-        $this->orderIds = array_column($fetchedOrders, 'ordering.id');
+        $this->orderIds = \array_column($fetchedOrders, 'ordering.id');
 
         $resultSet = $this->appendAssociatedData(
             $this->mapData(
-                $fetchedOrders, [], ['ordering']
+                $fetchedOrders,
+                [],
+                ['ordering']
             )
         );
 
@@ -68,7 +70,7 @@ class OrderService extends AbstractApiService
         $defaultShop = $this->modelManager->getRepository(Shop::class)->getDefault();
 
         // represents the main language of the migrated shop
-        $locale = str_replace('_', '-', $defaultShop->getLocale()->getLocale());
+        $locale = \str_replace('_', '-', $defaultShop->getLocale()->getLocale());
 
         foreach ($orders as $key => &$order) {
             $order['_locale'] = $locale;
@@ -79,7 +81,7 @@ class OrderService extends AbstractApiService
                 $order['documents'] = $orderDocuments[$order['id']];
             }
             if (isset($order['locale'])) {
-                $order['locale'] = str_replace('_', '-', $order['locale']);
+                $order['locale'] = \str_replace('_', '-', $order['locale']);
             }
         }
 

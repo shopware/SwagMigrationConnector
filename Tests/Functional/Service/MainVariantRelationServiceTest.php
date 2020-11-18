@@ -17,12 +17,12 @@ class MainVariantRelationServiceTest extends TestCase
 
         $data = $service->getMainVariantRelations();
 
-        $this->assertCount(27, $data);
+        static::assertCount(27, $data);
 
         $row = $data[0];
 
-        $this->assertSame('2', $row['id']);
-        $this->assertSame('SW10002.3', $row['ordernumber']);
+        static::assertSame('2', $row['id']);
+        static::assertSame('SW10002.3', $row['ordernumber']);
     }
 
     public function test_read_with_offset_should_be_successful()
@@ -31,7 +31,7 @@ class MainVariantRelationServiceTest extends TestCase
 
         $data = $service->getMainVariantRelations(1);
 
-        $this->assertCount(26, $data);
+        static::assertCount(26, $data);
     }
 
     public function test_read_with_limit_should_be_successful()
@@ -40,7 +40,7 @@ class MainVariantRelationServiceTest extends TestCase
 
         $data = $service->getMainVariantRelations(0, 1);
 
-        $this->assertCount(1, $data);
+        static::assertCount(1, $data);
     }
 
     public function test_read_with_limit_and_offset_should_be_successful()
@@ -49,7 +49,7 @@ class MainVariantRelationServiceTest extends TestCase
 
         $data = $service->getMainVariantRelations(1, 1);
 
-        $this->assertCount(1, $data);
+        static::assertCount(1, $data);
     }
 
     public function test_read_with_out_of_bounds_offset_should_offer_empty_array()
@@ -58,6 +58,6 @@ class MainVariantRelationServiceTest extends TestCase
 
         $data = $service->getMainVariantRelations(50);
 
-        $this->assertEmpty($data);
+        static::assertEmpty($data);
     }
 }

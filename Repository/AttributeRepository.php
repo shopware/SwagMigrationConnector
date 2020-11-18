@@ -39,7 +39,7 @@ class AttributeRepository
     }
 
     /**
-     * @param $table
+     * @param string $table
      *
      * @return array
      */

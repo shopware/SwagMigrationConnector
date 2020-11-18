@@ -39,7 +39,7 @@ class DispatchService extends AbstractApiService
     public function getDispatches($offset = 0, $limit = 250)
     {
         $fetchedDispatches = $this->dispatchRepository->fetch($offset, $limit);
-        $ids = array_column($fetchedDispatches, 'dispatch.id');
+        $ids = \array_column($fetchedDispatches, 'dispatch.id');
 
         $dispatches = $this->mapData($fetchedDispatches, [], ['dispatch']);
 
@@ -63,7 +63,7 @@ class DispatchService extends AbstractApiService
         $defaultShop = $this->modelManager->getRepository(Shop::class)->getDefault();
 
         // represents the main language of the migrated shop
-        $locale = str_replace('_', '-', $defaultShop->getLocale()->getLocale());
+        $locale = \str_replace('_', '-', $defaultShop->getLocale()->getLocale());
         foreach ($dispatches as &$item) {
             if (isset($fetchedShippingCosts[$item['id']])) {
                 $item['shippingCosts'] = $fetchedShippingCosts[$item['id']];
@@ -72,13 +72,13 @@ class DispatchService extends AbstractApiService
                 $item['shippingCountries'] = $shippingCountries[$item['id']];
             }
             if (isset($paymentMethods[$item['id']])) {
-                $item['paymentMethods'] = array_column($paymentMethods[$item['id']], 'paymentID');
+                $item['paymentMethods'] = \array_column($paymentMethods[$item['id']], 'paymentID');
             }
             if (isset($excludedCategories[$item['id']])) {
-                $item['excludedCategories'] = array_column($excludedCategories[$item['id']], 'categoryID');
+                $item['excludedCategories'] = \array_column($excludedCategories[$item['id']], 'categoryID');
             }
 
-            $item['_locale'] = str_replace('_', '-', $locale);
+            $item['_locale'] = \str_replace('_', '-', $locale);
         }
 
         return $dispatches;

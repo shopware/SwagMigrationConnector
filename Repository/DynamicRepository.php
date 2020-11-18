@@ -23,9 +23,9 @@ class DynamicRepository
     }
 
     /**
-     * @param $table
-     * @param int $offset
-     * @param int $limit
+     * @param string $table
+     * @param int    $offset
+     * @param int    $limit
      *
      * @throws UnknownTableException
      *

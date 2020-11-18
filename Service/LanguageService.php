@@ -34,7 +34,7 @@ class LanguageService
      */
     public function getLanguages()
     {
-        $fetchedShopLocaleIds = array_unique($this->fetchShopLocaleIds());
+        $fetchedShopLocaleIds = \array_unique($this->fetchShopLocaleIds());
         $locales = $this->fetchLocales($fetchedShopLocaleIds);
 
         return $this->appendAssociatedData($locales);
@@ -45,23 +45,23 @@ class LanguageService
      */
     private function appendAssociatedData(array $locales)
     {
-        $translations = $this->fetchTranslations(array_keys($locales));
+        $translations = $this->fetchTranslations(\array_keys($locales));
 
         /** @var Shop $defaultShop */
         $defaultShop = $this->modelManager->getRepository(Shop::class)->getDefault();
         // represents the main language of the migrated shop
-        $defaultLocale = str_replace('_', '-', $defaultShop->getLocale()->getLocale());
+        $defaultLocale = \str_replace('_', '-', $defaultShop->getLocale()->getLocale());
 
         foreach ($locales as $key => &$locale) {
             if (isset($translations[$key])) {
                 $locale['translations'] = $translations[$key];
             }
-            $locale['locale'] = str_replace('_', '-', $locale['locale']);
+            $locale['locale'] = \str_replace('_', '-', $locale['locale']);
             // locale of the main language in which the dataset is probably created
             $locale['_locale'] = $defaultLocale;
         }
 
-        return array_values($locales);
+        return \array_values($locales);
     }
 
     /**

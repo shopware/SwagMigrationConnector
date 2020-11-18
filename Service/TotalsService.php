@@ -39,7 +39,7 @@ class TotalsService
         $entities = [];
 
         if (!empty($countInfos)) {
-            $entities = array_column($countInfos, 'entity');
+            $entities = \array_column($countInfos, 'entity');
         }
         /**
          * @var ApiRepositoryInterface[]

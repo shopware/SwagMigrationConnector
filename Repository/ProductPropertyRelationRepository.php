@@ -14,7 +14,7 @@ class ProductPropertyRelationRepository extends AbstractRepository
 {
     public function requiredForCount(array $entities)
     {
-        return !in_array(DefaultEntities::PRODUCT_PROPERTY_RELATION, $entities);
+        return !\in_array(DefaultEntities::PRODUCT_PROPERTY_RELATION, $entities);
     }
 
     public function getTotal()

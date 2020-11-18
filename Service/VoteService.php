@@ -35,7 +35,7 @@ class VoteService extends AbstractApiService
         $votes = $this->mapData($fetchedVotes, [], ['vote', 'mainShopId']);
 
         foreach ($votes as &$vote) {
-            $vote['_locale'] = str_replace('_', '-', $vote['_locale']);
+            $vote['_locale'] = \str_replace('_', '-', $vote['_locale']);
         }
 
         return $this->cleanupResultSet($votes);

@@ -202,7 +202,7 @@
         </service>
 
         <service id="swag_migration_connector.repository.dynamic_repository"
-                 class="SwagMigrationConnector\Repository\DynamicRepository">
+                 class="SwagMigrationConnector\Repository\DynamicRepository" public="true">
             <argument type="service" id="dbal_connection"/>
         </service>
 

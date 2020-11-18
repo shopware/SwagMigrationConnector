@@ -43,7 +43,7 @@ class CurrencyService extends AbstractApiService
         /** @var Shop $defaultShop */
         $defaultShop = $this->modelManager->getRepository(Shop::class)->getDefault();
         // represents the main language of the migrated shop
-        $locale = str_replace('_', '-', $defaultShop->getLocale()->getLocale());
+        $locale = \str_replace('_', '-', $defaultShop->getLocale()->getLocale());
 
         foreach ($currencies as $key => &$currency) {
             $currency['_locale'] = $locale;

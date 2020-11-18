@@ -30,9 +30,6 @@ class ConfiguratorOptionService extends AbstractApiService
      */
     private $mediaService;
 
-    /**
-     * @param ApiRepositoryInterface $customerRepository
-     */
     public function __construct(
         ApiRepositoryInterface $customerGroupRepository,
         ModelManager $modelManager,
@@ -58,7 +55,7 @@ class ConfiguratorOptionService extends AbstractApiService
         $defaultShop = $this->modelManager->getRepository(Shop::class)->getDefault();
 
         // represents the main language of the migrated shop
-        $locale = str_replace('_', '-', $defaultShop->getLocale()->getLocale());
+        $locale = \str_replace('_', '-', $defaultShop->getLocale()->getLocale());
 
         foreach ($options as $key => &$option) {
             if (isset($option['media']['path'])) {

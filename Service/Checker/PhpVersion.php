@@ -25,7 +25,7 @@ class PhpVersion implements CheckerInterface
     {
         $minPHPVersion = $options['minVersion'];
 
-        $validVersion = (version_compare(PHP_VERSION, $minPHPVersion) >= 0);
+        $validVersion = (\version_compare(\PHP_VERSION, $minPHPVersion) >= 0);
 
         $successMessage = $this->namespace->get('check/phpversion_success', 'Min PHP Version: %s, your version %s');
         $failMessage = $this->namespace->get('check/phpversion_failure', 'Min PHP Version: %s, your version %s');
@@ -33,20 +33,20 @@ class PhpVersion implements CheckerInterface
         if ($validVersion) {
             return [
                 'validation' => CheckerInterface::VALIDATION_SUCCESS,
-                'message' => sprintf(
+                'message' => \sprintf(
                     $successMessage,
                     $minPHPVersion,
-                    PHP_VERSION
+                    \PHP_VERSION
                 ),
             ];
         }
 
         return [
             'validation' => CheckerInterface::VALIDATION_FAILED,
-            'message' => sprintf(
+            'message' => \sprintf(
                 $failMessage,
                 $minPHPVersion,
-                PHP_VERSION
+                \PHP_VERSION
             ),
         ];
     }

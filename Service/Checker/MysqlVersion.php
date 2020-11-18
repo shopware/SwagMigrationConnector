@@ -37,18 +37,18 @@ class MysqlVersion implements CheckerInterface
         $successMessage = $this->namespace->get('check/mysqlversion_success', 'Min MySQL Version: %s, your version %s');
         $failMessage = $this->namespace->get('check/mysqlversion_failure', 'Min MySQL Version %s, your version %s');
 
-        if (stripos($version, 'maria')) {
+        if (\stripos($version, 'maria')) {
             $minMysqlVersion = $options['minVersion']['maria'];
-            $successMessage = str_replace('MySQL', 'MariaDB', $successMessage);
-            $failMessage = str_replace('MySQL', 'MariaDB', $failMessage);
+            $successMessage = \str_replace('MySQL', 'MariaDB', $successMessage);
+            $failMessage = \str_replace('MySQL', 'MariaDB', $failMessage);
         }
 
-        $validVersion = (version_compare($version, $minMysqlVersion) >= 0);
+        $validVersion = (\version_compare($version, $minMysqlVersion) >= 0);
 
         if ($validVersion) {
             return [
                 'validation' => CheckerInterface::VALIDATION_SUCCESS,
-                'message' => sprintf(
+                'message' => \sprintf(
                     $successMessage,
                     $minMysqlVersion,
                     $version
@@ -58,7 +58,7 @@ class MysqlVersion implements CheckerInterface
 
         return [
             'validation' => CheckerInterface::VALIDATION_FAILED,
-            'message' => sprintf(
+            'message' => \sprintf(
                 $failMessage,
                 $minMysqlVersion,
                 $version

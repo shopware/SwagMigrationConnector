@@ -17,7 +17,7 @@ class NumberRangeRepository extends AbstractRepository
      */
     public function requiredForCount(array $entities)
     {
-        return !in_array(DefaultEntities::NUMBER_RANGE, $entities);
+        return !\in_array(DefaultEntities::NUMBER_RANGE, $entities);
     }
 
     /**
@@ -46,9 +46,6 @@ class NumberRangeRepository extends AbstractRepository
             ->fetchAll();
     }
 
-    /**
-     * @return mixed
-     */
     public function fetchPrefix()
     {
         return $this->connection->createQueryBuilder()

@@ -28,9 +28,9 @@ class Shopware_Controllers_Api_SwagMigrationOrderDocuments extends Shopware_Cont
             throw new UnsecureRequestException('SSL required', Response::HTTP_UPGRADE_REQUIRED);
         }
 
-        if ($this->container->initialized('Auth')) {
+        if ($this->container->initialized('auth')) {
             /** @var Role $role */
-            $role = $this->container->get('Auth')->getIdentity()->role;
+            $role = $this->container->get('auth')->getIdentity()->role;
 
             if ($role->getAdmin()) {
                 return;
@@ -75,8 +75,8 @@ class Shopware_Controllers_Api_SwagMigrationOrderDocuments extends Shopware_Cont
             $this->setDownloadHeaders($filePath, $orderNumber);
 
             $upstream = $documentService->readFile($filePath);
-            $downstream = fopen('php://output', 'rb');
-            stream_copy_to_stream($upstream, $downstream);
+            $downstream = \fopen('php://output', 'rb');
+            \stream_copy_to_stream($upstream, $downstream);
         } else {
             // Disable Smarty rendering
             $this->Front()->Plugins()->ViewRenderer()->setNoRender();
@@ -84,7 +84,7 @@ class Shopware_Controllers_Api_SwagMigrationOrderDocuments extends Shopware_Cont
 
             $this->setDownloadHeaders($filePath, $orderNumber);
 
-            readfile($filePath);
+            \readfile($filePath);
         }
     }
 

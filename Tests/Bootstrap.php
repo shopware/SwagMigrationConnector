@@ -11,11 +11,11 @@ class SwagMigrationConnectorTestKernel extends \Shopware\Kernel
 {
     public static function start()
     {
-        $kernel = new self(getenv('SHOPWARE_ENV') ?: 'testing', true);
+        $kernel = new self(\getenv('SHOPWARE_ENV') ?: 'testing', true);
         $kernel->boot();
 
         $container = $kernel->getContainer();
-        $container->get('plugins')->Core()->ErrorHandler()->registerErrorHandler(E_ALL | E_STRICT);
+        $container->get('plugins')->Core()->ErrorHandler()->registerErrorHandler(\E_ALL | \E_STRICT);
 
         if (!self::isPluginInstalledAndActivated()) {
             die('Error: The plugin is not installed or activated, tests aborted!');

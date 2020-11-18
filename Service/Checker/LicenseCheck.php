@@ -61,7 +61,8 @@ class LicenseCheck implements CheckerInterface
 
         $url = $this->endpoint . '/licenseupgrades/permission';
         $client = new \Zend_Http_Client(
-            $url, [
+            $url,
+            [
                 'timeout' => 15,
             ]
         );

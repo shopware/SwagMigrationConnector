@@ -70,6 +70,7 @@ class RequirementsValidatorService
             ],
         ],
     ];
+
     /**
      * @var array
      */

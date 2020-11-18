@@ -18,7 +18,7 @@ class NewsletterRecipientRepository extends AbstractRepository
      */
     public function requiredForCount(array $entities)
     {
-        return !in_array(DefaultEntities::NEWSLETTER_RECIPIENT, $entities);
+        return !\in_array(DefaultEntities::NEWSLETTER_RECIPIENT, $entities);
     }
 
     /**
@@ -132,7 +132,7 @@ class NewsletterRecipientRepository extends AbstractRepository
         $resultSet = [];
 
         foreach ($shops as $shop) {
-            $groupId = unserialize($shop['groupID'], ['allowed_classes' => false]);
+            $groupId = \unserialize($shop['groupID'], ['allowed_classes' => false]);
             if (!isset($resultSet[$groupId])) {
                 $resultSet[$groupId] = [];
             }

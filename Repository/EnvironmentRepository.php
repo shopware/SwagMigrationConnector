@@ -52,7 +52,7 @@ class EnvironmentRepository
 
         /** @var Column $column */
         foreach ($columns as $column) {
-            $selection = str_replace(
+            $selection = \str_replace(
                 ['#tableAlias#', '#column#'],
                 [$tableAlias, $column->getName()],
                 '`#tableAlias#`.`#column#` as `#tableAlias#.#column#`'

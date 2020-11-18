@@ -51,7 +51,9 @@ class AssetService extends AbstractApiService
         $fetchedAssets = $this->assetRepository->fetch($offset, $limit);
 
         $assets = $this->mapData(
-            $fetchedAssets, [], ['asset']
+            $fetchedAssets,
+            [],
+            ['asset']
         );
 
         $resultSet = $this->prepareAssets($assets);
@@ -68,7 +70,7 @@ class AssetService extends AbstractApiService
         $defaultShop = $this->modelManager->getRepository(Shop::class)->getDefault();
 
         // represents the main language of the migrated shop
-        $locale = str_replace('_', '-', $defaultShop->getLocale()->getLocale());
+        $locale = \str_replace('_', '-', $defaultShop->getLocale()->getLocale());
 
         foreach ($assets as &$asset) {
             $asset['_locale'] = $locale;

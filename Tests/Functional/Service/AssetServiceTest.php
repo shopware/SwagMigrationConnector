@@ -17,11 +17,11 @@ class AssetServiceTest extends TestCase
 
         $assets = $assetService->getAssets();
 
-        $this->assertCount(250, $assets);
+        static::assertCount(250, $assets);
 
         $firstAsset = $assets[0];
 
-        $this->assertArrayHasKey('uri', $firstAsset);
+        static::assertArrayHasKey('uri', $firstAsset);
     }
 
     public function test_read_assets_with_offset_should_be_successful()
@@ -30,11 +30,11 @@ class AssetServiceTest extends TestCase
 
         $assets = $assetService->getAssets(1);
 
-        $this->assertCount(250, $assets);
+        static::assertCount(250, $assets);
 
         $asset = $assets[5];
 
-        $this->assertArrayHasKey('uri', $asset);
+        static::assertArrayHasKey('uri', $asset);
     }
 
     public function test_read_assets_with_limit_should_be_successful()
@@ -43,11 +43,11 @@ class AssetServiceTest extends TestCase
 
         $assets = $assetService->getAssets(0, 2);
 
-        $this->assertCount(2, $assets);
+        static::assertCount(2, $assets);
 
         $firstAsset = $assets[0];
 
-        $this->assertArrayHasKey('uri', $firstAsset);
+        static::assertArrayHasKey('uri', $firstAsset);
     }
 
     public function test_read_assets_with_offset_and_limit_should_be_successful()
@@ -56,11 +56,11 @@ class AssetServiceTest extends TestCase
 
         $assets = $assetService->getAssets(250, 40);
 
-        $this->assertCount(40, $assets);
+        static::assertCount(40, $assets);
 
         $asset = $assets[0];
 
-        $this->assertArrayHasKey('uri', $asset);
+        static::assertArrayHasKey('uri', $asset);
     }
 
     public function test_read_with_out_of_bounds_offset_should_offer_empty_array()
@@ -69,6 +69,6 @@ class AssetServiceTest extends TestCase
 
         $assets = $assetService->getAssets(2000);
 
-        $this->assertEmpty($assets);
+        static::assertEmpty($assets);
     }
 }

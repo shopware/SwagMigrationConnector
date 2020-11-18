@@ -17,17 +17,17 @@ class CustomerServiceTest extends TestCase
 
         $customers = $customerService->getCustomers();
 
-        $this->assertCount(2, $customers);
+        static::assertCount(2, $customers);
 
         $customer = $customers[0];
 
-        $this->assertSame('1', $customer['id']);
-        $this->assertArrayHasKey('addresses', $customer);
-        $this->assertArrayHasKey('_locale', $customer);
-        $this->assertArrayHasKey('country', $customer['addresses'][0]);
+        static::assertSame('1', $customer['id']);
+        static::assertArrayHasKey('addresses', $customer);
+        static::assertArrayHasKey('_locale', $customer);
+        static::assertArrayHasKey('country', $customer['addresses'][0]);
 
-        $this->assertArrayHasKey('customerGroupId', $customer);
-        $this->assertArrayHasKey('customerlanguage', $customer);
+        static::assertArrayHasKey('customerGroupId', $customer);
+        static::assertArrayHasKey('customerlanguage', $customer);
     }
 
     public function test_read_customers_with_offset_should_be_successful()
@@ -36,7 +36,7 @@ class CustomerServiceTest extends TestCase
 
         $customers = $customerService->getCustomers(1);
 
-        $this->assertCount(1, $customers);
+        static::assertCount(1, $customers);
     }
 
     public function test_read_with_limit_should_be_successful()
@@ -45,7 +45,7 @@ class CustomerServiceTest extends TestCase
 
         $customers = $customerService->getCustomers(0, 1);
 
-        $this->assertCount(1, $customers);
+        static::assertCount(1, $customers);
     }
 
     public function test_read_with_limit_and_offset_should_be_successful()
@@ -54,7 +54,7 @@ class CustomerServiceTest extends TestCase
 
         $customers = $customerService->getCustomers(1, 1);
 
-        $this->assertCount(1, $customers);
+        static::assertCount(1, $customers);
     }
 
     public function test_read_with_out_of_bounds_offset_should_offer_empty_array()
@@ -63,6 +63,6 @@ class CustomerServiceTest extends TestCase
 
         $customers = $customerService->getCustomers(10);
 
-        $this->assertEmpty($customers);
+        static::assertEmpty($customers);
     }
 }

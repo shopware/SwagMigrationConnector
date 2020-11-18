@@ -18,7 +18,7 @@ class CustomerGroupRepository extends AbstractRepository
      */
     public function requiredForCount(array $entities)
     {
-        return !in_array(DefaultEntities::CUSTOMER_GROUP, $entities);
+        return !\in_array(DefaultEntities::CUSTOMER_GROUP, $entities);
     }
 
     /**

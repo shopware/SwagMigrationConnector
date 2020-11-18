@@ -27,19 +27,19 @@ class PhpExtensions implements CheckerInterface
         $passed = [];
 
         foreach ($extensions as $extension) {
-            if (extension_loaded($extension)) {
+            if (\extension_loaded($extension)) {
                 $passed[] = $extension;
             }
         }
 
-        if (count($passed) !== count($extensions)) {
+        if (\count($passed) !== \count($extensions)) {
             $failMessage = $this->namespace->get('check/missing_php_ext_failure');
 
             return [
                 'validation' => CheckerInterface::VALIDATION_FAILED,
-                'message' => sprintf(
+                'message' => \sprintf(
                     $failMessage,
-                    implode(',', array_diff($extensions, $passed))
+                    \implode(',', \array_diff($extensions, $passed))
                 ),
             ];
         }

@@ -18,7 +18,7 @@ class TranslationRepository extends AbstractRepository
      */
     public function requiredForCount(array $entities)
     {
-        return !in_array(DefaultEntities::TRANSLATION, $entities);
+        return !\in_array(DefaultEntities::TRANSLATION, $entities);
     }
 
     /**

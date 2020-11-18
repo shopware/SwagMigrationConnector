@@ -17,21 +17,21 @@ class DispatchServiceTest extends TestCase
 
         $dispatches = $dispatchService->getDispatches();
 
-        $this->assertCount(5, $dispatches);
+        static::assertCount(5, $dispatches);
 
         $dispatch = $dispatches[0];
 
-        $this->assertSame('9', $dispatch['id']);
-        $this->assertArrayHasKey('shippingCountries', $dispatch);
-        $this->assertArrayHasKey('paymentMethods', $dispatch);
-        $this->assertSame([
+        static::assertSame('9', $dispatch['id']);
+        static::assertArrayHasKey('shippingCountries', $dispatch);
+        static::assertArrayHasKey('paymentMethods', $dispatch);
+        static::assertSame([
             [
                 'countryID' => '2',
                 'countryiso' => 'DE',
                 'iso3' => 'DEU',
             ],
         ], $dispatch['shippingCountries']);
-        $this->assertSame(['2', '3', '4', '5'], $dispatch['paymentMethods']);
+        static::assertSame(['2', '3', '4', '5'], $dispatch['paymentMethods']);
     }
 
     public function test_read_with_offset_should_be_successful()
@@ -40,7 +40,7 @@ class DispatchServiceTest extends TestCase
 
         $dispatches = $dispatchService->getDispatches(1);
 
-        $this->assertCount(4, $dispatches);
+        static::assertCount(4, $dispatches);
     }
 
     public function test_read_with_limit_should_be_successful()
@@ -49,7 +49,7 @@ class DispatchServiceTest extends TestCase
 
         $dispatches = $dispatchService->getDispatches(0, 1);
 
-        $this->assertCount(1, $dispatches);
+        static::assertCount(1, $dispatches);
     }
 
     public function test_read_with_limit_and_offset_should_be_successful()
@@ -58,7 +58,7 @@ class DispatchServiceTest extends TestCase
 
         $dispatches = $dispatchService->getDispatches(1, 1);
 
-        $this->assertCount(1, $dispatches);
+        static::assertCount(1, $dispatches);
     }
 
     public function test_read_with_out_of_bounds_offset_should_offer_empty_array()
@@ -67,6 +67,6 @@ class DispatchServiceTest extends TestCase
 
         $dispatches = $dispatchService->getDispatches(10);
 
-        $this->assertEmpty($dispatches);
+        static::assertEmpty($dispatches);
     }
 }

@@ -17,7 +17,7 @@ class CategoryRepository extends AbstractRepository
      */
     public function requiredForCount(array $entities)
     {
-        return !in_array(DefaultEntities::CATEGORY, $entities);
+        return !\in_array(DefaultEntities::CATEGORY, $entities);
     }
 
     /**

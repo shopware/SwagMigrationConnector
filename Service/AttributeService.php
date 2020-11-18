@@ -31,9 +31,6 @@ class AttributeService
      */
     private $connection;
 
-    /**
-     * @param Connection $connection
-     */
     public function __construct(AttributeRepository $attributeRepository, ModelManager $manager)
     {
         $this->attributeRepository = $attributeRepository;
@@ -59,13 +56,13 @@ class AttributeService
         $defaultShop = $this->modelManager->getRepository(Shop::class)->getDefault();
 
         // represents the main language of the migrated shop
-        $locale = str_replace('_', '-', $defaultShop->getLocale()->getLocale());
+        $locale = \str_replace('_', '-', $defaultShop->getLocale()->getLocale());
 
         // extract field translations and add them to config
         foreach ($attributeConfigTranslations as $translation) {
-            $name = str_replace($table . '_', '', $translation['name']);
-            $field = substr($translation['name'], strrpos($translation['name'], '_') + 1);
-            $column = substr($name, 0, strrpos($name, '_'));
+            $name = \str_replace($table . '_', '', $translation['name']);
+            $field = \substr($translation['name'], \strrpos($translation['name'], '_') + 1);
+            $column = \substr($name, 0, \strrpos($name, '_'));
 
             if (!isset($attributeConfiguration[$column]['translations'][$field])) {
                 $attributeConfiguration[$column]['translations'][$field] = [];
@@ -104,7 +101,7 @@ class AttributeService
     }
 
     /**
-     * @param $table
+     * @param string $table
      *
      * @return ForeignKeyConstraint[]
      */
@@ -129,10 +126,10 @@ class AttributeService
         foreach ($foreignKeys as $foreignKey) {
             $fks[] = $foreignKey->getLocalColumns();
         }
-        $fks = array_merge(...$fks);
+        $fks = \array_merge(...$fks);
 
         foreach ($columns as $column) {
-            if ($column->getAutoincrement() === true || in_array($column->getName(), $fks)) {
+            if ($column->getAutoincrement() === true || \in_array($column->getName(), $fks)) {
                 continue;
             }
             $result[] = $column;
