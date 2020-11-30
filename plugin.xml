@@ -19,11 +19,15 @@
         The Migration Connector provides API endpoints that allow Shopware 6 to create a secure data connection with the active Shopware 5 shop which support the data migration to Shopware 6.
     </description>
 
-    <changelog version="REPLACE_GLOBAL_WITH_NEXT_VERSION">
+    <changelog version="1.2.5">
         <changes lang="de">
+            MIG-110 - Verbessert die Migration der Medien
+            MIG-114 - Ermöglicht die Migration der Hauptvarianten-Information
             PT-12123 - Shopware 5.7 und PHP 8 Kompatibilität;
         </changes>
         <changes lang="en">
+            MIG-110 - Improves the migration of media
+            MIG-114 - Provide migration of main variant information
             PT-12123 - Shopware 5.7 and PHP 8 compatibility;
         </changes>
     </changelog>
