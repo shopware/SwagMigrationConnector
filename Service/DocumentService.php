@@ -37,7 +37,7 @@ class DocumentService extends AbstractApiService
 
     public function __construct(
         ApiRepositoryInterface $documentRepository,
-        ?FilesystemInterface $fileSystem,
+        $fileSystem,
         ModelManager $modelManager
     ) {
         $this->documentRepository = $documentRepository;
