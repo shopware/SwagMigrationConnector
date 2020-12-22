@@ -48,6 +48,8 @@ class DefaultEntities
 
     const PRODUCT_REVIEW = 'product_review';
 
+    const PROMOTION = 'promotion';
+
     const PROPERTY_GROUP_OPTION = 'property_group_option';
 
     const SALES_CHANNEL = 'sales_channel';
