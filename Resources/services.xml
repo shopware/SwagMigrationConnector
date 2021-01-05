@@ -118,6 +118,10 @@
             <argument type="service" id="swag_migration_connector.repository.vote_repository" />
         </service>
 
+        <service id="swag_migration_connector.service.voucher_service" class="SwagMigrationConnector\Service\VoucherService" public="true">
+            <argument type="service" id="swag_migration_connector.repository.voucher_repository" />
+        </service>
+
         <service id="swag_migration_connector.service.seourl_service" class="SwagMigrationConnector\Service\SeoUrlService" public="true">
             <argument type="service" id="swag_migration_connector.repository.seourl_repository" />
         </service>
@@ -237,6 +241,12 @@
 
         <service id="swag_migration_connector.repository.vote_repository"
                  class="SwagMigrationConnector\Repository\VoteRepository"
+                 parent="SwagMigrationConnector\Repository\AbstractRepository">
+            <tag name="shopware.migration.connector.repository"/>
+        </service>
+
+        <service id="swag_migration_connector.repository.voucher_repository"
+                 class="SwagMigrationConnector\Repository\VoucherRepository"
                  parent="SwagMigrationConnector\Repository\AbstractRepository">
             <tag name="shopware.migration.connector.repository"/>
         </service>
