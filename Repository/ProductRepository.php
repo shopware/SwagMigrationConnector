@@ -239,6 +239,7 @@ class ProductRepository extends AbstractRepository
         $query->addSelect('parentasset.articleID');
         $this->addTableSelection($query, 's_articles_img', 'asset');
         $query->addSelect('parentasset.img as img, parentasset.description as description');
+        $query->addSelect('parentasset.main as main, parentasset.position as position');
 
         $query->leftJoin('asset', 's_articles_img_attributes', 'asset_attributes', 'asset_attributes.imageID = asset.id');
         $this->addTableSelection($query, 's_articles_img_attributes', 'asset_attributes');

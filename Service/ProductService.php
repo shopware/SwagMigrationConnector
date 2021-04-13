@@ -174,7 +174,7 @@ class ProductService extends AbstractApiService
         $variantIds = $this->productMapping->keys();
 
         $fetchedUnlinkedAssets = $this->mapData($this->productRepository->fetchProductAssets($productIds), [], ['asset']);
-        $fetchedVariantAssets = $this->mapData($this->productRepository->fetchVariantAssets($variantIds), [], ['asset', 'img', 'description']);
+        $fetchedVariantAssets = $this->mapData($this->productRepository->fetchVariantAssets($variantIds), [], ['asset', 'img', 'description', 'main', 'position']);
 
         $assets = [];
         foreach ($fetchedVariantAssets as $articleId => $productAssets) {
