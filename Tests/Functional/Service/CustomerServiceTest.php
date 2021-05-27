@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 class CustomerServiceTest extends TestCase
 {
-    public function test_read_customers_should_be_successful()
+    public function testReadCustomersShouldBeSuccessful()
     {
         $customerService = Shopware()->Container()->get('swag_migration_connector.service.customer_service');
 
@@ -30,7 +30,7 @@ class CustomerServiceTest extends TestCase
         static::assertArrayHasKey('customerlanguage', $customer);
     }
 
-    public function test_read_customers_with_offset_should_be_successful()
+    public function testReadCustomersWithOffsetShouldBeSuccessful()
     {
         $customerService = Shopware()->Container()->get('swag_migration_connector.service.customer_service');
 
@@ -39,7 +39,7 @@ class CustomerServiceTest extends TestCase
         static::assertCount(1, $customers);
     }
 
-    public function test_read_with_limit_should_be_successful()
+    public function testReadWithLimitShouldBeSuccessful()
     {
         $customerService = Shopware()->Container()->get('swag_migration_connector.service.customer_service');
 
@@ -48,7 +48,7 @@ class CustomerServiceTest extends TestCase
         static::assertCount(1, $customers);
     }
 
-    public function test_read_with_limit_and_offset_should_be_successful()
+    public function testReadWithLimitAndOffsetShouldBeSuccessful()
     {
         $customerService = Shopware()->Container()->get('swag_migration_connector.service.customer_service');
 
@@ -57,7 +57,7 @@ class CustomerServiceTest extends TestCase
         static::assertCount(1, $customers);
     }
 
-    public function test_read_with_out_of_bounds_offset_should_offer_empty_array()
+    public function testReadWithOutOfBoundsOffsetShouldOfferEmptyArray()
     {
         $customerService = Shopware()->Container()->get('swag_migration_connector.service.customer_service');
 

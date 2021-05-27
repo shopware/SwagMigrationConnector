@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 class OrderServiceTest extends TestCase
 {
-    public function test_read_orders_should_be_successful()
+    public function testReadOrdersShouldBeSuccessful()
     {
         $orderService = Shopware()->Container()->get('swag_migration_connector.service.order_service');
 
@@ -28,7 +28,7 @@ class OrderServiceTest extends TestCase
         static::assertArrayHasKey('details', $orders[0]);
     }
 
-    public function test_read_orders_with_offset_should_be_successful()
+    public function testReadOrdersWithOffsetShouldBeSuccessful()
     {
         $orderService = Shopware()->Container()->get('swag_migration_connector.service.order_service');
 
@@ -43,7 +43,7 @@ class OrderServiceTest extends TestCase
         static::assertSame('4', $order['payment']['id']);
     }
 
-    public function test_read_orders_with_limit_should_be_successful()
+    public function testReadOrdersWithLimitShouldBeSuccessful()
     {
         $orderService = Shopware()->Container()->get('swag_migration_connector.service.order_service');
 
@@ -60,7 +60,7 @@ class OrderServiceTest extends TestCase
         static::assertSame('19.00', $order['details'][1]['tax']['tax']);
     }
 
-    public function test_read_orders_with_offset_and_limit_should_be_successful()
+    public function testReadOrdersWithOffsetAndLimitShouldBeSuccessful()
     {
         $orderService = Shopware()->Container()->get('swag_migration_connector.service.order_service');
 
@@ -69,7 +69,7 @@ class OrderServiceTest extends TestCase
         static::assertCount(0, $orders);
     }
 
-    public function test_read_with_out_of_bounds_offset_should_offer_empty_array()
+    public function testReadWithOutOfBoundsOffsetShouldOfferEmptyArray()
     {
         $orderService = Shopware()->Container()->get('swag_migration_connector.service.order_service');
 
