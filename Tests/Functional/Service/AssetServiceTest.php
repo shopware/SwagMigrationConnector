@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 class AssetServiceTest extends TestCase
 {
-    public function test_read_assets_should_be_successful()
+    public function testReadAssetsShouldBeSuccessful()
     {
         $assetService = Shopware()->Container()->get('swag_migration_connector.service.asset_service');
 
@@ -24,7 +24,7 @@ class AssetServiceTest extends TestCase
         static::assertArrayHasKey('uri', $firstAsset);
     }
 
-    public function test_read_assets_with_offset_should_be_successful()
+    public function testReadAssetsWithOffsetShouldBeSuccessful()
     {
         $assetService = Shopware()->Container()->get('swag_migration_connector.service.asset_service');
 
@@ -37,7 +37,7 @@ class AssetServiceTest extends TestCase
         static::assertArrayHasKey('uri', $asset);
     }
 
-    public function test_read_assets_with_limit_should_be_successful()
+    public function testReadAssetsWithLimitShouldBeSuccessful()
     {
         $assetService = Shopware()->Container()->get('swag_migration_connector.service.asset_service');
 
@@ -50,7 +50,7 @@ class AssetServiceTest extends TestCase
         static::assertArrayHasKey('uri', $firstAsset);
     }
 
-    public function test_read_assets_with_offset_and_limit_should_be_successful()
+    public function testReadAssetsWithOffsetAndLimitShouldBeSuccessful()
     {
         $assetService = Shopware()->Container()->get('swag_migration_connector.service.asset_service');
 
@@ -63,7 +63,7 @@ class AssetServiceTest extends TestCase
         static::assertArrayHasKey('uri', $asset);
     }
 
-    public function test_read_with_out_of_bounds_offset_should_offer_empty_array()
+    public function testReadWithOutOfBoundsOffsetShouldOfferEmptyArray()
     {
         $assetService = Shopware()->Container()->get('swag_migration_connector.service.asset_service');
 

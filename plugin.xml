@@ -19,6 +19,15 @@
         The Migration Connector provides API endpoints that allow Shopware 6 to create a secure data connection with the active Shopware 5 shop which support the data migration to Shopware 6.
     </description>
 
+    <changelog version="1.3.2">
+        <changes lang="de">
+            MIG-233 - Migration der Merkzettel / Wunschlisten hinzugefügt
+        </changes>
+        <changes lang="en">
+            MIG-233 - Migration of notes / wishlists added
+        </changes>
+    </changelog>
+
     <changelog version="1.3.1">
         <changes lang="de">
             MIG-220 - Optimiert die Migration von Produkt-Vorschaubildern

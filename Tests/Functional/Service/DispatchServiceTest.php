@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 class DispatchServiceTest extends TestCase
 {
-    public function test_read_should_be_successful()
+    public function testReadShouldBeSuccessful()
     {
         $dispatchService = Shopware()->Container()->get('swag_migration_connector.service.dispatch_service');
 
@@ -34,7 +34,7 @@ class DispatchServiceTest extends TestCase
         static::assertSame(['2', '3', '4', '5'], $dispatch['paymentMethods']);
     }
 
-    public function test_read_with_offset_should_be_successful()
+    public function testReadWithOffsetShouldBeSuccessful()
     {
         $dispatchService = Shopware()->Container()->get('swag_migration_connector.service.dispatch_service');
 
@@ -43,7 +43,7 @@ class DispatchServiceTest extends TestCase
         static::assertCount(4, $dispatches);
     }
 
-    public function test_read_with_limit_should_be_successful()
+    public function testReadWithLimitShouldBeSuccessful()
     {
         $dispatchService = Shopware()->Container()->get('swag_migration_connector.service.dispatch_service');
 
@@ -52,7 +52,7 @@ class DispatchServiceTest extends TestCase
         static::assertCount(1, $dispatches);
     }
 
-    public function test_read_with_limit_and_offset_should_be_successful()
+    public function testReadWithLimitAndOffsetShouldBeSuccessful()
     {
         $dispatchService = Shopware()->Container()->get('swag_migration_connector.service.dispatch_service');
 
@@ -61,7 +61,7 @@ class DispatchServiceTest extends TestCase
         static::assertCount(1, $dispatches);
     }
 
-    public function test_read_with_out_of_bounds_offset_should_offer_empty_array()
+    public function testReadWithOutOfBoundsOffsetShouldOfferEmptyArray()
     {
         $dispatchService = Shopware()->Container()->get('swag_migration_connector.service.dispatch_service');
 

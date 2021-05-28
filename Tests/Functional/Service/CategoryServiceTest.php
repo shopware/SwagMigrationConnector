@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 class CategoryServiceTest extends TestCase
 {
-    public function test_read_categories_should_be_successful()
+    public function testReadCategoriesShouldBeSuccessful()
     {
         $categoryService = Shopware()->Container()->get('swag_migration_connector.service.category_service');
 
@@ -28,7 +28,7 @@ class CategoryServiceTest extends TestCase
         static::assertSame('de-DE', $categories[0]['_locale']);
     }
 
-    public function test_read_categories_with_offset_should_be_succesful()
+    public function testReadCategoriesWithOffsetShouldBeSuccesful()
     {
         $categoryService = Shopware()->Container()->get('swag_migration_connector.service.category_service');
 
@@ -42,7 +42,7 @@ class CategoryServiceTest extends TestCase
         static::assertSame('en-GB', $category['_locale']);
     }
 
-    public function test_read_categories_with_limit_should_be_succesful()
+    public function testReadCategoriesWithLimitShouldBeSuccesful()
     {
         $categoryService = Shopware()->Container()->get('swag_migration_connector.service.category_service');
 
@@ -56,7 +56,7 @@ class CategoryServiceTest extends TestCase
         static::assertSame('de-DE', $category['_locale']);
     }
 
-    public function test_read_categories_with_offset_and_limit_should_be_succesful()
+    public function testReadCategoriesWithOffsetAndLimitShouldBeSuccesful()
     {
         $categoryService = Shopware()->Container()->get('swag_migration_connector.service.category_service');
 
@@ -71,7 +71,7 @@ class CategoryServiceTest extends TestCase
         static::assertSame('|61|39|', $category['path']);
     }
 
-    public function test_read_with_out_of_bounds_offset_should_offer_empty_array()
+    public function testReadWithOutOfBoundsOffsetShouldOfferEmptyArray()
     {
         $categoryService = Shopware()->Container()->get('swag_migration_connector.service.category_service');
 

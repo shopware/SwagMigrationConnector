@@ -33,7 +33,7 @@ class TranslationServiceTest extends TestCase
         Shopware()->Container()->get('dbal_connection')->rollBack();
     }
 
-    public function test_read_translations_should_be_successful()
+    public function testReadTranslationsShouldBeSuccessful()
     {
         $this->setUpOwn();
         $translationService = Shopware()->Container()->get('swag_migration_connector.service.translation_service');
@@ -49,7 +49,7 @@ class TranslationServiceTest extends TestCase
         static::assertSame('en-GB', $firstTranslation['locale']);
     }
 
-    public function test_read_translations_with_offset_should_be_successful()
+    public function testReadTranslationsWithOffsetShouldBeSuccessful()
     {
         $this->setUpOwn();
         $translationService = Shopware()->Container()->get('swag_migration_connector.service.translation_service');
@@ -66,7 +66,7 @@ class TranslationServiceTest extends TestCase
         static::assertSame('en-GB', $translation['locale']);
     }
 
-    public function test_read_translations_with_limit_should_be_successful()
+    public function testReadTranslationsWithLimitShouldBeSuccessful()
     {
         $this->setUpOwn();
         $translationService = Shopware()->Container()->get('swag_migration_connector.service.translation_service');
@@ -82,7 +82,7 @@ class TranslationServiceTest extends TestCase
         static::assertSame('en-GB', $firstTranslation['locale']);
     }
 
-    public function test_read_translations_with_offset_and_limit_should_be_successful()
+    public function testReadTranslationsWithOffsetAndLimitShouldBeSuccessful()
     {
         $this->setUpOwn();
         $translationService = Shopware()->Container()->get('swag_migration_connector.service.translation_service');
@@ -99,7 +99,7 @@ class TranslationServiceTest extends TestCase
         static::assertSame('en-GB', $translation['locale']);
     }
 
-    public function test_read_with_out_of_bounds_offset_should_offer_empty_array()
+    public function testReadWithOutOfBoundsOffsetShouldOfferEmptyArray()
     {
         $this->setUpOwn();
         $translationService = Shopware()->Container()->get('swag_migration_connector.service.translation_service');

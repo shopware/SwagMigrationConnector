@@ -40,6 +40,8 @@ class DefaultEntities
 
     const ORDER_DOCUMENT = 'order_document';
 
+    const ORDER_NOTES = 'customer_wishlist';
+
     const PRODUCT = 'product';
 
     const PRODUCT_PROPERTY_RELATION = 'product_property_relation';
