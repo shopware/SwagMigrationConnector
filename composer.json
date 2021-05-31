@@ -1,5 +1,5 @@
 {
-  "name": "shopwareLabs/swag-migration-connector",
+  "name": "shopware-labs/swag-migration-connector",
   "type": "shopware-plugin",
   "description": "Offers API endpoints for fast data reads.",
   "license": "MIT",
