@@ -21,10 +21,10 @@
 
     <changelog version="1.3.3">
         <changes lang="de">
-            MIG-100 - Optimiert die Migration von Hauptvarianten-Informationen
+            MIG-244 - Optimiert die Migration von Hauptvarianten-Informationen
         </changes>
         <changes lang="en">
-            MIG-100 - Optimize main variant information
+            MIG-244 - Optimize main variant information
         </changes>
     </changelog>
 
