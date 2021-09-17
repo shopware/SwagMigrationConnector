@@ -43,7 +43,7 @@ class MysqlVersion implements CheckerInterface
             $failMessage = \str_replace('MySQL', 'MariaDB', $failMessage);
         }
 
-        $validVersion = (\version_compare($version, $minMysqlVersion) >= 0);
+        $validVersion = \version_compare($version, $minMysqlVersion) >= 0;
 
         if ($validVersion) {
             return [

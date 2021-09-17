@@ -5,13 +5,19 @@
  * file that was distributed with this source code.
  */
 
+use Doctrine\DBAL\Connection;
+use Shopware\Kernel;
+
 require __DIR__ . '/../../../../autoload.php';
 
-class SwagMigrationConnectorTestKernel extends \Shopware\Kernel
+class SwagMigrationConnectorTestKernel extends Kernel
 {
+    /**
+     * @return void
+     */
     public static function start()
     {
-        $kernel = new self(\getenv('SHOPWARE_ENV') ?: 'testing', true);
+        $kernel = new self(getenv('SHOPWARE_ENV') ?: 'testing', true);
         $kernel->boot();
 
         $container = $kernel->getContainer();
@@ -28,7 +34,7 @@ class SwagMigrationConnectorTestKernel extends \Shopware\Kernel
      */
     private static function isPluginInstalledAndActivated()
     {
-        /** @var \Doctrine\DBAL\Connection $db */
+        /** @var Connection $db */
         $db = Shopware()->Container()->get('dbal_connection');
         $sql = "SELECT active FROM s_core_plugins WHERE name='SwagMigrationConnector'";
         $active = $db->fetchColumn($sql);

@@ -11,6 +11,9 @@ use PHPUnit\Framework\TestCase;
 
 class MainVariantRelationServiceTest extends TestCase
 {
+    /**
+     * @return void
+     */
     public function testReadShouldBeSuccessful()
     {
         $service = Shopware()->Container()->get('swag_migration_connector.service.main_variant_relation_service');
@@ -25,6 +28,9 @@ class MainVariantRelationServiceTest extends TestCase
         static::assertSame('SW10002.3', $row['ordernumber']);
     }
 
+    /**
+     * @return void
+     */
     public function testReadWithOffsetShouldBeSuccessful()
     {
         $service = Shopware()->Container()->get('swag_migration_connector.service.main_variant_relation_service');
@@ -34,6 +40,9 @@ class MainVariantRelationServiceTest extends TestCase
         static::assertCount(26, $data);
     }
 
+    /**
+     * @return void
+     */
     public function testReadWithLimitShouldBeSuccessful()
     {
         $service = Shopware()->Container()->get('swag_migration_connector.service.main_variant_relation_service');
@@ -43,6 +52,9 @@ class MainVariantRelationServiceTest extends TestCase
         static::assertCount(1, $data);
     }
 
+    /**
+     * @return void
+     */
     public function testReadWithLimitAndOffsetShouldBeSuccessful()
     {
         $service = Shopware()->Container()->get('swag_migration_connector.service.main_variant_relation_service');
@@ -52,6 +64,9 @@ class MainVariantRelationServiceTest extends TestCase
         static::assertCount(1, $data);
     }
 
+    /**
+     * @return void
+     */
     public function testReadWithOutOfBoundsOffsetShouldOfferEmptyArray()
     {
         $service = Shopware()->Container()->get('swag_migration_connector.service.main_variant_relation_service');

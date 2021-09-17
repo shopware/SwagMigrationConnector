@@ -11,6 +11,9 @@ use PHPUnit\Framework\TestCase;
 
 class VoucherServiceTest extends TestCase
 {
+    /**
+     * @return void
+     */
     public function testReadShouldBeSuccessful()
     {
         $service = Shopware()->Container()->get('swag_migration_connector.service.voucher_service');
@@ -45,6 +48,9 @@ class VoucherServiceTest extends TestCase
         ], $voucher);
     }
 
+    /**
+     * @return void
+     */
     public function testReadWithOffsetShouldBeSuccessful()
     {
         $service = Shopware()->Container()->get('swag_migration_connector.service.voucher_service');
@@ -54,6 +60,9 @@ class VoucherServiceTest extends TestCase
         static::assertCount(3, $data);
     }
 
+    /**
+     * @return void
+     */
     public function testReadWithLimitShouldBeSuccessful()
     {
         $service = Shopware()->Container()->get('swag_migration_connector.service.voucher_service');
@@ -63,6 +72,9 @@ class VoucherServiceTest extends TestCase
         static::assertCount(1, $data);
     }
 
+    /**
+     * @return void
+     */
     public function testReadWithLimitAndOffsetShouldBeSuccessful()
     {
         $service = Shopware()->Container()->get('swag_migration_connector.service.voucher_service');
@@ -72,6 +84,9 @@ class VoucherServiceTest extends TestCase
         static::assertCount(1, $data);
     }
 
+    /**
+     * @return void
+     */
     public function testReadWithOutOfBoundsOffsetShouldOfferEmptyArray()
     {
         $service = Shopware()->Container()->get('swag_migration_connector.service.voucher_service');
