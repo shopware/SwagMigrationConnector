@@ -42,7 +42,7 @@ class DocumentService extends AbstractApiService
     ) {
         $this->documentRepository = $documentRepository;
         $this->modelManager = $modelManager;
-        $this->existsFileSystem = ($fileSystem !== null && \is_subclass_of($fileSystem, 'League\Flysystem\FilesystemInterface'));
+        $this->existsFileSystem = $fileSystem !== null && \is_subclass_of($fileSystem, 'League\Flysystem\FilesystemInterface');
         $this->fileSystem = $fileSystem;
     }
 

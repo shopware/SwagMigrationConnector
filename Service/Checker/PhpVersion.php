@@ -25,7 +25,7 @@ class PhpVersion implements CheckerInterface
     {
         $minPHPVersion = $options['minVersion'];
 
-        $validVersion = (\version_compare(\PHP_VERSION, $minPHPVersion) >= 0);
+        $validVersion = \version_compare(\PHP_VERSION, $minPHPVersion) >= 0;
 
         $successMessage = $this->namespace->get('check/phpversion_success', 'Min PHP Version: %s, your version %s');
         $failMessage = $this->namespace->get('check/phpversion_failure', 'Min PHP Version: %s, your version %s');

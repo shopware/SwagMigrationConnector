@@ -11,6 +11,9 @@ use PHPUnit\Framework\TestCase;
 
 class ProductServiceTest extends TestCase
 {
+    /**
+     * @return void
+     */
     public function testReadProductsShouldBeSuccessful()
     {
         $productService = Shopware()->Container()->get('swag_migration_connector.service.product_service');
@@ -36,6 +39,9 @@ class ProductServiceTest extends TestCase
         static::assertSame('3', $products[0]['id']);
     }
 
+    /**
+     * @return void
+     */
     public function testReadProductsWithOffsetShouldBeSuccessful()
     {
         $productService = Shopware()->Container()->get('swag_migration_connector.service.product_service');
@@ -50,6 +56,9 @@ class ProductServiceTest extends TestCase
         static::assertSame('SW10170', $product['detail']['ordernumber']);
     }
 
+    /**
+     * @return void
+     */
     public function testReadProductsWithLimitShouldBeSuccessful()
     {
         $productService = Shopware()->Container()->get('swag_migration_connector.service.product_service');
@@ -64,6 +73,9 @@ class ProductServiceTest extends TestCase
         static::assertSame('SW10004', $product['detail']['ordernumber']);
     }
 
+    /**
+     * @return void
+     */
     public function testReadProductsWithOffsetAndLimitShouldBeSuccessful()
     {
         $productService = Shopware()->Container()->get('swag_migration_connector.service.product_service');
@@ -78,6 +90,9 @@ class ProductServiceTest extends TestCase
         static::assertSame('SW10202.15', $product['detail']['ordernumber']);
     }
 
+    /**
+     * @return void
+     */
     public function testReadWithOutOfBoundsOffsetShouldOfferEmptyArray()
     {
         $productService = Shopware()->Container()->get('swag_migration_connector.service.product_service');

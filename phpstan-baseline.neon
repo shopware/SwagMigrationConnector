@@ -1,0 +1,2402 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationAssets.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationAssets\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationAssets.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationAssets\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationAssets.php
+
+		-
+			message: "#^Service \"auth\" is not registered in the container\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationAssets.php
+
+		-
+			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationAttributes.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationAttributes\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationAttributes.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationAttributes\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationAttributes.php
+
+		-
+			message: "#^Service \"auth\" is not registered in the container\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationAttributes.php
+
+		-
+			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationCategories.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationCategories\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationCategories.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationCategories\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationCategories.php
+
+		-
+			message: "#^Service \"auth\" is not registered in the container\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationCategories.php
+
+		-
+			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationCategoryAttributes.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationCategoryAttributes\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationCategoryAttributes.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationCategoryAttributes\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationCategoryAttributes.php
+
+		-
+			message: "#^Service \"auth\" is not registered in the container\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationCategoryAttributes.php
+
+		-
+			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationConfiguratorOptions.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationConfiguratorOptions\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationConfiguratorOptions.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationConfiguratorOptions\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationConfiguratorOptions.php
+
+		-
+			message: "#^Service \"auth\" is not registered in the container\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationConfiguratorOptions.php
+
+		-
+			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationCrossSelling.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationCrossSelling\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationCrossSelling.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationCrossSelling\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationCrossSelling.php
+
+		-
+			message: "#^Service \"auth\" is not registered in the container\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationCrossSelling.php
+
+		-
+			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationCurrencies.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationCurrencies\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationCurrencies.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationCurrencies\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationCurrencies.php
+
+		-
+			message: "#^Service \"auth\" is not registered in the container\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationCurrencies.php
+
+		-
+			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationCustomerAttributes.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationCustomerAttributes\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationCustomerAttributes.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationCustomerAttributes\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationCustomerAttributes.php
+
+		-
+			message: "#^Service \"auth\" is not registered in the container\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationCustomerAttributes.php
+
+		-
+			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationCustomerGroupAttributes.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationCustomerGroupAttributes\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationCustomerGroupAttributes.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationCustomerGroupAttributes\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationCustomerGroupAttributes.php
+
+		-
+			message: "#^Service \"auth\" is not registered in the container\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationCustomerGroupAttributes.php
+
+		-
+			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationCustomerGroups.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationCustomerGroups\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationCustomerGroups.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationCustomerGroups\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationCustomerGroups.php
+
+		-
+			message: "#^Service \"auth\" is not registered in the container\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationCustomerGroups.php
+
+		-
+			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationCustomers.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationCustomers\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationCustomers.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationCustomers\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationCustomers.php
+
+		-
+			message: "#^Service \"auth\" is not registered in the container\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationCustomers.php
+
+		-
+			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationDispatches.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationDispatches\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationDispatches.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationDispatches\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationDispatches.php
+
+		-
+			message: "#^Service \"auth\" is not registered in the container\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationDispatches.php
+
+		-
+			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationDynamic.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationDynamic\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationDynamic.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationDynamic\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationDynamic.php
+
+		-
+			message: "#^Service \"auth\" is not registered in the container\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationDynamic.php
+
+		-
+			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationEnvironment.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationEnvironment\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationEnvironment.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationEnvironment\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationEnvironment.php
+
+		-
+			message: "#^Service \"auth\" is not registered in the container\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationEnvironment.php
+
+		-
+			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationLanguages.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationLanguages\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationLanguages.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationLanguages\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationLanguages.php
+
+		-
+			message: "#^Service \"auth\" is not registered in the container\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationLanguages.php
+
+		-
+			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationMainVariantRelations.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationMainVariantRelations\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationMainVariantRelations.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationMainVariantRelations\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationMainVariantRelations.php
+
+		-
+			message: "#^Service \"auth\" is not registered in the container\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationMainVariantRelations.php
+
+		-
+			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationManufacturerAttributes.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationManufacturerAttributes\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationManufacturerAttributes.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationManufacturerAttributes\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationManufacturerAttributes.php
+
+		-
+			message: "#^Service \"auth\" is not registered in the container\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationManufacturerAttributes.php
+
+		-
+			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationMediaAlbums.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationMediaAlbums\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationMediaAlbums.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationMediaAlbums\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationMediaAlbums.php
+
+		-
+			message: "#^Service \"auth\" is not registered in the container\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationMediaAlbums.php
+
+		-
+			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationNewsletterRecipients.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationNewsletterRecipients\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationNewsletterRecipients.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationNewsletterRecipients\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationNewsletterRecipients.php
+
+		-
+			message: "#^Service \"auth\" is not registered in the container\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationNewsletterRecipients.php
+
+		-
+			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationNumberRanges.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationNumberRanges\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationNumberRanges.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationNumberRanges\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationNumberRanges.php
+
+		-
+			message: "#^Service \"auth\" is not registered in the container\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationNumberRanges.php
+
+		-
+			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationOrderAttributes.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderAttributes\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationOrderAttributes.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderAttributes\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationOrderAttributes.php
+
+		-
+			message: "#^Service \"auth\" is not registered in the container\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationOrderAttributes.php
+
+		-
+			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationOrderDocumentAttributes.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderDocumentAttributes\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationOrderDocumentAttributes.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderDocumentAttributes\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationOrderDocumentAttributes.php
+
+		-
+			message: "#^Service \"auth\" is not registered in the container\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationOrderDocumentAttributes.php
+
+		-
+			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationOrderDocuments.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderDocuments\\:\\:getAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationOrderDocuments.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderDocuments\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationOrderDocuments.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderDocuments\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationOrderDocuments.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderDocuments\\:\\:setDownloadHeaders\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationOrderDocuments.php
+
+		-
+			message: "#^Parameter \\#1 \\$source of function stream_copy_to_stream expects resource, resource\\|false given\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationOrderDocuments.php
+
+		-
+			message: "#^Parameter \\#2 \\$dest of function stream_copy_to_stream expects resource, resource\\|false given\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationOrderDocuments.php
+
+		-
+			message: "#^Parameter \\#2 \\$orderNumber of method Shopware_Controllers_Api_SwagMigrationOrderDocuments\\:\\:setDownloadHeaders\\(\\) expects string, bool\\|string given\\.$#"
+			count: 2
+			path: Controllers/Api/SwagMigrationOrderDocuments.php
+
+		-
+			message: "#^Parameter \\#2 \\$value of method Enlight_Controller_Response_ResponseHttp\\:\\:setHeader\\(\\) expects string, int\\|false given\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationOrderDocuments.php
+
+		-
+			message: "#^Service \"auth\" is not registered in the container\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationOrderDocuments.php
+
+		-
+			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationOrderNotes.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderNotes\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationOrderNotes.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderNotes\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationOrderNotes.php
+
+		-
+			message: "#^Service \"auth\" is not registered in the container\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationOrderNotes.php
+
+		-
+			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationOrders.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrders\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationOrders.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrders\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationOrders.php
+
+		-
+			message: "#^Service \"auth\" is not registered in the container\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationOrders.php
+
+		-
+			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationProductAttributes.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationProductAttributes\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationProductAttributes.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationProductAttributes\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationProductAttributes.php
+
+		-
+			message: "#^Service \"auth\" is not registered in the container\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationProductAttributes.php
+
+		-
+			message: "#^Call to method getAdmin\\(\\) on an unknown class Role\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationProductOptionRelation.php
+
+		-
+			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationProductOptionRelation.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationProductOptionRelation\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationProductOptionRelation.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationProductOptionRelation\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationProductOptionRelation.php
+
+		-
+			message: "#^PHPDoc tag @var for variable \\$role contains unknown class Role\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationProductOptionRelation.php
+
+		-
+			message: "#^Service \"auth\" is not registered in the container\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationProductOptionRelation.php
+
+		-
+			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationProductPriceAttributes.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationProductPriceAttributes\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationProductPriceAttributes.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationProductPriceAttributes\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationProductPriceAttributes.php
+
+		-
+			message: "#^Service \"auth\" is not registered in the container\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationProductPriceAttributes.php
+
+		-
+			message: "#^Call to method getAdmin\\(\\) on an unknown class Role\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationProductPropertyRelation.php
+
+		-
+			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationProductPropertyRelation.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationProductPropertyRelation\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationProductPropertyRelation.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationProductPropertyRelation\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationProductPropertyRelation.php
+
+		-
+			message: "#^PHPDoc tag @var for variable \\$role contains unknown class Role\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationProductPropertyRelation.php
+
+		-
+			message: "#^Service \"auth\" is not registered in the container\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationProductPropertyRelation.php
+
+		-
+			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationProducts.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationProducts\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationProducts.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationProducts\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationProducts.php
+
+		-
+			message: "#^Service \"auth\" is not registered in the container\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationProducts.php
+
+		-
+			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationSeoUrls.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationSeoUrls\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationSeoUrls.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationSeoUrls\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationSeoUrls.php
+
+		-
+			message: "#^Service \"auth\" is not registered in the container\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationSeoUrls.php
+
+		-
+			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationShops.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationShops\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationShops.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationShops\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationShops.php
+
+		-
+			message: "#^Service \"auth\" is not registered in the container\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationShops.php
+
+		-
+			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationTotals.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationTotals\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationTotals.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationTotals\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationTotals.php
+
+		-
+			message: "#^Service \"auth\" is not registered in the container\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationTotals.php
+
+		-
+			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationTranslations.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationTranslations\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationTranslations.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationTranslations\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationTranslations.php
+
+		-
+			message: "#^Service \"auth\" is not registered in the container\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationTranslations.php
+
+		-
+			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationVotes.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationVotes\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationVotes.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationVotes\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationVotes.php
+
+		-
+			message: "#^Service \"auth\" is not registered in the container\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationVotes.php
+
+		-
+			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationVouchers.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationVouchers\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationVouchers.php
+
+		-
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationVouchers\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationVouchers.php
+
+		-
+			message: "#^Service \"auth\" is not registered in the container\\.$#"
+			count: 1
+			path: Controllers/Api/SwagMigrationVouchers.php
+
+		-
+			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: Controllers/Backend/SwagMigrationConnector.php
+
+		-
+			message: "#^Method Shopware_Controllers_Backend_SwagMigrationConnector\\:\\:getLocalPlugins\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Backend/SwagMigrationConnector.php
+
+		-
+			message: "#^Method Shopware_Controllers_Backend_SwagMigrationConnector\\:\\:getPluginsAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Backend/SwagMigrationConnector.php
+
+		-
+			message: "#^Method Shopware_Controllers_Backend_SwagMigrationConnector\\:\\:getRequirementsAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Backend/SwagMigrationConnector.php
+
+		-
+			message: "#^Method Shopware_Controllers_Backend_SwagMigrationConnector\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Backend/SwagMigrationConnector.php
+
+		-
+			message: "#^Method Shopware_Controllers_Backend_SwagMigrationConnector\\:\\:transformSbpResponse\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Controllers/Backend/SwagMigrationConnector.php
+
+		-
+			message: "#^Method Shopware_Controllers_Backend_SwagMigrationConnector\\:\\:transformSbpResponse\\(\\) has parameter \\$requestedPlugins with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Controllers/Backend/SwagMigrationConnector.php
+
+		-
+			message: "#^Method Shopware_Controllers_Backend_SwagMigrationConnector\\:\\:transformSbpResponse\\(\\) has parameter \\$response with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Controllers/Backend/SwagMigrationConnector.php
+
+		-
+			message: "#^Service \"auth\" is not registered in the container\\.$#"
+			count: 1
+			path: Controllers/Backend/SwagMigrationConnector.php
+
+		-
+			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
+			count: 1
+			path: Repository/AbstractRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\AbstractRepository\\:\\:addTableSelection\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Repository/AbstractRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\AbstractRepository\\:\\:fetchIdentifiers\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/AbstractRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\AbstractRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/AbstractRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ApiRepositoryInterface\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/ApiRepositoryInterface.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ApiRepositoryInterface\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/ApiRepositoryInterface.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(array\\)\\: Unexpected token \"\\\\n     \\*\", expected variable at offset 23$#"
+			count: 1
+			path: Repository/ApiRepositoryInterface.php
+
+		-
+			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
+			count: 1
+			path: Repository/AssetRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\AssetRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/AssetRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\AssetRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/AssetRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\AttributeRepository\\:\\:getAttibuteConfigurationTranslations\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/AttributeRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\AttributeRepository\\:\\:getAttributeConfiguration\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/AttributeRepository.php
+
+		-
+			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
+			count: 3
+			path: Repository/CategoryRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\CategoryRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/CategoryRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\CategoryRepository\\:\\:fetchIgnoredCategories\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Repository/CategoryRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\CategoryRepository\\:\\:fetchMainCategoryLocales\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/CategoryRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\CategoryRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/CategoryRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ConfiguratorOptionRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/ConfiguratorOptionRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ConfiguratorOptionRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/ConfiguratorOptionRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\CrossSellingRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/CrossSellingRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\CrossSellingRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/CrossSellingRepository.php
+
+		-
+			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
+			count: 1
+			path: Repository/CurrencyRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\CurrencyRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/CurrencyRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\CurrencyRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/CurrencyRepository.php
+
+		-
+			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
+			count: 1
+			path: Repository/CustomerGroupRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\CustomerGroupRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/CustomerGroupRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\CustomerGroupRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/CustomerGroupRepository.php
+
+		-
+			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
+			count: 4
+			path: Repository/CustomerRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\CustomerRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/CustomerRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\CustomerRepository\\:\\:fetchCustomerAdresses\\(\\) has parameter \\$ids with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/CustomerRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\CustomerRepository\\:\\:fetchCustomerAdresses\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/CustomerRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\CustomerRepository\\:\\:fetchCustomerGroupDiscounts\\(\\) has parameter \\$groupIds with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/CustomerRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\CustomerRepository\\:\\:fetchCustomerGroupDiscounts\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/CustomerRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\CustomerRepository\\:\\:fetchPaymentData\\(\\) has parameter \\$ids with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/CustomerRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\CustomerRepository\\:\\:fetchPaymentData\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/CustomerRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\CustomerRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/CustomerRepository.php
+
+		-
+			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
+			count: 5
+			path: Repository/DispatchRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\DispatchRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/DispatchRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\DispatchRepository\\:\\:fetchExcludedCategories\\(\\) has parameter \\$shippingMethodIds with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/DispatchRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\DispatchRepository\\:\\:fetchExcludedCategories\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/DispatchRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\DispatchRepository\\:\\:fetchPaymentMethods\\(\\) has parameter \\$shippingMethodIds with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/DispatchRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\DispatchRepository\\:\\:fetchPaymentMethods\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/DispatchRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\DispatchRepository\\:\\:fetchShippingCosts\\(\\) has parameter \\$shippingMethodIds with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/DispatchRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\DispatchRepository\\:\\:fetchShippingCosts\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/DispatchRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\DispatchRepository\\:\\:fetchShippingCountries\\(\\) has parameter \\$shippingMethodIds with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/DispatchRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\DispatchRepository\\:\\:fetchShippingCountries\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/DispatchRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\DispatchRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/DispatchRepository.php
+
+		-
+			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
+			count: 1
+			path: Repository/DocumentRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\DocumentRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/DocumentRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\DocumentRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/DocumentRepository.php
+
+		-
+			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
+			count: 1
+			path: Repository/DynamicRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\DynamicRepository\\:\\:fetch\\(\\) has parameter \\$filter with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/DynamicRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\DynamicRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/DynamicRepository.php
+
+		-
+			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
+			count: 1
+			path: Repository/EnvironmentRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\EnvironmentRepository\\:\\:addTableSelection\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Repository/EnvironmentRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\EnvironmentRepository\\:\\:getShops\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/EnvironmentRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\MainVariantRelationRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/MainVariantRelationRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\MainVariantRelationRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/MainVariantRelationRepository.php
+
+		-
+			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
+			count: 4
+			path: Repository/NewsletterRecipientRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\NewsletterRecipientRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/NewsletterRecipientRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\NewsletterRecipientRepository\\:\\:getDefaultShopAndLocaleByGroupId\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/NewsletterRecipientRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\NewsletterRecipientRepository\\:\\:getGroupedResult\\(\\) has parameter \\$shops with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/NewsletterRecipientRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\NewsletterRecipientRepository\\:\\:getGroupedResult\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/NewsletterRecipientRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\NewsletterRecipientRepository\\:\\:getShopsAndLocalesByCustomer\\(\\) has parameter \\$ids with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/NewsletterRecipientRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\NewsletterRecipientRepository\\:\\:getShopsAndLocalesByCustomer\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/NewsletterRecipientRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\NewsletterRecipientRepository\\:\\:getShopsAndLocalesByGroupId\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/NewsletterRecipientRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\NewsletterRecipientRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/NewsletterRecipientRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\NumberRangeRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/NumberRangeRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\NumberRangeRepository\\:\\:fetchPrefix\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Repository/NumberRangeRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\NumberRangeRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/NumberRangeRepository.php
+
+		-
+			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
+			count: 1
+			path: Repository/OrderNoteRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\OrderNoteRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/OrderNoteRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\OrderNoteRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/OrderNoteRepository.php
+
+		-
+			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
+			count: 3
+			path: Repository/OrderRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\OrderRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/OrderRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\OrderRepository\\:\\:fetchOrderDetails\\(\\) has parameter \\$orderIds with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/OrderRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\OrderRepository\\:\\:fetchOrderDetails\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/OrderRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\OrderRepository\\:\\:fetchOrderDocuments\\(\\) has parameter \\$orderIds with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/OrderRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\OrderRepository\\:\\:fetchOrderDocuments\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/OrderRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\OrderRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/OrderRepository.php
+
+		-
+			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
+			count: 1
+			path: Repository/ProductOptionRelationRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductOptionRelationRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/ProductOptionRelationRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductOptionRelationRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/ProductOptionRelationRepository.php
+
+		-
+			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
+			count: 1
+			path: Repository/ProductPropertyRelationRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductPropertyRelationRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/ProductPropertyRelationRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductPropertyRelationRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/ProductPropertyRelationRepository.php
+
+		-
+			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
+			count: 10
+			path: Repository/ProductRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/ProductRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductRepository\\:\\:fetchFilterOptionValues\\(\\) has parameter \\$variantIds with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/ProductRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductRepository\\:\\:fetchFilterOptionValues\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/ProductRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductRepository\\:\\:fetchIdentifiers\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/ProductRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductRepository\\:\\:fetchMainCategoryShops\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/ProductRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductRepository\\:\\:fetchProductAssets\\(\\) has parameter \\$productIds with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/ProductRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductRepository\\:\\:fetchProductAssets\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/ProductRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductRepository\\:\\:fetchProductCategories\\(\\) has parameter \\$productIds with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/ProductRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductRepository\\:\\:fetchProductCategories\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/ProductRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductRepository\\:\\:fetchProductConfiguratorOptions\\(\\) has parameter \\$variantIds with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/ProductRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductRepository\\:\\:fetchProductConfiguratorOptions\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/ProductRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductRepository\\:\\:fetchProductPrices\\(\\) has parameter \\$variantIds with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/ProductRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductRepository\\:\\:fetchProductPrices\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/ProductRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductRepository\\:\\:fetchShopsByCategories\\(\\) has parameter \\$categories with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/ProductRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductRepository\\:\\:fetchShopsByCategories\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/ProductRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductRepository\\:\\:fetchVariantAssets\\(\\) has parameter \\$variantIds with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/ProductRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductRepository\\:\\:fetchVariantAssets\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/ProductRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/ProductRepository.php
+
+		-
+			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
+			count: 1
+			path: Repository/SeoUrlRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\SeoUrlRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/SeoUrlRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\SeoUrlRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/SeoUrlRepository.php
+
+		-
+			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
+			count: 1
+			path: Repository/ShopRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ShopRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/ShopRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ShopRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/ShopRepository.php
+
+		-
+			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
+			count: 1
+			path: Repository/TranslationRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\TranslationRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/TranslationRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\TranslationRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/TranslationRepository.php
+
+		-
+			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
+			count: 1
+			path: Repository/VoteRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\VoteRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/VoteRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\VoteRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/VoteRepository.php
+
+		-
+			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
+			count: 2
+			path: Repository/VoucherRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\VoucherRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/VoucherRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\VoucherRepository\\:\\:fetchIndividualCodes\\(\\) has parameter \\$ids with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/VoucherRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\VoucherRepository\\:\\:fetchIndividualCodes\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/VoucherRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\VoucherRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Repository/VoucherRepository.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\AbstractApiService\\:\\:buildArrayFromChunks\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Service/AbstractApiService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\AbstractApiService\\:\\:buildArrayFromChunks\\(\\) has parameter \\$array with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/AbstractApiService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\AbstractApiService\\:\\:buildArrayFromChunks\\(\\) has parameter \\$path with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/AbstractApiService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\AbstractApiService\\:\\:buildArrayFromChunks\\(\\) has parameter \\$value with no typehint specified\\.$#"
+			count: 1
+			path: Service/AbstractApiService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\AbstractApiService\\:\\:cleanupResultSet\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/AbstractApiService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\AbstractApiService\\:\\:cleanupResultSet\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/AbstractApiService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\AbstractApiService\\:\\:mapData\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/AbstractApiService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\AbstractApiService\\:\\:mapData\\(\\) has parameter \\$pathsToRemove with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/AbstractApiService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\AbstractApiService\\:\\:mapData\\(\\) has parameter \\$result with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/AbstractApiService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\AbstractApiService\\:\\:mapData\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/AbstractApiService.php
+
+		-
+			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<Shopware\\\\Models\\\\Shop\\\\Shop\\>\\:\\:getDefault\\(\\)\\.$#"
+			count: 1
+			path: Service/AssetService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\AssetService\\:\\:getAssets\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/AssetService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\AssetService\\:\\:prepareAssets\\(\\) has parameter \\$assets with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/AssetService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\AssetService\\:\\:prepareAssets\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/AssetService.php
+
+		-
+			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<Shopware\\\\Models\\\\Shop\\\\Shop\\>\\:\\:getDefault\\(\\)\\.$#"
+			count: 1
+			path: Service/AttributeService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\AttributeService\\:\\:getAttributeConfiguration\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/AttributeService.php
+
+		-
+			message: "#^Parameter \\#3 \\$length of function substr expects int, int\\<0, max\\>\\|false given\\.$#"
+			count: 1
+			path: Service/AttributeService.php
+
+		-
+			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<Shopware\\\\Models\\\\Shop\\\\Shop\\>\\:\\:getDefault\\(\\)\\.$#"
+			count: 1
+			path: Service/CategoryService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\CategoryService\\:\\:getCategories\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/CategoryService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\CategoryService\\:\\:setAllLocales\\(\\) has parameter \\$categories with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/CategoryService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\CategoryService\\:\\:setAllLocales\\(\\) has parameter \\$mainCategoryLocales with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/CategoryService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\CategoryService\\:\\:setAllLocales\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/CategoryService.php
+
+		-
+			message: "#^Property SwagMigrationConnector\\\\Service\\\\CategoryService\\:\\:\\$categoryRepository \\(SwagMigrationConnector\\\\Repository\\\\CategoryRepository\\) does not accept SwagMigrationConnector\\\\Repository\\\\ApiRepositoryInterface\\.$#"
+			count: 1
+			path: Service/CategoryService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\CheckerInterface\\:\\:validate\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/Checker/CheckerInterface.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\CheckerInterface\\:\\:validate\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/Checker/CheckerInterface.php
+
+		-
+			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
+			count: 1
+			path: Service/Checker/LicenseCheck.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\LicenseCheck\\:\\:__construct\\(\\) has parameter \\$endpoint with no typehint specified\\.$#"
+			count: 1
+			path: Service/Checker/LicenseCheck.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\LicenseCheck\\:\\:__construct\\(\\) has parameter \\$shopwareVersion with no typehint specified\\.$#"
+			count: 1
+			path: Service/Checker/LicenseCheck.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\LicenseCheck\\:\\:getLicenseData\\(\\) has parameter \\$licenseKeys with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/Checker/LicenseCheck.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\LicenseCheck\\:\\:getLicenseData\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/Checker/LicenseCheck.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\LicenseCheck\\:\\:validate\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/Checker/LicenseCheck.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\LicenseCheck\\:\\:validate\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/Checker/LicenseCheck.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\LicenseCheck\\:\\:validate\\(\\) should return array but returns null\\.$#"
+			count: 2
+			path: Service/Checker/LicenseCheck.php
+
+		-
+			message: "#^Parameter \\#2 \\$objectDecodeType of static method Zend_Json\\:\\:decode\\(\\) expects int, true given\\.$#"
+			count: 1
+			path: Service/Checker/LicenseCheck.php
+
+		-
+			message: "#^Property SwagMigrationConnector\\\\Service\\\\Checker\\\\LicenseCheck\\:\\:\\$namespace type has no value type specified in iterable type Enlight_Components_Snippet_Namespace\\.$#"
+			count: 1
+			path: Service/Checker/LicenseCheck.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\MysqlConfiguration\\:\\:validate\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/Checker/MysqlConfiguration.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\MysqlConfiguration\\:\\:validate\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/Checker/MysqlConfiguration.php
+
+		-
+			message: "#^Property SwagMigrationConnector\\\\Service\\\\Checker\\\\MysqlConfiguration\\:\\:\\$namespace type has no value type specified in iterable type Enlight_Components_Snippet_Namespace\\.$#"
+			count: 1
+			path: Service/Checker/MysqlConfiguration.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\MysqlVersion\\:\\:validate\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/Checker/MysqlVersion.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\MysqlVersion\\:\\:validate\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/Checker/MysqlVersion.php
+
+		-
+			message: "#^Property SwagMigrationConnector\\\\Service\\\\Checker\\\\MysqlVersion\\:\\:\\$namespace type has no value type specified in iterable type Enlight_Components_Snippet_Namespace\\.$#"
+			count: 1
+			path: Service/Checker/MysqlVersion.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\PhpConfiguration\\:\\:formatBytes\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Service/Checker/PhpConfiguration.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\PhpConfiguration\\:\\:formatBytes\\(\\) has parameter \\$size with no typehint specified\\.$#"
+			count: 1
+			path: Service/Checker/PhpConfiguration.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\PhpConfiguration\\:\\:formatValue\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Service/Checker/PhpConfiguration.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\PhpConfiguration\\:\\:formatValue\\(\\) has parameter \\$options with no typehint specified\\.$#"
+			count: 1
+			path: Service/Checker/PhpConfiguration.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\PhpConfiguration\\:\\:formatValue\\(\\) has parameter \\$value with no typehint specified\\.$#"
+			count: 1
+			path: Service/Checker/PhpConfiguration.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\PhpConfiguration\\:\\:validate\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/Checker/PhpConfiguration.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\PhpConfiguration\\:\\:validate\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/Checker/PhpConfiguration.php
+
+		-
+			message: "#^Parameter \\#1 \\$memoryLimit of static method Shopware\\\\Components\\\\MemoryLimit\\:\\:convertToBytes\\(\\) expects string, string\\|false given\\.$#"
+			count: 1
+			path: Service/Checker/PhpConfiguration.php
+
+		-
+			message: "#^Property SwagMigrationConnector\\\\Service\\\\Checker\\\\PhpConfiguration\\:\\:\\$namespace type has no value type specified in iterable type Enlight_Components_Snippet_Namespace\\.$#"
+			count: 1
+			path: Service/Checker/PhpConfiguration.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\PhpExtensions\\:\\:validate\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/Checker/PhpExtensions.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\PhpExtensions\\:\\:validate\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/Checker/PhpExtensions.php
+
+		-
+			message: "#^Property SwagMigrationConnector\\\\Service\\\\Checker\\\\PhpExtensions\\:\\:\\$namespace type has no value type specified in iterable type Enlight_Components_Snippet_Namespace\\.$#"
+			count: 1
+			path: Service/Checker/PhpExtensions.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\PhpVersion\\:\\:validate\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/Checker/PhpVersion.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\PhpVersion\\:\\:validate\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/Checker/PhpVersion.php
+
+		-
+			message: "#^Property SwagMigrationConnector\\\\Service\\\\Checker\\\\PhpVersion\\:\\:\\$namespace type has no value type specified in iterable type Enlight_Components_Snippet_Namespace\\.$#"
+			count: 1
+			path: Service/Checker/PhpVersion.php
+
+		-
+			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<Shopware\\\\Models\\\\Shop\\\\Shop\\>\\:\\:getDefault\\(\\)\\.$#"
+			count: 1
+			path: Service/ConfiguratorOptionService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\ConfiguratorOptionService\\:\\:getConfiguratorOptions\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/ConfiguratorOptionService.php
+
+		-
+			message: "#^Property SwagMigrationConnector\\\\Service\\\\ConfiguratorOptionService\\:\\:\\$configuratorOptionRepository \\(SwagMigrationConnector\\\\Repository\\\\ConfiguratorOptionRepository\\) does not accept SwagMigrationConnector\\\\Repository\\\\ApiRepositoryInterface\\.$#"
+			count: 1
+			path: Service/ConfiguratorOptionService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\ControllerReturnStruct\\:\\:__construct\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/ControllerReturnStruct.php
+
+		-
+			message: "#^Property SwagMigrationConnector\\\\Service\\\\ControllerReturnStruct\\:\\:\\$data type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/ControllerReturnStruct.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\CrossSellingService\\:\\:getCrossSelling\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/CrossSellingService.php
+
+		-
+			message: "#^Property SwagMigrationConnector\\\\Service\\\\CrossSellingService\\:\\:\\$crossSellingRepository \\(SwagMigrationConnector\\\\Repository\\\\CrossSellingRepository\\) does not accept SwagMigrationConnector\\\\Repository\\\\ApiRepositoryInterface\\.$#"
+			count: 1
+			path: Service/CrossSellingService.php
+
+		-
+			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<Shopware\\\\Models\\\\Shop\\\\Shop\\>\\:\\:getDefault\\(\\)\\.$#"
+			count: 1
+			path: Service/CurrencyService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\CurrencyService\\:\\:getCurrencies\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/CurrencyService.php
+
+		-
+			message: "#^Property SwagMigrationConnector\\\\Service\\\\CurrencyService\\:\\:\\$currencyRepository \\(SwagMigrationConnector\\\\Repository\\\\CurrencyRepository\\) does not accept SwagMigrationConnector\\\\Repository\\\\ApiRepositoryInterface\\.$#"
+			count: 1
+			path: Service/CurrencyService.php
+
+		-
+			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<Shopware\\\\Models\\\\Shop\\\\Shop\\>\\:\\:getDefault\\(\\)\\.$#"
+			count: 1
+			path: Service/CustomerGroupService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\CustomerGroupService\\:\\:getCustomerGroups\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/CustomerGroupService.php
+
+		-
+			message: "#^Property SwagMigrationConnector\\\\Service\\\\CustomerGroupService\\:\\:\\$customerGroupRepository \\(SwagMigrationConnector\\\\Repository\\\\CustomerGroupRepository\\) does not accept SwagMigrationConnector\\\\Repository\\\\ApiRepositoryInterface\\.$#"
+			count: 1
+			path: Service/CustomerGroupService.php
+
+		-
+			message: "#^Property SwagMigrationConnector\\\\Service\\\\CustomerGroupService\\:\\:\\$customerRepository \\(SwagMigrationConnector\\\\Repository\\\\CustomerRepository\\) does not accept SwagMigrationConnector\\\\Repository\\\\ApiRepositoryInterface\\.$#"
+			count: 1
+			path: Service/CustomerGroupService.php
+
+		-
+			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<Shopware\\\\Models\\\\Shop\\\\Shop\\>\\:\\:getDefault\\(\\)\\.$#"
+			count: 1
+			path: Service/CustomerService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\CustomerService\\:\\:assignAssociatedData\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Service/CustomerService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\CustomerService\\:\\:assignAssociatedData\\(\\) has parameter \\$customers with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/CustomerService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\CustomerService\\:\\:assignAssociatedData\\(\\) has parameter \\$ids with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/CustomerService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\CustomerService\\:\\:getCustomers\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/CustomerService.php
+
+		-
+			message: "#^Property SwagMigrationConnector\\\\Service\\\\CustomerService\\:\\:\\$customerRepository \\(SwagMigrationConnector\\\\Repository\\\\CustomerRepository\\) does not accept SwagMigrationConnector\\\\Repository\\\\ApiRepositoryInterface\\.$#"
+			count: 1
+			path: Service/CustomerService.php
+
+		-
+			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<Shopware\\\\Models\\\\Shop\\\\Shop\\>\\:\\:getDefault\\(\\)\\.$#"
+			count: 1
+			path: Service/DispatchService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\DispatchService\\:\\:assignAssociatedData\\(\\) has parameter \\$dispatches with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/DispatchService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\DispatchService\\:\\:assignAssociatedData\\(\\) has parameter \\$ids with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/DispatchService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\DispatchService\\:\\:assignAssociatedData\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/DispatchService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\DispatchService\\:\\:getDispatches\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/DispatchService.php
+
+		-
+			message: "#^Property SwagMigrationConnector\\\\Service\\\\DispatchService\\:\\:\\$dispatchRepository \\(SwagMigrationConnector\\\\Repository\\\\DispatchRepository\\) does not accept SwagMigrationConnector\\\\Repository\\\\ApiRepositoryInterface\\.$#"
+			count: 1
+			path: Service/DispatchService.php
+
+		-
+			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<Shopware\\\\Models\\\\Shop\\\\Shop\\>\\:\\:getDefault\\(\\)\\.$#"
+			count: 1
+			path: Service/DocumentService.php
+
+		-
+			message: "#^Cannot call method getSize\\(\\) on League\\\\Flysystem\\\\FilesystemInterface\\|null\\.$#"
+			count: 1
+			path: Service/DocumentService.php
+
+		-
+			message: "#^Cannot call method has\\(\\) on League\\\\Flysystem\\\\FilesystemInterface\\|null\\.$#"
+			count: 1
+			path: Service/DocumentService.php
+
+		-
+			message: "#^Cannot call method readStream\\(\\) on League\\\\Flysystem\\\\FilesystemInterface\\|null\\.$#"
+			count: 1
+			path: Service/DocumentService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\DocumentService\\:\\:__construct\\(\\) has parameter \\$fileSystem with no typehint specified\\.$#"
+			count: 1
+			path: Service/DocumentService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\DocumentService\\:\\:getDocuments\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/DocumentService.php
+
+		-
+			message: "#^Parameter \\#2 \\.\\.\\.\\$values of function sprintf expects bool\\|float\\|int\\|string\\|null, array\\|bool\\|float\\|int\\|string\\|null given\\.$#"
+			count: 1
+			path: Service/DocumentService.php
+
+		-
+			message: "#^Property SwagMigrationConnector\\\\Service\\\\DocumentService\\:\\:\\$documentRepository \\(SwagMigrationConnector\\\\Repository\\\\DocumentRepository\\) does not accept SwagMigrationConnector\\\\Repository\\\\ApiRepositoryInterface\\.$#"
+			count: 1
+			path: Service/DocumentService.php
+
+		-
+			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<Shopware\\\\Models\\\\Shop\\\\Shop\\>\\:\\:getDefault\\(\\)\\.$#"
+			count: 1
+			path: Service/EnvironmentService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\EnvironmentService\\:\\:getAdditionalData\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/EnvironmentService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\EnvironmentService\\:\\:getEnvironmentInformation\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/EnvironmentService.php
+
+		-
+			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<Shopware\\\\Models\\\\Shop\\\\Shop\\>\\:\\:getDefault\\(\\)\\.$#"
+			count: 1
+			path: Service/LanguageService.php
+
+		-
+			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
+			count: 1
+			path: Service/LanguageService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\LanguageService\\:\\:appendAssociatedData\\(\\) has parameter \\$locales with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/LanguageService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\LanguageService\\:\\:appendAssociatedData\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/LanguageService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\LanguageService\\:\\:fetchLocales\\(\\) has parameter \\$fetchedShopLocaleIds with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/LanguageService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\LanguageService\\:\\:fetchLocales\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/LanguageService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\LanguageService\\:\\:fetchShopLocaleIds\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/LanguageService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\LanguageService\\:\\:fetchTranslations\\(\\) has parameter \\$locales with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/LanguageService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\LanguageService\\:\\:fetchTranslations\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/LanguageService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\LanguageService\\:\\:getLanguages\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/LanguageService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\MainVariantRelationService\\:\\:getMainVariantRelations\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Service/MainVariantRelationService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\MainVariantRelationService\\:\\:getMainVariantRelations\\(\\) has parameter \\$limit with no typehint specified\\.$#"
+			count: 1
+			path: Service/MainVariantRelationService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\MainVariantRelationService\\:\\:getMainVariantRelations\\(\\) has parameter \\$offset with no typehint specified\\.$#"
+			count: 1
+			path: Service/MainVariantRelationService.php
+
+		-
+			message: "#^Property SwagMigrationConnector\\\\Service\\\\MainVariantRelationService\\:\\:\\$repository \\(SwagMigrationConnector\\\\Repository\\\\MainVariantRelationRepository\\) does not accept SwagMigrationConnector\\\\Repository\\\\ApiRepositoryInterface\\.$#"
+			count: 1
+			path: Service/MainVariantRelationService.php
+
+		-
+			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<Shopware\\\\Models\\\\Shop\\\\Shop\\>\\:\\:getDefault\\(\\)\\.$#"
+			count: 1
+			path: Service/MediaAlbumService.php
+
+		-
+			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
+			count: 1
+			path: Service/MediaAlbumService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\MediaAlbumService\\:\\:addTableSelection\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Service/MediaAlbumService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\MediaAlbumService\\:\\:fetchAlbums\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/MediaAlbumService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\MediaAlbumService\\:\\:getAlbums\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/MediaAlbumService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\MediaAlbumService\\:\\:getChildAlbums\\(\\) has parameter \\$mediaAlbums with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/MediaAlbumService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\MediaAlbumService\\:\\:getChildAlbums\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/MediaAlbumService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\MediaAlbumService\\:\\:prepareMediaAlbums\\(\\) has parameter \\$mediaAlbums with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/MediaAlbumService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\MediaAlbumService\\:\\:prepareMediaAlbums\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/MediaAlbumService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\MigrationConnectorCompilerPass\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Service/MigrationConnectorCompilerPass.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\NewsletterRecipientService\\:\\:addShopAndLocaleByCustomer\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Service/NewsletterRecipientService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\NewsletterRecipientService\\:\\:addShopAndLocaleByCustomer\\(\\) has parameter \\$item with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/NewsletterRecipientService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\NewsletterRecipientService\\:\\:addShopAndLocaleByCustomer\\(\\) has parameter \\$shop with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/NewsletterRecipientService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\NewsletterRecipientService\\:\\:addShopAndLocaleByGroupId\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Service/NewsletterRecipientService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\NewsletterRecipientService\\:\\:addShopAndLocaleByGroupId\\(\\) has parameter \\$defaultShop with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/NewsletterRecipientService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\NewsletterRecipientService\\:\\:addShopAndLocaleByGroupId\\(\\) has parameter \\$item with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/NewsletterRecipientService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\NewsletterRecipientService\\:\\:addShopAndLocaleByGroupId\\(\\) has parameter \\$shops with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/NewsletterRecipientService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\NewsletterRecipientService\\:\\:assignAssociatedData\\(\\) has parameter \\$ids with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/NewsletterRecipientService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\NewsletterRecipientService\\:\\:assignAssociatedData\\(\\) has parameter \\$newsletterRecipients with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/NewsletterRecipientService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\NewsletterRecipientService\\:\\:assignAssociatedData\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/NewsletterRecipientService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\NewsletterRecipientService\\:\\:getNewsletterRecipients\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/NewsletterRecipientService.php
+
+		-
+			message: "#^Property SwagMigrationConnector\\\\Service\\\\NewsletterRecipientService\\:\\:\\$newsletterRecipientRepository \\(SwagMigrationConnector\\\\Repository\\\\NewsletterRecipientRepository\\) does not accept SwagMigrationConnector\\\\Repository\\\\ApiRepositoryInterface\\.$#"
+			count: 1
+			path: Service/NewsletterRecipientService.php
+
+		-
+			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<Shopware\\\\Models\\\\Shop\\\\Shop\\>\\:\\:getDefault\\(\\)\\.$#"
+			count: 1
+			path: Service/NumberRangeService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\NumberRangeService\\:\\:getNumberRanges\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/NumberRangeService.php
+
+		-
+			message: "#^Property SwagMigrationConnector\\\\Service\\\\NumberRangeService\\:\\:\\$repository \\(SwagMigrationConnector\\\\Repository\\\\NumberRangeRepository\\) does not accept SwagMigrationConnector\\\\Repository\\\\ApiRepositoryInterface\\.$#"
+			count: 1
+			path: Service/NumberRangeService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\OrderNoteService\\:\\:getOrderNotes\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/OrderNoteService.php
+
+		-
+			message: "#^Property SwagMigrationConnector\\\\Service\\\\OrderNoteService\\:\\:\\$orderNoteRepository \\(SwagMigrationConnector\\\\Repository\\\\CrossSellingRepository\\) does not accept SwagMigrationConnector\\\\Repository\\\\ApiRepositoryInterface\\.$#"
+			count: 1
+			path: Service/OrderNoteService.php
+
+		-
+			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<Shopware\\\\Models\\\\Shop\\\\Shop\\>\\:\\:getDefault\\(\\)\\.$#"
+			count: 1
+			path: Service/OrderService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\OrderService\\:\\:appendAssociatedData\\(\\) has parameter \\$orders with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/OrderService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\OrderService\\:\\:appendAssociatedData\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/OrderService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\OrderService\\:\\:getOrderDetails\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/OrderService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\OrderService\\:\\:getOrderDocuments\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/OrderService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\OrderService\\:\\:getOrders\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/OrderService.php
+
+		-
+			message: "#^Property SwagMigrationConnector\\\\Service\\\\OrderService\\:\\:\\$orderIds type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/OrderService.php
+
+		-
+			message: "#^Property SwagMigrationConnector\\\\Service\\\\OrderService\\:\\:\\$orderRepository \\(SwagMigrationConnector\\\\Repository\\\\OrderRepository\\) does not accept SwagMigrationConnector\\\\Repository\\\\ApiRepositoryInterface\\.$#"
+			count: 1
+			path: Service/OrderService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\PluginInformationService\\:\\:isUpdateRequired\\(\\) has parameter \\$locale with no typehint specified\\.$#"
+			count: 1
+			path: Service/PluginInformationService.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(string\\)\\: Unexpected token \"\\\\n     \\*\", expected variable at offset 24$#"
+			count: 1
+			path: Service/PluginInformationService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductOptionRelationService\\:\\:getProductOptionRelations\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Service/ProductOptionRelationService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductOptionRelationService\\:\\:getProductOptionRelations\\(\\) has parameter \\$limit with no typehint specified\\.$#"
+			count: 1
+			path: Service/ProductOptionRelationService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductOptionRelationService\\:\\:getProductOptionRelations\\(\\) has parameter \\$offset with no typehint specified\\.$#"
+			count: 1
+			path: Service/ProductOptionRelationService.php
+
+		-
+			message: "#^Property SwagMigrationConnector\\\\Service\\\\ProductOptionRelationService\\:\\:\\$repository \\(SwagMigrationConnector\\\\Repository\\\\ProductOptionRelationRepository\\) does not accept SwagMigrationConnector\\\\Repository\\\\ApiRepositoryInterface\\.$#"
+			count: 1
+			path: Service/ProductOptionRelationService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductPropertyRelationService\\:\\:getProductPropertyRelations\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Service/ProductPropertyRelationService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductPropertyRelationService\\:\\:getProductPropertyRelations\\(\\) has parameter \\$limit with no typehint specified\\.$#"
+			count: 1
+			path: Service/ProductPropertyRelationService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductPropertyRelationService\\:\\:getProductPropertyRelations\\(\\) has parameter \\$offset with no typehint specified\\.$#"
+			count: 1
+			path: Service/ProductPropertyRelationService.php
+
+		-
+			message: "#^Property SwagMigrationConnector\\\\Service\\\\ProductPropertyRelationService\\:\\:\\$repository \\(SwagMigrationConnector\\\\Repository\\\\ProductPropertyRelationRepository\\) does not accept SwagMigrationConnector\\\\Repository\\\\ApiRepositoryInterface\\.$#"
+			count: 1
+			path: Service/ProductPropertyRelationService.php
+
+		-
+			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<Shopware\\\\Models\\\\Shop\\\\Shop\\>\\:\\:getDefault\\(\\)\\.$#"
+			count: 1
+			path: Service/ProductService.php
+
+		-
+			message: "#^Call to an undefined method Traversable\\<string, mixed\\>\\:\\:getArrayCopy\\(\\)\\.$#"
+			count: 2
+			path: Service/ProductService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductService\\:\\:appendAssociatedData\\(\\) has parameter \\$products with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/ProductService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductService\\:\\:appendAssociatedData\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/ProductService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductService\\:\\:buildIdentifierMappings\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Service/ProductService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductService\\:\\:buildIdentifierMappings\\(\\) has parameter \\$fetchedProducts with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/ProductService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductService\\:\\:fetchMainCategoryShops\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/ProductService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductService\\:\\:getAssets\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/ProductService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductService\\:\\:getCategories\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/ProductService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductService\\:\\:getConfiguratorOptions\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/ProductService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductService\\:\\:getFilterOptionValues\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/ProductService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductService\\:\\:getPrices\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/ProductService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductService\\:\\:getProductVisibility\\(\\) has parameter \\$categories with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/ProductService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductService\\:\\:getProductVisibility\\(\\) has parameter \\$mainCategoryShops with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/ProductService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductService\\:\\:getProductVisibility\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/ProductService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductService\\:\\:getProducts\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/ProductService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductService\\:\\:prepareAssets\\(\\) has parameter \\$assets with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/ProductService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductService\\:\\:prepareAssets\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/ProductService.php
+
+		-
+			message: "#^Property SwagMigrationConnector\\\\Service\\\\ProductService\\:\\:\\$productRepository \\(SwagMigrationConnector\\\\Repository\\\\ProductRepository\\) does not accept SwagMigrationConnector\\\\Repository\\\\ApiRepositoryInterface\\.$#"
+			count: 1
+			path: Service/ProductService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\RequirementsValidatorService\\:\\:__construct\\(\\) has parameter \\$validators with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/RequirementsValidatorService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\RequirementsValidatorService\\:\\:validate\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Service/RequirementsValidatorService.php
+
+		-
+			message: "#^Property SwagMigrationConnector\\\\Service\\\\RequirementsValidatorService\\:\\:\\$validators type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/RequirementsValidatorService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\SeoUrlService\\:\\:extractTypeInformation\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Service/SeoUrlService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\SeoUrlService\\:\\:extractTypeInformation\\(\\) has parameter \\$seoUrls with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/SeoUrlService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\SeoUrlService\\:\\:getSeoUrls\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/SeoUrlService.php
+
+		-
+			message: "#^Property SwagMigrationConnector\\\\Service\\\\SeoUrlService\\:\\:\\$seoUrlRepository \\(SwagMigrationConnector\\\\Repository\\\\SeoUrlRepository\\) does not accept SwagMigrationConnector\\\\Repository\\\\ApiRepositoryInterface\\.$#"
+			count: 1
+			path: Service/SeoUrlService.php
+
+		-
+			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<Shopware\\\\Models\\\\Shop\\\\Shop\\>\\:\\:getDefault\\(\\)\\.$#"
+			count: 1
+			path: Service/ShopService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\ShopService\\:\\:getShops\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/ShopService.php
+
+		-
+			message: "#^Property SwagMigrationConnector\\\\Service\\\\ShopService\\:\\:\\$repository \\(SwagMigrationConnector\\\\Repository\\\\ShopRepository\\) does not accept SwagMigrationConnector\\\\Repository\\\\ApiRepositoryInterface\\.$#"
+			count: 1
+			path: Service/ShopService.php
+
+		-
+			message: "#^Cannot call method fetchColumn\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
+			count: 1
+			path: Service/TotalsService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\TotalsService\\:\\:fetchTotals\\(\\) has parameter \\$countInfos with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/TotalsService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\TotalsService\\:\\:fetchTotals\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/TotalsService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\TranslationService\\:\\:getTranslations\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/TranslationService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\VoteService\\:\\:getVotes\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/VoteService.php
+
+		-
+			message: "#^Property SwagMigrationConnector\\\\Service\\\\VoteService\\:\\:\\$voteRepository \\(SwagMigrationConnector\\\\Repository\\\\VoteRepository\\) does not accept SwagMigrationConnector\\\\Repository\\\\ApiRepositoryInterface\\.$#"
+			count: 1
+			path: Service/VoteService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\VoucherService\\:\\:assignAssociatedData\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Service/VoucherService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\VoucherService\\:\\:assignAssociatedData\\(\\) has parameter \\$ids with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/VoucherService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\VoucherService\\:\\:assignAssociatedData\\(\\) has parameter \\$vouchers with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/VoucherService.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\VoucherService\\:\\:getVouchers\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Service/VoucherService.php
+
+		-
+			message: "#^Property SwagMigrationConnector\\\\Service\\\\VoucherService\\:\\:\\$voucherRepository \\(SwagMigrationConnector\\\\Repository\\\\VoucherRepository\\) does not accept SwagMigrationConnector\\\\Repository\\\\ApiRepositoryInterface\\.$#"
+			count: 1
+			path: Service/VoucherService.php
+
+		-
+			message: "#^Parameter \\#1 \\$sql of method Doctrine\\\\DBAL\\\\Connection\\:\\:exec\\(\\) expects string, string\\|false given\\.$#"
+			count: 1
+			path: Tests/Functional/Service/TranslationServiceTest.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Util\\\\RepositoryRegistry\\:\\:__construct\\(\\) has parameter \\$repositories with no typehint specified\\.$#"
+			count: 1
+			path: Util/RepositoryRegistry.php
+
+		-
+			message: "#^Method SwagMigrationConnector\\\\Util\\\\RepositoryRegistry\\:\\:getRepositories\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Util/RepositoryRegistry.php
+

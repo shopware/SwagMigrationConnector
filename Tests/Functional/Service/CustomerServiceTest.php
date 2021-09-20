@@ -11,6 +11,9 @@ use PHPUnit\Framework\TestCase;
 
 class CustomerServiceTest extends TestCase
 {
+    /**
+     * @return void
+     */
     public function testReadCustomersShouldBeSuccessful()
     {
         $customerService = Shopware()->Container()->get('swag_migration_connector.service.customer_service');
@@ -30,6 +33,9 @@ class CustomerServiceTest extends TestCase
         static::assertArrayHasKey('customerlanguage', $customer);
     }
 
+    /**
+     * @return void
+     */
     public function testReadCustomersWithOffsetShouldBeSuccessful()
     {
         $customerService = Shopware()->Container()->get('swag_migration_connector.service.customer_service');
@@ -39,6 +45,9 @@ class CustomerServiceTest extends TestCase
         static::assertCount(1, $customers);
     }
 
+    /**
+     * @return void
+     */
     public function testReadWithLimitShouldBeSuccessful()
     {
         $customerService = Shopware()->Container()->get('swag_migration_connector.service.customer_service');
@@ -48,6 +57,9 @@ class CustomerServiceTest extends TestCase
         static::assertCount(1, $customers);
     }
 
+    /**
+     * @return void
+     */
     public function testReadWithLimitAndOffsetShouldBeSuccessful()
     {
         $customerService = Shopware()->Container()->get('swag_migration_connector.service.customer_service');
@@ -57,6 +69,9 @@ class CustomerServiceTest extends TestCase
         static::assertCount(1, $customers);
     }
 
+    /**
+     * @return void
+     */
     public function testReadWithOutOfBoundsOffsetShouldOfferEmptyArray()
     {
         $customerService = Shopware()->Container()->get('swag_migration_connector.service.customer_service');

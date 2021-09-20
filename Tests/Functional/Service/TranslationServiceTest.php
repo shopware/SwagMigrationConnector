@@ -11,6 +11,9 @@ use PHPUnit\Framework\TestCase;
 
 class TranslationServiceTest extends TestCase
 {
+    /**
+     * @return void
+     */
     public function setUpOwn()
     {
         $sql = \file_get_contents(__DIR__ . '/_fixtures/translations.sql');
@@ -19,6 +22,8 @@ class TranslationServiceTest extends TestCase
 
     /**
      * @before
+     *
+     * @return void
      */
     public function startTransactionBefore()
     {
@@ -27,12 +32,17 @@ class TranslationServiceTest extends TestCase
 
     /**
      * @after
+     *
+     * @return void
      */
     public function stopTransactionAfter()
     {
         Shopware()->Container()->get('dbal_connection')->rollBack();
     }
 
+    /**
+     * @return void
+     */
     public function testReadTranslationsShouldBeSuccessful()
     {
         $this->setUpOwn();
@@ -49,6 +59,9 @@ class TranslationServiceTest extends TestCase
         static::assertSame('en-GB', $firstTranslation['locale']);
     }
 
+    /**
+     * @return void
+     */
     public function testReadTranslationsWithOffsetShouldBeSuccessful()
     {
         $this->setUpOwn();
@@ -66,6 +79,9 @@ class TranslationServiceTest extends TestCase
         static::assertSame('en-GB', $translation['locale']);
     }
 
+    /**
+     * @return void
+     */
     public function testReadTranslationsWithLimitShouldBeSuccessful()
     {
         $this->setUpOwn();
@@ -82,6 +98,9 @@ class TranslationServiceTest extends TestCase
         static::assertSame('en-GB', $firstTranslation['locale']);
     }
 
+    /**
+     * @return void
+     */
     public function testReadTranslationsWithOffsetAndLimitShouldBeSuccessful()
     {
         $this->setUpOwn();
@@ -99,6 +118,9 @@ class TranslationServiceTest extends TestCase
         static::assertSame('en-GB', $translation['locale']);
     }
 
+    /**
+     * @return void
+     */
     public function testReadWithOutOfBoundsOffsetShouldOfferEmptyArray()
     {
         $this->setUpOwn();
