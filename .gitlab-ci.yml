@@ -87,7 +87,6 @@ Code Coverage:
 
 SW 5.4:
     stage: PHPUnit
-    needs: [PHP analyze]
     extends: .SW older versions
     image: shopware/5-continuous:5.6
     variables:
@@ -95,23 +94,21 @@ SW 5.4:
 
 SW 5.5:
     stage: PHPUnit
-    needs: [PHP analyze]
     extends: .SW older versions
     image: shopware/5-continuous:5.6
     variables:
         CHECKOUT_SHOPWARE_BRANCH: "5.5"
-#    only:
-#        - master
+    only:
+        - master
 
 SW 5.6:
     stage: PHPUnit
-    needs: [ PHP analyze ]
     extends: .SW older versions
     image: gitlab.shopware.com:5005/shopware/5/product/image/continuous:7.2
     variables:
         CHECKOUT_SHOPWARE_BRANCH: "5.6"
-#    only:
-#        - master
+    only:
+        - master
 
 .SW 5.7 default:
     stage: PHPUnit
