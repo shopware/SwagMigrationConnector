@@ -814,12 +814,6 @@ parameters:
 			message: "#^Service \"auth\" is not registered in the container\\.$#"
 			count: 1
 			path: Controllers/Backend/SwagMigrationConnector.php
-
-		-
-			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
-			count: 1
-			path: Repository/AbstractRepository.php
-
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\AbstractRepository\\:\\:addTableSelection\\(\\) has no return typehint specified\\.$#"
 			count: 1
@@ -849,12 +843,6 @@ parameters:
 			message: "#^PHPDoc tag @param has invalid value \\(array\\)\\: Unexpected token \"\\\\n     \\*\", expected variable at offset 23$#"
 			count: 1
 			path: Repository/ApiRepositoryInterface.php
-
-		-
-			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
-			count: 1
-			path: Repository/AssetRepository.php
-
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\AssetRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
@@ -874,12 +862,6 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\AttributeRepository\\:\\:getAttributeConfiguration\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/AttributeRepository.php
-
-		-
-			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
-			count: 3
-			path: Repository/CategoryRepository.php
-
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\CategoryRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
@@ -919,12 +901,6 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\CrossSellingRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/CrossSellingRepository.php
-
-		-
-			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
-			count: 1
-			path: Repository/CurrencyRepository.php
-
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\CurrencyRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
@@ -934,12 +910,6 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\CurrencyRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/CurrencyRepository.php
-
-		-
-			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
-			count: 1
-			path: Repository/CustomerGroupRepository.php
-
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\CustomerGroupRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
@@ -949,12 +919,6 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\CustomerGroupRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/CustomerGroupRepository.php
-
-		-
-			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
-			count: 4
-			path: Repository/CustomerRepository.php
-
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\CustomerRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
@@ -994,12 +958,6 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\CustomerRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/CustomerRepository.php
-
-		-
-			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
-			count: 5
-			path: Repository/DispatchRepository.php
-
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\DispatchRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
@@ -1049,12 +1007,6 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\DispatchRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/DispatchRepository.php
-
-		-
-			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
-			count: 1
-			path: Repository/DocumentRepository.php
-
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\DocumentRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
@@ -1064,12 +1016,6 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\DocumentRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/DocumentRepository.php
-
-		-
-			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
-			count: 1
-			path: Repository/DynamicRepository.php
-
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\DynamicRepository\\:\\:fetch\\(\\) has parameter \\$filter with no value type specified in iterable type array\\.$#"
 			count: 1
@@ -1079,12 +1025,6 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\DynamicRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/DynamicRepository.php
-
-		-
-			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
-			count: 1
-			path: Repository/EnvironmentRepository.php
-
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\EnvironmentRepository\\:\\:addTableSelection\\(\\) has no return typehint specified\\.$#"
 			count: 1
@@ -1104,12 +1044,6 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\MainVariantRelationRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/MainVariantRelationRepository.php
-
-		-
-			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
-			count: 4
-			path: Repository/NewsletterRecipientRepository.php
-
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\NewsletterRecipientRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
@@ -1164,12 +1098,6 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\NumberRangeRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/NumberRangeRepository.php
-
-		-
-			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
-			count: 1
-			path: Repository/OrderNoteRepository.php
-
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\OrderNoteRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
@@ -1179,12 +1107,6 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\OrderNoteRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/OrderNoteRepository.php
-
-		-
-			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
-			count: 3
-			path: Repository/OrderRepository.php
-
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\OrderRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
@@ -1214,12 +1136,6 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\OrderRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/OrderRepository.php
-
-		-
-			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
-			count: 1
-			path: Repository/ProductOptionRelationRepository.php
-
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductOptionRelationRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
@@ -1229,12 +1145,6 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductOptionRelationRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/ProductOptionRelationRepository.php
-
-		-
-			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
-			count: 1
-			path: Repository/ProductPropertyRelationRepository.php
-
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductPropertyRelationRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
@@ -1244,12 +1154,6 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductPropertyRelationRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/ProductPropertyRelationRepository.php
-
-		-
-			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
-			count: 10
-			path: Repository/ProductRepository.php
-
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
@@ -1339,12 +1243,6 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/ProductRepository.php
-
-		-
-			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
-			count: 1
-			path: Repository/SeoUrlRepository.php
-
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\SeoUrlRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
@@ -1354,12 +1252,6 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\SeoUrlRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/SeoUrlRepository.php
-
-		-
-			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
-			count: 1
-			path: Repository/ShopRepository.php
-
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ShopRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
@@ -1369,12 +1261,6 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ShopRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/ShopRepository.php
-
-		-
-			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
-			count: 1
-			path: Repository/TranslationRepository.php
-
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\TranslationRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
@@ -1384,12 +1270,6 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\TranslationRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/TranslationRepository.php
-
-		-
-			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
-			count: 1
-			path: Repository/VoteRepository.php
-
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\VoteRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
@@ -1399,12 +1279,6 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\VoteRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/VoteRepository.php
-
-		-
-			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
-			count: 2
-			path: Repository/VoucherRepository.php
-
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\VoucherRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
@@ -1476,11 +1350,6 @@ parameters:
 			path: Service/AbstractApiService.php
 
 		-
-			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<Shopware\\\\Models\\\\Shop\\\\Shop\\>\\:\\:getDefault\\(\\)\\.$#"
-			count: 1
-			path: Service/AssetService.php
-
-		-
 			message: "#^Method SwagMigrationConnector\\\\Service\\\\AssetService\\:\\:getAssets\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Service/AssetService.php
@@ -1496,11 +1365,6 @@ parameters:
 			path: Service/AssetService.php
 
 		-
-			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<Shopware\\\\Models\\\\Shop\\\\Shop\\>\\:\\:getDefault\\(\\)\\.$#"
-			count: 1
-			path: Service/AttributeService.php
-
-		-
 			message: "#^Method SwagMigrationConnector\\\\Service\\\\AttributeService\\:\\:getAttributeConfiguration\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Service/AttributeService.php
@@ -1509,11 +1373,6 @@ parameters:
 			message: "#^Parameter \\#3 \\$length of function substr expects int, int\\<0, max\\>\\|false given\\.$#"
 			count: 1
 			path: Service/AttributeService.php
-
-		-
-			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<Shopware\\\\Models\\\\Shop\\\\Shop\\>\\:\\:getDefault\\(\\)\\.$#"
-			count: 1
-			path: Service/CategoryService.php
 
 		-
 			message: "#^Method SwagMigrationConnector\\\\Service\\\\CategoryService\\:\\:getCategories\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -1549,12 +1408,6 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\CheckerInterface\\:\\:validate\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Service/Checker/CheckerInterface.php
-
-		-
-			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
-			count: 1
-			path: Service/Checker/LicenseCheck.php
-
 		-
 			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\LicenseCheck\\:\\:__construct\\(\\) has parameter \\$endpoint with no typehint specified\\.$#"
 			count: 1
@@ -1706,11 +1559,6 @@ parameters:
 			path: Service/Checker/PhpVersion.php
 
 		-
-			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<Shopware\\\\Models\\\\Shop\\\\Shop\\>\\:\\:getDefault\\(\\)\\.$#"
-			count: 1
-			path: Service/ConfiguratorOptionService.php
-
-		-
 			message: "#^Method SwagMigrationConnector\\\\Service\\\\ConfiguratorOptionService\\:\\:getConfiguratorOptions\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Service/ConfiguratorOptionService.php
@@ -1741,11 +1589,6 @@ parameters:
 			path: Service/CrossSellingService.php
 
 		-
-			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<Shopware\\\\Models\\\\Shop\\\\Shop\\>\\:\\:getDefault\\(\\)\\.$#"
-			count: 1
-			path: Service/CurrencyService.php
-
-		-
 			message: "#^Method SwagMigrationConnector\\\\Service\\\\CurrencyService\\:\\:getCurrencies\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Service/CurrencyService.php
@@ -1754,11 +1597,6 @@ parameters:
 			message: "#^Property SwagMigrationConnector\\\\Service\\\\CurrencyService\\:\\:\\$currencyRepository \\(SwagMigrationConnector\\\\Repository\\\\CurrencyRepository\\) does not accept SwagMigrationConnector\\\\Repository\\\\ApiRepositoryInterface\\.$#"
 			count: 1
 			path: Service/CurrencyService.php
-
-		-
-			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<Shopware\\\\Models\\\\Shop\\\\Shop\\>\\:\\:getDefault\\(\\)\\.$#"
-			count: 1
-			path: Service/CustomerGroupService.php
 
 		-
 			message: "#^Method SwagMigrationConnector\\\\Service\\\\CustomerGroupService\\:\\:getCustomerGroups\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -1774,11 +1612,6 @@ parameters:
 			message: "#^Property SwagMigrationConnector\\\\Service\\\\CustomerGroupService\\:\\:\\$customerRepository \\(SwagMigrationConnector\\\\Repository\\\\CustomerRepository\\) does not accept SwagMigrationConnector\\\\Repository\\\\ApiRepositoryInterface\\.$#"
 			count: 1
 			path: Service/CustomerGroupService.php
-
-		-
-			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<Shopware\\\\Models\\\\Shop\\\\Shop\\>\\:\\:getDefault\\(\\)\\.$#"
-			count: 1
-			path: Service/CustomerService.php
 
 		-
 			message: "#^Method SwagMigrationConnector\\\\Service\\\\CustomerService\\:\\:assignAssociatedData\\(\\) has no return typehint specified\\.$#"
@@ -1806,11 +1639,6 @@ parameters:
 			path: Service/CustomerService.php
 
 		-
-			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<Shopware\\\\Models\\\\Shop\\\\Shop\\>\\:\\:getDefault\\(\\)\\.$#"
-			count: 1
-			path: Service/DispatchService.php
-
-		-
 			message: "#^Method SwagMigrationConnector\\\\Service\\\\DispatchService\\:\\:assignAssociatedData\\(\\) has parameter \\$dispatches with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Service/DispatchService.php
@@ -1834,11 +1662,6 @@ parameters:
 			message: "#^Property SwagMigrationConnector\\\\Service\\\\DispatchService\\:\\:\\$dispatchRepository \\(SwagMigrationConnector\\\\Repository\\\\DispatchRepository\\) does not accept SwagMigrationConnector\\\\Repository\\\\ApiRepositoryInterface\\.$#"
 			count: 1
 			path: Service/DispatchService.php
-
-		-
-			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<Shopware\\\\Models\\\\Shop\\\\Shop\\>\\:\\:getDefault\\(\\)\\.$#"
-			count: 1
-			path: Service/DocumentService.php
 
 		-
 			message: "#^Cannot call method getSize\\(\\) on League\\\\Flysystem\\\\FilesystemInterface\\|null\\.$#"
@@ -1876,11 +1699,6 @@ parameters:
 			path: Service/DocumentService.php
 
 		-
-			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<Shopware\\\\Models\\\\Shop\\\\Shop\\>\\:\\:getDefault\\(\\)\\.$#"
-			count: 1
-			path: Service/EnvironmentService.php
-
-		-
 			message: "#^Method SwagMigrationConnector\\\\Service\\\\EnvironmentService\\:\\:getAdditionalData\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Service/EnvironmentService.php
@@ -1889,16 +1707,6 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Service\\\\EnvironmentService\\:\\:getEnvironmentInformation\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Service/EnvironmentService.php
-
-		-
-			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<Shopware\\\\Models\\\\Shop\\\\Shop\\>\\:\\:getDefault\\(\\)\\.$#"
-			count: 1
-			path: Service/LanguageService.php
-
-		-
-			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
-			count: 1
-			path: Service/LanguageService.php
 
 		-
 			message: "#^Method SwagMigrationConnector\\\\Service\\\\LanguageService\\:\\:appendAssociatedData\\(\\) has parameter \\$locales with no value type specified in iterable type array\\.$#"
@@ -1959,16 +1767,6 @@ parameters:
 			message: "#^Property SwagMigrationConnector\\\\Service\\\\MainVariantRelationService\\:\\:\\$repository \\(SwagMigrationConnector\\\\Repository\\\\MainVariantRelationRepository\\) does not accept SwagMigrationConnector\\\\Repository\\\\ApiRepositoryInterface\\.$#"
 			count: 1
 			path: Service/MainVariantRelationService.php
-
-		-
-			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<Shopware\\\\Models\\\\Shop\\\\Shop\\>\\:\\:getDefault\\(\\)\\.$#"
-			count: 1
-			path: Service/MediaAlbumService.php
-
-		-
-			message: "#^Cannot call method fetchAll\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
-			count: 1
-			path: Service/MediaAlbumService.php
 
 		-
 			message: "#^Method SwagMigrationConnector\\\\Service\\\\MediaAlbumService\\:\\:addTableSelection\\(\\) has no return typehint specified\\.$#"
@@ -2071,11 +1869,6 @@ parameters:
 			path: Service/NewsletterRecipientService.php
 
 		-
-			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<Shopware\\\\Models\\\\Shop\\\\Shop\\>\\:\\:getDefault\\(\\)\\.$#"
-			count: 1
-			path: Service/NumberRangeService.php
-
-		-
 			message: "#^Method SwagMigrationConnector\\\\Service\\\\NumberRangeService\\:\\:getNumberRanges\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Service/NumberRangeService.php
@@ -2094,11 +1887,6 @@ parameters:
 			message: "#^Property SwagMigrationConnector\\\\Service\\\\OrderNoteService\\:\\:\\$orderNoteRepository \\(SwagMigrationConnector\\\\Repository\\\\CrossSellingRepository\\) does not accept SwagMigrationConnector\\\\Repository\\\\ApiRepositoryInterface\\.$#"
 			count: 1
 			path: Service/OrderNoteService.php
-
-		-
-			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<Shopware\\\\Models\\\\Shop\\\\Shop\\>\\:\\:getDefault\\(\\)\\.$#"
-			count: 1
-			path: Service/OrderService.php
 
 		-
 			message: "#^Method SwagMigrationConnector\\\\Service\\\\OrderService\\:\\:appendAssociatedData\\(\\) has parameter \\$orders with no value type specified in iterable type array\\.$#"
@@ -2184,11 +1972,6 @@ parameters:
 			message: "#^Property SwagMigrationConnector\\\\Service\\\\ProductPropertyRelationService\\:\\:\\$repository \\(SwagMigrationConnector\\\\Repository\\\\ProductPropertyRelationRepository\\) does not accept SwagMigrationConnector\\\\Repository\\\\ApiRepositoryInterface\\.$#"
 			count: 1
 			path: Service/ProductPropertyRelationService.php
-
-		-
-			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<Shopware\\\\Models\\\\Shop\\\\Shop\\>\\:\\:getDefault\\(\\)\\.$#"
-			count: 1
-			path: Service/ProductService.php
 
 		-
 			message: "#^Call to an undefined method Traversable\\<string, mixed\\>\\:\\:getArrayCopy\\(\\)\\.$#"
@@ -2316,11 +2099,6 @@ parameters:
 			path: Service/SeoUrlService.php
 
 		-
-			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<Shopware\\\\Models\\\\Shop\\\\Shop\\>\\:\\:getDefault\\(\\)\\.$#"
-			count: 1
-			path: Service/ShopService.php
-
-		-
 			message: "#^Method SwagMigrationConnector\\\\Service\\\\ShopService\\:\\:getShops\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Service/ShopService.php
@@ -2329,11 +2107,6 @@ parameters:
 			message: "#^Property SwagMigrationConnector\\\\Service\\\\ShopService\\:\\:\\$repository \\(SwagMigrationConnector\\\\Repository\\\\ShopRepository\\) does not accept SwagMigrationConnector\\\\Repository\\\\ApiRepositoryInterface\\.$#"
 			count: 1
 			path: Service/ShopService.php
-
-		-
-			message: "#^Cannot call method fetchColumn\\(\\) on Doctrine\\\\DBAL\\\\Driver\\\\ResultStatement\\|int\\.$#"
-			count: 1
-			path: Service/TotalsService.php
 
 		-
 			message: "#^Method SwagMigrationConnector\\\\Service\\\\TotalsService\\:\\:fetchTotals\\(\\) has parameter \\$countInfos with no value type specified in iterable type array\\.$#"
@@ -2399,4 +2172,3 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Util\\\\RepositoryRegistry\\:\\:getRepositories\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Util/RepositoryRegistry.php
-

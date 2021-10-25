@@ -89,6 +89,9 @@ SW 5.4:
     stage: PHPUnit
     extends: .SW older versions
     image: shopware/5-continuous:5.6
+    before_script:
+        - sed -i 's/^mozilla\/DST_Root_CA_X3.crt$/!mozilla\/DST_Root_CA_X3.crt/' /etc/ca-certificates.conf # https://letsencrypt.org/docs/dst-root-ca-x3-expiration-september-2021/
+        - update-ca-certificates -f
     variables:
         CHECKOUT_SHOPWARE_BRANCH: "5.4"
 
@@ -96,6 +99,9 @@ SW 5.5:
     stage: PHPUnit
     extends: .SW older versions
     image: shopware/5-continuous:5.6
+    before_script:
+        - sed -i 's/^mozilla\/DST_Root_CA_X3.crt$/!mozilla\/DST_Root_CA_X3.crt/' /etc/ca-certificates.conf # https://letsencrypt.org/docs/dst-root-ca-x3-expiration-september-2021/
+        - update-ca-certificates -f
     variables:
         CHECKOUT_SHOPWARE_BRANCH: "5.5"
     only:
@@ -104,7 +110,6 @@ SW 5.5:
 SW 5.6:
     stage: PHPUnit
     extends: .SW older versions
-    image: gitlab.shopware.com:5005/shopware/5/product/image/continuous:7.2
     variables:
         CHECKOUT_SHOPWARE_BRANCH: "5.6"
     only:
