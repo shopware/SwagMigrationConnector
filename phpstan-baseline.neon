@@ -1,11 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationAssets.php
-
-		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationAssets\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationAssets.php
@@ -14,16 +9,6 @@ parameters:
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationAssets\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationAssets.php
-
-		-
-			message: "#^Service \"auth\" is not registered in the container\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationAssets.php
-
-		-
-			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationAttributes.php
 
 		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationAttributes\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
@@ -36,16 +21,6 @@ parameters:
 			path: Controllers/Api/SwagMigrationAttributes.php
 
 		-
-			message: "#^Service \"auth\" is not registered in the container\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationAttributes.php
-
-		-
-			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationCategories.php
-
-		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationCategories\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationCategories.php
@@ -54,16 +29,6 @@ parameters:
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationCategories\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationCategories.php
-
-		-
-			message: "#^Service \"auth\" is not registered in the container\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationCategories.php
-
-		-
-			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationCategoryAttributes.php
 
 		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationCategoryAttributes\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
@@ -76,16 +41,6 @@ parameters:
 			path: Controllers/Api/SwagMigrationCategoryAttributes.php
 
 		-
-			message: "#^Service \"auth\" is not registered in the container\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationCategoryAttributes.php
-
-		-
-			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationConfiguratorOptions.php
-
-		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationConfiguratorOptions\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationConfiguratorOptions.php
@@ -94,16 +49,6 @@ parameters:
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationConfiguratorOptions\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationConfiguratorOptions.php
-
-		-
-			message: "#^Service \"auth\" is not registered in the container\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationConfiguratorOptions.php
-
-		-
-			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationCrossSelling.php
 
 		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationCrossSelling\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
@@ -116,16 +61,6 @@ parameters:
 			path: Controllers/Api/SwagMigrationCrossSelling.php
 
 		-
-			message: "#^Service \"auth\" is not registered in the container\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationCrossSelling.php
-
-		-
-			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationCurrencies.php
-
-		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationCurrencies\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationCurrencies.php
@@ -134,16 +69,6 @@ parameters:
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationCurrencies\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationCurrencies.php
-
-		-
-			message: "#^Service \"auth\" is not registered in the container\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationCurrencies.php
-
-		-
-			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationCustomerAttributes.php
 
 		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationCustomerAttributes\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
@@ -156,16 +81,6 @@ parameters:
 			path: Controllers/Api/SwagMigrationCustomerAttributes.php
 
 		-
-			message: "#^Service \"auth\" is not registered in the container\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationCustomerAttributes.php
-
-		-
-			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationCustomerGroupAttributes.php
-
-		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationCustomerGroupAttributes\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationCustomerGroupAttributes.php
@@ -174,16 +89,6 @@ parameters:
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationCustomerGroupAttributes\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationCustomerGroupAttributes.php
-
-		-
-			message: "#^Service \"auth\" is not registered in the container\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationCustomerGroupAttributes.php
-
-		-
-			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationCustomerGroups.php
 
 		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationCustomerGroups\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
@@ -196,16 +101,6 @@ parameters:
 			path: Controllers/Api/SwagMigrationCustomerGroups.php
 
 		-
-			message: "#^Service \"auth\" is not registered in the container\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationCustomerGroups.php
-
-		-
-			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationCustomers.php
-
-		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationCustomers\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationCustomers.php
@@ -214,16 +109,6 @@ parameters:
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationCustomers\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationCustomers.php
-
-		-
-			message: "#^Service \"auth\" is not registered in the container\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationCustomers.php
-
-		-
-			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationDispatches.php
 
 		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationDispatches\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
@@ -236,16 +121,6 @@ parameters:
 			path: Controllers/Api/SwagMigrationDispatches.php
 
 		-
-			message: "#^Service \"auth\" is not registered in the container\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationDispatches.php
-
-		-
-			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationDynamic.php
-
-		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationDynamic\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationDynamic.php
@@ -254,16 +129,6 @@ parameters:
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationDynamic\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationDynamic.php
-
-		-
-			message: "#^Service \"auth\" is not registered in the container\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationDynamic.php
-
-		-
-			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationEnvironment.php
 
 		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationEnvironment\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
@@ -276,16 +141,6 @@ parameters:
 			path: Controllers/Api/SwagMigrationEnvironment.php
 
 		-
-			message: "#^Service \"auth\" is not registered in the container\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationEnvironment.php
-
-		-
-			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationLanguages.php
-
-		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationLanguages\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationLanguages.php
@@ -294,16 +149,6 @@ parameters:
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationLanguages\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationLanguages.php
-
-		-
-			message: "#^Service \"auth\" is not registered in the container\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationLanguages.php
-
-		-
-			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationMainVariantRelations.php
 
 		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationMainVariantRelations\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
@@ -316,16 +161,6 @@ parameters:
 			path: Controllers/Api/SwagMigrationMainVariantRelations.php
 
 		-
-			message: "#^Service \"auth\" is not registered in the container\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationMainVariantRelations.php
-
-		-
-			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationManufacturerAttributes.php
-
-		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationManufacturerAttributes\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationManufacturerAttributes.php
@@ -334,16 +169,6 @@ parameters:
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationManufacturerAttributes\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationManufacturerAttributes.php
-
-		-
-			message: "#^Service \"auth\" is not registered in the container\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationManufacturerAttributes.php
-
-		-
-			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationMediaAlbums.php
 
 		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationMediaAlbums\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
@@ -356,16 +181,6 @@ parameters:
 			path: Controllers/Api/SwagMigrationMediaAlbums.php
 
 		-
-			message: "#^Service \"auth\" is not registered in the container\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationMediaAlbums.php
-
-		-
-			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationNewsletterRecipients.php
-
-		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationNewsletterRecipients\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationNewsletterRecipients.php
@@ -374,16 +189,6 @@ parameters:
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationNewsletterRecipients\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationNewsletterRecipients.php
-
-		-
-			message: "#^Service \"auth\" is not registered in the container\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationNewsletterRecipients.php
-
-		-
-			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationNumberRanges.php
 
 		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationNumberRanges\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
@@ -396,16 +201,6 @@ parameters:
 			path: Controllers/Api/SwagMigrationNumberRanges.php
 
 		-
-			message: "#^Service \"auth\" is not registered in the container\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationNumberRanges.php
-
-		-
-			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationOrderAttributes.php
-
-		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderAttributes\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationOrderAttributes.php
@@ -416,16 +211,6 @@ parameters:
 			path: Controllers/Api/SwagMigrationOrderAttributes.php
 
 		-
-			message: "#^Service \"auth\" is not registered in the container\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationOrderAttributes.php
-
-		-
-			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationOrderDocumentAttributes.php
-
-		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderDocumentAttributes\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationOrderDocumentAttributes.php
@@ -434,16 +219,6 @@ parameters:
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderDocumentAttributes\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationOrderDocumentAttributes.php
-
-		-
-			message: "#^Service \"auth\" is not registered in the container\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationOrderDocumentAttributes.php
-
-		-
-			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationOrderDocuments.php
 
 		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderDocuments\\:\\:getAction\\(\\) has no return typehint specified\\.$#"
@@ -486,16 +261,6 @@ parameters:
 			path: Controllers/Api/SwagMigrationOrderDocuments.php
 
 		-
-			message: "#^Service \"auth\" is not registered in the container\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationOrderDocuments.php
-
-		-
-			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationOrderNotes.php
-
-		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderNotes\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationOrderNotes.php
@@ -504,16 +269,6 @@ parameters:
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderNotes\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationOrderNotes.php
-
-		-
-			message: "#^Service \"auth\" is not registered in the container\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationOrderNotes.php
-
-		-
-			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationOrders.php
 
 		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrders\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
@@ -526,16 +281,6 @@ parameters:
 			path: Controllers/Api/SwagMigrationOrders.php
 
 		-
-			message: "#^Service \"auth\" is not registered in the container\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationOrders.php
-
-		-
-			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationProductAttributes.php
-
-		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationProductAttributes\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationProductAttributes.php
@@ -546,17 +291,7 @@ parameters:
 			path: Controllers/Api/SwagMigrationProductAttributes.php
 
 		-
-			message: "#^Service \"auth\" is not registered in the container\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationProductAttributes.php
-
-		-
 			message: "#^Call to method getAdmin\\(\\) on an unknown class Role\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationProductOptionRelation.php
-
-		-
-			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationProductOptionRelation.php
 
@@ -576,16 +311,6 @@ parameters:
 			path: Controllers/Api/SwagMigrationProductOptionRelation.php
 
 		-
-			message: "#^Service \"auth\" is not registered in the container\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationProductOptionRelation.php
-
-		-
-			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationProductPriceAttributes.php
-
-		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationProductPriceAttributes\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationProductPriceAttributes.php
@@ -596,17 +321,7 @@ parameters:
 			path: Controllers/Api/SwagMigrationProductPriceAttributes.php
 
 		-
-			message: "#^Service \"auth\" is not registered in the container\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationProductPriceAttributes.php
-
-		-
 			message: "#^Call to method getAdmin\\(\\) on an unknown class Role\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationProductPropertyRelation.php
-
-		-
-			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationProductPropertyRelation.php
 
@@ -626,16 +341,6 @@ parameters:
 			path: Controllers/Api/SwagMigrationProductPropertyRelation.php
 
 		-
-			message: "#^Service \"auth\" is not registered in the container\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationProductPropertyRelation.php
-
-		-
-			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationProducts.php
-
-		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationProducts\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationProducts.php
@@ -644,16 +349,6 @@ parameters:
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationProducts\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationProducts.php
-
-		-
-			message: "#^Service \"auth\" is not registered in the container\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationProducts.php
-
-		-
-			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationSeoUrls.php
 
 		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationSeoUrls\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
@@ -666,16 +361,6 @@ parameters:
 			path: Controllers/Api/SwagMigrationSeoUrls.php
 
 		-
-			message: "#^Service \"auth\" is not registered in the container\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationSeoUrls.php
-
-		-
-			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationShops.php
-
-		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationShops\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationShops.php
@@ -684,16 +369,6 @@ parameters:
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationShops\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationShops.php
-
-		-
-			message: "#^Service \"auth\" is not registered in the container\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationShops.php
-
-		-
-			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationTotals.php
 
 		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationTotals\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
@@ -706,16 +381,6 @@ parameters:
 			path: Controllers/Api/SwagMigrationTotals.php
 
 		-
-			message: "#^Service \"auth\" is not registered in the container\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationTotals.php
-
-		-
-			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationTranslations.php
-
-		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationTranslations\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationTranslations.php
@@ -724,16 +389,6 @@ parameters:
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationTranslations\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationTranslations.php
-
-		-
-			message: "#^Service \"auth\" is not registered in the container\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationTranslations.php
-
-		-
-			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationVotes.php
 
 		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationVotes\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
@@ -746,16 +401,6 @@ parameters:
 			path: Controllers/Api/SwagMigrationVotes.php
 
 		-
-			message: "#^Service \"auth\" is not registered in the container\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationVotes.php
-
-		-
-			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationVouchers.php
-
-		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationVouchers\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationVouchers.php
@@ -764,16 +409,6 @@ parameters:
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationVouchers\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationVouchers.php
-
-		-
-			message: "#^Service \"auth\" is not registered in the container\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationVouchers.php
-
-		-
-			message: "#^Cannot call method getIdentity\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: Controllers/Backend/SwagMigrationConnector.php
 
 		-
 			message: "#^Method Shopware_Controllers_Backend_SwagMigrationConnector\\:\\:getLocalPlugins\\(\\) has no return typehint specified\\.$#"
@@ -810,10 +445,6 @@ parameters:
 			count: 1
 			path: Controllers/Backend/SwagMigrationConnector.php
 
-		-
-			message: "#^Service \"auth\" is not registered in the container\\.$#"
-			count: 1
-			path: Controllers/Backend/SwagMigrationConnector.php
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\AbstractRepository\\:\\:addTableSelection\\(\\) has no return typehint specified\\.$#"
 			count: 1
@@ -1449,11 +1080,6 @@ parameters:
 			path: Service/Checker/LicenseCheck.php
 
 		-
-			message: "#^Property SwagMigrationConnector\\\\Service\\\\Checker\\\\LicenseCheck\\:\\:\\$namespace type has no value type specified in iterable type Enlight_Components_Snippet_Namespace\\.$#"
-			count: 1
-			path: Service/Checker/LicenseCheck.php
-
-		-
 			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\MysqlConfiguration\\:\\:validate\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Service/Checker/MysqlConfiguration.php
@@ -1464,22 +1090,12 @@ parameters:
 			path: Service/Checker/MysqlConfiguration.php
 
 		-
-			message: "#^Property SwagMigrationConnector\\\\Service\\\\Checker\\\\MysqlConfiguration\\:\\:\\$namespace type has no value type specified in iterable type Enlight_Components_Snippet_Namespace\\.$#"
-			count: 1
-			path: Service/Checker/MysqlConfiguration.php
-
-		-
 			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\MysqlVersion\\:\\:validate\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Service/Checker/MysqlVersion.php
 
 		-
 			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\MysqlVersion\\:\\:validate\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Service/Checker/MysqlVersion.php
-
-		-
-			message: "#^Property SwagMigrationConnector\\\\Service\\\\Checker\\\\MysqlVersion\\:\\:\\$namespace type has no value type specified in iterable type Enlight_Components_Snippet_Namespace\\.$#"
 			count: 1
 			path: Service/Checker/MysqlVersion.php
 
@@ -1524,11 +1140,6 @@ parameters:
 			path: Service/Checker/PhpConfiguration.php
 
 		-
-			message: "#^Property SwagMigrationConnector\\\\Service\\\\Checker\\\\PhpConfiguration\\:\\:\\$namespace type has no value type specified in iterable type Enlight_Components_Snippet_Namespace\\.$#"
-			count: 1
-			path: Service/Checker/PhpConfiguration.php
-
-		-
 			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\PhpExtensions\\:\\:validate\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Service/Checker/PhpExtensions.php
@@ -1539,22 +1150,12 @@ parameters:
 			path: Service/Checker/PhpExtensions.php
 
 		-
-			message: "#^Property SwagMigrationConnector\\\\Service\\\\Checker\\\\PhpExtensions\\:\\:\\$namespace type has no value type specified in iterable type Enlight_Components_Snippet_Namespace\\.$#"
-			count: 1
-			path: Service/Checker/PhpExtensions.php
-
-		-
 			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\PhpVersion\\:\\:validate\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Service/Checker/PhpVersion.php
 
 		-
 			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\PhpVersion\\:\\:validate\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Service/Checker/PhpVersion.php
-
-		-
-			message: "#^Property SwagMigrationConnector\\\\Service\\\\Checker\\\\PhpVersion\\:\\:\\$namespace type has no value type specified in iterable type Enlight_Components_Snippet_Namespace\\.$#"
 			count: 1
 			path: Service/Checker/PhpVersion.php
 
