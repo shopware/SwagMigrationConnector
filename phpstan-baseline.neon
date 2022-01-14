@@ -1,242 +1,127 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationAssets\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationAssets\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationAssets.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationAssets\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationAssets.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationAttributes\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationAttributes\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationAttributes.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationAttributes\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationAttributes.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationCategories\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationCategories\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationCategories.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationCategories\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationCategories.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationCategoryAttributes\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationCategoryAttributes\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationCategoryAttributes.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationCategoryAttributes\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationCategoryAttributes.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationConfiguratorOptions\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationConfiguratorOptions\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationConfiguratorOptions.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationConfiguratorOptions\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationConfiguratorOptions.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationCrossSelling\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationCrossSelling\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationCrossSelling.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationCrossSelling\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationCrossSelling.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationCurrencies\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationCurrencies\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationCurrencies.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationCurrencies\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationCurrencies.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationCustomerAttributes\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationCustomerAttributes\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationCustomerAttributes.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationCustomerAttributes\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationCustomerAttributes.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationCustomerGroupAttributes\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationCustomerGroupAttributes\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationCustomerGroupAttributes.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationCustomerGroupAttributes\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationCustomerGroupAttributes.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationCustomerGroups\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationCustomerGroups\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationCustomerGroups.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationCustomerGroups\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationCustomerGroups.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationCustomers\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationCustomers\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationCustomers.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationCustomers\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationCustomers.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationDispatches\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationDispatches\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationDispatches.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationDispatches\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationDispatches.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationDynamic\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationDynamic\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationDynamic.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationDynamic\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationDynamic.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationEnvironment\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationEnvironment\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationEnvironment.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationEnvironment\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationEnvironment.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationLanguages\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationLanguages\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationLanguages.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationLanguages\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationLanguages.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationMainVariantRelations\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationMainVariantRelations\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationMainVariantRelations.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationMainVariantRelations\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationMainVariantRelations.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationManufacturerAttributes\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationManufacturerAttributes\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationManufacturerAttributes.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationManufacturerAttributes\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationManufacturerAttributes.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationMediaAlbums\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationMediaAlbums\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationMediaAlbums.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationMediaAlbums\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationMediaAlbums.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationNewsletterRecipients\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationNewsletterRecipients\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationNewsletterRecipients.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationNewsletterRecipients\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationNewsletterRecipients.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationNumberRanges\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationNumberRanges\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationNumberRanges.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationNumberRanges\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationNumberRanges.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderAttributes\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderAttributes\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationOrderAttributes.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderAttributes\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationOrderAttributes.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderDocumentAttributes\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderDocumentAttributes\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationOrderDocumentAttributes.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderDocumentAttributes\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationOrderDocumentAttributes.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderDocuments\\:\\:getAction\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderDocuments\\:\\:getAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationOrderDocuments.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderDocuments\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderDocuments\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationOrderDocuments.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderDocuments\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationOrderDocuments.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderDocuments\\:\\:setDownloadHeaders\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderDocuments\\:\\:setDownloadHeaders\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationOrderDocuments.php
 
@@ -261,32 +146,17 @@ parameters:
 			path: Controllers/Api/SwagMigrationOrderDocuments.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderNotes\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderNotes\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationOrderNotes.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderNotes\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationOrderNotes.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrders\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrders\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationOrders.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrders\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationOrders.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationProductAttributes\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationProductAttributes.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationProductAttributes\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationProductAttributes\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationProductAttributes.php
 
@@ -296,12 +166,7 @@ parameters:
 			path: Controllers/Api/SwagMigrationProductOptionRelation.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationProductOptionRelation\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationProductOptionRelation.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationProductOptionRelation\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationProductOptionRelation\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationProductOptionRelation.php
 
@@ -311,12 +176,7 @@ parameters:
 			path: Controllers/Api/SwagMigrationProductOptionRelation.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationProductPriceAttributes\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationProductPriceAttributes.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationProductPriceAttributes\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationProductPriceAttributes\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationProductPriceAttributes.php
 
@@ -326,12 +186,7 @@ parameters:
 			path: Controllers/Api/SwagMigrationProductPropertyRelation.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationProductPropertyRelation\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationProductPropertyRelation.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationProductPropertyRelation\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationProductPropertyRelation\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationProductPropertyRelation.php
 
@@ -341,97 +196,57 @@ parameters:
 			path: Controllers/Api/SwagMigrationProductPropertyRelation.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationProducts\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationProducts\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationProducts.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationProducts\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationProducts.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationSeoUrls\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationSeoUrls\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationSeoUrls.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationSeoUrls\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationSeoUrls.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationShops\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationShops\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationShops.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationShops\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationShops.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationTotals\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationTotals\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationTotals.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationTotals\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationTotals.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationTranslations\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationTranslations\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationTranslations.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationTranslations\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationTranslations.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationVotes\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationVotes\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationVotes.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationVotes\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationVotes.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationVouchers\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Api_SwagMigrationVouchers\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationVouchers.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationVouchers\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationVouchers.php
-
-		-
-			message: "#^Method Shopware_Controllers_Backend_SwagMigrationConnector\\:\\:getLocalPlugins\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Backend_SwagMigrationConnector\\:\\:getLocalPlugins\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Backend/SwagMigrationConnector.php
 
 		-
-			message: "#^Method Shopware_Controllers_Backend_SwagMigrationConnector\\:\\:getPluginsAction\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Backend_SwagMigrationConnector\\:\\:getPluginsAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Backend/SwagMigrationConnector.php
 
 		-
-			message: "#^Method Shopware_Controllers_Backend_SwagMigrationConnector\\:\\:getRequirementsAction\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Backend_SwagMigrationConnector\\:\\:getRequirementsAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Backend/SwagMigrationConnector.php
 
 		-
-			message: "#^Method Shopware_Controllers_Backend_SwagMigrationConnector\\:\\:preDispatch\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Controllers/Backend/SwagMigrationConnector.php
-
-		-
-			message: "#^Method Shopware_Controllers_Backend_SwagMigrationConnector\\:\\:transformSbpResponse\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Shopware_Controllers_Backend_SwagMigrationConnector\\:\\:transformSbpResponse\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Backend/SwagMigrationConnector.php
 
@@ -446,7 +261,7 @@ parameters:
 			path: Controllers/Backend/SwagMigrationConnector.php
 
 		-
-			message: "#^Method SwagMigrationConnector\\\\Repository\\\\AbstractRepository\\:\\:addTableSelection\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\AbstractRepository\\:\\:addTableSelection\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Repository/AbstractRepository.php
 
@@ -499,7 +314,7 @@ parameters:
 			path: Repository/CategoryRepository.php
 
 		-
-			message: "#^Method SwagMigrationConnector\\\\Repository\\\\CategoryRepository\\:\\:fetchIgnoredCategories\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\CategoryRepository\\:\\:fetchIgnoredCategories\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Repository/CategoryRepository.php
 
@@ -657,7 +472,7 @@ parameters:
 			count: 1
 			path: Repository/DynamicRepository.php
 		-
-			message: "#^Method SwagMigrationConnector\\\\Repository\\\\EnvironmentRepository\\:\\:addTableSelection\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\EnvironmentRepository\\:\\:addTableSelection\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Repository/EnvironmentRepository.php
 
@@ -721,7 +536,7 @@ parameters:
 			path: Repository/NumberRangeRepository.php
 
 		-
-			message: "#^Method SwagMigrationConnector\\\\Repository\\\\NumberRangeRepository\\:\\:fetchPrefix\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method SwagMigrationConnector\\\\Repository\\\\NumberRangeRepository\\:\\:fetchPrefix\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Repository/NumberRangeRepository.php
 
@@ -931,7 +746,7 @@ parameters:
 			path: Repository/VoucherRepository.php
 
 		-
-			message: "#^Method SwagMigrationConnector\\\\Service\\\\AbstractApiService\\:\\:buildArrayFromChunks\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\AbstractApiService\\:\\:buildArrayFromChunks\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Service/AbstractApiService.php
 
@@ -946,7 +761,7 @@ parameters:
 			path: Service/AbstractApiService.php
 
 		-
-			message: "#^Method SwagMigrationConnector\\\\Service\\\\AbstractApiService\\:\\:buildArrayFromChunks\\(\\) has parameter \\$value with no typehint specified\\.$#"
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\AbstractApiService\\:\\:buildArrayFromChunks\\(\\) has parameter \\$value with no type specified\\.$#"
 			count: 1
 			path: Service/AbstractApiService.php
 
@@ -1040,12 +855,12 @@ parameters:
 			count: 1
 			path: Service/Checker/CheckerInterface.php
 		-
-			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\LicenseCheck\\:\\:__construct\\(\\) has parameter \\$endpoint with no typehint specified\\.$#"
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\LicenseCheck\\:\\:__construct\\(\\) has parameter \\$endpoint with no type specified\\.$#"
 			count: 1
 			path: Service/Checker/LicenseCheck.php
 
 		-
-			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\LicenseCheck\\:\\:__construct\\(\\) has parameter \\$shopwareVersion with no typehint specified\\.$#"
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\LicenseCheck\\:\\:__construct\\(\\) has parameter \\$shopwareVersion with no type specified\\.$#"
 			count: 1
 			path: Service/Checker/LicenseCheck.php
 
@@ -1100,27 +915,27 @@ parameters:
 			path: Service/Checker/MysqlVersion.php
 
 		-
-			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\PhpConfiguration\\:\\:formatBytes\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\PhpConfiguration\\:\\:formatBytes\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Service/Checker/PhpConfiguration.php
 
 		-
-			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\PhpConfiguration\\:\\:formatBytes\\(\\) has parameter \\$size with no typehint specified\\.$#"
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\PhpConfiguration\\:\\:formatBytes\\(\\) has parameter \\$size with no type specified\\.$#"
 			count: 1
 			path: Service/Checker/PhpConfiguration.php
 
 		-
-			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\PhpConfiguration\\:\\:formatValue\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\PhpConfiguration\\:\\:formatValue\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Service/Checker/PhpConfiguration.php
 
 		-
-			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\PhpConfiguration\\:\\:formatValue\\(\\) has parameter \\$options with no typehint specified\\.$#"
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\PhpConfiguration\\:\\:formatValue\\(\\) has parameter \\$options with no type specified\\.$#"
 			count: 1
 			path: Service/Checker/PhpConfiguration.php
 
 		-
-			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\PhpConfiguration\\:\\:formatValue\\(\\) has parameter \\$value with no typehint specified\\.$#"
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\PhpConfiguration\\:\\:formatValue\\(\\) has parameter \\$value with no type specified\\.$#"
 			count: 1
 			path: Service/Checker/PhpConfiguration.php
 
@@ -1215,7 +1030,7 @@ parameters:
 			path: Service/CustomerGroupService.php
 
 		-
-			message: "#^Method SwagMigrationConnector\\\\Service\\\\CustomerService\\:\\:assignAssociatedData\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\CustomerService\\:\\:assignAssociatedData\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Service/CustomerService.php
 
@@ -1280,7 +1095,7 @@ parameters:
 			path: Service/DocumentService.php
 
 		-
-			message: "#^Method SwagMigrationConnector\\\\Service\\\\DocumentService\\:\\:__construct\\(\\) has parameter \\$fileSystem with no typehint specified\\.$#"
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\DocumentService\\:\\:__construct\\(\\) has parameter \\$fileSystem with no type specified\\.$#"
 			count: 1
 			path: Service/DocumentService.php
 
@@ -1350,17 +1165,17 @@ parameters:
 			path: Service/LanguageService.php
 
 		-
-			message: "#^Method SwagMigrationConnector\\\\Service\\\\MainVariantRelationService\\:\\:getMainVariantRelations\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\MainVariantRelationService\\:\\:getMainVariantRelations\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Service/MainVariantRelationService.php
 
 		-
-			message: "#^Method SwagMigrationConnector\\\\Service\\\\MainVariantRelationService\\:\\:getMainVariantRelations\\(\\) has parameter \\$limit with no typehint specified\\.$#"
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\MainVariantRelationService\\:\\:getMainVariantRelations\\(\\) has parameter \\$limit with no type specified\\.$#"
 			count: 1
 			path: Service/MainVariantRelationService.php
 
 		-
-			message: "#^Method SwagMigrationConnector\\\\Service\\\\MainVariantRelationService\\:\\:getMainVariantRelations\\(\\) has parameter \\$offset with no typehint specified\\.$#"
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\MainVariantRelationService\\:\\:getMainVariantRelations\\(\\) has parameter \\$offset with no type specified\\.$#"
 			count: 1
 			path: Service/MainVariantRelationService.php
 
@@ -1370,7 +1185,7 @@ parameters:
 			path: Service/MainVariantRelationService.php
 
 		-
-			message: "#^Method SwagMigrationConnector\\\\Service\\\\MediaAlbumService\\:\\:addTableSelection\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\MediaAlbumService\\:\\:addTableSelection\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Service/MediaAlbumService.php
 
@@ -1405,12 +1220,12 @@ parameters:
 			path: Service/MediaAlbumService.php
 
 		-
-			message: "#^Method SwagMigrationConnector\\\\Service\\\\MigrationConnectorCompilerPass\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\MigrationConnectorCompilerPass\\:\\:process\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Service/MigrationConnectorCompilerPass.php
 
 		-
-			message: "#^Method SwagMigrationConnector\\\\Service\\\\NewsletterRecipientService\\:\\:addShopAndLocaleByCustomer\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\NewsletterRecipientService\\:\\:addShopAndLocaleByCustomer\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Service/NewsletterRecipientService.php
 
@@ -1425,7 +1240,7 @@ parameters:
 			path: Service/NewsletterRecipientService.php
 
 		-
-			message: "#^Method SwagMigrationConnector\\\\Service\\\\NewsletterRecipientService\\:\\:addShopAndLocaleByGroupId\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\NewsletterRecipientService\\:\\:addShopAndLocaleByGroupId\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Service/NewsletterRecipientService.php
 
@@ -1525,7 +1340,7 @@ parameters:
 			path: Service/OrderService.php
 
 		-
-			message: "#^Method SwagMigrationConnector\\\\Service\\\\PluginInformationService\\:\\:isUpdateRequired\\(\\) has parameter \\$locale with no typehint specified\\.$#"
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\PluginInformationService\\:\\:isUpdateRequired\\(\\) has parameter \\$locale with no type specified\\.$#"
 			count: 1
 			path: Service/PluginInformationService.php
 
@@ -1535,17 +1350,17 @@ parameters:
 			path: Service/PluginInformationService.php
 
 		-
-			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductOptionRelationService\\:\\:getProductOptionRelations\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductOptionRelationService\\:\\:getProductOptionRelations\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Service/ProductOptionRelationService.php
 
 		-
-			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductOptionRelationService\\:\\:getProductOptionRelations\\(\\) has parameter \\$limit with no typehint specified\\.$#"
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductOptionRelationService\\:\\:getProductOptionRelations\\(\\) has parameter \\$limit with no type specified\\.$#"
 			count: 1
 			path: Service/ProductOptionRelationService.php
 
 		-
-			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductOptionRelationService\\:\\:getProductOptionRelations\\(\\) has parameter \\$offset with no typehint specified\\.$#"
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductOptionRelationService\\:\\:getProductOptionRelations\\(\\) has parameter \\$offset with no type specified\\.$#"
 			count: 1
 			path: Service/ProductOptionRelationService.php
 
@@ -1555,17 +1370,17 @@ parameters:
 			path: Service/ProductOptionRelationService.php
 
 		-
-			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductPropertyRelationService\\:\\:getProductPropertyRelations\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductPropertyRelationService\\:\\:getProductPropertyRelations\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Service/ProductPropertyRelationService.php
 
 		-
-			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductPropertyRelationService\\:\\:getProductPropertyRelations\\(\\) has parameter \\$limit with no typehint specified\\.$#"
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductPropertyRelationService\\:\\:getProductPropertyRelations\\(\\) has parameter \\$limit with no type specified\\.$#"
 			count: 1
 			path: Service/ProductPropertyRelationService.php
 
 		-
-			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductPropertyRelationService\\:\\:getProductPropertyRelations\\(\\) has parameter \\$offset with no typehint specified\\.$#"
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductPropertyRelationService\\:\\:getProductPropertyRelations\\(\\) has parameter \\$offset with no type specified\\.$#"
 			count: 1
 			path: Service/ProductPropertyRelationService.php
 
@@ -1590,7 +1405,7 @@ parameters:
 			path: Service/ProductService.php
 
 		-
-			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductService\\:\\:buildIdentifierMappings\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductService\\:\\:buildIdentifierMappings\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Service/ProductService.php
 
@@ -1670,7 +1485,7 @@ parameters:
 			path: Service/RequirementsValidatorService.php
 
 		-
-			message: "#^Method SwagMigrationConnector\\\\Service\\\\RequirementsValidatorService\\:\\:validate\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\RequirementsValidatorService\\:\\:validate\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Service/RequirementsValidatorService.php
 
@@ -1680,7 +1495,7 @@ parameters:
 			path: Service/RequirementsValidatorService.php
 
 		-
-			message: "#^Method SwagMigrationConnector\\\\Service\\\\SeoUrlService\\:\\:extractTypeInformation\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\SeoUrlService\\:\\:extractTypeInformation\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Service/SeoUrlService.php
 
@@ -1735,7 +1550,7 @@ parameters:
 			path: Service/VoteService.php
 
 		-
-			message: "#^Method SwagMigrationConnector\\\\Service\\\\VoucherService\\:\\:assignAssociatedData\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\VoucherService\\:\\:assignAssociatedData\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Service/VoucherService.php
 
@@ -1765,7 +1580,7 @@ parameters:
 			path: Tests/Functional/Service/TranslationServiceTest.php
 
 		-
-			message: "#^Method SwagMigrationConnector\\\\Util\\\\RepositoryRegistry\\:\\:__construct\\(\\) has parameter \\$repositories with no typehint specified\\.$#"
+			message: "#^Method SwagMigrationConnector\\\\Util\\\\RepositoryRegistry\\:\\:__construct\\(\\) has parameter \\$repositories with no type specified\\.$#"
 			count: 1
 			path: Util/RepositoryRegistry.php
 
