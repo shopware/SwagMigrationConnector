@@ -7,7 +7,6 @@
 
 namespace SwagMigrationConnector\Service;
 
-use Shopware\Bundle\MediaBundle\MediaServiceInterface;
 use Shopware\Components\Model\ModelManager;
 use Shopware\Models\Shop\Shop;
 use SwagMigrationConnector\Repository\ApiRepositoryInterface;
@@ -25,19 +24,12 @@ class CategoryService extends AbstractApiService
      */
     private $modelManager;
 
-    /**
-     * @var MediaServiceInterface
-     */
-    private $mediaService;
-
     public function __construct(
         ApiRepositoryInterface $categoryRepository,
-        ModelManager $modelManager,
-        MediaServiceInterface $mediaService
+        ModelManager $modelManager
     ) {
         $this->categoryRepository = $categoryRepository;
         $this->modelManager = $modelManager;
-        $this->mediaService = $mediaService;
     }
 
     /**

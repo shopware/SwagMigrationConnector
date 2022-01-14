@@ -54,10 +54,9 @@ class PluginInformationService
             $request = new PluginsByTechnicalNameRequest($locale, $this->shopwareVersion, ['SwagMigrationConnector']);
             $localVersion = $this->getInstalledVersion();
 
-            /** @var PluginStruct $pluginStruct */
             $pluginStruct = $this->pluginStoreService->getPlugin($request);
 
-            if (empty($pluginStruct)) {
+            if (!$pluginStruct instanceof PluginStruct) {
                 return null;
             }
 
@@ -80,9 +79,6 @@ class PluginInformationService
             ->from('s_core_plugins', 'plugin')
             ->where('plugin.name = "SwagMigrationConnector"');
 
-        /** @var \PDOStatement $statement */
-        $statement = $query->execute();
-
-        return $statement->fetch(\PDO::FETCH_COLUMN);
+        return $query->execute()->fetch(\PDO::FETCH_COLUMN);
     }
 }

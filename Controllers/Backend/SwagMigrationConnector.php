@@ -93,6 +93,9 @@ class Shopware_Controllers_Backend_SwagMigrationConnector extends Shopware_Contr
                     continue;
                 }
                 $releaseDate = \strtotime($recommendation['targetPlugin']['releaseDate']);
+                if (!\is_int($releaseDate)) {
+                    continue;
+                }
 
                 if (\time() >= $releaseDate) {
                     $recommendation['type'] = 'targetPluginReleased';
