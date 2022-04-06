@@ -6,6 +6,8 @@ variables:
     MYSQL_USER: app
     MYSQL_PASSWORD: app
     MYSQL_DATABASE: shopware
+    SW_HOST: "localhost"
+    SW_BASE_PATH: ""
     WEB_DOCUMENT_ROOT: $CI_PROJECT_DIR/
     GIT_STRATEGY: clone
     SHOPWARE_ENV: swagmigrationconnectortest
@@ -35,6 +37,17 @@ default:
         - php bin/console sw:plugin:install --activate ${PLUGIN_NAME}
         - php bin/console sw:cache:clear
         - /entrypoint supervisord &>/dev/null &
+
+.prepare_installation_script_install_shopware: &prepare_installation_script_install_shopware
+    - sed -e "s/%db\.user%/${MYSQL_USER}/g" -e "s/%db\.password%/${MYSQL_PASSWORD}/g" -e "s/%db\.database%/${MYSQL_DATABASE}/g" -e "s/%db\.host%/mysql/g" -e "s/%db\.port%/3306/g" < config.php.dist > config.php
+    - php bin/console sw:database:setup --steps=drop,create,import,importDemodata
+    - php bin/console sw:cache:clear
+    - php bin/console sw:database:setup --steps=setupShop --shop-url=http://${SW_HOST}${SW_BASE_PATH}
+    - php bin/console sw:snippets:to:db --include-plugins
+    - php bin/console sw:theme:initialize
+    - php bin/console sw:firstrunwizard:disable
+    - php bin/console sw:admin:create --name="Demo" --email="demo@demo.de" --username="demo" --password="demo" --locale=de_DE -n
+    - touch recovery/install/data/install.lock
 
 PHP analyze:
     stage: Code Analysis
@@ -77,7 +90,8 @@ Code Coverage:
         - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.shopware.com/shopware/5/product/shopware.git shopware --depth=1 -b ${CHECKOUT_SHOPWARE_BRANCH}
         - unzip -q plugin.zip -d shopware/custom/plugins/${PLUGIN_NAME}
         - cd shopware
-        - ./psh.phar init --SW_HOST="localhost"
+        - composer install -q
+        - *prepare_installation_script_install_shopware
         - php bin/console sw:plugin:refresh
         - php bin/console sw:plugin:list
         - php bin/console sw:plugin:install --activate ${PLUGIN_NAME}
@@ -94,20 +108,14 @@ Code Coverage:
 SW 5.4:
     stage: PHPUnit
     extends: .SW older versions
-    image: shopware/5-continuous:5.6
-    before_script:
-        - sed -i 's/^mozilla\/DST_Root_CA_X3.crt$/!mozilla\/DST_Root_CA_X3.crt/' /etc/ca-certificates.conf # https://letsencrypt.org/docs/dst-root-ca-x3-expiration-september-2021/
-        - update-ca-certificates -f
+    image: gitlab.shopware.com:5005/shopware/5/product/image/continuous:5.6
     variables:
         CHECKOUT_SHOPWARE_BRANCH: "5.4"
 
 SW 5.5:
     stage: PHPUnit
     extends: .SW older versions
-    image: shopware/5-continuous:5.6
-    before_script:
-        - sed -i 's/^mozilla\/DST_Root_CA_X3.crt$/!mozilla\/DST_Root_CA_X3.crt/' /etc/ca-certificates.conf # https://letsencrypt.org/docs/dst-root-ca-x3-expiration-september-2021/
-        - update-ca-certificates -f
+    image: gitlab.shopware.com:5005/shopware/5/product/image/continuous:5.6
     variables:
         CHECKOUT_SHOPWARE_BRANCH: "5.5"
     only:
