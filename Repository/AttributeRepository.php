@@ -56,7 +56,6 @@ SQL;
         return $this->connection->executeQuery(
             $sql,
             [
-                'pos' => $table,
                 'table' => $table . '%',
             ]
         )->fetchAll();
