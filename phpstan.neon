@@ -9,8 +9,13 @@ parameters:
         container_xml_path: ../../../var/cache/production____REVISION___/container.xml
         console_application_loader: ../../../tests/phpstan-console-application.php
     doctrine:
+        queryBuilderClass: Shopware\Components\Model\QueryBuilder
         repositoryClass: Shopware\Components\Model\ModelRepository
         objectManagerLoader: ../../../tests/phpstan-doctrine-model-manager.php
+    scanDirectories:
+        - ../../../var/cache/production____REVISION___/doctrine
+    bootstrapFiles:
+        - ../../../tests/phpstan-dba-bootstrap.php
     excludePaths:
         - .githooks
         - vendor
