@@ -73,6 +73,10 @@ class Shopware_Controllers_Api_SwagMigrationOrderDocuments extends SwagMigration
                 fwrite($downstream, $read);
                 flush();
             }
+
+            fclose($downstream);
+            fclose($upstream);
+            $this->closeResponse();
         } else {
             // Disable Smarty rendering
             $this->Front()->Plugins()->ViewRenderer()->setNoRender();
@@ -81,6 +85,8 @@ class Shopware_Controllers_Api_SwagMigrationOrderDocuments extends SwagMigration
             $this->setDownloadHeaders($filePath, $orderNumber);
 
             \readfile($filePath);
+
+            $this->closeResponse();
         }
     }
 
@@ -104,5 +110,16 @@ class Shopware_Controllers_Api_SwagMigrationOrderDocuments extends SwagMigration
         $response->setHeader('Content-Transfer-Encoding', 'binary');
         $response->setHeader('Content-Length', $fileSize);
         $response->sendHeaders();
+    }
+
+    /*
+     * Taken from \Symfony\Component\HttpFoundation\Response::send
+     */
+    private function closeResponse() {
+        if (function_exists('fastcgi_finish_request')) {
+            fastcgi_finish_request();
+        } elseif ('cli' !== PHP_SAPI) {
+            static::closeOutputBuffers(0, true);
+        }
     }
 }
