@@ -77,6 +77,10 @@ class Shopware_Controllers_Api_SwagMigrationOrderDocuments extends Shopware_Cont
             $upstream = $documentService->readFile($filePath);
             $downstream = \fopen('php://output', 'rb');
             \stream_copy_to_stream($upstream, $downstream);
+
+            fclose($downstream);
+            fclose($upstream);
+            exit;
         } else {
             // Disable Smarty rendering
             $this->Front()->Plugins()->ViewRenderer()->setNoRender();
