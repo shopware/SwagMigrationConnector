@@ -60,10 +60,10 @@ class PluginInformationService
                 return null;
             }
 
-            return (\version_compare(
+            return \version_compare(
                 $pluginStruct->getVersion(),
                 $localVersion
-            )) === 1;
+            ) === 1;
         } catch (Exception $e) {
             return null;
         }
