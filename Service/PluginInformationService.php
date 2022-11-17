@@ -8,7 +8,6 @@
 namespace SwagMigrationConnector\Service;
 
 use Doctrine\DBAL\Connection;
-use Exception;
 use Shopware\Bundle\PluginInstallerBundle\Context\PluginsByTechnicalNameRequest;
 use Shopware\Bundle\PluginInstallerBundle\Service\PluginStoreService;
 use Shopware\Bundle\PluginInstallerBundle\Struct\PluginStruct;
@@ -64,7 +63,7 @@ class PluginInformationService
                 $pluginStruct->getVersion(),
                 $localVersion
             ) === 1;
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             return null;
         }
     }

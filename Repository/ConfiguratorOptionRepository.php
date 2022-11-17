@@ -7,7 +7,6 @@
 
 namespace SwagMigrationConnector\Repository;
 
-use PDO;
 use SwagMigrationConnector\Util\DefaultEntities;
 use SwagMigrationConnector\Util\TotalStruct;
 
@@ -109,7 +108,7 @@ SQL;
         $statement = $this->connection->prepare($sql);
         $statement->bindValue('limit', $limit, \PDO::PARAM_INT);
         $statement->bindValue('offset', $offset, \PDO::PARAM_INT);
-        $statement->setFetchMode(PDO::FETCH_ASSOC);
+        $statement->setFetchMode(\PDO::FETCH_ASSOC);
         $statement->execute();
 
         return $statement->fetchAll();
