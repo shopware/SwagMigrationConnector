@@ -29,6 +29,7 @@ class OrderServiceTest extends TestCase
         static::assertArrayHasKey('shippingaddress', $orders[0]);
         static::assertArrayHasKey('payment', $orders[0]);
         static::assertArrayHasKey('details', $orders[0]);
+        static::assertArrayHasKey('esd', $orders[0]['details'][0]);
     }
 
     /**

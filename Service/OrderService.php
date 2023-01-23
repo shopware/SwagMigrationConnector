@@ -63,6 +63,8 @@ class OrderService extends AbstractApiService
      */
     protected function appendAssociatedData(array $orders)
     {
+        $esdConfig = $this->orderRepository->getEsdConfig();
+        $orderEsd = $this->getOrderEsd();
         $orderDetails = $this->getOrderDetails();
         $orderDocuments = $this->getOrderDocuments();
 
@@ -76,6 +78,10 @@ class OrderService extends AbstractApiService
             $order['_locale'] = $locale;
             if (isset($orderDetails[$order['id']])) {
                 $order['details'] = $orderDetails[$order['id']];
+
+                if (isset($orderEsd[$order['id']])) {
+                    $this->setEsd($order, $orderEsd, $esdConfig);
+                }
             }
             if (isset($orderDocuments[$order['id']])) {
                 $order['documents'] = $orderDocuments[$order['id']];
@@ -99,7 +105,56 @@ class OrderService extends AbstractApiService
     }
 
     /**
-     * @return array
+     * @return array<string>
+     */
+    private function getOrderEsd()
+    {
+        $fetchedEsd = $this->orderRepository->fetchOrderEsd($this->orderIds);
+
+        /** @var array<string> $result */
+        $result = [];
+        $esdArray = $this->mapData($fetchedEsd, [], ['esd', 'downloadAvailablePaymentStatus']);
+
+        foreach ($esdArray as $key => $esdOrder) {
+            foreach ($esdOrder as $esd) {
+                if (isset($esd['orderdetailsID']) && !isset($result[$key][$esd['orderdetailsID']])) {
+                    $result[$key][$esd['orderdetailsID']] = $esd;
+                }
+            }
+        }
+
+        return $result;
+    }
+
+    /**
+     * @param array<mixed> $order
+     * @param array<mixed> $esdArray
+     * @param string|null  $esdConfig
+     *
+     * @return void
+     */
+    private function setEsd(array &$order, array $esdArray, $esdConfig)
+    {
+        if (!isset($order['id'])) {
+            return;
+        }
+
+        $orderId = $order['id'];
+        foreach ($order['details'] as &$detail) {
+            if (!isset($detail['id'])) {
+                continue;
+            }
+
+            $orderDetailId = $detail['id'];
+            if (isset($esdArray[$orderId][$orderDetailId])) {
+                $detail['esd'] = $esdArray[$orderId][$orderDetailId];
+                $detail['esd']['downloadAvailablePaymentStatus'] = $esdConfig;
+            }
+        }
+    }
+
+    /**
+     * @return array<mixed>
      */
     private function getOrderDocuments()
     {

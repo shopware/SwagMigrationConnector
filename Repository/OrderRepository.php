@@ -128,9 +128,49 @@ class OrderRepository extends AbstractRepository
     }
 
     /**
+     * @param array<string> $orderIds
+     *
+     * @return array<string>
+     */
+    public function fetchOrderEsd($orderIds)
+    {
+        $query = $this->connection->createQueryBuilder();
+
+        $query->select('esd.orderID, esd.orderdetailsID');
+        $query->from('s_order_esd', 'esd');
+        $this->addTableSelection($query, 's_order_esd', 'esd');
+
+        $query->where('esd.orderID IN (:ids)');
+        $query->setParameter('ids', $orderIds, Connection::PARAM_INT_ARRAY);
+        $query->setParameter('esdConfigName', 'downloadAvailablePaymentStatus');
+
+        return $query->execute()->fetchAll(\PDO::FETCH_GROUP);
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getEsdConfig()
+    {
+        $query = $this->connection->createQueryBuilder();
+
+        $query->select('ifnull(currentConfig.value, defaultConfig.value) as configValue');
+        $query->from('s_core_config_elements', 'defaultConfig');
+
+        $query->leftJoin('defaultConfig', 's_core_config_values', 'currentConfig', 'defaultConfig.id =  currentConfig.element_id');
+
+        $query->where('defaultConfig.name = :esdConfigName');
+        $query->setParameter('esdConfigName', 'downloadAvailablePaymentStatus');
+
+        return $query->execute()->fetch(\PDO::FETCH_COLUMN);
+    }
+
+    /**
+     * @param array $orderIds
+     *
      * @return array
      */
-    public function fetchOrderDocuments(array $orderIds)
+    public function fetchOrderDocuments($orderIds)
     {
         $query = $this->connection->createQueryBuilder();
 

@@ -54,6 +54,11 @@
             <argument type="service" id="models" />
         </service>
 
+        <service id="swag_migration_connector.service.esd_service" class="SwagMigrationConnector\Service\EsdService" public="true">
+            <argument type="service" id="shopware.filesystem.private" on-invalid="null"/>
+            <argument type="service" id="dbal_connection"/>
+        </service>
+
         <service id="swag_migration_connector.service.translation_service" class="SwagMigrationConnector\Service\TranslationService" public="true">
             <argument type="service" id="swag_migration_connector.repository.translation_repository" />
         </service>
