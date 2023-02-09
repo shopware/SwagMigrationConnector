@@ -30,6 +30,17 @@ class OrderServiceTest extends TestCase
         static::assertArrayHasKey('payment', $orders[0]);
         static::assertArrayHasKey('details', $orders[0]);
         static::assertArrayHasKey('esd', $orders[0]['details'][0]);
+
+        static::assertSame([
+            'orderdetailsID' => '42',
+            'id' => '1',
+            'serialID' => '2',
+            'esdID' => '1',
+            'userID' => '2',
+            'orderID' => '15',
+            'datum' => '2012-08-30 10:15:54',
+            'downloadAvailablePaymentStatus' => 'a:1:{i:0;i:12;}',
+        ], $orders[0]['details'][0]['esd']);
     }
 
     /**

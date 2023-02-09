@@ -7,6 +7,8 @@
 
 use Shopware\Models\User\Role;
 use SwagMigrationConnector\Exception\DocumentNotFoundException;
+use SwagMigrationConnector\Exception\FileNotReadableException;
+use SwagMigrationConnector\Exception\OrderNotFoundException;
 use SwagMigrationConnector\Exception\PermissionDeniedException;
 use SwagMigrationConnector\Exception\UnsecureRequestException;
 use SwagMigrationConnector\Service\ControllerReturnStruct;
@@ -40,6 +42,9 @@ class Shopware_Controllers_Api_SwagMigrationOrderDocuments extends Shopware_Cont
         throw new PermissionDeniedException('Permission denied. API user does not have sufficient rights for this action or could not be authenticated.', Response::HTTP_UNAUTHORIZED);
     }
 
+    /**
+     * @return void
+     */
     public function indexAction()
     {
         $offset = (int) $this->Request()->getParam('offset', 0);
@@ -53,7 +58,9 @@ class Shopware_Controllers_Api_SwagMigrationOrderDocuments extends Shopware_Cont
     }
 
     /**
-     * Delivers an order document by its hash for download.
+     * Delivers an order document by its hash for download.#
+     *
+     * @return void
      */
     public function getAction()
     {
@@ -71,11 +78,20 @@ class Shopware_Controllers_Api_SwagMigrationOrderDocuments extends Shopware_Cont
 
         $orderNumber = $documentService->getOrderNumberByDocumentHash($documentHash);
 
+        if (!\is_string($orderNumber)) {
+            throw new OrderNotFoundException();
+        }
+
         if ($documentService->existsFileSystem()) {
             $this->setDownloadHeaders($filePath, $orderNumber);
 
             $upstream = $documentService->readFile($filePath);
             $downstream = \fopen('php://output', 'rb');
+
+            if ($upstream === false || $downstream === false) {
+                throw new FileNotReadableException();
+            }
+
             \stream_copy_to_stream($upstream, $downstream);
         } else {
             // Disable Smarty rendering
@@ -91,10 +107,14 @@ class Shopware_Controllers_Api_SwagMigrationOrderDocuments extends Shopware_Cont
     /**
      * @param string $filePath
      * @param string $orderNumber
+     *
+     * @return void
      */
     private function setDownloadHeaders($filePath, $orderNumber)
     {
         $documentService = $this->container->get('swag_migration_connector.service.document_service');
+        $fileSize = $documentService->getFileSize($filePath);
+        $fileSize = (string) (($fileSize === false) ? 0 : $fileSize);
 
         $response = $this->Response();
         $response->setHeader('Cache-Control', 'public');
@@ -102,7 +122,7 @@ class Shopware_Controllers_Api_SwagMigrationOrderDocuments extends Shopware_Cont
         $response->setHeader('Content-disposition', 'attachment; filename=' . $orderNumber . '.pdf');
         $response->setHeader('Content-Type', 'application/pdf');
         $response->setHeader('Content-Transfer-Encoding', 'binary');
-        $response->setHeader('Content-Length', $documentService->getFileSize($filePath));
+        $response->setHeader('Content-Length', $fileSize);
         $response->sendHeaders();
         $response->sendResponse();
     }

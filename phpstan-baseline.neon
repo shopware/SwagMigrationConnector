@@ -71,31 +71,6 @@ parameters:
 			path: Controllers/Api/SwagMigrationEnvironment.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationEsdFiles\\:\\:getAction\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationEsdFiles.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationEsdFiles\\:\\:setDownloadHeaders\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationEsdFiles.php
-
-		-
-			message: "#^Parameter \\#1 \\$source of function stream_copy_to_stream expects resource, resource\\|false given\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationEsdFiles.php
-
-		-
-			message: "#^Parameter \\#2 \\$dest of function stream_copy_to_stream expects resource, resource\\|false given\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationEsdFiles.php
-
-		-
-			message: "#^Parameter \\#2 \\$value of method Enlight_Controller_Response_ResponseHttp\\:\\:setHeader\\(\\) expects string, int\\|false given\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationEsdFiles.php
-
-		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationLanguages\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationLanguages.php
@@ -134,41 +109,6 @@ parameters:
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderDocumentAttributes\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationOrderDocumentAttributes.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderDocuments\\:\\:getAction\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationOrderDocuments.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderDocuments\\:\\:indexAction\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationOrderDocuments.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderDocuments\\:\\:setDownloadHeaders\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationOrderDocuments.php
-
-		-
-			message: "#^Parameter \\#1 \\$source of function stream_copy_to_stream expects resource, resource\\|false given\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationOrderDocuments.php
-
-		-
-			message: "#^Parameter \\#2 \\$dest of function stream_copy_to_stream expects resource, resource\\|false given\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationOrderDocuments.php
-
-		-
-			message: "#^Parameter \\#2 \\$orderNumber of method Shopware_Controllers_Api_SwagMigrationOrderDocuments\\:\\:setDownloadHeaders\\(\\) expects string, bool\\|string given\\.$#"
-			count: 2
-			path: Controllers/Api/SwagMigrationOrderDocuments.php
-
-		-
-			message: "#^Parameter \\#2 \\$value of method Enlight_Controller_Response_ResponseHttp\\:\\:setHeader\\(\\) expects string, int\\|false given\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationOrderDocuments.php
 
 		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderNotes\\:\\:indexAction\\(\\) has no return type specified\\.$#"
@@ -832,11 +772,6 @@ parameters:
 
 		-
 			message: "#^Method SwagMigrationConnector\\\\Service\\\\AttributeService\\:\\:getAttributeConfiguration\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Service/AttributeService.php
-
-		-
-			message: "#^Parameter \\#3 \\$length of function substr expects int, int\\<0, max\\>\\|false given\\.$#"
 			count: 1
 			path: Service/AttributeService.php
 

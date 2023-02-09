@@ -62,7 +62,8 @@ class AttributeService
         foreach ($attributeConfigTranslations as $translation) {
             $name = \str_replace($table . '_', '', $translation['name']);
             $field = \substr($translation['name'], \strrpos($translation['name'], '_') + 1);
-            $column = \substr($name, 0, \strrpos($name, '_'));
+            $length = \strrpos($name, '_');
+            $column = \substr($name, 0, ($length === false) ? 0 : $length);
 
             if (!isset($attributeConfiguration[$column]['translations'][$field])) {
                 $attributeConfiguration[$column]['translations'][$field] = [];
