@@ -29,16 +29,16 @@ class Shopware_Controllers_Api_SwagMigrationEsdFiles extends Shopware_Controller
             throw new UnsecureRequestException('SSL required', Response::HTTP_UPGRADE_REQUIRED);
         }
 
-        if ($this->container->initialized('auth')) {
-            /** @var Role $role */
-            $role = $this->container->get('auth')->getIdentity()->role;
-
-            if ($role->getAdmin()) {
-                return;
-            }
+        if (!$this->container->initialized('auth')) {
+            throw new PermissionDeniedException('Permission denied. API user does not have sufficient rights for this action or could not be authenticated.', Response::HTTP_UNAUTHORIZED);
         }
 
-        throw new PermissionDeniedException('Permission denied. API user does not have sufficient rights for this action or could not be authenticated.', Response::HTTP_UNAUTHORIZED);
+        /** @var Role $role */
+        $role = $this->container->get('auth')->getIdentity()->role;
+
+        if (!$role->getAdmin()) {
+            throw new PermissionDeniedException('Permission denied. API user does not have sufficient rights for this action or could not be authenticated.', Response::HTTP_UNAUTHORIZED);
+        }
     }
 
     /**
@@ -58,25 +58,27 @@ class Shopware_Controllers_Api_SwagMigrationEsdFiles extends Shopware_Controller
             throw new FileNotFoundException('File not found', 404);
         }
 
-        if ($esdService->existsFileSystem()) {
-            $fileName = basename($filePath);
-            $mimeType = $esdService->getMimeType($filePath);
-
-            if (!\is_string($mimeType)) {
-                throw new FileNotFoundException('File not found', 404);
-            }
-
-            $this->setDownloadHeaders($filePath, $fileName, $mimeType);
-
-            $upstream = $esdService->readFile($filePath);
-            $downstream = \fopen('php://output', 'rb');
-
-            if ($upstream === false || $downstream === false) {
-                throw new FileNotReadableException('File is not readable');
-            }
-
-            \stream_copy_to_stream($upstream, $downstream);
+        if (!$esdService->existsFileSystem()) {
+            return;
         }
+
+        $fileName = basename($filePath);
+        $mimeType = $esdService->getMimeType($filePath);
+
+        if (!\is_string($mimeType)) {
+            throw new FileNotFoundException('File not found', 404);
+        }
+
+        $this->setDownloadHeaders($filePath, $fileName, $mimeType);
+
+        $upstream = $esdService->readFile($filePath);
+        $downstream = \fopen('php://output', 'rb');
+
+        if ($upstream === false || $downstream === false) {
+            throw new FileNotReadableException('File is not readable');
+        }
+
+        \stream_copy_to_stream($upstream, $downstream);
     }
 
     /**

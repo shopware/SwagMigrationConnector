@@ -13,6 +13,8 @@ use SwagMigrationConnector\Util\TotalStruct;
 
 class OrderRepository extends AbstractRepository
 {
+    const DOWNLOAD_AVAILABLE_PAYMENT_STATUS = 'downloadAvailablePaymentStatus';
+
     /**
      * {@inheritdoc}
      */
@@ -142,7 +144,7 @@ class OrderRepository extends AbstractRepository
 
         $query->where('esd.orderID IN (:ids)');
         $query->setParameter('ids', $orderIds, Connection::PARAM_INT_ARRAY);
-        $query->setParameter('esdConfigName', 'downloadAvailablePaymentStatus');
+        $query->setParameter('esdConfigName', self::DOWNLOAD_AVAILABLE_PAYMENT_STATUS);
 
         return $query->execute()->fetchAll(\PDO::FETCH_GROUP);
     }
@@ -160,7 +162,7 @@ class OrderRepository extends AbstractRepository
         $query->leftJoin('defaultConfig', 's_core_config_values', 'currentConfig', 'defaultConfig.id =  currentConfig.element_id');
 
         $query->where('defaultConfig.name = :esdConfigName');
-        $query->setParameter('esdConfigName', 'downloadAvailablePaymentStatus');
+        $query->setParameter('esdConfigName', self::DOWNLOAD_AVAILABLE_PAYMENT_STATUS);
 
         return $query->execute()->fetch(\PDO::FETCH_COLUMN);
     }

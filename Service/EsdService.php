@@ -7,25 +7,14 @@
 
 namespace SwagMigrationConnector\Service;
 
-use Doctrine\DBAL\Connection;
 use League\Flysystem\FilesystemInterface;
 
 class EsdService extends AbstractApiService
 {
     /**
-     * @var Connection
-     */
-    protected $connection;
-
-    /**
-     * @var string
-     */
-    protected $esdFolderName;
-
-    /**
      * @var bool
      */
-    private $existsFileSystem;
+    private $isFileSystemExisting;
 
     /**
      * @var FilesystemInterface|null
@@ -33,37 +22,10 @@ class EsdService extends AbstractApiService
     private $fileSystem;
 
     public function __construct(
-        $fileSystem,
-        Connection $connection
+        $fileSystem
     ) {
-        $this->existsFileSystem = $fileSystem !== null && \is_subclass_of($fileSystem, 'League\Flysystem\FilesystemInterface');
+        $this->isFileSystemExisting = \is_subclass_of($fileSystem, 'League\Flysystem\FilesystemInterface');
         $this->fileSystem = $fileSystem;
-        $this->connection = $connection;
-    }
-
-    /**
-     * @param string $fileName
-     *
-     * @return string
-     */
-    public function getFilePath($fileName)
-    {
-        if ($this->existsFileSystem) {
-            if (!$this->esdFolderName && $this->getEsdDirectoryName() !== false) {
-                $this->esdFolderName = \unserialize($this->getEsdDirectoryName(), ['allowed_classes' => false]);
-            }
-
-            if (!$this->esdFolderName) {
-                return '';
-            }
-
-            return \sprintf('%s/%s', $this->esdFolderName, $fileName);
-        }
-
-        /** @var string $downloadDir */
-        $downloadDir = Shopware()->Container()->getParameter('shopware.app.downloadsdir');
-
-        return \sprintf('%s/%s', $downloadDir, \basename($fileName));
     }
 
     /**
@@ -71,7 +33,7 @@ class EsdService extends AbstractApiService
      */
     public function existsFileSystem()
     {
-        return $this->existsFileSystem;
+        return $this->isFileSystemExisting;
     }
 
     /**
@@ -81,7 +43,7 @@ class EsdService extends AbstractApiService
      */
     public function fileExists($filePath)
     {
-        if ($this->existsFileSystem && $this->fileSystem !== null) {
+        if ($this->isFileSystemExisting && $this->fileSystem !== null) {
             return $this->fileSystem->has($filePath);
         }
 
@@ -95,7 +57,7 @@ class EsdService extends AbstractApiService
      */
     public function getMimeType($filePath)
     {
-        if ($this->existsFileSystem && $this->fileSystem !== null) {
+        if ($this->isFileSystemExisting && $this->fileSystem !== null) {
             return $this->fileSystem->getMimetype($filePath);
         }
 
@@ -109,7 +71,7 @@ class EsdService extends AbstractApiService
      */
     public function getFileSize($filePath)
     {
-        if ($this->existsFileSystem && $this->fileSystem !== null) {
+        if ($this->isFileSystemExisting && $this->fileSystem !== null) {
             return $this->fileSystem->getSize($filePath);
         }
 
@@ -128,35 +90,5 @@ class EsdService extends AbstractApiService
         }
 
         return $this->fileSystem->readStream($filePath);
-    }
-
-    /**
-     * @param string $id
-     *
-     * @return bool|string
-     */
-    public function getFilenameById($id)
-    {
-        return $this->connection->createQueryBuilder()
-            ->select('file')
-            ->from('s_articles_esd', 'esd')
-            ->where('esd.id = :id')
-            ->setParameter('id', $id)
-            ->execute()
-            ->fetchColumn();
-    }
-
-    /**
-     * @return false|string
-     */
-    private function getEsdDirectoryName()
-    {
-        return $this->connection->createQueryBuilder()
-            ->select('value')
-            ->from('s_core_config_elements', 'config')
-            ->where('config.name = :nameConfig')
-            ->setParameter('nameConfig', 'esdKey')
-            ->execute()
-            ->fetchColumn();
     }
 }
