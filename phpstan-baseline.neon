@@ -111,41 +111,6 @@ parameters:
 			path: Controllers/Api/SwagMigrationOrderDocumentAttributes.php
 
 		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderDocuments\\:\\:getAction\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationOrderDocuments.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderDocuments\\:\\:indexAction\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationOrderDocuments.php
-
-		-
-			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderDocuments\\:\\:setDownloadHeaders\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationOrderDocuments.php
-
-		-
-			message: "#^Parameter \\#1 \\$source of function stream_copy_to_stream expects resource, resource\\|false given\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationOrderDocuments.php
-
-		-
-			message: "#^Parameter \\#2 \\$dest of function stream_copy_to_stream expects resource, resource\\|false given\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationOrderDocuments.php
-
-		-
-			message: "#^Parameter \\#2 \\$orderNumber of method Shopware_Controllers_Api_SwagMigrationOrderDocuments\\:\\:setDownloadHeaders\\(\\) expects string, bool\\|string given\\.$#"
-			count: 2
-			path: Controllers/Api/SwagMigrationOrderDocuments.php
-
-		-
-			message: "#^Parameter \\#2 \\$value of method Enlight_Controller_Response_ResponseHttp\\:\\:setHeader\\(\\) expects string, int\\|false given\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationOrderDocuments.php
-
-		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationOrderNotes\\:\\:indexAction\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationOrderNotes.php
@@ -289,6 +254,7 @@ parameters:
 			message: "#^PHPDoc tag @param has invalid value \\(array\\)\\: Unexpected token \"\\\\n     \\*\", expected variable at offset 23$#"
 			count: 1
 			path: Repository/ApiRepositoryInterface.php
+
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\AssetRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
@@ -308,6 +274,7 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\AttributeRepository\\:\\:getAttributeConfiguration\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/AttributeRepository.php
+
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\CategoryRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
@@ -347,6 +314,7 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\CrossSellingRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/CrossSellingRepository.php
+
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\CurrencyRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
@@ -356,6 +324,7 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\CurrencyRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/CurrencyRepository.php
+
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\CustomerGroupRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
@@ -365,6 +334,7 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\CustomerGroupRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/CustomerGroupRepository.php
+
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\CustomerRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
@@ -404,6 +374,7 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\CustomerRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/CustomerRepository.php
+
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\DispatchRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
@@ -453,6 +424,7 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\DispatchRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/DispatchRepository.php
+
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\DocumentRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
@@ -462,6 +434,7 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\DocumentRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/DocumentRepository.php
+
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\DynamicRepository\\:\\:fetch\\(\\) has parameter \\$filter with no value type specified in iterable type array\\.$#"
 			count: 1
@@ -471,6 +444,7 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\DynamicRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/DynamicRepository.php
+
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\EnvironmentRepository\\:\\:addTableSelection\\(\\) has no return type specified\\.$#"
 			count: 1
@@ -490,6 +464,7 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\MainVariantRelationRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/MainVariantRelationRepository.php
+
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\NewsletterRecipientRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
@@ -544,6 +519,7 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\NumberRangeRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/NumberRangeRepository.php
+
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\OrderNoteRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
@@ -553,6 +529,7 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\OrderNoteRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/OrderNoteRepository.php
+
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\OrderRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
@@ -582,6 +559,7 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\OrderRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/OrderRepository.php
+
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductOptionRelationRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
@@ -591,6 +569,7 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductOptionRelationRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/ProductOptionRelationRepository.php
+
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductPropertyRelationRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
@@ -600,6 +579,7 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductPropertyRelationRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/ProductPropertyRelationRepository.php
+
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
@@ -636,16 +616,6 @@ parameters:
 			path: Repository/ProductRepository.php
 
 		-
-			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductRepository\\:\\:fetchProductCategories\\(\\) has parameter \\$productIds with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Repository/ProductRepository.php
-
-		-
-			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductRepository\\:\\:fetchProductCategories\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Repository/ProductRepository.php
-
-		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductRepository\\:\\:fetchProductConfiguratorOptions\\(\\) has parameter \\$variantIds with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/ProductRepository.php
@@ -666,16 +636,6 @@ parameters:
 			path: Repository/ProductRepository.php
 
 		-
-			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductRepository\\:\\:fetchShopsByCategories\\(\\) has parameter \\$categories with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Repository/ProductRepository.php
-
-		-
-			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductRepository\\:\\:fetchShopsByCategories\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Repository/ProductRepository.php
-
-		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductRepository\\:\\:fetchVariantAssets\\(\\) has parameter \\$variantIds with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/ProductRepository.php
@@ -689,6 +649,7 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/ProductRepository.php
+
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\SeoUrlRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
@@ -698,6 +659,7 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\SeoUrlRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/SeoUrlRepository.php
+
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ShopRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
@@ -707,6 +669,7 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ShopRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/ShopRepository.php
+
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\TranslationRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
@@ -716,6 +679,7 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\TranslationRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/TranslationRepository.php
+
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\VoteRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
@@ -725,6 +689,7 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\VoteRepository\\:\\:requiredForCount\\(\\) has parameter \\$entities with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/VoteRepository.php
+
 		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\VoucherRepository\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
@@ -791,11 +756,6 @@ parameters:
 			path: Service/AbstractApiService.php
 
 		-
-			message: "#^Method SwagMigrationConnector\\\\Service\\\\AbstractApiService\\:\\:mapData\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Service/AbstractApiService.php
-
-		-
 			message: "#^Method SwagMigrationConnector\\\\Service\\\\AssetService\\:\\:getAssets\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Service/AssetService.php
@@ -812,11 +772,6 @@ parameters:
 
 		-
 			message: "#^Method SwagMigrationConnector\\\\Service\\\\AttributeService\\:\\:getAttributeConfiguration\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Service/AttributeService.php
-
-		-
-			message: "#^Parameter \\#3 \\$length of function substr expects int, int\\<0, max\\>\\|false given\\.$#"
 			count: 1
 			path: Service/AttributeService.php
 
@@ -854,6 +809,7 @@ parameters:
 			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\CheckerInterface\\:\\:validate\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Service/Checker/CheckerInterface.php
+
 		-
 			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\LicenseCheck\\:\\:__construct\\(\\) has parameter \\$endpoint with no type specified\\.$#"
 			count: 1
@@ -1125,6 +1081,11 @@ parameters:
 			path: Service/EnvironmentService.php
 
 		-
+			message: "#^Method SwagMigrationConnector\\\\Service\\\\EsdService\\:\\:__construct\\(\\) has parameter \\$fileSystem with no type specified\\.$#"
+			count: 1
+			path: Service/EsdService.php
+
+		-
 			message: "#^Method SwagMigrationConnector\\\\Service\\\\LanguageService\\:\\:appendAssociatedData\\(\\) has parameter \\$locales with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Service/LanguageService.php
@@ -1316,11 +1277,6 @@ parameters:
 
 		-
 			message: "#^Method SwagMigrationConnector\\\\Service\\\\OrderService\\:\\:getOrderDetails\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Service/OrderService.php
-
-		-
-			message: "#^Method SwagMigrationConnector\\\\Service\\\\OrderService\\:\\:getOrderDocuments\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Service/OrderService.php
 

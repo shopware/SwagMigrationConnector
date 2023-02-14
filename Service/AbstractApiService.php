@@ -10,7 +10,7 @@ namespace SwagMigrationConnector\Service;
 abstract class AbstractApiService
 {
     /**
-     * @return array
+     * @return array<mixed>
      */
     protected function mapData(array $data, array $result = [], array $pathsToRemove = [])
     {

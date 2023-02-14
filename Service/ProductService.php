@@ -92,6 +92,8 @@ class ProductService extends AbstractApiService
         $assets = $this->getAssets();
         $options = $this->getConfiguratorOptions();
         $filterValues = $this->getFilterOptionValues();
+        $esdPath = $this->productRepository->getEsdConfig();
+        $esdFiles = $this->productRepository->fetchEsdFiles($this->productMapping->keys());
 
         /** @var Shop $defaultShop */
         $defaultShop = $this->modelManager->getRepository(Shop::class)->getDefault();
@@ -129,10 +131,16 @@ class ProductService extends AbstractApiService
             if (isset($productVisibility[$product['id']])) {
                 $product['shops'] = \array_values($productVisibility[$product['id']]);
             }
+            if (isset($esdFiles[$product['detail']['id']])) {
+                $product['esdFiles'] = \array_values($esdFiles[$product['detail']['id']]);
+                foreach ($product['esdFiles'] as &$esdFile) {
+                    $esdFile['path'] = $esdPath;
+                }
+            }
         }
         unset(
             $product, $categories,
-            $prices, $assets, $options
+            $prices, $assets, $options, $esdFile
         );
 
         $this->productMapping->replace([]);

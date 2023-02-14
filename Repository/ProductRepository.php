@@ -91,7 +91,45 @@ class ProductRepository extends AbstractRepository
     }
 
     /**
-     * @return array
+     * @param array<string> $variantIds
+     *
+     * @return array<array<mixed>>
+     */
+    public function fetchEsdFiles(array $variantIds)
+    {
+        $query = $this->connection->createQueryBuilder();
+
+        $query->addSelect('esd.articledetailsID, esd.id, esd.file as name');
+        $query->from('s_articles_esd', 'esd');
+
+        $query->where('esd.articledetailsID IN (:ids)');
+        $query->setParameter('ids', $variantIds, Connection::PARAM_INT_ARRAY);
+
+        return $query->execute()->fetchAll(\PDO::FETCH_GROUP);
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getEsdConfig()
+    {
+        $query = $this->connection->createQueryBuilder();
+
+        $query->select('ifnull(currentConfig.value, defaultConfig.value) as configValue');
+        $query->from('s_core_config_elements', 'defaultConfig');
+
+        $query->leftJoin('defaultConfig', 's_core_config_values', 'currentConfig', 'defaultConfig.id =  currentConfig.element_id');
+
+        $query->where('defaultConfig.name = :configName');
+        $query->setParameter('configName', 'esdKey');
+
+        return $query->execute()->fetch(\PDO::FETCH_COLUMN);
+    }
+
+    /**
+     * @param array<string> $productIds
+     *
+     * @return array<string>
      */
     public function fetchProductCategories(array $productIds)
     {
@@ -109,7 +147,9 @@ class ProductRepository extends AbstractRepository
     }
 
     /**
-     * @return array
+     * @param array<string> $categories
+     *
+     * @return array<string>
      */
     public function fetchShopsByCategories(array $categories)
     {

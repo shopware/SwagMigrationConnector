@@ -42,6 +42,25 @@ class ProductServiceTest extends TestCase
     /**
      * @return void
      */
+    public function testReadEsdProductShouldBeSuccessful()
+    {
+        $productService = Shopware()->Container()->get('swag_migration_connector.service.product_service');
+
+        $products = $productService->getProducts();
+
+        static::assertCount(250, $products);
+
+        static::assertArrayHasKey('esdFiles', $products[151]);
+        static::assertSame([[
+            'id' => '2',
+            'name' => 'shopware_packshot_community_edition_72dpi_rgb.png',
+            'path' => 's:33:"552211cce724117c3178e3d22bec532ec";',
+        ]], $products[151]['esdFiles']);
+    }
+
+    /**
+     * @return void
+     */
     public function testReadProductsWithOffsetShouldBeSuccessful()
     {
         $productService = Shopware()->Container()->get('swag_migration_connector.service.product_service');
