@@ -7,6 +7,7 @@
 
 namespace SwagMigrationConnector\Service;
 
+use Shopware\Bundle\MediaBundle\MediaServiceInterface;
 use Shopware\Components\Model\ModelManager;
 use Shopware\Models\Shop\Shop;
 use SwagMigrationConnector\Repository\ApiRepositoryInterface;
@@ -24,12 +25,19 @@ class CategoryService extends AbstractApiService
      */
     private $modelManager;
 
+    /**
+     * @var MediaServiceInterface
+     */
+    private $mediaService;
+
     public function __construct(
         ApiRepositoryInterface $categoryRepository,
-        ModelManager $modelManager
+        ModelManager $modelManager,
+        MediaServiceInterface $mediaService
     ) {
         $this->categoryRepository = $categoryRepository;
         $this->modelManager = $modelManager;
+        $this->mediaService = $mediaService;
     }
 
     /**
@@ -63,6 +71,10 @@ class CategoryService extends AbstractApiService
         $defaultLocale = \str_replace('_', '-', $defaultShop->getLocale()->getLocale());
 
         foreach ($categories as $key => $category) {
+            if (isset($category['asset']['path'])) {
+                $category['asset']['uri'] = $this->mediaService->getUrl($category['asset']['path']);
+            }
+
             $locale = '';
             if (\in_array($category['parent'], $ignoredCategories, true)) {
                 $category['parent'] = null;
