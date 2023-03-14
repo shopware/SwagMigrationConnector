@@ -21,10 +21,10 @@
 
     <changelog version="1.4.1">
         <changes lang="de">
-            MIG-840 - Migration der Kategoriemedien behoben
+            MIG-840 - Migration der Kategorie-Medien korrigiert;
         </changes>
         <changes lang="en">
-            MIG-840 - Fix migration of category media
+            MIG-840 - Fix migration of category media;
         </changes>
     </changelog>
 

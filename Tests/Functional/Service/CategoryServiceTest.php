@@ -18,9 +18,8 @@ class CategoryServiceTest extends TestCase
     {
         $sql = \file_get_contents(__DIR__ . '/_fixtures/category_media.sql');
 
-        if (\is_string($sql)) {
-            Shopware()->Container()->get('dbal_connection')->exec($sql);
-        }
+        static::assertTrue(\is_string($sql));
+        Shopware()->Container()->get('dbal_connection')->exec($sql);
     }
 
     /**
