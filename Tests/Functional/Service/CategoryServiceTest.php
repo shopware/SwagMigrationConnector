@@ -14,8 +14,20 @@ class CategoryServiceTest extends TestCase
     /**
      * @return void
      */
+    public function setUpOwn()
+    {
+        $sql = \file_get_contents(__DIR__ . '/_fixtures/category_media.sql');
+
+        static::assertTrue(\is_string($sql));
+        Shopware()->Container()->get('dbal_connection')->exec($sql);
+    }
+
+    /**
+     * @return void
+     */
     public function testReadCategoriesShouldBeSuccessful()
     {
+        $this->setUpOwn();
         $categoryService = Shopware()->Container()->get('swag_migration_connector.service.category_service');
 
         $categories = $categoryService->getCategories();
@@ -29,6 +41,7 @@ class CategoryServiceTest extends TestCase
         static::assertNull($categories[0]['parent']);
         static::assertSame('Deutsch', $categories[0]['description']);
         static::assertSame('de-DE', $categories[0]['_locale']);
+        static::assertTrue(\strpos($categories[2]['asset']['uri'], '/media/image/ab/7f/4f/Muensterlaender_Lagerkorn_Ballons_Hochformat.jpg') !== false);
     }
 
     /**
