@@ -18,12 +18,12 @@ class RequirementsValidatorService
     const CHECKS = [
         [
             'type' => PhpVersion::class,
-            'minVersion' => '7.2',
+            'minVersion' => '8.1',
         ],
         [
             'type' => MysqlVersion::class,
             'minVersion' => [
-                'mysql' => '5.7',
+                'mysql' => '8.0',
                 'maria' => '10.3',
             ],
         ],
