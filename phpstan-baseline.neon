@@ -846,11 +846,6 @@ parameters:
 			path: Service/Checker/LicenseCheck.php
 
 		-
-			message: "#^Parameter \\#2 \\$objectDecodeType of static method Zend_Json\\:\\:decode\\(\\) expects int, true given\\.$#"
-			count: 1
-			path: Service/Checker/LicenseCheck.php
-
-		-
 			message: "#^Method SwagMigrationConnector\\\\Service\\\\Checker\\\\MysqlConfiguration\\:\\:validate\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Service/Checker/MysqlConfiguration.php
