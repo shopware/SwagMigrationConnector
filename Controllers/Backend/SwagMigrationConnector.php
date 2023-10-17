@@ -5,11 +5,24 @@
  * file that was distributed with this source code.
  */
 
+use Doctrine\DBAL\ConnectionException;
+
 class Shopware_Controllers_Backend_SwagMigrationConnector extends Shopware_Controllers_Backend_ExtJs
 {
     public function preDispatch()
     {
         parent::preDispatch();
+
+        // This is a backport of SW-26764 to fix the unwanted DB values as INT / FLOAT behaviour in PHP8.1
+        try {
+            $connection = $this->container->get('dbal_connection');
+            if (\is_object($connection->getWrappedConnection()) && \method_exists($connection->getWrappedConnection(), 'setAttribute')) {
+                $connection->getWrappedConnection()->setAttribute(\PDO::ATTR_STRINGIFY_FETCHES, true);
+            }
+        } catch (ConnectionException $exception) {
+            // nth
+        }
+
         $this->View()->addTemplateDir(\dirname(\dirname(__DIR__)) . '/Resources/views');
     }
 

@@ -126,17 +126,7 @@ parameters:
 			path: Controllers/Api/SwagMigrationProductAttributes.php
 
 		-
-			message: "#^Call to method getAdmin\\(\\) on an unknown class Role\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationProductOptionRelation.php
-
-		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationProductOptionRelation\\:\\:indexAction\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationProductOptionRelation.php
-
-		-
-			message: "#^PHPDoc tag @var for variable \\$role contains unknown class Role\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationProductOptionRelation.php
 
@@ -146,17 +136,7 @@ parameters:
 			path: Controllers/Api/SwagMigrationProductPriceAttributes.php
 
 		-
-			message: "#^Call to method getAdmin\\(\\) on an unknown class Role\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationProductPropertyRelation.php
-
-		-
 			message: "#^Method Shopware_Controllers_Api_SwagMigrationProductPropertyRelation\\:\\:indexAction\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: Controllers/Api/SwagMigrationProductPropertyRelation.php
-
-		-
-			message: "#^PHPDoc tag @var for variable \\$role contains unknown class Role\\.$#"
 			count: 1
 			path: Controllers/Api/SwagMigrationProductPropertyRelation.php
 
