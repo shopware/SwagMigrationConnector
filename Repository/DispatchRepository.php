@@ -53,6 +53,9 @@ class DispatchRepository extends AbstractRepository
         $query->leftJoin('dispatch', 's_core_customergroups', 'customerGroup', 'dispatch.customergroupID = customerGroup.id');
         $this->addTableSelection($query, 's_core_customergroups', 'customerGroup');
 
+        $query->leftJoin('dispatch', 's_core_tax', 'tax', 'dispatch.tax_calculation = tax.id');
+        $this->addTableSelection($query, 's_core_tax', 'tax');
+
         $query->where('dispatch.id IN (:ids)');
         $query->setParameter('ids', $ids, Connection::PARAM_STR_ARRAY);
 
