@@ -21,9 +21,11 @@
 
     <changelog version="1.4.3">
         <changes lang="de">
+            MIG-865 - Migration der Dokumente und ESD-Dateien korrigiert;
             MIG-881 - Migration der Versandkosten korrigiert;
         </changes>
         <changes lang="en">
+            MIG-865 - Fix migration of documents and esd files;
             MIG-881 - Fix migration of shipping costs;
         </changes>
     </changelog>

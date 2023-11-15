@@ -40,16 +40,25 @@ class Shopware_Controllers_Api_SwagMigrationEsdFiles extends SwagMigrationApiCon
             throw new FileNotFoundException('File not found', 404);
         }
 
+        @set_time_limit(0);
         $this->setDownloadHeaders($filePath, $fileName, $mimeType);
 
         $upstream = $esdService->readFile($filePath);
-        $downstream = \fopen('php://output', 'rb');
+        $downstream = \fopen('php://output', 'wb');
 
         if ($upstream === false || $downstream === false) {
             throw new FileNotReadableException('File is not readable');
         }
 
-        \stream_copy_to_stream($upstream, $downstream);
+        ob_end_clean();
+        while (!feof($upstream)) {
+            $read = fread($upstream, 4096);
+            if (!\is_string($read)) {
+                continue;
+            }
+            fwrite($downstream, $read);
+            flush();
+        }
     }
 
     /**
@@ -73,6 +82,5 @@ class Shopware_Controllers_Api_SwagMigrationEsdFiles extends SwagMigrationApiCon
         $response->setHeader('Content-Transfer-Encoding', 'binary');
         $response->setHeader('Content-Length', $fileSize);
         $response->sendHeaders();
-        $response->sendResponse();
     }
 }
