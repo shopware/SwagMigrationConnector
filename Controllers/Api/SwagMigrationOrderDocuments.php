@@ -53,17 +53,26 @@ class Shopware_Controllers_Api_SwagMigrationOrderDocuments extends SwagMigration
             throw new OrderNotFoundException();
         }
 
+        @set_time_limit(0);
+        ob_end_clean();
         if ($documentService->existsFileSystem()) {
             $this->setDownloadHeaders($filePath, $orderNumber);
 
             $upstream = $documentService->readFile($filePath);
-            $downstream = \fopen('php://output', 'rb');
+            $downstream = \fopen('php://output', 'wb');
 
             if ($upstream === false || $downstream === false) {
                 throw new FileNotReadableException();
             }
 
-            \stream_copy_to_stream($upstream, $downstream);
+            while (!feof($upstream)) {
+                $read = fread($upstream, 4096);
+                if (!\is_string($read)) {
+                    continue;
+                }
+                fwrite($downstream, $read);
+                flush();
+            }
         } else {
             // Disable Smarty rendering
             $this->Front()->Plugins()->ViewRenderer()->setNoRender();
@@ -95,6 +104,5 @@ class Shopware_Controllers_Api_SwagMigrationOrderDocuments extends SwagMigration
         $response->setHeader('Content-Transfer-Encoding', 'binary');
         $response->setHeader('Content-Length', $fileSize);
         $response->sendHeaders();
-        $response->sendResponse();
     }
 }
