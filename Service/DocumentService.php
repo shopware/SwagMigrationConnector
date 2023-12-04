@@ -132,7 +132,11 @@ class DocumentService extends AbstractApiService
      */
     public function readFile($filePath)
     {
-        return $this->fileSystem->readStream($filePath);
+        if ($this->existsFileSystem) {
+            return $this->fileSystem->readStream($filePath);
+        }
+
+        return \fopen($filePath, 'rb');
     }
 
     /**

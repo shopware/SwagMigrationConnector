@@ -86,7 +86,7 @@ class EsdService extends AbstractApiService
     public function readFile($filePath)
     {
         if ($this->fileSystem === null) {
-            return false;
+            return \fopen($filePath, 'rb');
         }
 
         return $this->fileSystem->readStream($filePath);
