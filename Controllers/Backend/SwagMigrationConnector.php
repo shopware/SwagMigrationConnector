@@ -17,7 +17,7 @@ class Shopware_Controllers_Backend_SwagMigrationConnector extends Shopware_Contr
         try {
             $connection = $this->container->get('dbal_connection');
             if (\is_object($connection->getWrappedConnection()) && \method_exists($connection->getWrappedConnection(), 'setAttribute')) {
-                $connection->getWrappedConnection()->setAttribute(\PDO::ATTR_STRINGIFY_FETCHES, true);
+                $connection->getWrappedConnection()->setAttribute(PDO::ATTR_STRINGIFY_FETCHES, true);
             }
         } catch (ConnectionException $exception) {
             // nth
