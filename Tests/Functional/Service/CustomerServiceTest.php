@@ -8,15 +8,18 @@
 namespace SwagMigrationConnector\Tests\Functional\Service;
 
 use PHPUnit\Framework\TestCase;
+use SwagMigrationConnector\Tests\Functional\ContainerTrait;
 
 class CustomerServiceTest extends TestCase
 {
+    use ContainerTrait;
+
     /**
      * @return void
      */
     public function testReadCustomersShouldBeSuccessful()
     {
-        $customerService = Shopware()->Container()->get('swag_migration_connector.service.customer_service');
+        $customerService = $this->getContainer()->get('swag_migration_connector.service.customer_service');
 
         $customers = $customerService->getCustomers();
 
@@ -38,7 +41,7 @@ class CustomerServiceTest extends TestCase
      */
     public function testReadCustomersWithOffsetShouldBeSuccessful()
     {
-        $customerService = Shopware()->Container()->get('swag_migration_connector.service.customer_service');
+        $customerService = $this->getContainer()->get('swag_migration_connector.service.customer_service');
 
         $customers = $customerService->getCustomers(1);
 
@@ -50,7 +53,7 @@ class CustomerServiceTest extends TestCase
      */
     public function testReadWithLimitShouldBeSuccessful()
     {
-        $customerService = Shopware()->Container()->get('swag_migration_connector.service.customer_service');
+        $customerService = $this->getContainer()->get('swag_migration_connector.service.customer_service');
 
         $customers = $customerService->getCustomers(0, 1);
 
@@ -62,7 +65,7 @@ class CustomerServiceTest extends TestCase
      */
     public function testReadWithLimitAndOffsetShouldBeSuccessful()
     {
-        $customerService = Shopware()->Container()->get('swag_migration_connector.service.customer_service');
+        $customerService = $this->getContainer()->get('swag_migration_connector.service.customer_service');
 
         $customers = $customerService->getCustomers(1, 1);
 
@@ -74,7 +77,7 @@ class CustomerServiceTest extends TestCase
      */
     public function testReadWithOutOfBoundsOffsetShouldOfferEmptyArray()
     {
-        $customerService = Shopware()->Container()->get('swag_migration_connector.service.customer_service');
+        $customerService = $this->getContainer()->get('swag_migration_connector.service.customer_service');
 
         $customers = $customerService->getCustomers(10);
 

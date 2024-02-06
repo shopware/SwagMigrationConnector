@@ -101,6 +101,8 @@ Code Coverage:
         - php ../../../vendor/bin/phpunit
             --configuration phpunit.xml.dist
             --colors=never
+            --stderr
+            -v
     services:
         -   name: mysql:5.7
             alias: mysql

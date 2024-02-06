@@ -8,15 +8,18 @@
 namespace SwagMigrationConnector\Tests\Functional\Service;
 
 use PHPUnit\Framework\TestCase;
+use SwagMigrationConnector\Tests\Functional\ContainerTrait;
 
 class DispatchServiceTest extends TestCase
 {
+    use ContainerTrait;
+
     /**
      * @return void
      */
     public function testReadShouldBeSuccessful()
     {
-        $dispatchService = Shopware()->Container()->get('swag_migration_connector.service.dispatch_service');
+        $dispatchService = $this->getContainer()->get('swag_migration_connector.service.dispatch_service');
 
         $dispatches = $dispatchService->getDispatches();
 
@@ -42,7 +45,7 @@ class DispatchServiceTest extends TestCase
      */
     public function testReadWithOffsetShouldBeSuccessful()
     {
-        $dispatchService = Shopware()->Container()->get('swag_migration_connector.service.dispatch_service');
+        $dispatchService = $this->getContainer()->get('swag_migration_connector.service.dispatch_service');
 
         $dispatches = $dispatchService->getDispatches(1);
 
@@ -54,7 +57,7 @@ class DispatchServiceTest extends TestCase
      */
     public function testReadWithLimitShouldBeSuccessful()
     {
-        $dispatchService = Shopware()->Container()->get('swag_migration_connector.service.dispatch_service');
+        $dispatchService = $this->getContainer()->get('swag_migration_connector.service.dispatch_service');
 
         $dispatches = $dispatchService->getDispatches(0, 1);
 
@@ -66,7 +69,7 @@ class DispatchServiceTest extends TestCase
      */
     public function testReadWithLimitAndOffsetShouldBeSuccessful()
     {
-        $dispatchService = Shopware()->Container()->get('swag_migration_connector.service.dispatch_service');
+        $dispatchService = $this->getContainer()->get('swag_migration_connector.service.dispatch_service');
 
         $dispatches = $dispatchService->getDispatches(1, 1);
 
@@ -78,7 +81,7 @@ class DispatchServiceTest extends TestCase
      */
     public function testReadWithOutOfBoundsOffsetShouldOfferEmptyArray()
     {
-        $dispatchService = Shopware()->Container()->get('swag_migration_connector.service.dispatch_service');
+        $dispatchService = $this->getContainer()->get('swag_migration_connector.service.dispatch_service');
 
         $dispatches = $dispatchService->getDispatches(10);
 

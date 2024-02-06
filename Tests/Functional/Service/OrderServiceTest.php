@@ -8,17 +8,20 @@
 namespace SwagMigrationConnector\Tests\Functional\Service;
 
 use PHPUnit\Framework\TestCase;
+use SwagMigrationConnector\Tests\Functional\ContainerTrait;
 
 class OrderServiceTest extends TestCase
 {
+    use ContainerTrait;
+
     /**
      * @return void
      */
     public function testReadOrdersShouldBeSuccessful()
     {
-        $orderService = Shopware()->Container()->get('swag_migration_connector.service.order_service');
+        $orderService = $this->getContainer()->get('swag_migration_connector.service.order_service');
 
-        $orders = $orderService->getOrders();
+        $orders = $orderService->getOrders(0, 2);
 
         static::assertCount(2, $orders);
 
@@ -48,9 +51,9 @@ class OrderServiceTest extends TestCase
      */
     public function testReadOrdersWithOffsetShouldBeSuccessful()
     {
-        $orderService = Shopware()->Container()->get('swag_migration_connector.service.order_service');
+        $orderService = $this->getContainer()->get('swag_migration_connector.service.order_service');
 
-        $orders = $orderService->getOrders(1);
+        $orders = $orderService->getOrders(1, 1);
 
         static::assertCount(1, $orders);
 
@@ -66,7 +69,7 @@ class OrderServiceTest extends TestCase
      */
     public function testReadOrdersWithLimitShouldBeSuccessful()
     {
-        $orderService = Shopware()->Container()->get('swag_migration_connector.service.order_service');
+        $orderService = $this->getContainer()->get('swag_migration_connector.service.order_service');
 
         $orders = $orderService->getOrders(0, 2);
 
@@ -86,9 +89,9 @@ class OrderServiceTest extends TestCase
      */
     public function testReadOrdersWithOffsetAndLimitShouldBeSuccessful()
     {
-        $orderService = Shopware()->Container()->get('swag_migration_connector.service.order_service');
+        $orderService = $this->getContainer()->get('swag_migration_connector.service.order_service');
 
-        $orders = $orderService->getOrders(2, 1);
+        $orders = $orderService->getOrders(999, 1);
 
         static::assertCount(0, $orders);
     }
@@ -98,7 +101,7 @@ class OrderServiceTest extends TestCase
      */
     public function testReadWithOutOfBoundsOffsetShouldOfferEmptyArray()
     {
-        $orderService = Shopware()->Container()->get('swag_migration_connector.service.order_service');
+        $orderService = $this->getContainer()->get('swag_migration_connector.service.order_service');
 
         $orders = $orderService->getOrders(30);
 

@@ -8,15 +8,18 @@
 namespace SwagMigrationConnector\Tests\Functional\Service;
 
 use PHPUnit\Framework\TestCase;
+use SwagMigrationConnector\Tests\Functional\ContainerTrait;
 
 class ProductServiceTest extends TestCase
 {
+    use ContainerTrait;
+
     /**
      * @return void
      */
     public function testReadProductsShouldBeSuccessful()
     {
-        $productService = Shopware()->Container()->get('swag_migration_connector.service.product_service');
+        $productService = $this->getContainer()->get('swag_migration_connector.service.product_service');
 
         $products = $productService->getProducts();
 
@@ -44,7 +47,7 @@ class ProductServiceTest extends TestCase
      */
     public function testReadEsdProductShouldBeSuccessful()
     {
-        $productService = Shopware()->Container()->get('swag_migration_connector.service.product_service');
+        $productService = $this->getContainer()->get('swag_migration_connector.service.product_service');
 
         $products = $productService->getProducts();
 
@@ -63,7 +66,7 @@ class ProductServiceTest extends TestCase
      */
     public function testReadProductsWithOffsetShouldBeSuccessful()
     {
-        $productService = Shopware()->Container()->get('swag_migration_connector.service.product_service');
+        $productService = $this->getContainer()->get('swag_migration_connector.service.product_service');
 
         $products = $productService->getProducts(134);
 
@@ -80,7 +83,7 @@ class ProductServiceTest extends TestCase
      */
     public function testReadProductsWithLimitShouldBeSuccessful()
     {
-        $productService = Shopware()->Container()->get('swag_migration_connector.service.product_service');
+        $productService = $this->getContainer()->get('swag_migration_connector.service.product_service');
 
         $products = $productService->getProducts(0, 2);
 
@@ -97,7 +100,7 @@ class ProductServiceTest extends TestCase
      */
     public function testReadProductsWithOffsetAndLimitShouldBeSuccessful()
     {
-        $productService = Shopware()->Container()->get('swag_migration_connector.service.product_service');
+        $productService = $this->getContainer()->get('swag_migration_connector.service.product_service');
 
         $products = $productService->getProducts(350, 10);
 
@@ -114,7 +117,7 @@ class ProductServiceTest extends TestCase
      */
     public function testReadWithOutOfBoundsOffsetShouldOfferEmptyArray()
     {
-        $productService = Shopware()->Container()->get('swag_migration_connector.service.product_service');
+        $productService = $this->getContainer()->get('swag_migration_connector.service.product_service');
 
         $products = $productService->getProducts(2000);
 

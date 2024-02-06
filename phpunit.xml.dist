@@ -4,7 +4,10 @@
     <testsuite name="Swag Migration Connector Test Suite">
         <directory>Tests</directory>
     </testsuite>
-
+    <php>
+        <ini name="display_errors" value="-1"/>
+        <ini name="error_reporting" value="-1"/>
+    </php>
     <filter>
         <whitelist>
             <directory suffix=".php">./</directory>

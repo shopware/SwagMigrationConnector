@@ -8,16 +8,19 @@
 namespace SwagMigrationConnector\Tests\Functional\Service;
 
 use PHPUnit\Framework\TestCase;
+use SwagMigrationConnector\Tests\Functional\ContainerTrait;
 
 class TranslationServiceTest extends TestCase
 {
+    use ContainerTrait;
+
     /**
      * @return void
      */
     public function setUpOwn()
     {
         $sql = \file_get_contents(__DIR__ . '/_fixtures/translations.sql');
-        Shopware()->Container()->get('dbal_connection')->exec($sql);
+        $this->getContainer()->get('dbal_connection')->exec($sql);
     }
 
     /**
@@ -27,7 +30,7 @@ class TranslationServiceTest extends TestCase
      */
     public function startTransactionBefore()
     {
-        Shopware()->Container()->get('dbal_connection')->beginTransaction();
+        $this->getContainer()->get('dbal_connection')->beginTransaction();
     }
 
     /**
@@ -37,7 +40,7 @@ class TranslationServiceTest extends TestCase
      */
     public function stopTransactionAfter()
     {
-        Shopware()->Container()->get('dbal_connection')->rollBack();
+        $this->getContainer()->get('dbal_connection')->rollBack();
     }
 
     /**
@@ -46,7 +49,7 @@ class TranslationServiceTest extends TestCase
     public function testReadTranslationsShouldBeSuccessful()
     {
         $this->setUpOwn();
-        $translationService = Shopware()->Container()->get('swag_migration_connector.service.translation_service');
+        $translationService = $this->getContainer()->get('swag_migration_connector.service.translation_service');
 
         $translations = $translationService->getTranslations();
 
@@ -65,7 +68,7 @@ class TranslationServiceTest extends TestCase
     public function testReadTranslationsWithOffsetShouldBeSuccessful()
     {
         $this->setUpOwn();
-        $translationService = Shopware()->Container()->get('swag_migration_connector.service.translation_service');
+        $translationService = $this->getContainer()->get('swag_migration_connector.service.translation_service');
 
         $translations = $translationService->getTranslations(1);
 
@@ -85,7 +88,7 @@ class TranslationServiceTest extends TestCase
     public function testReadTranslationsWithLimitShouldBeSuccessful()
     {
         $this->setUpOwn();
-        $translationService = Shopware()->Container()->get('swag_migration_connector.service.translation_service');
+        $translationService = $this->getContainer()->get('swag_migration_connector.service.translation_service');
 
         $translations = $translationService->getTranslations(0, 2);
 
@@ -104,7 +107,7 @@ class TranslationServiceTest extends TestCase
     public function testReadTranslationsWithOffsetAndLimitShouldBeSuccessful()
     {
         $this->setUpOwn();
-        $translationService = Shopware()->Container()->get('swag_migration_connector.service.translation_service');
+        $translationService = $this->getContainer()->get('swag_migration_connector.service.translation_service');
 
         $translations = $translationService->getTranslations(10, 1);
 
@@ -124,7 +127,7 @@ class TranslationServiceTest extends TestCase
     public function testReadWithOutOfBoundsOffsetShouldOfferEmptyArray()
     {
         $this->setUpOwn();
-        $translationService = Shopware()->Container()->get('swag_migration_connector.service.translation_service');
+        $translationService = $this->getContainer()->get('swag_migration_connector.service.translation_service');
 
         $translations = $translationService->getTranslations(2000);
 

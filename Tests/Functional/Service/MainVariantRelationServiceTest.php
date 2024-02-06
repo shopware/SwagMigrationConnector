@@ -8,15 +8,18 @@
 namespace SwagMigrationConnector\Tests\Functional\Service;
 
 use PHPUnit\Framework\TestCase;
+use SwagMigrationConnector\Tests\Functional\ContainerTrait;
 
 class MainVariantRelationServiceTest extends TestCase
 {
+    use ContainerTrait;
+
     /**
      * @return void
      */
     public function testReadShouldBeSuccessful()
     {
-        $service = Shopware()->Container()->get('swag_migration_connector.service.main_variant_relation_service');
+        $service = $this->getContainer()->get('swag_migration_connector.service.main_variant_relation_service');
 
         $data = $service->getMainVariantRelations();
 
@@ -33,7 +36,7 @@ class MainVariantRelationServiceTest extends TestCase
      */
     public function testReadWithOffsetShouldBeSuccessful()
     {
-        $service = Shopware()->Container()->get('swag_migration_connector.service.main_variant_relation_service');
+        $service = $this->getContainer()->get('swag_migration_connector.service.main_variant_relation_service');
 
         $data = $service->getMainVariantRelations(1);
 
@@ -45,7 +48,7 @@ class MainVariantRelationServiceTest extends TestCase
      */
     public function testReadWithLimitShouldBeSuccessful()
     {
-        $service = Shopware()->Container()->get('swag_migration_connector.service.main_variant_relation_service');
+        $service = $this->getContainer()->get('swag_migration_connector.service.main_variant_relation_service');
 
         $data = $service->getMainVariantRelations(0, 1);
 
@@ -57,7 +60,7 @@ class MainVariantRelationServiceTest extends TestCase
      */
     public function testReadWithLimitAndOffsetShouldBeSuccessful()
     {
-        $service = Shopware()->Container()->get('swag_migration_connector.service.main_variant_relation_service');
+        $service = $this->getContainer()->get('swag_migration_connector.service.main_variant_relation_service');
 
         $data = $service->getMainVariantRelations(1, 1);
 
@@ -69,7 +72,7 @@ class MainVariantRelationServiceTest extends TestCase
      */
     public function testReadWithOutOfBoundsOffsetShouldOfferEmptyArray()
     {
-        $service = Shopware()->Container()->get('swag_migration_connector.service.main_variant_relation_service');
+        $service = $this->getContainer()->get('swag_migration_connector.service.main_variant_relation_service');
 
         $data = $service->getMainVariantRelations(50);
 
