@@ -54,6 +54,45 @@ class SeoUrlRepository extends AbstractRepository
         $query->where('url.id IN (:ids)');
         $query->setParameter('ids', $ids, Connection::PARAM_STR_ARRAY);
 
+        if ($this->isRouterToLower()) {
+            return $this->lowerSeoUrl($query->execute()->fetchAll());
+        }
+
         return $query->execute()->fetchAll();
+    }
+
+    /**
+     * @param array<int, array<string, string>> $seoUrls
+     *
+     * @return array<int, array<string, string>>
+     */
+    private function lowerSeoUrl(array $seoUrls)
+    {
+        foreach ($seoUrls as &$seoUrl) {
+            $seoUrl['url.path'] = \strtolower($seoUrl['url.path']);
+        }
+        unset($seoUrl);
+
+        return $seoUrls;
+    }
+
+    /**
+     * @return bool
+     */
+    private function isRouterToLower()
+    {
+        $useUrlToLower = $this->connection->createQueryBuilder()
+            ->select(['cv.value'])
+            ->from('s_core_config_values', 'cv')
+            ->innerJoin('cv', 's_core_config_elements', 'ce', 'cv.element_id = ce.id')
+            ->where('ce.name = "routerToLower"')
+            ->execute()
+            ->fetchColumn();
+
+        if (!\is_string($useUrlToLower)) {
+            return true;
+        }
+
+        return (bool) unserialize($useUrlToLower);
     }
 }

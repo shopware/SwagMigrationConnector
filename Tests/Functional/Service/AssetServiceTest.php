@@ -8,15 +8,18 @@
 namespace SwagMigrationConnector\Tests\Functional\Service;
 
 use PHPUnit\Framework\TestCase;
+use SwagMigrationConnector\Tests\Functional\ContainerTrait;
 
 class AssetServiceTest extends TestCase
 {
+    use ContainerTrait;
+
     /**
      * @return void
      */
     public function testReadAssetsShouldBeSuccessful()
     {
-        $assetService = Shopware()->Container()->get('swag_migration_connector.service.asset_service');
+        $assetService = $this->getContainer()->get('swag_migration_connector.service.asset_service');
 
         $assets = $assetService->getAssets();
 
@@ -32,7 +35,7 @@ class AssetServiceTest extends TestCase
      */
     public function testReadAssetsWithOffsetShouldBeSuccessful()
     {
-        $assetService = Shopware()->Container()->get('swag_migration_connector.service.asset_service');
+        $assetService = $this->getContainer()->get('swag_migration_connector.service.asset_service');
 
         $assets = $assetService->getAssets(1);
 
@@ -48,7 +51,7 @@ class AssetServiceTest extends TestCase
      */
     public function testReadAssetsWithLimitShouldBeSuccessful()
     {
-        $assetService = Shopware()->Container()->get('swag_migration_connector.service.asset_service');
+        $assetService = $this->getContainer()->get('swag_migration_connector.service.asset_service');
 
         $assets = $assetService->getAssets(0, 2);
 
@@ -64,7 +67,7 @@ class AssetServiceTest extends TestCase
      */
     public function testReadAssetsWithOffsetAndLimitShouldBeSuccessful()
     {
-        $assetService = Shopware()->Container()->get('swag_migration_connector.service.asset_service');
+        $assetService = $this->getContainer()->get('swag_migration_connector.service.asset_service');
 
         $assets = $assetService->getAssets(250, 40);
 
@@ -80,7 +83,7 @@ class AssetServiceTest extends TestCase
      */
     public function testReadWithOutOfBoundsOffsetShouldOfferEmptyArray()
     {
-        $assetService = Shopware()->Container()->get('swag_migration_connector.service.asset_service');
+        $assetService = $this->getContainer()->get('swag_migration_connector.service.asset_service');
 
         $assets = $assetService->getAssets(2000);
 

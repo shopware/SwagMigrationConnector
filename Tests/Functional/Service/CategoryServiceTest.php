@@ -8,9 +8,12 @@
 namespace SwagMigrationConnector\Tests\Functional\Service;
 
 use PHPUnit\Framework\TestCase;
+use SwagMigrationConnector\Tests\Functional\ContainerTrait;
 
 class CategoryServiceTest extends TestCase
 {
+    use ContainerTrait;
+
     /**
      * @return void
      */
@@ -19,7 +22,7 @@ class CategoryServiceTest extends TestCase
         $sql = \file_get_contents(__DIR__ . '/_fixtures/category_media.sql');
 
         static::assertTrue(\is_string($sql));
-        Shopware()->Container()->get('dbal_connection')->exec($sql);
+        $this->getContainer()->get('dbal_connection')->exec($sql);
     }
 
     /**
@@ -28,7 +31,7 @@ class CategoryServiceTest extends TestCase
     public function testReadCategoriesShouldBeSuccessful()
     {
         $this->setUpOwn();
-        $categoryService = Shopware()->Container()->get('swag_migration_connector.service.category_service');
+        $categoryService = $this->getContainer()->get('swag_migration_connector.service.category_service');
 
         $categories = $categoryService->getCategories();
 
@@ -49,7 +52,7 @@ class CategoryServiceTest extends TestCase
      */
     public function testReadCategoriesWithOffsetShouldBeSuccesful()
     {
-        $categoryService = Shopware()->Container()->get('swag_migration_connector.service.category_service');
+        $categoryService = $this->getContainer()->get('swag_migration_connector.service.category_service');
 
         $categories = $categoryService->getCategories(58);
 
@@ -66,7 +69,7 @@ class CategoryServiceTest extends TestCase
      */
     public function testReadCategoriesWithLimitShouldBeSuccesful()
     {
-        $categoryService = Shopware()->Container()->get('swag_migration_connector.service.category_service');
+        $categoryService = $this->getContainer()->get('swag_migration_connector.service.category_service');
 
         $categories = $categoryService->getCategories(0, 5);
 
@@ -83,7 +86,7 @@ class CategoryServiceTest extends TestCase
      */
     public function testReadCategoriesWithOffsetAndLimitShouldBeSuccesful()
     {
-        $categoryService = Shopware()->Container()->get('swag_migration_connector.service.category_service');
+        $categoryService = $this->getContainer()->get('swag_migration_connector.service.category_service');
 
         $categories = $categoryService->getCategories(50, 5);
 
@@ -101,7 +104,7 @@ class CategoryServiceTest extends TestCase
      */
     public function testReadWithOutOfBoundsOffsetShouldOfferEmptyArray()
     {
-        $categoryService = Shopware()->Container()->get('swag_migration_connector.service.category_service');
+        $categoryService = $this->getContainer()->get('swag_migration_connector.service.category_service');
 
         $categories = $categoryService->getCategories(200);
 

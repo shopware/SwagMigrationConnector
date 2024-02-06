@@ -8,15 +8,18 @@
 namespace SwagMigrationConnector\Tests\Functional\Service;
 
 use PHPUnit\Framework\TestCase;
+use SwagMigrationConnector\Tests\Functional\ContainerTrait;
 
 class VoucherServiceTest extends TestCase
 {
+    use ContainerTrait;
+
     /**
      * @return void
      */
     public function testReadShouldBeSuccessful()
     {
-        $service = Shopware()->Container()->get('swag_migration_connector.service.voucher_service');
+        $service = $this->getContainer()->get('swag_migration_connector.service.voucher_service');
 
         $vouchers = $service->getVouchers();
 
@@ -53,7 +56,7 @@ class VoucherServiceTest extends TestCase
      */
     public function testReadWithOffsetShouldBeSuccessful()
     {
-        $service = Shopware()->Container()->get('swag_migration_connector.service.voucher_service');
+        $service = $this->getContainer()->get('swag_migration_connector.service.voucher_service');
 
         $data = $service->getVouchers(1);
 
@@ -65,7 +68,7 @@ class VoucherServiceTest extends TestCase
      */
     public function testReadWithLimitShouldBeSuccessful()
     {
-        $service = Shopware()->Container()->get('swag_migration_connector.service.voucher_service');
+        $service = $this->getContainer()->get('swag_migration_connector.service.voucher_service');
 
         $data = $service->getVouchers(0, 1);
 
@@ -77,7 +80,7 @@ class VoucherServiceTest extends TestCase
      */
     public function testReadWithLimitAndOffsetShouldBeSuccessful()
     {
-        $service = Shopware()->Container()->get('swag_migration_connector.service.voucher_service');
+        $service = $this->getContainer()->get('swag_migration_connector.service.voucher_service');
 
         $data = $service->getVouchers(1, 1);
 
@@ -89,7 +92,7 @@ class VoucherServiceTest extends TestCase
      */
     public function testReadWithOutOfBoundsOffsetShouldOfferEmptyArray()
     {
-        $service = Shopware()->Container()->get('swag_migration_connector.service.voucher_service');
+        $service = $this->getContainer()->get('swag_migration_connector.service.voucher_service');
 
         $data = $service->getVouchers(10);
 
