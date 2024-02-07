@@ -301,7 +301,7 @@ class ProductRepository extends AbstractRepository
     /**
      * {@inheritdoc}
      */
-    protected function fetchIdentifiers($table, $offset = 0, $limit = 250)
+    protected function fetchIdentifiers($table, $offset = 0, $limit = 250, $where = [])
     {
         $query = $this->connection->createQueryBuilder();
 
@@ -309,6 +309,10 @@ class ProductRepository extends AbstractRepository
         $query->from($table);
         $query->addOrderBy('kind');
         $query->addOrderBy('id');
+
+        foreach ($where as $clause) {
+            $query->andWhere($clause);
+        }
 
         $query->setFirstResult($offset);
         $query->setMaxResults($limit);

@@ -61,19 +61,24 @@ abstract class AbstractRepository implements ApiRepositoryInterface
     }
 
     /**
-     * @param string $table
-     * @param int    $offset
-     * @param int    $limit
+     * @param string             $table
+     * @param int                $offset
+     * @param int                $limit
+     * @param array<int, string> $where
      *
      * @return array
      */
-    protected function fetchIdentifiers($table, $offset = 0, $limit = 250)
+    protected function fetchIdentifiers($table, $offset = 0, $limit = 250, $where = [])
     {
         $query = $this->connection->createQueryBuilder();
 
         $query->select('id');
         $query->from($table);
         $query->addOrderBy('id');
+
+        foreach ($where as $clause) {
+            $query->andWhere($clause);
+        }
 
         $query->setFirstResult($offset);
         $query->setMaxResults($limit);

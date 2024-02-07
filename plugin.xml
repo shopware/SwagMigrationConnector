@@ -21,10 +21,12 @@
 
     <changelog version="REPLACE_GLOBAL_WITH_NEXT_VERSION">
         <changes lang="de">
+            MIG-825 - Verbessert die Performance bei der Migration von Bestellungen;
             MIG-865 - Migration der ESD-Dateien für SW5.4 korrigiert;
             MIG-899 - Geändertes Verhalten der Migration von SEO URLs. Die URL Groß-/Kleinschreibung von Shopware 5 wird nun berücksichtigt;
         </changes>
         <changes lang="en">
+            MIG-825 - Improve performance of the migration of orders;
             MIG-865 - Fix migration of esd files for SW5.4;
             MIG-899 - Changed behavior of the migration of seo urls. It now considers the URL case setting of shopware 5;
         </changes>
