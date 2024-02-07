@@ -25,12 +25,19 @@ class Shopware_Controllers_Api_SwagMigrationEsdFiles extends SwagMigrationApiCon
         }
 
         $filePath = base64_decode($encodedFilePath, true);
-        if (!\is_string($filePath) || !$esdService->fileExists($filePath)) {
-            throw new FileNotFoundException('File not found', 404);
+        if (!$esdService->existsFileSystem()) { // The old filesystem is used
+            $originalFilePath = \realpath('files');
+            $realPath = \realpath('files/' . $filePath);
+
+            if ($realPath === false || $originalFilePath !== \dirname(\dirname($realPath))) {
+                throw new FileNotFoundException('File not found', 404);
+            }
+
+            $filePath = 'files/' . $filePath; // The exact folder has to be added
         }
 
-        if (!$esdService->existsFileSystem()) {
-            return;
+        if (!\is_string($filePath) || !$esdService->fileExists($filePath)) {
+            throw new FileNotFoundException('File not found', 404);
         }
 
         $fileName = basename($filePath);
