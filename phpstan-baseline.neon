@@ -576,11 +576,6 @@ parameters:
 			path: Repository/ProductRepository.php
 
 		-
-			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductRepository\\:\\:fetchIdentifiers\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Repository/ProductRepository.php
-
-		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductRepository\\:\\:fetchMainCategoryShops\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/ProductRepository.php

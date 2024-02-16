@@ -43,7 +43,7 @@ class OrderRepository extends AbstractRepository
      */
     public function fetch($offset = 0, $limit = 250)
     {
-        $ids = $this->fetchIdentifiers('s_order', $offset, $limit, ['status != -1']);
+        $ids = $this->fetchIdentifiers('s_order', $offset, $limit, [], ['status != -1']);
 
         $query = $this->connection->createQueryBuilder();
 
