@@ -40,7 +40,7 @@ class ProductRepository extends AbstractRepository
      */
     public function fetch($offset = 0, $limit = 250)
     {
-        $ids = $this->fetchIdentifiers('s_articles_details', $offset, $limit);
+        $ids = $this->fetchIdentifiers('s_articles_details', $offset, $limit, ['kind', 'id']);
 
         $query = $this->connection->createQueryBuilder();
 
@@ -296,23 +296,5 @@ class ProductRepository extends AbstractRepository
         $query->setParameter('ids', $variantIds, Connection::PARAM_INT_ARRAY);
 
         return $query->execute()->fetchAll(\PDO::FETCH_GROUP);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function fetchIdentifiers($table, $offset = 0, $limit = 250)
-    {
-        $query = $this->connection->createQueryBuilder();
-
-        $query->select('id');
-        $query->from($table);
-        $query->addOrderBy('kind');
-        $query->addOrderBy('id');
-
-        $query->setFirstResult($offset);
-        $query->setMaxResults($limit);
-
-        return $query->execute()->fetchAll(\PDO::FETCH_COLUMN);
     }
 }

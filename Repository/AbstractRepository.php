@@ -44,7 +44,7 @@ abstract class AbstractRepository implements ApiRepositoryInterface
      * @param string $table
      * @param string $tableAlias
      */
-    protected function addTableSelection(QueryBuilder $query, $table, $tableAlias)
+    final protected function addTableSelection(QueryBuilder $query, $table, $tableAlias)
     {
         $columns = $this->connection->getSchemaManager()->listTableColumns($table);
 
@@ -61,19 +61,32 @@ abstract class AbstractRepository implements ApiRepositoryInterface
     }
 
     /**
-     * @param string $table
-     * @param int    $offset
-     * @param int    $limit
+     * @param string             $table
+     * @param int                $offset
+     * @param int                $limit
+     * @param array<int, string> $orderBy
+     * @param array<int, string> $where
      *
      * @return array
      */
-    protected function fetchIdentifiers($table, $offset = 0, $limit = 250)
+    final protected function fetchIdentifiers($table, $offset = 0, $limit = 250, $orderBy = [], $where = [])
     {
         $query = $this->connection->createQueryBuilder();
 
         $query->select('id');
         $query->from($table);
-        $query->addOrderBy('id');
+
+        if (empty($orderBy)) {
+            $orderBy = ['id'];
+        }
+
+        foreach ($orderBy as $order) {
+            $query->addOrderBy($order);
+        }
+
+        foreach ($where as $clause) {
+            $query->andWhere($clause);
+        }
 
         $query->setFirstResult($offset);
         $query->setMaxResults($limit);
