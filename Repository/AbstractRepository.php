@@ -44,7 +44,7 @@ abstract class AbstractRepository implements ApiRepositoryInterface
      * @param string $table
      * @param string $tableAlias
      */
-    protected function addTableSelection(QueryBuilder $query, $table, $tableAlias)
+    final protected function addTableSelection(QueryBuilder $query, $table, $tableAlias)
     {
         $columns = $this->connection->getSchemaManager()->listTableColumns($table);
 
@@ -68,7 +68,7 @@ abstract class AbstractRepository implements ApiRepositoryInterface
      *
      * @return array
      */
-    protected function fetchIdentifiers($table, $offset = 0, $limit = 250, $where = [])
+    final protected function fetchIdentifiers($table, $offset = 0, $limit = 250, $where = [])
     {
         $query = $this->connection->createQueryBuilder();
 
