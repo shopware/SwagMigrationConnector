@@ -19,7 +19,7 @@
         The Migration Connector provides API endpoints that allow Shopware 6 to create a secure data connection with the active Shopware 5 shop which support the data migration to Shopware 6.
     </description>
 
-    <changelog version="REPLACE_GLOBAL_WITH_NEXT_VERSION">
+    <changelog version="2.0.0">
         <changes lang="de">
             MIG-825 - [BREAKING] Hinzufügen der Parameter `order by` und `where` zu `fetchIdentifiers` von `Repository/AbstractRepository.php`;
             MIG-825 - [BREAKING] Ändern der Funktionen `addTableSelection` und `fetchIdentifiers` von `Repository/AbstractRepository.php` auf final;
