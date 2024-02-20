@@ -12,6 +12,9 @@ use Shopware\Components\Model\ModelManager;
 use Shopware\Models\Shop\Shop;
 use SwagMigrationConnector\Repository\ApiRepositoryInterface;
 use SwagMigrationConnector\Repository\ProductRepository;
+use SwagMigrationConnector\Repository\Result\ProductRepository\MainCategoryShopRelationResult;
+use SwagMigrationConnector\Repository\Result\ProductRepository\ProductVisibilityResult;
+use SwagMigrationConnector\Repository\Result\ProductRepository\ShopCategoryRelation;
 use Symfony\Component\HttpFoundation\ParameterBag;
 
 class ProductService extends AbstractApiService
@@ -85,8 +88,7 @@ class ProductService extends AbstractApiService
     protected function appendAssociatedData(array $products)
     {
         $categories = $this->getCategories();
-        $mainCategoryShops = $this->fetchMainCategoryShops();
-        $productVisibility = $this->getProductVisibility($categories, $mainCategoryShops);
+        $productVisibility = $this->getProductVisibility($categories, $this->fetchMainCategoryShops());
 
         $prices = $this->getPrices();
         $assets = $this->getAssets();
@@ -128,15 +130,14 @@ class ProductService extends AbstractApiService
             if (isset($filterValues[$product['detail']['id']])) {
                 $product['filters'] = $filterValues[$product['detail']['id']];
             }
-            if (isset($productVisibility[$product['id']])) {
-                $product['shops'] = \array_values($productVisibility[$product['id']]);
-            }
             if (isset($esdFiles[$product['detail']['id']])) {
                 $product['esdFiles'] = \array_values($esdFiles[$product['detail']['id']]);
                 foreach ($product['esdFiles'] as &$esdFile) {
                     $esdFile['path'] = $esdPath;
                 }
             }
+
+            $product['shops'] = $productVisibility->getShops($product['id']);
         }
         unset(
             $product, $categories,
@@ -244,35 +245,49 @@ class ProductService extends AbstractApiService
     }
 
     /**
-     * @return array
+     * @return MainCategoryShopRelationResult
      */
     private function fetchMainCategoryShops()
     {
-        return $this->productRepository->fetchMainCategoryShops();
+        $result = new MainCategoryShopRelationResult();
+        foreach ($this->productRepository->fetchMainCategoryShops() as $shopCategoryRelation) {
+            $result->add(new ShopCategoryRelation($shopCategoryRelation));
+        }
+
+        return $result;
     }
 
     /**
-     * @return array
+     * @return ProductVisibilityResult
      */
-    private function getProductVisibility(array $categories, array $mainCategoryShops)
+    private function getProductVisibility(array $categories, MainCategoryShopRelationResult $mainCategoryShops)
     {
-        $productVisibility = [];
+        $productVisibility = new ProductVisibilityResult();
+
         foreach ($categories as $productId => $productCategories) {
             foreach ($productCategories as $category) {
-                if (empty($category['path'])) {
-                    continue;
-                }
-                $parentCategoryIds = \array_values(
-                    \array_filter(\explode('|', $category['path']))
-                );
-                foreach ($parentCategoryIds as $parentCategoryId) {
-                    if (isset($mainCategoryShops[$parentCategoryId])) {
-                        $productVisibility[$productId][$mainCategoryShops[$parentCategoryId]] = $mainCategoryShops[$parentCategoryId];
+                foreach ($this->getParentCategoryIds($category) as $parentCategoryId) {
+                    if ($mainCategoryShops->containsCategory($parentCategoryId)) {
+                        $productVisibility->add((int) $productId, $mainCategoryShops->getShopIds($parentCategoryId));
                     }
                 }
             }
         }
 
         return $productVisibility;
+    }
+
+    /**
+     * @param array<string, mixed> $category
+     *
+     * @return array<int, string>
+     */
+    private function getParentCategoryIds(array $category)
+    {
+        if (empty($category['path'])) {
+            return [];
+        }
+
+        return \array_filter(\explode('|', $category['path']));
     }
 }

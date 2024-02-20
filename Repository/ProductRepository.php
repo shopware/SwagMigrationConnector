@@ -78,16 +78,16 @@ class ProductRepository extends AbstractRepository
     }
 
     /**
-     * @return array
+     * @return array<int, array<string, string>>
      */
     public function fetchMainCategoryShops()
     {
         $query = $this->connection->createQueryBuilder();
 
         $query->from('s_core_shops', 'shop');
-        $query->addSelect('shop.category_id, IFNULL(shop.main_id, shop.id)');
+        $query->addSelect(['IFNULL(shop.main_id, shop.id) AS shopId', 'shop.category_id as categoryId']);
 
-        return $query->execute()->fetchAll(\PDO::FETCH_KEY_PAIR);
+        return $query->execute()->fetchAll();
     }
 
     /**
@@ -138,7 +138,7 @@ class ProductRepository extends AbstractRepository
         $query->from('s_articles_categories', 'product_category');
 
         $query->leftJoin('product_category', 's_categories', 'category', 'category.id = product_category.categoryID');
-        $query->addSelect('product_category.articleID', 'product_category.categoryID as id, category.path');
+        $query->addSelect(['product_category.articleID', 'product_category.categoryID as id, category.path']);
 
         $query->where('product_category.articleID IN (:ids)');
         $query->setParameter('ids', $productIds, Connection::PARAM_INT_ARRAY);
