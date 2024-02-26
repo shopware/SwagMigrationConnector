@@ -8,11 +8,11 @@
 namespace SwagMigrationConnector\Tests\Functional\Service;
 
 use PHPUnit\Framework\TestCase;
-use SwagMigrationConnector\Tests\Functional\ContainerTrait;
+use SwagMigrationConnector\Tests\Functional\DatabaseTransactionTrait;
 
 class ProductServiceTest extends TestCase
 {
-    use ContainerTrait;
+    use DatabaseTransactionTrait;
 
     /**
      * @return void
@@ -122,5 +122,42 @@ class ProductServiceTest extends TestCase
         $products = $productService->getProducts(2000);
 
         static::assertEmpty($products);
+    }
+
+    /**
+     * @return void
+     */
+    public function testGetProductsShouldAddShopsCorrectly()
+    {
+        $sql = file_get_contents(__DIR__ . '/_fixtures/subshops.sql');
+        static::assertTrue(\is_string($sql));
+
+        $this->getContainer()->get('dbal_connection')->exec($sql);
+
+        $productService = $this->getContainer()->get('swag_migration_connector.service.product_service');
+
+        $products = $productService->getProducts(100, 1);
+        static::assertCount(1, $products);
+        static::assertSame(['1', '3', '4'], $products[0]['shops']);
+    }
+
+    /**
+     * @return void
+     */
+    public function testGetProductsShouldAddMainShopOfLanguageShop()
+    {
+        $sql = file_get_contents(__DIR__ . '/_fixtures/language_shop.sql');
+        static::assertTrue(\is_string($sql));
+
+        $this->getContainer()->get('dbal_connection')->exec($sql);
+
+        $productService = $this->getContainer()->get('swag_migration_connector.service.product_service');
+
+        // Get product wich is only assigned to a language shop
+        $products = $productService->getProducts(225, 1);
+        static::assertCount(1, $products);
+        static::assertSame('Some French cool name', $products[0]['name']);
+        // Expect getting the main shop of the language shop
+        static::assertSame(['3'], $products[0]['shops']);
     }
 }

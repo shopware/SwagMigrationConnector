@@ -576,11 +576,6 @@ parameters:
 			path: Repository/ProductRepository.php
 
 		-
-			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductRepository\\:\\:fetchMainCategoryShops\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Repository/ProductRepository.php
-
-		-
 			message: "#^Method SwagMigrationConnector\\\\Repository\\\\ProductRepository\\:\\:fetchProductAssets\\(\\) has parameter \\$productIds with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Repository/ProductRepository.php
@@ -1341,11 +1336,6 @@ parameters:
 			path: Service/ProductService.php
 
 		-
-			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductService\\:\\:fetchMainCategoryShops\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Service/ProductService.php
-
-		-
 			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductService\\:\\:getAssets\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Service/ProductService.php
@@ -1372,16 +1362,6 @@ parameters:
 
 		-
 			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductService\\:\\:getProductVisibility\\(\\) has parameter \\$categories with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Service/ProductService.php
-
-		-
-			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductService\\:\\:getProductVisibility\\(\\) has parameter \\$mainCategoryShops with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Service/ProductService.php
-
-		-
-			message: "#^Method SwagMigrationConnector\\\\Service\\\\ProductService\\:\\:getProductVisibility\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Service/ProductService.php
 
