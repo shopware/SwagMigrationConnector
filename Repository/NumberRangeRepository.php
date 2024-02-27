@@ -46,6 +46,10 @@ class NumberRangeRepository extends AbstractRepository
             ->fetchAll();
     }
 
+    /**
+     * configuration applies in article context only
+     * @return mixed
+     */
     public function fetchPrefix()
     {
         return $this->connection->createQueryBuilder()

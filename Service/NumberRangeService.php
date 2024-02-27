@@ -49,7 +49,7 @@ class NumberRangeService extends AbstractApiService
 
         foreach ($numberRanges as &$numberRange) {
             $numberRange['_locale'] = $locale;
-            $numberRange['prefix'] = $prefix;
+            $numberRange['prefix'] =  $numberRange['name'] === 'articleordernumber' ? $prefix : '';
         }
 
         return $numberRanges;
