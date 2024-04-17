@@ -13,6 +13,8 @@ use SwagMigrationConnector\Exception\FileNotFoundException;
 use SwagMigrationConnector\Exception\FileNotReadableException;
 use SwagMigrationConnector\Service\EsdService;
 use SwagMigrationConnector\Tests\Functional\ContainerTrait;
+use SwagMigrationConnector\Tests\Functional\Controllers\ControllerFactory\Arguments;
+use SwagMigrationConnector\Tests\Functional\Controllers\ControllerFactory\ControllerFactory;
 
 require __DIR__ . '/../../../Controllers/Api/SwagMigrationEsdFiles.php';
 
@@ -35,18 +37,12 @@ class SwagMigrationEsdFilesTest extends \Enlight_Components_Test_Controller_Test
      */
     public function setUpController()
     {
-        $request = new \Enlight_Controller_Request_RequestTestCase();
-        $response = new \Enlight_Controller_Response_ResponseTestCase();
-        $this->controller = \Enlight_Class::Instance(\Shopware_Controllers_Api_SwagMigrationEsdFiles::class, [$request, $response]);
-
-        $container = $this->getContainer();
         $this->esdServiceMock = $this->createMock(EsdService::class);
-        $container->set('swag_migration_connector.service.esd_service', $this->esdServiceMock);
 
-        $this->controller->setRequest($request);
-        $this->controller->setResponse($response);
-        $this->controller->setContainer($container);
-        $this->controller->setView(new \Enlight_View_Default(new \Enlight_Template_Manager()));
+        $arguments = new Arguments($this->getContainer());
+        $arguments->addContainerService('swag_migration_connector.service.esd_service', $this->esdServiceMock);
+
+        $this->controller = ControllerFactory::createController(\Shopware_Controllers_Api_SwagMigrationEsdFiles::class, $arguments);
     }
 
     /**
