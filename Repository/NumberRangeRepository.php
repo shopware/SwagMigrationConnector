@@ -35,7 +35,7 @@ class NumberRangeRepository extends AbstractRepository
     }
 
     /**
-     * @return array
+     * @return list<array{id: string, number: string, name: string, desc: string}>
      */
     public function fetch($offset = 0, $limit = 250)
     {
@@ -47,8 +47,9 @@ class NumberRangeRepository extends AbstractRepository
     }
 
     /**
-     * configuration applies in article context only
-     * @return mixed
+     * Configuration value is only valid for product order numbers
+     *
+     * @return string
      */
     public function fetchPrefix()
     {

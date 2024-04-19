@@ -9,7 +9,6 @@ namespace SwagMigrationConnector\Service;
 
 use Shopware\Components\Model\ModelManager;
 use Shopware\Models\Shop\Shop;
-use SwagMigrationConnector\Repository\ApiRepositoryInterface;
 use SwagMigrationConnector\Repository\NumberRangeRepository;
 
 class NumberRangeService extends AbstractApiService
@@ -24,34 +23,43 @@ class NumberRangeService extends AbstractApiService
      */
     private $modelManager;
 
-    public function __construct(ApiRepositoryInterface $repository, ModelManager $modelManager)
+    public function __construct(NumberRangeRepository $repository, ModelManager $modelManager)
     {
         $this->repository = $repository;
         $this->modelManager = $modelManager;
     }
 
     /**
-     * @return array
+     * @return list<array{id: string, number: string, name: string, desc: string, _locale: string, prefix: string}>
      */
     public function getNumberRanges()
     {
-        $numberRanges = $this->repository->fetch();
-        $prefix = \unserialize($this->repository->fetchPrefix(), ['allowedClasses' => false]);
+        $productOrderNumberPrefixSerialized = $this->repository->fetchPrefix();
+        if (\PHP_VERSION_ID >= 70000) {
+            $prefix = \unserialize($productOrderNumberPrefixSerialized, ['allowedClasses' => false]);
+        } else {
+            $prefix = \unserialize($productOrderNumberPrefixSerialized);
+        }
 
         if (!$prefix) {
             $prefix = '';
         }
 
-        /** @var Shop $defaultShop */
         $defaultShop = $this->modelManager->getRepository(Shop::class)->getDefault();
         // represents the main language of the migrated shop
         $locale = \str_replace('_', '-', $defaultShop->getLocale()->getLocale());
 
-        foreach ($numberRanges as &$numberRange) {
+        $returnedRanges = [];
+        foreach ($this->repository->fetch() as $numberRange) {
             $numberRange['_locale'] = $locale;
-            $numberRange['prefix'] =  $numberRange['name'] === 'articleordernumber' ? $prefix : '';
+            $numberRange['prefix'] = '';
+            if ($numberRange['name'] === 'articleordernumber') {
+                $numberRange['prefix'] = $prefix;
+            }
+
+            $returnedRanges[] = $numberRange;
         }
 
-        return $numberRanges;
+        return $returnedRanges;
     }
 }

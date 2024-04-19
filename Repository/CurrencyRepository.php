@@ -34,12 +34,6 @@ class CurrencyRepository extends AbstractRepository
         return new TotalStruct(DefaultEntities::CURRENCY, $total);
     }
 
-    /**
-     * @param int $offset
-     * @param int $limit
-     *
-     * @return array
-     */
     public function fetch($offset = 0, $limit = 250)
     {
         $query = $this->connection->createQueryBuilder();

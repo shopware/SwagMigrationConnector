@@ -7,6 +7,7 @@
 
 namespace SwagMigrationConnector\Repository;
 
+use SwagMigrationConnector\Util\DefaultEntities;
 use SwagMigrationConnector\Util\TotalStruct;
 
 interface ApiRepositoryInterface
@@ -15,7 +16,7 @@ interface ApiRepositoryInterface
      * @param int $offset
      * @param int $limit
      *
-     * @return array
+     * @return list<array<string, mixed>>
      */
     public function fetch($offset = 0, $limit = 250);
 
@@ -25,7 +26,7 @@ interface ApiRepositoryInterface
     public function getTotal();
 
     /**
-     * @param array
+     * @param list<DefaultEntities::*> $entities
      *
      * @return bool
      */

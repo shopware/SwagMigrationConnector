@@ -10,6 +10,9 @@ namespace SwagMigrationConnector\Repository;
 use Doctrine\DBAL\Connection;
 use SwagMigrationConnector\Exception\UnknownTableException;
 
+/**
+ * @deprecated - Will be removed in 3.0.0 as it is not used anymore
+ */
 class DynamicRepository
 {
     /**
@@ -23,13 +26,12 @@ class DynamicRepository
     }
 
     /**
-     * @param string $table
-     * @param int    $offset
-     * @param int    $limit
+     * @param string               $table
+     * @param int                  $offset
+     * @param int                  $limit
+     * @param array<string, mixed> $filter
      *
-     * @throws UnknownTableException
-     *
-     * @return array
+     * @return list<array<string, mixed>>
      */
     public function fetch($table, $offset = 0, $limit = 250, array $filter = [])
     {

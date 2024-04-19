@@ -34,9 +34,6 @@ class ShopRepository extends AbstractRepository
         return new TotalStruct(DefaultEntities::SALES_CHANNEL, $total);
     }
 
-    /**
-     * @return array
-     */
     public function fetch($offset = 0, $limit = 250)
     {
         $query = $this->connection->createQueryBuilder();
