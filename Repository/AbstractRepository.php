@@ -9,8 +9,6 @@ namespace SwagMigrationConnector\Repository;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Query\QueryBuilder;
-use Doctrine\DBAL\Schema\Column;
-use SwagMigrationConnector\Util\TotalStruct;
 
 abstract class AbstractRepository implements ApiRepositoryInterface
 {
@@ -24,17 +22,11 @@ abstract class AbstractRepository implements ApiRepositoryInterface
         $this->connection = $connection;
     }
 
-    /**
-     * @return TotalStruct|null
-     */
     public function getTotal()
     {
         return null;
     }
 
-    /**
-     * @return bool
-     */
     public function requiredForCount(array $entities)
     {
         return false;
@@ -43,13 +35,12 @@ abstract class AbstractRepository implements ApiRepositoryInterface
     /**
      * @param string $table
      * @param string $tableAlias
+     *
+     * @return void
      */
     final protected function addTableSelection(QueryBuilder $query, $table, $tableAlias)
     {
-        $columns = $this->connection->getSchemaManager()->listTableColumns($table);
-
-        /** @var Column $column */
-        foreach ($columns as $column) {
+        foreach ($this->connection->getSchemaManager()->listTableColumns($table) as $column) {
             $selection = \str_replace(
                 ['#tableAlias#', '#column#'],
                 [$tableAlias, $column->getName()],
@@ -61,13 +52,13 @@ abstract class AbstractRepository implements ApiRepositoryInterface
     }
 
     /**
-     * @param string             $table
-     * @param int                $offset
-     * @param int                $limit
-     * @param array<int, string> $orderBy
-     * @param array<int, string> $where
+     * @param string       $table
+     * @param int          $offset
+     * @param int          $limit
+     * @param list<string> $orderBy
+     * @param list<string> $where
      *
-     * @return array
+     * @return list<array<string, mixed>>
      */
     final protected function fetchIdentifiers($table, $offset = 0, $limit = 250, $orderBy = [], $where = [])
     {

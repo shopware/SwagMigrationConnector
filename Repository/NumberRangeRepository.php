@@ -35,7 +35,7 @@ class NumberRangeRepository extends AbstractRepository
     }
 
     /**
-     * @return array
+     * @return list<array{id: string, number: string, name: string, desc: string}>
      */
     public function fetch($offset = 0, $limit = 250)
     {
@@ -46,6 +46,11 @@ class NumberRangeRepository extends AbstractRepository
             ->fetchAll();
     }
 
+    /**
+     * Configuration value is only valid for product order numbers
+     *
+     * @return string
+     */
     public function fetchPrefix()
     {
         return $this->connection->createQueryBuilder()
