@@ -9,6 +9,7 @@ use Shopware\Components\Api\Exception\ParameterMissingException;
 use SwagMigrationConnector\Controllers\SwagMigrationApiControllerBase;
 use SwagMigrationConnector\Exception\FileNotFoundException;
 use SwagMigrationConnector\Exception\FileNotReadableException;
+use Symfony\Component\HttpFoundation\Response;
 
 class Shopware_Controllers_Api_SwagMigrationEsdFiles extends SwagMigrationApiControllerBase
 {
@@ -30,21 +31,21 @@ class Shopware_Controllers_Api_SwagMigrationEsdFiles extends SwagMigrationApiCon
             $realPath = \realpath('files/' . $filePath);
 
             if ($realPath === false || $originalFilePath !== \dirname(\dirname($realPath))) {
-                throw new FileNotFoundException('File not found', 404);
+                throw new FileNotFoundException('File not found', Response::HTTP_NOT_FOUND);
             }
 
             $filePath = 'files/' . $filePath; // The exact folder has to be added
         }
 
         if (!\is_string($filePath) || !$esdService->fileExists($filePath)) {
-            throw new FileNotFoundException('File not found', 404);
+            throw new FileNotFoundException('File not found', Response::HTTP_NOT_FOUND);
         }
 
         $fileName = basename($filePath);
         $mimeType = $esdService->getMimeType($filePath);
 
         if (!\is_string($mimeType)) {
-            throw new FileNotFoundException('File not found', 404);
+            throw new FileNotFoundException('File not found', Response::HTTP_NOT_FOUND);
         }
 
         @set_time_limit(0);
@@ -54,7 +55,10 @@ class Shopware_Controllers_Api_SwagMigrationEsdFiles extends SwagMigrationApiCon
         $downstream = \fopen('php://output', 'wb');
 
         if ($upstream === false || $downstream === false) {
-            throw new FileNotReadableException('File is not readable');
+            $this->closeResource($upstream);
+            $this->closeResource($downstream);
+
+            throw new FileNotReadableException('File is not readable', Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 
         ob_end_clean();
@@ -66,6 +70,9 @@ class Shopware_Controllers_Api_SwagMigrationEsdFiles extends SwagMigrationApiCon
             fwrite($downstream, $read);
             flush();
         }
+
+        $this->closeResource($upstream);
+        $this->closeResource($downstream);
     }
 
     /**
@@ -89,5 +96,19 @@ class Shopware_Controllers_Api_SwagMigrationEsdFiles extends SwagMigrationApiCon
         $response->setHeader('Content-Transfer-Encoding', 'binary');
         $response->setHeader('Content-Length', $fileSize);
         $response->sendHeaders();
+    }
+
+    /**
+     * @param resource|false $resource
+     *
+     * @return void
+     */
+    private function closeResource($resource)
+    {
+        if ($resource === false) {
+            return;
+        }
+
+        \fclose($resource);
     }
 }

@@ -10,6 +10,7 @@ use SwagMigrationConnector\Exception\DocumentNotFoundException;
 use SwagMigrationConnector\Exception\FileNotReadableException;
 use SwagMigrationConnector\Exception\OrderNotFoundException;
 use SwagMigrationConnector\Service\ControllerReturnStruct;
+use Symfony\Component\HttpFoundation\Response;
 
 class Shopware_Controllers_Api_SwagMigrationOrderDocuments extends SwagMigrationApiControllerBase
 {
@@ -39,18 +40,17 @@ class Shopware_Controllers_Api_SwagMigrationOrderDocuments extends SwagMigration
         $documentHash = $this->Request()->getParam('id', null);
 
         if (empty($documentHash)) {
-            throw new DocumentNotFoundException('File not found', 404);
+            throw new DocumentNotFoundException('File not found', Response::HTTP_NOT_FOUND);
         }
 
         $filePath = $documentService->getFilePath($documentHash);
         if (!$documentService->fileExists($filePath)) {
-            throw new DocumentNotFoundException('File not found', 404);
+            throw new DocumentNotFoundException('File not found', Response::HTTP_NOT_FOUND);
         }
 
         $orderNumber = $documentService->getOrderNumberByDocumentHash($documentHash);
-
         if (!\is_string($orderNumber)) {
-            throw new OrderNotFoundException();
+            throw new OrderNotFoundException(sprintf('Order with order number %s not found', $documentHash), Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 
         @set_time_limit(0);
@@ -62,7 +62,10 @@ class Shopware_Controllers_Api_SwagMigrationOrderDocuments extends SwagMigration
             $downstream = \fopen('php://output', 'wb');
 
             if ($upstream === false || $downstream === false) {
-                throw new FileNotReadableException();
+                $this->closeResource($upstream);
+                $this->closeResource($downstream);
+
+                throw new FileNotReadableException(sprintf('File %s is not readable', $filePath), Response::HTTP_INTERNAL_SERVER_ERROR);
             }
 
             while (!feof($upstream)) {
@@ -73,6 +76,9 @@ class Shopware_Controllers_Api_SwagMigrationOrderDocuments extends SwagMigration
                 fwrite($downstream, $read);
                 flush();
             }
+
+            $this->closeResource($upstream);
+            $this->closeResource($downstream);
         } else {
             // Disable Smarty rendering
             $this->Front()->Plugins()->ViewRenderer()->setNoRender();
@@ -104,5 +110,19 @@ class Shopware_Controllers_Api_SwagMigrationOrderDocuments extends SwagMigration
         $response->setHeader('Content-Transfer-Encoding', 'binary');
         $response->setHeader('Content-Length', $fileSize);
         $response->sendHeaders();
+    }
+
+    /**
+     * @param resource|false $resource
+     *
+     * @return void
+     */
+    private function closeResource($resource)
+    {
+        if ($resource === false) {
+            return;
+        }
+
+        \fclose($resource);
     }
 }
