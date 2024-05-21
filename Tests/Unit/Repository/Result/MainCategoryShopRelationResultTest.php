@@ -18,17 +18,17 @@ class MainCategoryShopRelationResultTest extends TestCase
     const CATEGORY_FIVE_ID = '5';
     const CATEGORY_TWELVE_ID = '12';
     const TEST_DATA_SET = [
-         1 => '3',
-         2 => '12',
-         3 => '3',
-         4 => '12',
-         5 => '3',
-         6 => '12',
-         7 => '4',
-         8 => '4',
-         9 => '5',
-         10 => '5',
-     ];
+        1 => '3',
+        2 => '12',
+        3 => '3',
+        4 => '12',
+        5 => '3',
+        6 => '12',
+        7 => '4',
+        8 => '4',
+        9 => '5',
+        10 => '5',
+    ];
 
     /**
      * @return void

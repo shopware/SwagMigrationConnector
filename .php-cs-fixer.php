@@ -6,6 +6,7 @@
  */
 
 use PhpCsFixer\Config;
+use PhpCsFixer\Runner\Parallel\ParallelConfigFactory;
 use PhpCsFixerCustomFixers\Fixer\NoSuperfluousConcatenationFixer;
 use PhpCsFixerCustomFixers\Fixer\NoUselessCommentFixer;
 use PhpCsFixerCustomFixers\Fixer\NoUselessParenthesisFixer;
@@ -27,6 +28,7 @@ EOF;
 return (new Config())
     ->registerCustomFixers(new Fixers())
     ->setRiskyAllowed(true)
+    ->setParallelConfig(ParallelConfigFactory::detect())
     ->setRules([
         '@PSR12' => true,
         '@Symfony' => true,
