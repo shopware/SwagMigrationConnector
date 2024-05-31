@@ -23,10 +23,12 @@
         <changes lang="de">
             MIG-845 - Verbesserung der Migration von Bestelldokumenten;
             MIG-975 - Prefix für Nummernkreise wird nur noch korrekt für Produktbestellnummern verwendet;
+            MIG-983 - Korrigiert einen Fehler bei der Migration von Kunden, die an einen Shop gebunden sind;
         </changes>
         <changes lang="en">
             MIG-845 - Improve migration of order documents;
             MIG-975 - Prefix for number ranges is now only correctly used for product order numbers;
+            MIG-983 - Fix migration of shop bounded customers;
         </changes>
     </changelog>
 
