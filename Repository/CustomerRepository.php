@@ -62,6 +62,9 @@ class CustomerRepository extends AbstractRepository
         $query->leftJoin('customer', 's_core_locales', 'customerlanguage', 'customer.language = customerlanguage.id');
         $this->addTableSelection($query, 's_core_locales', 'customerlanguage');
 
+        $query->leftJoin('customer', 's_core_shops', 'shop', 'customer.subshopID = shop.id');
+        $this->addTableSelection($query, 's_core_shops', 'shop');
+
         $query->where('customer.id IN (:ids)');
         $query->setParameter('ids', $ids, Connection::PARAM_STR_ARRAY);
 
