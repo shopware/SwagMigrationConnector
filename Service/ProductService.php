@@ -87,7 +87,9 @@ class ProductService extends AbstractApiService
      */
     protected function appendAssociatedData(array $products)
     {
-        $categories = $this->getCategories();
+        $productIds = $this->getProductIds();
+
+        $categories = $this->productRepository->fetchProductCategories($productIds);
         $productVisibility = $this->getProductVisibility($categories, $this->fetchMainCategoryShops());
 
         $prices = $this->getPrices();
@@ -96,6 +98,7 @@ class ProductService extends AbstractApiService
         $filterValues = $this->getFilterOptionValues();
         $esdPath = $this->productRepository->getEsdConfig();
         $esdFiles = $this->productRepository->fetchEsdFiles($this->productMapping->keys());
+        $seoMainCategories = $this->productRepository->fetchProductSeoMainCategories($productIds);
 
         /** @var Shop $defaultShop */
         $defaultShop = $this->modelManager->getRepository(Shop::class)->getDefault();
@@ -109,6 +112,9 @@ class ProductService extends AbstractApiService
 
             if (isset($categories[$product['id']])) {
                 $product['categories'] = $categories[$product['id']];
+            }
+            if (isset($seoMainCategories[$product['id']])) {
+                $product['mainCategories'] = $seoMainCategories[$product['id']];
             }
             if (isset($prices[$product['detail']['id']])) {
                 $product['prices'] = $prices[$product['detail']['id']];
@@ -140,7 +146,7 @@ class ProductService extends AbstractApiService
             $product['shops'] = $productVisibility->getShops($product['id']);
         }
         unset(
-            $product, $categories,
+            $product, $categories, $seoMainCategories,
             $prices, $assets, $options, $esdFile
         );
 
@@ -150,15 +156,13 @@ class ProductService extends AbstractApiService
     }
 
     /**
-     * @return array
+     * @return array<int, string>
      */
-    private function getCategories()
+    private function getProductIds()
     {
-        $productIds = \array_values(
+        return \array_values(
             $this->productMapping->getIterator()->getArrayCopy()
         );
-
-        return $this->productRepository->fetchProductCategories($productIds);
     }
 
     /**
