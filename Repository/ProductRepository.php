@@ -147,27 +147,6 @@ class ProductRepository extends AbstractRepository
     }
 
     /**
-     * @param array<string> $categories
-     *
-     * @return array<string>
-     */
-    public function fetchShopsByCategories(array $categories)
-    {
-        $query = $this->connection->createQueryBuilder();
-
-        $query->from('s_categories', 'category');
-        $query->addSelect('category.id');
-
-        $query->innerJoin('category', 's_core_shops', 'shop', 'category.id = shop.category_id');
-        $query->addSelect('IFNULL(shop.main_id, shop.id) AS "id"');
-
-        $query->where('category.id IN (:ids)');
-        $query->setParameter('ids', $categories, Connection::PARAM_INT_ARRAY);
-
-        return $query->execute()->fetchAll(\PDO::FETCH_GROUP);
-    }
-
-    /**
      * @return array
      */
     public function fetchProductPrices(array $variantIds)
@@ -294,6 +273,25 @@ class ProductRepository extends AbstractRepository
 
         $query->where('asset.article_detail_id IN (:ids)');
         $query->setParameter('ids', $variantIds, Connection::PARAM_INT_ARRAY);
+
+        return $query->execute()->fetchAll(\PDO::FETCH_GROUP);
+    }
+
+    /**
+     * @param array<int, string> $productIds
+     *
+     * @return array<int, array<int, array<string, string>>>
+     */
+    public function fetchProductSeoMainCategories(array $productIds)
+    {
+        // Just select subshop main categories and ignore language shops
+        $query = $this->connection->createQueryBuilder();
+        $query->select(['seoCategory.article_id', 'seoCategory.shop_id as shopId', 'seoCategory.category_id as categoryId'])
+            ->from('s_articles_categories_seo', 'seoCategory')
+            ->join('seoCategory', 's_core_shops', 'shop', 'shop.id = seoCategory.shop_id')
+            ->where('article_id IN (:ids)')
+            ->andWhere('shop.main_id IS NULL')
+            ->setParameter('ids', $productIds, Connection::PARAM_INT_ARRAY);
 
         return $query->execute()->fetchAll(\PDO::FETCH_GROUP);
     }

@@ -160,4 +160,49 @@ class ProductServiceTest extends TestCase
         // Expect getting the main shop of the language shop
         static::assertSame(['3'], $products[0]['shops']);
     }
+
+    /**
+     * @return void
+     */
+    public function testGetProductsShouldAddTheMainSeoCategory()
+    {
+        $sql = file_get_contents(__DIR__ . '/../Repository/_fixtures/subshop_and_seo_main_categories.sql');
+        static::assertTrue(\is_string($sql));
+
+        $this->getContainer()->get('dbal_connection')->exec($sql);
+
+        $productService = $this->getContainer()->get('swag_migration_connector.service.product_service');
+        $products = $productService->getProducts(0, 300);
+
+        $productOne = $this->getProductById($products, '9');
+        static::assertCount(2, $productOne['mainCategories']);
+        static::assertSame('1', $productOne['mainCategories'][0]['shopId']);
+        static::assertSame('14', $productOne['mainCategories'][0]['categoryId']);
+        static::assertSame('3', $productOne['mainCategories'][1]['shopId']);
+        static::assertSame('34', $productOne['mainCategories'][1]['categoryId']);
+
+        $productTwo = $this->getProductById($products, '272');
+        static::assertCount(2, $productTwo['mainCategories']);
+        static::assertSame('1', $productTwo['mainCategories'][0]['shopId']);
+        static::assertSame('15', $productTwo['mainCategories'][0]['categoryId']);
+        static::assertSame('3', $productTwo['mainCategories'][1]['shopId']);
+        static::assertSame('16', $productTwo['mainCategories'][1]['categoryId']);
+    }
+
+    /**
+     * @param array<int, array<string, mixed>> $products
+     * @param string                           $productId
+     *
+     * @return array<string, mixed>
+     */
+    private function getProductById(array $products, $productId)
+    {
+        foreach ($products as $product) {
+            if ($product['id'] === $productId) {
+                return $product;
+            }
+        }
+
+        static::fail('Product with ID ' . $productId . ' not found');
+    }
 }
