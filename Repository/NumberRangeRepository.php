@@ -7,6 +7,7 @@
 
 namespace SwagMigrationConnector\Repository;
 
+use Doctrine\DBAL\Connection;
 use SwagMigrationConnector\Util\DefaultEntities;
 use SwagMigrationConnector\Util\TotalStruct;
 
@@ -39,11 +40,16 @@ class NumberRangeRepository extends AbstractRepository
      */
     public function fetch($offset = 0, $limit = 250)
     {
-        return $this->connection->createQueryBuilder()
-            ->select('*')
-            ->from('s_order_number')
-            ->execute()
-            ->fetchAll();
+        $ids = $this->fetchIdentifiers('s_order_number', $offset, $limit);
+
+        $query = $this->connection->createQueryBuilder();
+        $query->select('*');
+        $query->from('s_order_number');
+        $query->where('id IN (:ids)');
+        $query->setParameter('ids', $ids, Connection::PARAM_STR_ARRAY);
+        $query->orderBy('id');
+
+        return $query->execute()->fetchAll();
     }
 
     /**
