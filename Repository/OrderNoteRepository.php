@@ -49,6 +49,7 @@ class OrderNoteRepository extends AbstractRepository
         $query->innerJoin('note', 's_user', 'customer', 'note.userID = customer.id');
         $query->addSelect('subshopID');
 
+        $query->where('note.id IN (:ids)');
         $query->setParameter('ids', $ids, Connection::PARAM_STR_ARRAY);
         $query->addOrderBy('note.id');
 

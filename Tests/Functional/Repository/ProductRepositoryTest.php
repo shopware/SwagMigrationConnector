@@ -7,6 +7,7 @@
 
 namespace SwagMigrationConnector\Tests\Functional\Repository;
 
+use Doctrine\DBAL\Connection;
 use PHPUnit\Framework\TestCase;
 use SwagMigrationConnector\Repository\ProductRepository;
 use SwagMigrationConnector\Tests\Functional\DatabaseTransactionTrait;
@@ -16,6 +17,11 @@ class ProductRepositoryTest extends TestCase
     use DatabaseTransactionTrait;
 
     /**
+     * @var Connection
+     */
+    private $connection;
+
+    /**
      * @return void
      */
     public function testFetchProductSeoMainCategoriesShouldReturnAllSeoMainCategories()
@@ -23,7 +29,7 @@ class ProductRepositoryTest extends TestCase
         $sql = file_get_contents(__DIR__ . '/_fixtures/subshop_and_seo_main_categories.sql');
         static::assertTrue(\is_string($sql));
 
-        $this->getContainer()->get('dbal_connection')->executeQuery($sql);
+        $this->connection->executeQuery($sql);
 
         $repository = $this->getProductRepository();
 
@@ -51,10 +57,32 @@ class ProductRepositoryTest extends TestCase
     }
 
     /**
+     * @return void
+     */
+    public function testFetchReturnsLimitedBatchSize()
+    {
+        static::assertGreaterThan(10, \count($this->connection->executeQuery(
+            'SELECT id FROM s_articles_details'
+        )->fetchAll()));
+
+        static::assertCount(9, $this->getProductRepository()->fetch(0, 9));
+    }
+
+    /**
+     * @before
+     *
+     * @return void
+     */
+    protected function setUpMethod()
+    {
+        $this->connection = $this->getContainer()->get('dbal_connection');
+    }
+
+    /**
      * @return ProductRepository
      */
     private function getProductRepository()
     {
-        return new ProductRepository($this->getContainer()->get('dbal_connection'));
+        return new ProductRepository($this->connection);
     }
 }

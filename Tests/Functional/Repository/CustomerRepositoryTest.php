@@ -7,6 +7,7 @@
 
 namespace SwagMigrationConnector\Tests\Functional\Repository;
 
+use Doctrine\DBAL\Connection;
 use PHPUnit\Framework\TestCase;
 use SwagMigrationConnector\Repository\CustomerRepository;
 use SwagMigrationConnector\Tests\Functional\DatabaseTransactionTrait;
@@ -16,6 +17,11 @@ class CustomerRepositoryTest extends TestCase
     use DatabaseTransactionTrait;
 
     /**
+     * @var Connection
+     */
+    private $connection;
+
+    /**
      * @return void
      */
     public function testFetchShouldAddShopData()
@@ -23,7 +29,7 @@ class CustomerRepositoryTest extends TestCase
         $sql = file_get_contents(__DIR__ . '/_fixtures/customer.sql');
         static::assertTrue(\is_string($sql));
 
-        $this->getContainer()->get('dbal_connection')->executeQuery($sql);
+        $this->connection->executeQuery($sql);
 
         $repository = $this->getCustomerRepository();
 
@@ -33,10 +39,32 @@ class CustomerRepositoryTest extends TestCase
     }
 
     /**
+     * @return void
+     */
+    public function testFetchReturnsLimitedBatchSize()
+    {
+        static::assertGreaterThan(1, \count($this->connection->executeQuery(
+            'SELECT id FROM s_user'
+        )->fetchAll()));
+
+        static::assertCount(1, $this->getCustomerRepository()->fetch(0, 1));
+    }
+
+    /**
+     * @before
+     *
+     * @return void
+     */
+    protected function setUpMethod()
+    {
+        $this->connection = $this->getContainer()->get('dbal_connection');
+    }
+
+    /**
      * @return CustomerRepository
      */
     private function getCustomerRepository()
     {
-        return new CustomerRepository($this->getContainer()->get('dbal_connection'));
+        return new CustomerRepository($this->connection);
     }
 }

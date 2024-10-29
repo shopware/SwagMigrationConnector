@@ -7,6 +7,7 @@
 
 namespace SwagMigrationConnector\Repository;
 
+use Doctrine\DBAL\Connection;
 use SwagMigrationConnector\Util\DefaultEntities;
 use SwagMigrationConnector\Util\TotalStruct;
 
@@ -36,6 +37,8 @@ class ShopRepository extends AbstractRepository
 
     public function fetch($offset = 0, $limit = 250)
     {
+        $ids = $this->fetchIdentifiers('s_core_shops', $offset, $limit);
+
         $query = $this->connection->createQueryBuilder();
 
         $query->from('s_core_shops', 'shop');
@@ -48,6 +51,9 @@ class ShopRepository extends AbstractRepository
         $query->leftJoin('shop', 's_core_currencies', 'currency', 'shop.currency_id = currency.id');
         $query->addSelect('currency.currency');
 
+        $query->where('shop.id IN (:ids)');
+
+        $query->setParameter('ids', $ids, Connection::PARAM_STR_ARRAY);
         $query->orderBy('shop.main_id');
 
         return $query->execute()->fetchAll(\PDO::FETCH_GROUP | \PDO::FETCH_UNIQUE);

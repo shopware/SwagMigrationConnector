@@ -22,9 +22,11 @@
     <changelog version="REPLACE_GLOBAL_WITH_NEXT_VERSION">
         <changes lang="de">
             MIG-1033 - Die Migration der SEO-Hauptkategorie für Produkte wurde hinzugefügt;
+            MIG-1077 - Optimierter Datenabruf unter Berücksichtigung der übergebenen Batch-Werte;
         </changes>
         <changes lang="en">
             MIG-1033 - Added the migration of SEO main category for products;
+            MIG-1077 - Optimized repository query to respect specified batch sizes
         </changes>
     </changelog>
 
