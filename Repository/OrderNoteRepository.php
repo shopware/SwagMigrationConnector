@@ -40,7 +40,7 @@ class OrderNoteRepository extends AbstractRepository
      */
     public function fetch($offset = 0, $limit = 250)
     {
-        $ids = $this->fetchIdentifiers('s_order_notes', $offset, $limit);
+        $ids = $this->fetchIdentifiersWithRelations($offset, $limit);
         $query = $this->connection->createQueryBuilder();
 
         $query->from('s_order_notes', 'note');
@@ -54,5 +54,27 @@ class OrderNoteRepository extends AbstractRepository
         $query->addOrderBy('note.id');
 
         return $query->execute()->fetchAll();
+    }
+
+    /**
+     * @param int $offset
+     * @param int $limit
+     *
+     * @return string[]
+     */
+    private function fetchIdentifiersWithRelations($offset, $limit)
+    {
+        $query = $this->connection->createQueryBuilder();
+
+        $query->select('note.id');
+        $query->from('s_order_notes', 'note');
+        $query->innerJoin('note', 's_user', 'customer', 'note.userID = customer.id');
+
+        $query->addOrderBy('note.id');
+
+        $query->setFirstResult($offset);
+        $query->setMaxResults($limit);
+
+        return $query->execute()->fetchAll(\PDO::FETCH_COLUMN);
     }
 }
