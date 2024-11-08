@@ -67,6 +67,24 @@ class OrderNoteRepositoryTest extends TestCase
     }
 
     /**
+     * @return void
+     */
+    public function testFetchWillReturnOnlyValidOrderNotes()
+    {
+        $sql = file_get_contents(__DIR__ . '/_fixtures/order_notes_with_invalid_data.sql');
+        static::assertTrue(\is_string($sql));
+
+        $this->connection->executeQuery($sql);
+        $result = $this->getOrderNoteRepository()->fetch();
+
+        static::assertCount(2, $result);
+
+        foreach ($result as $wishListItem) {
+            static::assertNotSame('unique-id-invalid-wishlist-item', $wishListItem['note.sUniqueID']);
+        }
+    }
+
+    /**
      * @before
      *
      * @return void
