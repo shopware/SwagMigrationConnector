@@ -1,0 +1,95 @@
+name: PHP Checks
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    paths:
+      - composer.json
+      - "**/*.php"
+
+env:
+  DB_HOST: 127.0.0.1
+  DB_PORT: 3306
+  DB_USER: root
+  DB_PASSWORD: root
+  DB_NAME: shopware
+  SW_HOST: localhost:8000
+  SW_BASE_PATH: ""
+
+jobs:
+  codestyle_php:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: shopware
+        ports:
+          - 3306:3306
+    steps:
+      - name: Checkout SwagMigrationConnector
+        uses: actions/checkout@v4
+        with:
+          path: custom/plugins/${{ github.event.repository.name }}
+      - name: Setup SwagMigrationConnector
+        uses: ./custom/plugins/SwagMigrationConnector/.github/actions/setup-shopware5
+      - run: composer bin all install
+      - name: Run CS Fixer
+        working-directory: custom/plugins/${{ github.event.repository.name }}
+        run: |
+          make fix-cs-dry
+
+  phpstan:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: shopware
+        ports:
+          - 3306:3306
+    steps:
+      - name: Checkout SwagMigrationConnector
+        uses: actions/checkout@v4
+        with:
+          path: custom/plugins/${{ github.event.repository.name }}
+      - name: Setup SwagMigrationConnector
+        uses: ./custom/plugins/SwagMigrationConnector/.github/actions/setup-shopware5
+      - name: Run PHPStan
+        working-directory: custom/plugins/${{ github.event.repository.name }}
+        run: make phpstan
+
+  code_coverage:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: shopware
+        ports:
+          - 3306:3306
+    steps:
+      - name: Checkout SwagMigrationConnector
+        uses: actions/checkout@v4
+        with:
+          path: custom/plugins/${{ github.event.repository.name }}
+      - name: Setup SwagMigrationConnector
+        uses: ./custom/plugins/SwagMigrationConnector/.github/actions/setup-shopware5
+      - name: Run Code Coverage (Codecov)
+        if: github.ref == 'refs/heads/master'
+        uses: shopware/github-actions/phpunit@main
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        with:
+          extensionName: ${{ github.event.repository.name }}
+          uploadCoverage: true
+      - name: Run Code Coverage
+        working-directory: custom/plugins/${{ github.event.repository.name }}
+        run: |
+          php -d pcov.enabled=1 ${GITHUB_WORKSPACE}/vendor/bin/phpunit --configuration phpunit.xml.dist --coverage-text=build/artifacts/phpunit-coverage-text
+          cat build/artifacts/phpunit-coverage-text | sed -e '/\\Shopware\\.*/d' -e '/\s*Methods:\s*\d*/d'
