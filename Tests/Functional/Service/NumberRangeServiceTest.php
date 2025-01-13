@@ -25,7 +25,7 @@ class NumberRangeServiceTest extends TestCase
             if ($numberRange['name'] === 'articleordernumber') {
                 static::assertSame('SW', $numberRange['prefix']);
             } else {
-                static::assertSame('', $numberRange['prefix'], sprintf('Prefix should be empty for number range: %s', $numberRange['name']));
+                static::assertSame('', $numberRange['prefix'], \sprintf('Prefix should be empty for number range: %s', $numberRange['name']));
             }
         }
     }

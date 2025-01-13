@@ -50,7 +50,7 @@ class Shopware_Controllers_Api_SwagMigrationOrderDocuments extends SwagMigration
 
         $orderNumber = $documentService->getOrderNumberByDocumentHash($documentHash);
         if (!\is_string($orderNumber)) {
-            throw new OrderNotFoundException(sprintf('Order with order number %s not found', $documentHash), Response::HTTP_INTERNAL_SERVER_ERROR);
+            throw new OrderNotFoundException(\sprintf('Order with order number %s not found', $documentHash), Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 
         @set_time_limit(0);
@@ -65,7 +65,7 @@ class Shopware_Controllers_Api_SwagMigrationOrderDocuments extends SwagMigration
                 $this->closeResource($upstream);
                 $this->closeResource($downstream);
 
-                throw new FileNotReadableException(sprintf('File %s is not readable', $filePath), Response::HTTP_INTERNAL_SERVER_ERROR);
+                throw new FileNotReadableException(\sprintf('File %s is not readable', $filePath), Response::HTTP_INTERNAL_SERVER_ERROR);
             }
 
             while (!feof($upstream)) {
