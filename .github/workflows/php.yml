@@ -89,6 +89,7 @@ jobs:
           extensionName: ${{ github.event.repository.name }}
           uploadCoverage: true
       - name: Run Code Coverage
+        if: github.ref != 'refs/heads/master'
         working-directory: custom/plugins/${{ github.event.repository.name }}
         run: |
           php -d pcov.enabled=1 ${GITHUB_WORKSPACE}/vendor/bin/phpunit --configuration phpunit.xml.dist --coverage-text=build/artifacts/phpunit-coverage-text
