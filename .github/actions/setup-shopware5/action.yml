@@ -1,0 +1,59 @@
+name: Setup SwagMigrationConnector
+description: "Setup steps for SwagMigrationConnector"
+author: "shopware AG"
+branding:
+  color: "blue"
+  icon: "download"
+
+inputs:
+  shopware-version:
+    default: "5.7"
+    required: false
+    description: "Which Shopware 5 version should be installed"
+  php-version:
+    default: "7.4"
+    required: false
+    description: "Which PHP version should be used"
+
+runs:
+  using: composite
+  steps:
+    - name: Clone Shopware 5
+      uses: actions/checkout@v4
+      with:
+        repository: shopware5/shopware
+        ref: ${{ inputs.shopware-version }}
+    - name: Checkout SwagMigrationConnector
+      uses: actions/checkout@v4
+      with:
+        path: custom/plugins/${{ github.event.repository.name }}
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ inputs.php-version }}
+        extensions: gd
+        tools: symfony-cli
+    - name: Setup Shopware 5
+      shell: bash
+      # I don't use the make install, because of the Shopware 5 versions < 5.7
+      run: |
+        composer install
+        sed -e "s/%db\.user%/${DB_USER}/g" -e "s/%db\.password%/${DB_PASSWORD}/g" -e "s/%db\.database%/${DB_NAME}/g" -e "s/%db\.host%/${DB_HOST}/g" -e "s/%db\.port%/${DB_PORT}/g" < config.php.dist > config.php
+        php bin/console sw:database:setup --steps=drop,create,import,importDemodata
+        php bin/console sw:cache:clear
+        php bin/console sw:database:setup --steps=setupShop --shop-url=http://${SW_HOST}${SW_BASE_PATH}
+        php bin/console sw:snippets:to:db --include-plugins
+        php bin/console sw:theme:initialize
+        php bin/console sw:firstrunwizard:disable
+        php bin/console sw:admin:create --name="Demo" --email="demo@demo.de" --username="demo" --password="demo" --locale=de_DE -n
+        touch recovery/install/data/install.lock
+    - name: Setup Plugin
+      shell: bash
+      run: |
+        php bin/console sw:plugin:refresh
+        php bin/console sw:plugin:list
+        php bin/console sw:plugin:install --activate SwagMigrationConnector
+        php bin/console sw:cache:clear
+        if [[ "${{inputs.shopware-version}}" != "5.4" ]]; then
+          php bin/console -e production
+        fi

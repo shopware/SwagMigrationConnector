@@ -53,8 +53,8 @@ class Shopware_Controllers_Api_SwagMigrationOrderDocuments extends SwagMigration
             throw new OrderNotFoundException(\sprintf('Order with order number %s not found', $documentHash), Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 
-        @set_time_limit(0);
-        ob_end_clean();
+        @\set_time_limit(0);
+        \ob_end_clean();
         if ($documentService->existsFileSystem()) {
             $this->setDownloadHeaders($filePath, $orderNumber);
 
@@ -68,13 +68,13 @@ class Shopware_Controllers_Api_SwagMigrationOrderDocuments extends SwagMigration
                 throw new FileNotReadableException(\sprintf('File %s is not readable', $filePath), Response::HTTP_INTERNAL_SERVER_ERROR);
             }
 
-            while (!feof($upstream)) {
-                $read = fread($upstream, 4096);
+            while (!\feof($upstream)) {
+                $read = \fread($upstream, 4096);
                 if (!\is_string($read)) {
                     continue;
                 }
-                fwrite($downstream, $read);
-                flush();
+                \fwrite($downstream, $read);
+                \flush();
             }
 
             $this->closeResource($upstream);
