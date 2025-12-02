@@ -10,6 +10,7 @@
         <service id="swag_migration_connector.service.environment_service" class="SwagMigrationConnector\Service\EnvironmentService" public="true">
             <argument type="service" id="models" />
             <argument type="service" id="swag_migration_connector.repository.environment_repository" />
+            <argument type="service" id="swag_migration_connector.repository.config_repository" />
             <argument type="service" id="swag_migration_connector.service.plugin_information_service" />
             <argument>%shopware.release.version%</argument>
             <argument>%shopware.release.version_text%</argument>
@@ -173,6 +174,12 @@
 
         <service id="swag_migration_connector.repository.customer_repository"
                  class="SwagMigrationConnector\Repository\CustomerRepository"
+                 parent="SwagMigrationConnector\Repository\AbstractRepository">
+            <tag name="shopware.migration.connector.repository"/>
+        </service>
+
+        <service id="swag_migration_connector.repository.config_repository"
+                 class="SwagMigrationConnector\Repository\ConfigRepository"
                  parent="SwagMigrationConnector\Repository\AbstractRepository">
             <tag name="shopware.migration.connector.repository"/>
         </service>

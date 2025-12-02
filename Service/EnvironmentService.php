@@ -10,6 +10,7 @@ namespace SwagMigrationConnector\Service;
 use Shopware\Components\Model\ModelManager;
 use Shopware\Models\Shop\Currency;
 use Shopware\Models\Shop\Shop;
+use SwagMigrationConnector\Repository\ConfigRepository;
 use SwagMigrationConnector\Repository\EnvironmentRepository;
 
 class EnvironmentService extends AbstractApiService
@@ -22,7 +23,12 @@ class EnvironmentService extends AbstractApiService
     /**
      * @var EnvironmentRepository
      */
-    private $repository;
+    private $environmentRepository;
+
+    /**
+     * @var ConfigRepository
+     */
+    private $configRepository;
 
     /**
      * @var PluginInformationService
@@ -52,13 +58,15 @@ class EnvironmentService extends AbstractApiService
     public function __construct(
         ModelManager $modelManager,
         EnvironmentRepository $environmentRepository,
+        ConfigRepository $configRepository,
         PluginInformationService $pluginInformationService,
         $version,
         $versionText,
         $revision
     ) {
         $this->modelManager = $modelManager;
-        $this->repository = $environmentRepository;
+        $this->environmentRepository = $environmentRepository;
+        $this->configRepository = $configRepository;
         $this->pluginInformationService = $pluginInformationService;
         $this->version = $version;
         $this->versionText = $versionText;
@@ -81,6 +89,8 @@ class EnvironmentService extends AbstractApiService
             'default' => 1,
         ]);
 
+        $config = $this->configRepository->fetch();
+
         $resultSet = [
             'defaultShopLanguage' => $locale,
             'defaultCurrency' => $defaultCurrency->getCurrency(),
@@ -89,6 +99,7 @@ class EnvironmentService extends AbstractApiService
             'revision' => $this->revision,
             'additionalData' => $this->getAdditionalData(),
             'updateAvailable' => $this->pluginInformationService->isUpdateRequired($locale),
+            'config' => $config,
         ];
 
         return $resultSet;
@@ -99,7 +110,7 @@ class EnvironmentService extends AbstractApiService
      */
     private function getAdditionalData()
     {
-        $fetchedShops = $this->repository->getShops();
+        $fetchedShops = $this->environmentRepository->getShops();
         $shops = $this->mapData($fetchedShops, [], ['shop']);
 
         foreach ($shops as $key => &$shop) {
