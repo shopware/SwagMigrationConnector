@@ -12,7 +12,7 @@ use Doctrine\DBAL\Connection;
 class ConfigRepository extends AbstractRepository
 {
     /**
-     * @return array<string, string>
+     * @return list<array<string, mixed>>
      */
     public function fetch($offset = 0, $limit = 250)
     {
