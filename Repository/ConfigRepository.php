@@ -12,7 +12,9 @@ use Doctrine\DBAL\Connection;
 class ConfigRepository extends AbstractRepository
 {
     /**
-     * @return list<array<string, mixed>>
+     * @phpstan-ignore-next-line intentionally different return type, returns key-value config map
+     *
+     * @return array<string, string>
      */
     public function fetch($offset = 0, $limit = 250)
     {
@@ -23,24 +25,19 @@ class ConfigRepository extends AbstractRepository
 
         $query = $this->connection->createQueryBuilder();
 
-        $query->from('s_core_config_elements', 'config');
-        $this->addTableSelection($query, 's_core_config_elements', 'config');
-
-        $query->where('config.name IN (:configNames)');
-        $query->setParameter('configNames', $configNames, Connection::PARAM_STR_ARRAY);
-
-        $query->setFirstResult($offset);
-        $query->setMaxResults($limit);
+        $query->select('config.name', 'config.value')
+            ->from('s_core_config_elements', 'config')
+            ->where('config.name IN (:configNames)')
+            ->setParameter('configNames', $configNames, Connection::PARAM_STR_ARRAY);
 
         $rows = $query->execute()->fetchAll();
 
         $result = [];
 
         foreach ($rows as $row) {
-            $name = $row['config.name'];
-            $value = \unserialize($row['config.value'], ['allowed_classes' => false]);
+            $value = \unserialize($row['value'], ['allowed_classes' => false]);
 
-            $result[$name] = $value;
+            $result[$row['name']] = $value;
         }
 
         return $result;
