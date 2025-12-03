@@ -22,16 +22,13 @@ class ConfigRepositoryTest extends TestCase
     private $connection;
 
     /**
+     * @before
+     *
      * @return void
      */
-    public function testFetchReturnsEsdKeyAndInstallationDate()
+    protected function setUpMethod()
     {
-        $repository = $this->getConfigRepository();
-
-        $result = $repository->fetch();
-
-        static::assertArrayHasKey('esdKey', $result);
-        static::assertArrayHasKey('installationDate', $result);
+        $this->connection = $this->getContainer()->get('dbal_connection');
     }
 
     /**
@@ -43,20 +40,11 @@ class ConfigRepositoryTest extends TestCase
 
         $result = $repository->fetch();
 
-        static::assertIsString($result['esdKey']);
+        static::assertArrayHasKey('esdKey', $result);
         static::assertStringNotContainsString('s:', $result['esdKey']);
-        static::assertIsString($result['installationDate']);
-        static::assertStringNotContainsString('s:', $result['installationDate']);
-    }
 
-    /**
-     * @before
-     *
-     * @return void
-     */
-    protected function setUpMethod()
-    {
-        $this->connection = $this->getContainer()->get('dbal_connection');
+        static::assertArrayHasKey('installationDate', $result);
+        static::assertStringNotContainsString('s:', $result['installationDate']);
     }
 
     /**
