@@ -30,7 +30,7 @@ class ConfigRepositoryTest extends TestCase
 
         $result = $repository->fetch();
 
-        static::assertSame(2, \count($result));
+        static::assertCount(2, $result);
 
         static::assertArrayHasKey('esdKey', $result);
         static::assertFalse(\strpos($result['esdKey'], 's:') !== false);
