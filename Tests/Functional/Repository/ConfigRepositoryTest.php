@@ -22,16 +22,6 @@ class ConfigRepositoryTest extends TestCase
     private $connection;
 
     /**
-     * @before
-     *
-     * @return void
-     */
-    protected function setUpMethod()
-    {
-        $this->connection = $this->getContainer()->get('dbal_connection');
-    }
-
-    /**
      * @return void
      */
     public function testFetchReturnsUnserializedValues()
@@ -40,11 +30,23 @@ class ConfigRepositoryTest extends TestCase
 
         $result = $repository->fetch();
 
+        static::assertSame(2, \count($result));
+
         static::assertArrayHasKey('esdKey', $result);
-        static::assertStringNotContainsString('s:', $result['esdKey']);
+        static::assertFalse(\strpos($result['esdKey'], 's:') !== false);
 
         static::assertArrayHasKey('installationDate', $result);
-        static::assertStringNotContainsString('s:', $result['installationDate']);
+        static::assertFalse(\strpos($result['installationDate'], 's:') !== false);
+    }
+
+    /**
+     * @before
+     *
+     * @return void
+     */
+    protected function setUpMethod()
+    {
+        $this->connection = $this->getContainer()->get('dbal_connection');
     }
 
     /**
