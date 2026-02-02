@@ -286,7 +286,7 @@ class ProductRepository extends AbstractRepository
     {
         // Just select subshop main categories and ignore language shops
         $query = $this->connection->createQueryBuilder();
-        $query->select(['seoCategory.article_id', 'seoCategory.shop_id as shopId', 'seoCategory.category_id as categoryId'])
+        $query->select(['seoCategory.article_id', 'seoCategory.id', 'seoCategory.shop_id as shopId', 'seoCategory.category_id as categoryId'])
             ->from('s_articles_categories_seo', 'seoCategory')
             ->join('seoCategory', 's_core_shops', 'shop', 'shop.id = seoCategory.shop_id')
             ->where('article_id IN (:ids)')
