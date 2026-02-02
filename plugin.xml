@@ -21,10 +21,12 @@
 
     <changelog version="2.2.0">
         <changes lang="de">
-            #13670 - Die Umgebungsinformationen wurden angepasst, um einige Konfigurationswerte zurückzugeben, die die SW5-Installation eindeutig identifizieren. SW6 verwendet diese, um davor zu warnen, mehr als einmal Verbindungen zum selben Quellsystem herzustellen.
+            #13670 - Die Umgebungsinformationen wurden angepasst, um einige Konfigurationswerte zurückzugeben, die die SW5-Installation eindeutig identifizieren. SW6 verwendet diese, um davor zu warnen, mehr als einmal Verbindungen zum selben Quellsystem herzustellen;
+            #14517 - ID zu den SEO-Hauptkategorien von Produkten hinzugefügt, um stabile Zuordnung zu ermöglichen;
         </changes>
         <changes lang="en">
-            #13670 - Adjusted environment information to return some configuration values, that uniquely identify the SW5 installation. SW6 uses that to warn against creating connections to the same source system more than once
+            #13670 - Adjusted environment information to return some configuration values, that uniquely identify the SW5 installation. SW6 uses that to warn against creating connections to the same source system more than once;
+            #14517 - Added ID to product SEO main categories to enable stable mapping;
         </changes>
     </changelog>
 
