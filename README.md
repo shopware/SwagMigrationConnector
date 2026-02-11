@@ -45,7 +45,7 @@ Delete all files and folders listed in `.sw-zip-blacklist`:
 Also remove files not needed for the release:
 
 ```bash
-rm -rf .git .github RELEASE.md .DS_Store
+rm -rf .git .github .DS_Store
 ```
 
 ### 4. Create the ZIP archive
