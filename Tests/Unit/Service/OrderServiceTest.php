@@ -14,12 +14,6 @@ use Shopware\Models\Shop\Shop;
 use SwagMigrationConnector\Repository\OrderRepository;
 use SwagMigrationConnector\Service\OrderService;
 
-require_once \dirname(__DIR__, 3) . '/Repository/ApiRepositoryInterface.php';
-require_once \dirname(__DIR__, 3) . '/Repository/AbstractRepository.php';
-require_once \dirname(__DIR__, 3) . '/Repository/OrderRepository.php';
-require_once \dirname(__DIR__, 3) . '/Service/AbstractApiService.php';
-require_once \dirname(__DIR__, 3) . '/Service/OrderService.php';
-
 class OrderServiceTest extends TestCase
 {
     /**

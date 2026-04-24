@@ -11,10 +11,6 @@ use Doctrine\DBAL\Connection;
 use PHPUnit\Framework\TestCase;
 use SwagMigrationConnector\Repository\OrderRepository;
 
-require_once \dirname(__DIR__, 3) . '/Repository/ApiRepositoryInterface.php';
-require_once \dirname(__DIR__, 3) . '/Repository/AbstractRepository.php';
-require_once \dirname(__DIR__, 3) . '/Repository/OrderRepository.php';
-
 class OrderRepositoryTest extends TestCase
 {
     /**
