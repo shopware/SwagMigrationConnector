@@ -20,7 +20,7 @@ class OrderRepositoryTest extends TestCase
     {
         $connection = $this->getMockBuilder(Connection::class)
             ->disableOriginalConstructor()
-            ->onlyMethods(['fetchColumn'])
+            ->setMethods(['fetchColumn'])
             ->getMock();
 
         $connection->expects(static::once())
@@ -39,7 +39,7 @@ class OrderRepositoryTest extends TestCase
     {
         $connection = $this->getMockBuilder(Connection::class)
             ->disableOriginalConstructor()
-            ->onlyMethods(['fetchColumn'])
+            ->setMethods(['fetchColumn'])
             ->getMock();
 
         $connection->expects(static::once())
@@ -58,7 +58,7 @@ class OrderRepositoryTest extends TestCase
     {
         $connection = $this->getMockBuilder(Connection::class)
             ->disableOriginalConstructor()
-            ->onlyMethods(['fetchColumn'])
+            ->setMethods(['fetchColumn'])
             ->getMock();
 
         $connection->expects(static::once())

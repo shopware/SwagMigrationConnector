@@ -17,7 +17,10 @@ use SwagMigrationConnector\Service\OrderService;
 
 class OrderServiceTest extends TestCase
 {
-    public function testGetOrdersAddsDatabaseTimezoneToEveryOrder(): void
+    /**
+     * @return void
+     */
+    public function testGetOrdersAddsDatabaseTimezoneToEveryOrder()
     {
         $orderService = $this->createOrderService('Europe/Berlin', [
             ['ordering.id' => '15'],
@@ -32,7 +35,10 @@ class OrderServiceTest extends TestCase
         static::assertSame('en-GB', $orders[0]['_locale']);
     }
 
-    public function testGetOrdersOmitsDatabaseTimezoneWhenUnavailable(): void
+    /**
+     * @return void
+     */
+    public function testGetOrdersOmitsDatabaseTimezoneWhenUnavailable()
     {
         $orderService = $this->createOrderService(null, [
             ['ordering.id' => '15'],
@@ -46,14 +52,18 @@ class OrderServiceTest extends TestCase
     }
 
     /**
+     * @param string|null                        $timezone
      * @param list<array{'ordering.id': string}> $fetchedOrders
+     * @param int                                $limit
+     *
+     * @return OrderService
      */
-    private function createOrderService(?string $timezone, array $fetchedOrders, int $limit): OrderService
+    private function createOrderService($timezone, array $fetchedOrders, $limit)
     {
         $orderIds = \array_column($fetchedOrders, 'ordering.id');
         $orderRepository = $this->getMockBuilder(OrderRepository::class)
             ->disableOriginalConstructor()
-            ->onlyMethods([
+            ->setMethods([
                 'fetch',
                 'fetchOrderDetails',
                 'fetchOrderEsd',
@@ -88,7 +98,7 @@ class OrderServiceTest extends TestCase
 
         $shopRepository = $this->getMockBuilder(ShopRepository::class)
             ->disableOriginalConstructor()
-            ->onlyMethods(['getDefault'])
+            ->setMethods(['getDefault'])
             ->getMock();
         $shopRepository->expects(static::once())
             ->method('getDefault')
@@ -109,7 +119,10 @@ class OrderServiceTest extends TestCase
         );
     }
 
-    private function createDefaultShop(): Shop
+    /**
+     * @return Shop
+     */
+    private function createDefaultShop()
     {
         $locale = new Locale();
         $locale->setLocale('en_GB');
