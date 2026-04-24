@@ -10,16 +10,14 @@ namespace SwagMigrationConnector\Tests\Unit\Service;
 use PHPUnit\Framework\TestCase;
 use Shopware\Components\Model\ModelManager;
 use Shopware\Models\Shop\Locale;
+use Shopware\Models\Shop\Repository as ShopRepository;
 use Shopware\Models\Shop\Shop;
 use SwagMigrationConnector\Repository\OrderRepository;
 use SwagMigrationConnector\Service\OrderService;
 
 class OrderServiceTest extends TestCase
 {
-    /**
-     * @return void
-     */
-    public function testGetOrdersAddsDatabaseTimezoneToEveryOrder()
+    public function testGetOrdersAddsDatabaseTimezoneToEveryOrder(): void
     {
         $orderService = $this->createOrderService('Europe/Berlin', [
             ['ordering.id' => '15'],
@@ -34,10 +32,7 @@ class OrderServiceTest extends TestCase
         static::assertSame('en-GB', $orders[0]['_locale']);
     }
 
-    /**
-     * @return void
-     */
-    public function testGetOrdersOmitsDatabaseTimezoneWhenUnavailable()
+    public function testGetOrdersOmitsDatabaseTimezoneWhenUnavailable(): void
     {
         $orderService = $this->createOrderService(null, [
             ['ordering.id' => '15'],
@@ -51,13 +46,9 @@ class OrderServiceTest extends TestCase
     }
 
     /**
-     * @param string|null $timezone
-     * @param array       $fetchedOrders
-     * @param int         $limit
-     *
-     * @return OrderService
+     * @param list<array{'ordering.id': string}> $fetchedOrders
      */
-    private function createOrderService($timezone, array $fetchedOrders, $limit)
+    private function createOrderService(?string $timezone, array $fetchedOrders, int $limit): OrderService
     {
         $orderIds = \array_column($fetchedOrders, 'ordering.id');
         $orderRepository = $this->getMockBuilder(OrderRepository::class)
@@ -95,8 +86,9 @@ class OrderServiceTest extends TestCase
             ->method('getDatabaseTimezone')
             ->willReturn($timezone);
 
-        $shopRepository = $this->getMockBuilder(\stdClass::class)
-            ->addMethods(['getDefault'])
+        $shopRepository = $this->getMockBuilder(ShopRepository::class)
+            ->disableOriginalConstructor()
+            ->onlyMethods(['getDefault'])
             ->getMock();
         $shopRepository->expects(static::once())
             ->method('getDefault')
@@ -117,10 +109,7 @@ class OrderServiceTest extends TestCase
         );
     }
 
-    /**
-     * @return Shop
-     */
-    private function createDefaultShop()
+    private function createDefaultShop(): Shop
     {
         $locale = new Locale();
         $locale->setLocale('en_GB');
