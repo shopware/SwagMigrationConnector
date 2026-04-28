@@ -34,7 +34,11 @@ class LanguageService
      */
     public function getLanguages()
     {
-        $fetchedShopLocaleIds = \array_unique($this->fetchShopLocaleIds());
+        $fetchedShopLocaleIds = \array_unique(\array_merge(
+            $this->fetchShopLocaleIds(),
+            $this->fetchCustomerLocaleIds()
+        ));
+
         $locales = $this->fetchLocales($fetchedShopLocaleIds);
 
         return $this->appendAssociatedData($locales);
@@ -72,6 +76,20 @@ class LanguageService
         $query = $this->connection->createQueryBuilder();
         $query->from('s_core_shops', 'shop');
         $query->addSelect('shop.locale_id');
+
+        return $query->execute()->fetchAll(\PDO::FETCH_COLUMN);
+    }
+
+    /**
+     * @return array<int, string>
+     */
+    private function fetchCustomerLocaleIds()
+    {
+        $query = $this->connection->createQueryBuilder();
+        $query->from('s_user', 'customer');
+        $query->addSelect('customer.language');
+        $query->distinct();
+        $query->where('customer.language IS NOT NULL');
 
         return $query->execute()->fetchAll(\PDO::FETCH_COLUMN);
     }
