@@ -28,7 +28,7 @@ class LanguageServiceTest extends TestCase
         $localeId = (int) $this->connection->fetchColumn('SELECT COALESCE(MAX(id), 0) + 1 FROM s_core_locales');
         $customerId = $this->connection->fetchColumn('SELECT id FROM s_user ORDER BY id ASC LIMIT 1');
 
-        static::assertNotFalse($customerId);
+        static::assertTrue($customerId !== false);
 
         $this->connection->insert('s_core_locales', [
             'id' => $localeId,
@@ -36,7 +36,12 @@ class LanguageServiceTest extends TestCase
             'language' => 'Test language',
             'territory' => 'Test territory',
         ]);
-        $this->connection->update('s_user', ['language' => $localeId], ['id' => $customerId]);
+
+        $this->connection->update(
+            's_user',
+            ['language' => (string) $localeId],
+            ['id' => (int) $customerId]
+        );
 
         $languageService = $this->getContainer()->get('swag_migration_connector.service.language_service');
         $languages = $languageService->getLanguages();

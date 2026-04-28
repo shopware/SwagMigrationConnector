@@ -87,8 +87,7 @@ class LanguageService
     {
         $query = $this->connection->createQueryBuilder();
         $query->from('s_user', 'customer');
-        $query->addSelect('customer.language');
-        $query->distinct();
+        $query->addSelect('DISTINCT customer.language');
         $query->where('customer.language IS NOT NULL');
 
         return $query->execute()->fetchAll(\PDO::FETCH_COLUMN);
