@@ -19,6 +19,15 @@
         The Migration Connector provides API endpoints that allow Shopware 6 to create a secure data connection with the active Shopware 5 shop which support the data migration to Shopware 6.
     </description>
 
+    <changelog version="NEXT">
+        <changes lang="de">
+            Migration von Kundensprachen korrigiert, wenn diese keinem Shop zugewiesen sind;
+        </changes>
+        <changes lang="en">
+            Fixed customer language migration when customer locales are not assigned to a shop;
+        </changes>
+    </changelog>
+
     <changelog version="2.2.0">
         <changes lang="de">
             #13670 - Die Umgebungsinformationen wurden angepasst, um einige Konfigurationswerte zurückzugeben, die die SW5-Installation eindeutig identifizieren. SW6 verwendet diese, um davor zu warnen, mehr als einmal Verbindungen zum selben Quellsystem herzustellen;
