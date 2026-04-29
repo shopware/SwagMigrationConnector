@@ -19,7 +19,7 @@
         The Migration Connector provides API endpoints that allow Shopware 6 to create a secure data connection with the active Shopware 5 shop which support the data migration to Shopware 6.
     </description>
 
-    <changelog version="NEXT">
+    <changelog version="2.3.0">
         <changes lang="de">
             Migration von Kundensprachen korrigiert, wenn diese keinem Shop zugewiesen sind;
         </changes>
