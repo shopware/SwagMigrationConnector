@@ -109,35 +109,6 @@ class OrderRepository extends AbstractRepository
     }
 
     /**
-     * @return string|null
-     */
-    public function getDatabaseTimezone()
-    {
-        try {
-            $timezone = $this->connection->fetchColumn(
-                <<<'SQL'
-SELECT timeZones.timeZone
-FROM (
-    SELECT @@SESSION.time_zone AS timeZone
-    UNION
-    SELECT @@system_time_zone AS timeZone
-) AS timeZones
-WHERE timeZone != 'SYSTEM'
-LIMIT 1
-SQL
-            );
-        } catch (\Exception $e) {
-            return null;
-        }
-
-        if (!\is_string($timezone) || $timezone === '') {
-            return null;
-        }
-
-        return $timezone;
-    }
-
-    /**
      * @return array
      */
     public function fetchOrderDetails(array $orderIds)
