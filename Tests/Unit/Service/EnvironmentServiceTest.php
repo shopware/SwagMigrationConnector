@@ -39,6 +39,9 @@ class EnvironmentServiceTest extends TestCase
         static::assertSame($expectedTimezone, $environmentInformation['timezone']);
     }
 
+    /**
+     * @return array<string, array{timezone: string|null, expectedTimezone: string|null}>
+     */
     public function getDifferentTimeZones(): array
     {
         return [
@@ -117,7 +120,7 @@ class EnvironmentServiceTest extends TestCase
     }
 
     /**
-     * @return EntityRepository
+     * @return EntityRepository<Currency>
      */
     private function createCurrencyRepository()
     {

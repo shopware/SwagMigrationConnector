@@ -67,7 +67,6 @@ class OrderService extends AbstractApiService
         $orderEsd = $this->getOrderEsd();
         $orderDetails = $this->getOrderDetails();
         $orderDocuments = $this->getOrderDocuments();
-        $timezone = $this->orderRepository->getDatabaseTimezone();
 
         /** @var Shop $defaultShop */
         $defaultShop = $this->modelManager->getRepository(Shop::class)->getDefault();
@@ -77,9 +76,6 @@ class OrderService extends AbstractApiService
 
         foreach ($orders as $key => &$order) {
             $order['_locale'] = $locale;
-            if (!empty($timezone)) {
-                $order['_timezone'] = $timezone;
-            }
             if (isset($orderDetails[$order['id']])) {
                 $order['details'] = $orderDetails[$order['id']];
 
