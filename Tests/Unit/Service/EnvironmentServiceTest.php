@@ -22,16 +22,16 @@ use SwagMigrationConnector\Service\PluginInformationService;
 class EnvironmentServiceTest extends TestCase
 {
     /**
-     * @dataProvider getDifferentTimeZones
+     * @dataProvider getDifferentDatabaseConfigs
      *
-     * @param string|null $timezone
-     * @param string|null $expectedTimezone
+     * @param array<string, string|null> $dbConfig
+     * @param string|null                $expectedTimezone
      *
      * @return void
      */
-    public function testGetEnvironmentInformationReturnsDatabaseTimezone($timezone, $expectedTimezone)
+    public function testGetEnvironmentInformationReturnsDatabaseTimezone($dbConfig, $expectedTimezone)
     {
-        $environmentService = $this->createEnvironmentService($timezone);
+        $environmentService = $this->createEnvironmentService($dbConfig);
 
         $environmentInformation = $environmentService->getEnvironmentInformation();
 
@@ -40,36 +40,40 @@ class EnvironmentServiceTest extends TestCase
     }
 
     /**
-     * @return array<string, array{timezone: string|null, expectedTimezone: string|null}>
+     * @return array<string, array{dbConfig: array<string, string|null>, expectedTimezone: string|null}>
      */
-    public function getDifferentTimeZones(): array
+    public function getDifferentDatabaseConfigs(): array
     {
         return [
+            'missing' => [
+                'dbConfig' => [],
+                'expectedTimezone' => null,
+            ],
             'null' => [
-                'timezone' => null,
+                'dbConfig' => ['timezone' => null],
                 'expectedTimezone' => null,
             ],
             'empty' => [
-                'timezone' => '',
+                'dbConfig' => ['timezone' => ''],
                 'expectedTimezone' => null,
             ],
             'Europe/Berlin' => [
-                'timezone' => 'Europe/Berlin',
+                'dbConfig' => ['timezone' => 'Europe/Berlin'],
                 'expectedTimezone' => 'Europe/Berlin',
             ],
             'Europe/London' => [
-                'timezone' => 'Europe/London',
+                'dbConfig' => ['timezone' => 'Europe/London'],
                 'expectedTimezone' => 'Europe/London',
             ],
         ];
     }
 
     /**
-     * @param string|null $timezone
+     * @param array<string, string|null> $dbConfig
      *
      * @return EnvironmentService
      */
-    private function createEnvironmentService($timezone)
+    private function createEnvironmentService($dbConfig)
     {
         return new EnvironmentService(
             $this->createModelManager(),
@@ -79,7 +83,7 @@ class EnvironmentServiceTest extends TestCase
             '5.7.20',
             'Shopware 5.7.20',
             'test-revision',
-            $timezone
+            $dbConfig
         );
     }
 

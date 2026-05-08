@@ -15,7 +15,7 @@
             <argument>%shopware.release.version%</argument>
             <argument>%shopware.release.version_text%</argument>
             <argument>%shopware.release.revision%</argument>
-            <argument>%shopware.db.timezone%</argument>
+            <argument>%shopware.db%</argument>
         </service>
 
         <service id="swag_migration_connector.service.plugin_information_service" class="SwagMigrationConnector\Service\PluginInformationService" public="true">
