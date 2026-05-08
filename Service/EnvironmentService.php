@@ -77,8 +77,8 @@ class EnvironmentService extends AbstractApiService
         $this->version = $version;
         $this->versionText = $versionText;
         $this->revision = $revision;
-        $timezone = $dbConfig;
 
+        $timezone = null;
         if (\is_array($dbConfig)) {
             $timezone = isset($dbConfig[self::TIMEZONE_KEY]) ? $dbConfig[self::TIMEZONE_KEY] : null;
         }
