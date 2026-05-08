@@ -15,7 +15,7 @@ use SwagMigrationConnector\Repository\EnvironmentRepository;
 
 class EnvironmentService extends AbstractApiService
 {
-    public const TIMEZONE_KEY = 'timezone';
+    const TIMEZONE_KEY = 'timezone';
 
     /**
      * @var ModelManager
@@ -58,6 +58,9 @@ class EnvironmentService extends AbstractApiService
     private $timezone;
 
     /**
+     * @param string                           $version
+     * @param string                           $versionText
+     * @param string                           $revision
      * @param array<string, mixed>|string|null $dbConfig
      */
     public function __construct(
