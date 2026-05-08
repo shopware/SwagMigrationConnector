@@ -42,7 +42,7 @@ class EnvironmentServiceTest extends TestCase
     /**
      * @return array<string, array{dbConfig: array<string, string|null>, expectedTimezone: string|null}>
      */
-    public function getDifferentDatabaseConfigs(): array
+    public function getDifferentDatabaseConfigs()
     {
         return [
             'missing' => [
