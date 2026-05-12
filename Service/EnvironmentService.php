@@ -53,15 +53,9 @@ class EnvironmentService extends AbstractApiService
     private $revision;
 
     /**
-     * @var string|null
-     */
-    private $timezone;
-
-    /**
-     * @param string                           $version
-     * @param string                           $versionText
-     * @param string                           $revision
-     * @param array<string, mixed>|string|null $dbConfig
+     * @param string $version
+     * @param string $versionText
+     * @param string $revision
      */
     public function __construct(
         ModelManager $modelManager,
@@ -70,8 +64,7 @@ class EnvironmentService extends AbstractApiService
         PluginInformationService $pluginInformationService,
         $version,
         $versionText,
-        $revision,
-        $dbConfig
+        $revision
     ) {
         $this->modelManager = $modelManager;
         $this->environmentRepository = $environmentRepository;
@@ -80,13 +73,6 @@ class EnvironmentService extends AbstractApiService
         $this->version = $version;
         $this->versionText = $versionText;
         $this->revision = $revision;
-
-        $timezone = null;
-        if (\is_array($dbConfig)) {
-            $timezone = isset($dbConfig[self::TIMEZONE_KEY]) ? $dbConfig[self::TIMEZONE_KEY] : null;
-        }
-
-        $this->timezone = \is_string($timezone) && $timezone !== '' ? $timezone : null;
     }
 
     /**
@@ -116,7 +102,6 @@ class EnvironmentService extends AbstractApiService
             'additionalData' => $this->getAdditionalData(),
             'updateAvailable' => $this->pluginInformationService->isUpdateRequired($locale),
             'config' => $config,
-            'timezone' => $this->timezone,
         ];
 
         return $resultSet;
