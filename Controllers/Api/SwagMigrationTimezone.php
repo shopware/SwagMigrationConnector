@@ -10,13 +10,15 @@ use SwagMigrationConnector\Service\ControllerReturnStruct;
 
 class Shopware_Controllers_Api_SwagMigrationTimezone extends SwagMigrationApiControllerBase
 {
-
+    /**
+     * @return void
+     */
     public function indexAction()
     {
         $dbConfig = $this->container->getParameter('shopware.db');
 
         $response = new ControllerReturnStruct([
-            ['timezone' => $dbConfig['timezone'] ?? null]
+            ['timezone' => $dbConfig['timezone'] ?? null],
         ]);
 
         $this->view->assign($response->jsonSerialize());
