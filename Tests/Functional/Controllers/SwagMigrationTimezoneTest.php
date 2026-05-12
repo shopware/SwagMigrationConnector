@@ -27,7 +27,7 @@ class SwagMigrationTimezoneTest extends \Enlight_Components_Test_Controller_Test
         $dbConfig = $container->getParameter('shopware.db');
         static::assertIsArray($dbConfig);
 
-        $configuredTimezone = $dbConfig['timezone'] ?? null;
+        $configuredTimezone = $dbConfig['timezone'];
         $timezone = $configuredTimezone === '' ? null : $configuredTimezone;
 
         $controller = ControllerFactory::createController(

@@ -18,9 +18,7 @@ class Shopware_Controllers_Api_SwagMigrationTimezone extends SwagMigrationApiCon
         $dbConfig = $this->container->getParameter('shopware.db');
         \assert(\is_array($dbConfig));
 
-        $timezone = $dbConfig['timezone'] ?? null;
-        \assert($timezone === null || \is_string($timezone));
-
+        $timezone = $dbConfig['timezone'];
         if ($timezone === '') {
             $timezone = null;
         }
