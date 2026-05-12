@@ -15,8 +15,6 @@ use SwagMigrationConnector\Repository\EnvironmentRepository;
 
 class EnvironmentService extends AbstractApiService
 {
-    const TIMEZONE_KEY = 'timezone';
-
     /**
      * @var ModelManager
      */
