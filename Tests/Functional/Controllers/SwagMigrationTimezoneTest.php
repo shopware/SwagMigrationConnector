@@ -65,6 +65,8 @@ class SwagMigrationTimezoneTest extends \Enlight_Components_Test_Controller_Test
     }
 
     /**
+     * @param array<string, mixed>|string $dbConfig
+     *
      * @return SwagMigrationTimezone
      */
     private function createControllerWithDatabaseConfig($dbConfig)
