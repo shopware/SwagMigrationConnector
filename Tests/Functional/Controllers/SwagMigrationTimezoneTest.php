@@ -7,8 +7,8 @@
 
 namespace SwagMigrationConnector\Tests\Functional\Controllers;
 
-use Shopware_Controllers_Api_SwagMigrationTimezone as SwagMigrationTimezone;
 use Shopware\Components\DependencyInjection\Container;
+use Shopware_Controllers_Api_SwagMigrationTimezone as SwagMigrationTimezone;
 use SwagMigrationConnector\Tests\Functional\ContainerTrait;
 use SwagMigrationConnector\Tests\Functional\Controllers\ControllerFactory\Arguments;
 use SwagMigrationConnector\Tests\Functional\Controllers\ControllerFactory\ControllerFactory;
@@ -65,8 +65,6 @@ class SwagMigrationTimezoneTest extends \Enlight_Components_Test_Controller_Test
     }
 
     /**
-     * @param mixed $dbConfig
-     *
      * @return SwagMigrationTimezone
      */
     private function createControllerWithDatabaseConfig($dbConfig)
@@ -82,7 +80,7 @@ class SwagMigrationTimezoneTest extends \Enlight_Components_Test_Controller_Test
     }
 
     /**
-     * @param string|null $timezone
+     * @param string|null           $timezone
      * @param SwagMigrationTimezone $controller
      *
      * @return void

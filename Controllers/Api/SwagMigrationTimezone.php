@@ -18,11 +18,13 @@ class Shopware_Controllers_Api_SwagMigrationTimezone extends SwagMigrationApiCon
         $dbConfig = $this->container->getParameter('shopware.db');
         if (!\is_array($dbConfig)) {
             $this->assignEmptyResult();
+
             return;
         }
 
-        if (!isset($dbConfig['timezone'])) {
+        if (!$this->hasTimezoneConfig($dbConfig)) {
             $this->assignEmptyResult();
+
             return;
         }
 
@@ -36,6 +38,16 @@ class Shopware_Controllers_Api_SwagMigrationTimezone extends SwagMigrationApiCon
         ]);
 
         $this->view->assign($response->jsonSerialize());
+    }
+
+    /**
+     * @param array<string, mixed> $dbConfig
+     *
+     * @return bool
+     */
+    private function hasTimezoneConfig(array $dbConfig)
+    {
+        return isset($dbConfig['timezone']);
     }
 
     /**
