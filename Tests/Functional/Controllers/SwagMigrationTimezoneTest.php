@@ -8,9 +8,11 @@
 namespace SwagMigrationConnector\Tests\Functional\Controllers;
 
 use Shopware_Controllers_Api_SwagMigrationTimezone as SwagMigrationTimezone;
+use Shopware\Components\DependencyInjection\Container;
 use SwagMigrationConnector\Tests\Functional\ContainerTrait;
 use SwagMigrationConnector\Tests\Functional\Controllers\ControllerFactory\Arguments;
 use SwagMigrationConnector\Tests\Functional\Controllers\ControllerFactory\ControllerFactory;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 
 require __DIR__ . '/../../../Controllers/Api/SwagMigrationTimezone.php';
 
@@ -37,6 +39,56 @@ class SwagMigrationTimezoneTest extends \Enlight_Components_Test_Controller_Test
 
         $controller->indexAction();
 
+        $this->assertTimezoneResponse($timezone, $controller);
+    }
+
+    /**
+     * @return void
+     */
+    public function testIndexActionReturnsNullTimezoneWhenDatabaseConfigHasNoTimezone()
+    {
+        $controller = $this->createControllerWithDatabaseConfig([]);
+        $controller->indexAction();
+
+        $this->assertTimezoneResponse(null, $controller);
+    }
+
+    /**
+     * @return void
+     */
+    public function testIndexActionReturnsNullTimezoneWhenDatabaseConfigIsNotArray()
+    {
+        $controller = $this->createControllerWithDatabaseConfig('invalid');
+        $controller->indexAction();
+
+        $this->assertTimezoneResponse(null, $controller);
+    }
+
+    /**
+     * @param mixed $dbConfig
+     *
+     * @return SwagMigrationTimezone
+     */
+    private function createControllerWithDatabaseConfig($dbConfig)
+    {
+        $container = new Container(new ParameterBag([
+            'shopware.db' => $dbConfig,
+        ]));
+
+        return ControllerFactory::createController(
+            SwagMigrationTimezone::class,
+            new Arguments($container)
+        );
+    }
+
+    /**
+     * @param string|null $timezone
+     * @param SwagMigrationTimezone $controller
+     *
+     * @return void
+     */
+    private function assertTimezoneResponse($timezone, $controller)
+    {
         static::assertSame([
             'data' => [
                 [
