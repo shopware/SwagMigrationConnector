@@ -59,11 +59,29 @@ class CustomerRepository extends AbstractRepository
         $query->leftJoin('defaultpayment', 's_core_paymentmeans_attributes', 'defaultpayment_attributes', 'defaultpayment.id = defaultpayment_attributes.paymentmeanID');
         $this->addTableSelection($query, 's_core_paymentmeans_attributes', 'defaultpayment_attributes');
 
-        $query->leftJoin('customer', 's_core_locales', 'customerlanguage', 'customer.language = customerlanguage.id');
-        $this->addTableSelection($query, 's_core_locales', 'customerlanguage');
-
-        $query->leftJoin('customer', 's_core_shops', 'shop', 'customer.subshopID = shop.id');
+        $query->leftJoin(
+            'customer',
+            's_core_shops',
+            'shop',
+            'customer.subshopID = shop.id'
+        );
         $this->addTableSelection($query, 's_core_shops', 'shop');
+
+        // customer.language maps to the shopID and not the localeID
+        $query->leftJoin(
+            'customer',
+            's_core_shops',
+            'customerlanguageshop',
+            'customer.language = customerlanguageshop.id'
+        );
+        
+        $query->leftJoin(
+            'customer',
+            's_core_locales',
+            'customerlanguage',
+            'customerlanguage.id = COALESCE(customerlanguageshop.locale_id, shop.locale_id, customer.language)'
+        );
+        $this->addTableSelection($query, 's_core_locales', 'customerlanguage');
 
         $query->where('customer.id IN (:ids)');
         $query->setParameter('ids', $ids, Connection::PARAM_STR_ARRAY);
