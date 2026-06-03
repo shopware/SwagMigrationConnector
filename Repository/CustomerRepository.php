@@ -79,7 +79,7 @@ class CustomerRepository extends AbstractRepository
             'customer',
             's_core_locales',
             'customerlanguage',
-            'customerlanguage.id = COALESCE(customerlanguageshop.locale_id, shop.locale_id, customer.language)'
+            'customerlanguage.id = customerlanguageshop.locale_id'
         );
         $this->addTableSelection($query, 's_core_locales', 'customerlanguage');
 
