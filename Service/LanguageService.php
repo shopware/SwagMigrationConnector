@@ -87,8 +87,25 @@ class LanguageService
     {
         $query = $this->connection->createQueryBuilder();
         $query->from('s_user', 'customer');
-        $query->addSelect('DISTINCT customer.language');
+        $query->leftJoin(
+            'customer',
+            's_core_shops',
+            'customerlanguageshop',
+            'customer.language = customerlanguageshop.id'
+        );
+
+        $query->leftJoin(
+            'customerlanguageshop',
+            's_core_locales',
+            'customerlocales',
+            'customerlanguageshop.locale_id = customerlocales.id'
+        );
+    
+        $query->addSelect('customerlocales.id');
+        $query->distinct();
         $query->where('customer.language IS NOT NULL');
+        $query->andWhere('customerlanguageshop.locale_id IS NOT NULL');
+        $query->andWhere('customerlocales.id IS NOT NULL');
 
         return $query->execute()->fetchAll(\PDO::FETCH_COLUMN);
     }
