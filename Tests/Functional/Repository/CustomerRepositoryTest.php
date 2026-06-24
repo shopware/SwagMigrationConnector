@@ -55,12 +55,13 @@ class CustomerRepositoryTest extends TestCase
      */
     public function testFetchResolvesCustomerLanguageThroughShopLocale()
     {
+        $offset = (int) $this->connection->fetchColumn('SELECT COUNT(*) FROM s_user');
         $sql = file_get_contents(__DIR__ . '/_fixtures/customer.sql');
         static::assertTrue(\is_string($sql));
 
         $this->connection->executeQuery($sql);
 
-        $customer = $this->getCustomerRepository()->fetch()[0];
+        $customer = $this->getCustomerRepository()->fetch($offset, 1)[0];
         $expectedLocaleId = (string) $this->connection->fetchColumn('SELECT locale_id FROM s_core_shops WHERE id = 3');
 
         static::assertSame('3', $customer['customer.id']);
