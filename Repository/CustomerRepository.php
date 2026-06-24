@@ -67,14 +67,15 @@ class CustomerRepository extends AbstractRepository
         );
         $this->addTableSelection($query, 's_core_shops', 'shop');
 
-        // customer.language maps to the shopID and not the localeID
+        // customer.language maps to the shopID and not directly to the localeID
+        // so we need to join the shop table to get the localeID and then join the locale table to get the locale code
         $query->leftJoin(
             'customer',
             's_core_shops',
             'customerlanguageshop',
             'customer.language = customerlanguageshop.id'
         );
-        
+
         $query->leftJoin(
             'customer',
             's_core_locales',
