@@ -55,19 +55,28 @@ class CustomerRepositoryTest extends TestCase
      */
     public function testFetchResolvesCustomerLanguageThroughShopLocale()
     {
+        $shop = $this->connection->fetchAssoc(
+            'SELECT id, locale_id
+             FROM s_core_shops
+             WHERE locale_id <> id
+             ORDER BY id ASC
+             LIMIT 1'
+        );
         $offset = (int) $this->connection->fetchColumn('SELECT COUNT(*) FROM s_user');
         $sql = file_get_contents(__DIR__ . '/_fixtures/customer.sql');
+
+        static::assertTrue(\is_array($shop));
         static::assertTrue(\is_string($sql));
 
         $this->connection->executeQuery($sql);
+        $this->connection->update('s_user', ['language' => (string) $shop['id']], ['id' => 3]);
 
         $customer = $this->getCustomerRepository()->fetch($offset, 1)[0];
-        $expectedLocaleId = (string) $this->connection->fetchColumn('SELECT locale_id FROM s_core_shops WHERE id = 3');
 
         static::assertSame('3', $customer['customer.id']);
-        static::assertSame('3', $customer['customer.language']);
-        static::assertNotSame($customer['customer.language'], $expectedLocaleId);
-        static::assertSame($expectedLocaleId, $customer['customerlanguage.id']);
+        static::assertSame((string) $shop['id'], $customer['customer.language']);
+        static::assertNotSame($customer['customer.language'], (string) $shop['locale_id']);
+        static::assertSame((string) $shop['locale_id'], $customer['customerlanguage.id']);
     }
 
     /**
