@@ -25,20 +25,21 @@ class LanguageServiceTest extends TestCase
      */
     public function testReadResolvesCustomerLanguageThroughShopLocale()
     {
-        $shopId = (int) $this->connection->fetchColumn(
-            'SELECT GREATEST((SELECT COALESCE(MAX(id), 0) FROM s_core_shops), (SELECT COALESCE(MAX(id), 0) FROM s_core_locales)) + 1'
-        );
-        $localeId = $shopId + 1;
-        $customerId = $this->connection->fetchColumn('SELECT id FROM s_user ORDER BY id ASC LIMIT 1');
+        $customerId = $this->connection->fetchColumn('SELECT id FROM s_user WHERE language IS NOT NULL ORDER BY id ASC LIMIT 1');
+        $localeId = (int) $this->connection->fetchColumn('SELECT COALESCE(MAX(id), 0) + 1 FROM s_core_locales');
 
         static::assertTrue($customerId !== false);
 
-        $this->connection->insert('s_core_locales', [
-            'id' => $shopId,
-            'locale' => 'yy_YY',
-            'language' => 'Decoy language',
-            'territory' => 'Decoy territory',
-        ]);
+        $shopId = (int) $this->connection->fetchColumn('SELECT language FROM s_user WHERE id = ?', [(int) $customerId]);
+
+        static::assertGreaterThan(0, $shopId);
+
+        $this->connection->executeStatement(
+            'INSERT INTO s_core_locales (id, locale, language, territory)
+             VALUES (?, ?, ?, ?)
+             ON DUPLICATE KEY UPDATE locale = VALUES(locale), language = VALUES(language), territory = VALUES(territory)',
+            [$shopId, 'yy_YY', 'Decoy language', 'Decoy territory']
+        );
 
         $this->connection->insert('s_core_locales', [
             'id' => $localeId,
@@ -47,13 +48,7 @@ class LanguageServiceTest extends TestCase
             'territory' => 'Test territory',
         ]);
 
-        $this->createShopWithLocale($shopId, $localeId);
-
-        $this->connection->update(
-            's_user',
-            ['language' => (string) $shopId],
-            ['id' => (int) $customerId]
-        );
+        static::assertSame(1, $this->connection->update('s_core_shops', ['locale_id' => $localeId], ['id' => $shopId]));
 
         $languageService = $this->getContainer()->get('swag_migration_connector.service.language_service');
         $languages = $languageService->getLanguages();
@@ -71,25 +66,5 @@ class LanguageServiceTest extends TestCase
     protected function setUpMethod()
     {
         $this->connection = $this->getContainer()->get('dbal_connection');
-    }
-
-    /**
-     * @return void
-     */
-    private function createShopWithLocale($shopId, $localeId)
-    {
-        $shop = $this->connection->fetchAssoc('SELECT * FROM s_core_shops ORDER BY id ASC LIMIT 1');
-
-        static::assertTrue(\is_array($shop));
-
-        $shop['id'] = $shopId;
-        $shop['name'] = 'locale-test-' . $shopId;
-        $shop['title'] = 'Locale Test ' . $shopId;
-        $shop['host'] = 'locale-test-' . $shopId . '.example.com';
-        $shop['locale_id'] = $localeId;
-        $shop['default'] = 0;
-        $shop['active'] = 1;
-
-        $this->connection->insert('s_core_shops', $shop);
     }
 }
