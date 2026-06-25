@@ -62,6 +62,8 @@ class CustomerRepositoryTest extends TestCase
              ORDER BY id ASC
              LIMIT 1'
         );
+        static::assertTrue(\is_array($shop));
+
         $alternateLocaleId = $this->connection->fetchColumn(
             'SELECT id
              FROM s_core_locales
@@ -73,7 +75,6 @@ class CustomerRepositoryTest extends TestCase
         $offset = (int) $this->connection->fetchColumn('SELECT COUNT(*) FROM s_user');
         $sql = file_get_contents(__DIR__ . '/_fixtures/customer.sql');
 
-        static::assertTrue(\is_array($shop));
         static::assertTrue($alternateLocaleId !== false);
         static::assertTrue(\is_string($sql));
 
