@@ -104,8 +104,7 @@ class LanguageService
             'customerlanguageshop.locale_id = customerlocales.id'
         );
 
-        $query->addSelect('customerlocales.id');
-        $query->distinct();
+        $query->addSelect('DISTINCT customerlocales.id');
         $query->where('customer.language IS NOT NULL');
         $query->andWhere('customerlanguageshop.locale_id IS NOT NULL');
         $query->andWhere('customerlocales.id IS NOT NULL');
