@@ -58,16 +58,26 @@ class CustomerRepositoryTest extends TestCase
         $shop = $this->connection->fetchAssoc(
             'SELECT id, locale_id
              FROM s_core_shops
-             WHERE locale_id <> id
+             WHERE locale_id IS NOT NULL
              ORDER BY id ASC
              LIMIT 1'
+        );
+        $alternateLocaleId = $this->connection->fetchColumn(
+            'SELECT id
+             FROM s_core_locales
+             WHERE id <> ?
+             ORDER BY id ASC
+             LIMIT 1',
+            [(int) $shop['id']]
         );
         $offset = (int) $this->connection->fetchColumn('SELECT COUNT(*) FROM s_user');
         $sql = file_get_contents(__DIR__ . '/_fixtures/customer.sql');
 
         static::assertTrue(\is_array($shop));
+        static::assertTrue($alternateLocaleId !== false);
         static::assertTrue(\is_string($sql));
 
+        $this->connection->update('s_core_shops', ['locale_id' => (int) $alternateLocaleId], ['id' => (int) $shop['id']]);
         $this->connection->executeQuery($sql);
         $this->connection->update('s_user', ['language' => (string) $shop['id']], ['id' => 3]);
 
@@ -75,8 +85,8 @@ class CustomerRepositoryTest extends TestCase
 
         static::assertSame('3', $customer['customer.id']);
         static::assertSame((string) $shop['id'], $customer['customer.language']);
-        static::assertNotSame($customer['customer.language'], (string) $shop['locale_id']);
-        static::assertSame((string) $shop['locale_id'], $customer['customerlanguage.id']);
+        static::assertNotSame($customer['customer.language'], (string) $alternateLocaleId);
+        static::assertSame((string) $alternateLocaleId, $customer['customerlanguage.id']);
     }
 
     /**
