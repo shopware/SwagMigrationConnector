@@ -77,8 +77,13 @@ class CustomerRepositoryTest extends TestCase
         static::assertTrue($alternateLocaleId !== false);
         static::assertTrue(\is_string($sql));
 
+        // Force a mismatch between the shop id and its locale id so the repository
+        // must resolve customer.language through the shop relation, not directly as a locale id.
         $this->connection->update('s_core_shops', ['locale_id' => (int) $alternateLocaleId], ['id' => (int) $shop['id']]);
         $this->connection->executeQuery($sql);
+
+        // Point the fixture customer at that shop id. The repository should then expose
+        // the shop's locale_id as customerlanguage.id.
         $this->connection->update('s_user', ['language' => (string) $shop['id']], ['id' => 3]);
 
         $customer = $this->getCustomerRepository()->fetch($offset, 1)[0];

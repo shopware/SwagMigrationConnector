@@ -34,13 +34,27 @@ class LanguageServiceTest extends TestCase
 
         static::assertGreaterThan(0, $shopId);
 
-        $this->connection->executeStatement(
-            'INSERT INTO s_core_locales (id, locale, language, territory)
-             VALUES (?, ?, ?, ?)
-             ON DUPLICATE KEY UPDATE locale = VALUES(locale), language = VALUES(language), territory = VALUES(territory)',
-            [$shopId, 'yy_YY', 'Decoy language', 'Decoy territory']
-        );
+        // If the implementation wrongly treats customer.language as a locale id,
+        // it would resolve this decoy locale instead of going through the shop.
+        if ($this->connection->fetchColumn('SELECT id FROM s_core_locales WHERE id = ?', [$shopId]) !== false) {
+            $this->connection->update('s_core_locales', [
+                'locale' => 'yy_YY',
+                'language' => 'Decoy language',
+                'territory' => 'Decoy territory',
+            ], [
+                'id' => $shopId,
+            ]);
+        } else {
+            $this->connection->insert('s_core_locales', [
+                'id' => $shopId,
+                'locale' => 'yy_YY',
+                'language' => 'Decoy language',
+                'territory' => 'Decoy territory',
+            ]);
+        }
 
+        // This is the locale the service should return after resolving customer.language
+        // through shop.id -> shop.locale_id.
         $this->connection->insert('s_core_locales', [
             'id' => $localeId,
             'locale' => 'zz_ZZ',
