@@ -80,18 +80,17 @@ jobs:
           path: custom/plugins/${{ github.event.repository.name }}
       - name: Setup SwagMigrationConnector
         uses: ./custom/plugins/SwagMigrationConnector/.github/actions/setup-shopware5
-      - name: Run Code Coverage (Codecov)
-        if: github.ref == 'refs/heads/trunk'
-        uses: shopware/github-actions/phpunit@main
+      - name: Run Code Coverage
+        working-directory: custom/plugins/${{ github.event.repository.name }}
+        run: |
+          php -d pcov.enabled=1 ${GITHUB_WORKSPACE}/vendor/bin/phpunit --configuration phpunit.xml.dist --log-junit junit.xml --coverage-clover clover.xml --coverage-text=build/artifacts/phpunit-coverage-text
+          cat build/artifacts/phpunit-coverage-text | sed -e '/\\Shopware\\.*/d' -e '/\s*Methods:\s*\d*/d'
+          grep -q '</testsuites>' junit.xml
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f # v7.0.0
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         with:
-          extensionName: ${{ github.event.repository.name }}
-          uploadCoverage: true
-      - name: Run Code Coverage
-        if: github.ref != 'refs/heads/trunk'
-        working-directory: custom/plugins/${{ github.event.repository.name }}
-        run: |
-          php -d pcov.enabled=1 ${GITHUB_WORKSPACE}/vendor/bin/phpunit --configuration phpunit.xml.dist --log-junit junit.xml --coverage-text=build/artifacts/phpunit-coverage-text
-          cat build/artifacts/phpunit-coverage-text | sed -e '/\\Shopware\\.*/d' -e '/\s*Methods:\s*\d*/d'
-          grep -q '</testsuites>' junit.xml
+          root_dir: ${{ github.workspace }}/custom/plugins/${{ github.event.repository.name }}
+          working-directory: custom/plugins/${{ github.event.repository.name }}
+          files: clover.xml

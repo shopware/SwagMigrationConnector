@@ -14,4 +14,4 @@ Thumbs.db
 vendor
 .phpunit.result.cache
 .php-cs-fixer.cache
-.codex
+.codexclover.xml
