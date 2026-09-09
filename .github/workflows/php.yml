@@ -92,5 +92,5 @@ jobs:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         with:
           root_dir: ${{ github.workspace }}/custom/plugins/${{ github.event.repository.name }}
-          working-directory: custom/plugins/${{ github.event.repository.name }}
-          files: clover.xml
+          working-directory: ${{ github.workspace }}/custom/plugins/${{ github.event.repository.name }}
+          files: ./clover.xml
