@@ -29,7 +29,8 @@ class SwagMigrationConnectorTestKernel extends Kernel
         $container->get('plugins')->Core()->ErrorHandler()->registerErrorHandler(\E_ALL | \E_STRICT);
 
         if (!self::isPluginInstalledAndActivated()) {
-            exit('Error: The plugin is not installed or activated, tests aborted!');
+            \fwrite(\STDERR, 'Error: The plugin is not installed or activated, tests aborted!' . \PHP_EOL);
+            exit(1);
         }
         Shopware()->Loader()->registerNamespace('SwagMigrationConnector', __DIR__ . '/../');
     }

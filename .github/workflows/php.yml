@@ -92,5 +92,6 @@ jobs:
         if: github.ref != 'refs/heads/master'
         working-directory: custom/plugins/${{ github.event.repository.name }}
         run: |
-          php -d pcov.enabled=1 ${GITHUB_WORKSPACE}/vendor/bin/phpunit --configuration phpunit.xml.dist --coverage-text=build/artifacts/phpunit-coverage-text
+          php -d pcov.enabled=1 ${GITHUB_WORKSPACE}/vendor/bin/phpunit --configuration phpunit.xml.dist --log-junit junit.xml --coverage-text=build/artifacts/phpunit-coverage-text
+          grep -q '</testsuites>' junit.xml
           cat build/artifacts/phpunit-coverage-text | sed -e '/\\Shopware\\.*/d' -e '/\s*Methods:\s*\d*/d'
