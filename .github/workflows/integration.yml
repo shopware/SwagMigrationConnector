@@ -3,7 +3,7 @@ name: Integration
 on:
   push:
     branches:
-      - master
+      - trunk
   pull_request:
 
 env:

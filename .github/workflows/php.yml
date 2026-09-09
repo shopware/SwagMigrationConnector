@@ -3,7 +3,7 @@ name: PHP Checks
 on:
   push:
     branches:
-      - master
+      - trunk
   pull_request:
     paths:
       - composer.json
@@ -81,7 +81,7 @@ jobs:
       - name: Setup SwagMigrationConnector
         uses: ./custom/plugins/SwagMigrationConnector/.github/actions/setup-shopware5
       - name: Run Code Coverage (Codecov)
-        if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/trunk'
         uses: shopware/github-actions/phpunit@main
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
@@ -89,7 +89,7 @@ jobs:
           extensionName: ${{ github.event.repository.name }}
           uploadCoverage: true
       - name: Run Code Coverage
-        if: github.ref != 'refs/heads/master'
+        if: github.ref != 'refs/heads/trunk'
         working-directory: custom/plugins/${{ github.event.repository.name }}
         run: |
           php -d pcov.enabled=1 ${GITHUB_WORKSPACE}/vendor/bin/phpunit --configuration phpunit.xml.dist --log-junit junit.xml --coverage-text=build/artifacts/phpunit-coverage-text
