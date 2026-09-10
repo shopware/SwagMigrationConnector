@@ -3,7 +3,7 @@ name: PHP Checks
 on:
   push:
     branches:
-      - master
+      - trunk
   pull_request:
     paths:
       - composer.json
@@ -80,17 +80,19 @@ jobs:
           path: custom/plugins/${{ github.event.repository.name }}
       - name: Setup SwagMigrationConnector
         uses: ./custom/plugins/SwagMigrationConnector/.github/actions/setup-shopware5
-      - name: Run Code Coverage (Codecov)
-        if: github.ref == 'refs/heads/master'
-        uses: shopware/github-actions/phpunit@main
+      - name: Run Code Coverage
+        working-directory: custom/plugins/${{ github.event.repository.name }}
+        run: |
+          php -d pcov.enabled=1 ${GITHUB_WORKSPACE}/vendor/bin/phpunit --configuration phpunit.xml.dist --log-junit junit.xml --coverage-clover clover.xml --coverage-text=build/artifacts/phpunit-coverage-text
+          cat build/artifacts/phpunit-coverage-text | sed -e '/\\Shopware\\.*/d' -e '/\s*Methods:\s*\d*/d'
+          # PHPUnit writes </testsuites> only once the whole suite has run, so a report without it
+          # means the process died early (e.g. exit() in code under test) even though it exited 0
+          grep -q '</testsuites>' junit.xml
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f # v7.0.0
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         with:
-          extensionName: ${{ github.event.repository.name }}
-          uploadCoverage: true
-      - name: Run Code Coverage
-        if: github.ref != 'refs/heads/master'
-        working-directory: custom/plugins/${{ github.event.repository.name }}
-        run: |
-          php -d pcov.enabled=1 ${GITHUB_WORKSPACE}/vendor/bin/phpunit --configuration phpunit.xml.dist --coverage-text=build/artifacts/phpunit-coverage-text
-          cat build/artifacts/phpunit-coverage-text | sed -e '/\\Shopware\\.*/d' -e '/\s*Methods:\s*\d*/d'
+          root_dir: ${{ github.workspace }}/custom/plugins/${{ github.event.repository.name }}
+          working-directory: ${{ github.workspace }}/custom/plugins/${{ github.event.repository.name }}
+          files: ./clover.xml
