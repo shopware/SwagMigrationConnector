@@ -61,4 +61,6 @@ jobs:
         working-directory: custom/plugins/${{ github.event.repository.name }}
         run: |
           php ${GITHUB_WORKSPACE}/vendor/bin/phpunit --configuration phpunit.xml.dist --log-junit junit.xml
+          # PHPUnit writes </testsuites> only once the whole suite has run, so a report without it
+          # means the process died early (e.g. exit() in code under test) even though it exited 0
           grep -q '</testsuites>' junit.xml

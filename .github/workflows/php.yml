@@ -85,6 +85,8 @@ jobs:
         run: |
           php -d pcov.enabled=1 ${GITHUB_WORKSPACE}/vendor/bin/phpunit --configuration phpunit.xml.dist --log-junit junit.xml --coverage-clover clover.xml --coverage-text=build/artifacts/phpunit-coverage-text
           cat build/artifacts/phpunit-coverage-text | sed -e '/\\Shopware\\.*/d' -e '/\s*Methods:\s*\d*/d'
+          # PHPUnit writes </testsuites> only once the whole suite has run, so a report without it
+          # means the process died early (e.g. exit() in code under test) even though it exited 0
           grep -q '</testsuites>' junit.xml
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f # v7.0.0
